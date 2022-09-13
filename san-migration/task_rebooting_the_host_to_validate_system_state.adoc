@@ -1,0 +1,22 @@
+---
+permalink: san-migration/task_rebooting_the_host_to_validate_system_state.html 
+sidebar: sidebar 
+keywords: reboot, host, validate, system state 
+summary: Migrations-Hosts werden neu gestartet, bevor ihre Konfiguration geändert wird. Bevor Sie mit der Migration fortfahren, überprüfen Sie, ob sich das System in einem bekannten fehlerfreien Zustand befindet. 
+---
+= Neubooten des Hosts, um den Systemzustand zu validieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Migrations-Hosts werden neu gestartet, bevor ihre Konfiguration geändert wird. Bevor Sie mit der Migration fortfahren, überprüfen Sie, ob sich das System in einem bekannten fehlerfreien Zustand befindet.
+
+Gehen Sie wie folgt vor, um zu überprüfen, ob die Serverkonfiguration beim Neustart persistent und makellos ist:
+
+.Schritte
+. Fahren Sie alle offenen Anwendungen herunter.
+. Starten Sie den Host neu.
+. Überprüfen Sie die Protokolle auf Fehler.
+

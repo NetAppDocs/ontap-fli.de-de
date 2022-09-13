@@ -1,0 +1,48 @@
+---
+permalink: san-migration/concept_performance_enhancements_in_clustered_data_ontap_8_3_1.html 
+sidebar: sidebar 
+keywords: performance, enhancements, ontap 8.3.1 
+summary: Es wurden einige Verbesserungen an FLI vorgenommen, um eine bessere Performance zu erzielen und die Workload-Engpässe zu verhindern. Die Verbesserungen bei FLI in ONTAP 8.3.1 umfassen einen neuen Drosselbefehl und LUN-Import zeigen Verbesserungen für Durchsatz und QoS-Richtliniengruppen. 
+---
+= Performance-Verbesserungen in ONTAP 8.3.1
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es wurden einige Verbesserungen an FLI vorgenommen, um eine bessere Performance zu erzielen und die Workload-Engpässe zu verhindern. Die Verbesserungen bei FLI in ONTAP 8.3.1 umfassen einen neuen Drosselbefehl und LUN-Import zeigen Verbesserungen für Durchsatz und QoS-Richtliniengruppen.
+
+Der `LUN import throttle` Mit dem Befehl wird die maximale Geschwindigkeit, mit der ein Import ausgeführt werden kann, begrenzt.
+
+[listing]
+----
+cluster::*> lun import throttle -vserver fli_72C -path /vol/flivol/72Clun1 -max-throughput-limit
+
+{<integer>[KB|MB|GB|TB|PB]}  Maximum Throughput Limit (per sec)
+----
+Verwenden Sie die `instance` Wechseln Sie mit `lun import show` Informationen zum erweiterten LUN-Import, einschließlich Drosselung und QoS-Informationen, anzeigen.
+
+[listing]
+----
+cluster::*> lun import show -instance
+
+    Vserver Name: fli_72C
+    LUN Path: /vol/flivol/72Clun1
+    Foreign Disk Serial Number: D0i1E+G8Wg6m
+    Import Home Node: ontaptme-fc-cluster-01
+    Import Current Node: ontaptme-fc-cluster-01
+    Operation In Progress: import
+    Admin State: stopped
+    Operational State: stopped
+    Percent Complete: 0
+    Blocks Imported: -
+    Blocks Compared: -
+    Total Blocks: 6297480
+    Estimated Remaining Duration: -
+    Failure Reason: -
+    Maximum Throughput Limit(per sec): -
+    Current Throughput (per sec): -
+    QoS Policy Group: -
+----
+Die Werte für das `current throughput` Zeigt die aktuelle Durchsatzrate für Import- oder Verifizierungsvorgänge an. Der Benutzer sollte dies überprüfen, bevor er einen Drosselwert eingibt. Sie ist leer, wenn sie nicht ausgeführt wird. Der `QoS policy group` Zeigt die QoS-Gruppe, wenn die LUN-Importdrossel verwendet wurde.

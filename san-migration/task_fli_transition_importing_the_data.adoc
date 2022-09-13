@@ -1,0 +1,54 @@
+---
+permalink: san-migration/task_fli_transition_importing_the_data.html 
+sidebar: sidebar 
+keywords: import, data, fli 7-mode, ontap 
+summary: In diesen Schritten wird beschrieben, wie die Daten aus einer 7-Mode Quell-LUN mithilfe von FLI in eine ONTAP Ziel-LUN importiert werden. 
+---
+= Importieren der Daten aus FLI 7-Modus in ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In diesen Schritten wird beschrieben, wie die Daten aus einer 7-Mode Quell-LUN mithilfe von FLI in eine ONTAP Ziel-LUN importiert werden.
+
+.Schritte
+. Starten Sie den Migrationsimport.
++
+[listing]
+----
+cluster::*> lun import start -vserver fli_72C -path /vol/flivol/72Clun1
+----
+. FLI-Status anzeigen.
++
+[listing]
+----
+cluster::*> lun import show -vserver fli_72C -path /vol/flivol/72Clun1
+vserver foreign-disk   path                operation admin operational percent
+                                         in progress state state       complete
+-------------------------------------------------------------------------------
+fli_72C D0i1E+G8Wg6m   /vol/flivol/72Clun1 import    started
+                                                           completed        100
+----
++
+Wenn Sie sicherstellen möchten, dass die Quell-LUN nach Abschluss der Migration konsistent bleibt, müssen Sie Folgendes tun:
+
++
+** Nachdem die Importshow anzeigt, dass sie abgeschlossen ist, fahren Sie den Host herunter.
+** Löschen Sie die LUN-Beziehung: `lun import delete -vserver fli_72C -path /vol/flivol/72Clun1`.
++
+[NOTE]
+====
+Beachten Sie, dass nach einer fehlgeschlagenen LUN-Beziehung die LUNs schnell an der Synchronisierung verlieren, da nur Änderungen an der neuen LUN vorgenommen werden. Obwohl es daher vorteilhaft sein kann, einen konsistenten Status beizubehalten, wenn Sie den Originalzustand wiederherstellen möchten, wird die neue LUN wahrscheinlich Änderungen aufweisen, die nicht in der Quell-LUN angezeigt werden.
+
+====
++
+[NOTE]
+====
+Nachdem der Import beendet wurde, können Sie die Importbeziehung zerstören, es sei denn, Sie beabsichtigen, den Import zu überprüfen.
+
+====
+
+
+

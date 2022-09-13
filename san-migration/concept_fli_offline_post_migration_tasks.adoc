@@ -1,0 +1,18 @@
+---
+permalink: san-migration/concept_fli_offline_post_migration_tasks.html 
+sidebar: sidebar 
+keywords: fli, offline, post-migration, tasks 
+summary: Jegliche nicht zuvor durchgeführte Korrektur an Servern wird während der Nachmigration durchgeführt. 
+---
+= FLI-Offline-Aufgaben nach der Migration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Jegliche nicht zuvor durchgeführte Korrektur an Servern wird während der Nachmigration durchgeführt.
+
+Die Software von Drittanbietern wird entfernt, NetApp Software installiert und konfiguriert und der Host wird über den Zugriff auf die LUNs auf NetApp aufgerufen. Beispiele für Nachmigrationen für spezifische Host-Typen finden Sie unter „_Host Remediation_“.
+
+Überprüfen Sie die Protokolle auf Fehler, prüfen Sie die Pathing-Funktionen und führen Sie alle Applikationstests durch, um zu überprüfen, ob die Migration sauber und erfolgreich durchgeführt wurde.

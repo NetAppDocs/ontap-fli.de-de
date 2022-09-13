@@ -1,0 +1,58 @@
+---
+permalink: san-migration/concept_fli_zoning_requirements.html 
+sidebar: sidebar 
+keywords: fli, zoning, requirements 
+summary: Für ein Standardmigrationsszenario, das FLI verwendet, sind vier unterschiedliche Zonen erforderlich. Sie sollten in jede Zone bestimmte Ports einbeziehen. 
+---
+= Anforderungen für FLI-Zoning
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für ein Standardmigrationsszenario, das FLI verwendet, sind vier unterschiedliche Zonen erforderlich. Sie sollten in jede Zone bestimmte Ports einbeziehen.
+
+* Zone 1: Quell-Storage auf Ziel-Storage (Produktions-Fabric A)
++
+Zone 1 sollte alle Ziel-Storage-Initiatoren auf allen Nodes und alle Quell-Storage-Ziel-Ports in Fabric A enthalten Zu den Zonenmitgliedern gehören:
+
++
+** ONTAP -- Node1 -- 0a
+** ONTAP -- Node2 -- 0a
+** AMS2100 -- Ctrl0 -- 0a
+** AMS2100 -- Ctrl1 -- 1a
+
+
+* Zone 2: Quell-Storage auf Ziel-Storage (Produktions-Fabric B)
++
+Zone 2 sollte alle Ziel-Storage-Initiator-Ports auf allen Nodes und alle Quell-Storage-Ziel-Ports in Fabric B enthalten Zu den Mitgliedern der Zone 2 gehören:
+
++
+** ONTAP -- Node1 -- 0b
+** ONTAP -- Node2 -- 0b
+** AMS2100 -- Ctrl0 -- 0e
+** AMS2100 -- Ctrl1 -- 1e
+
+
+* Zone 3: Host-zu-Ziel-Storage (Produktionsstruktur A)
++
+Zone 3 sollte den Host Bus Adapter (HBA) Port 1 und die Ziel-Controller-Ports in Produktionsgewebe A enthalten Zu den Mitgliedern der Zone 3 zählen:
+
++
+** ONTAP -- lif1
+** ONTAP -- Lif3
+** Host -- HBA0
+
+
+* Zone 4: Host-to-Ziel-Storage (Produktions-Fabric B)
++
+Zone 4 sollte den HBA-Port 2 und die Ziel-Controller-Ports in Produktions-Fabric B enthalten Zu den Mitgliedern der Zone 4 zählen:
+
++
+** ONTAP -- lif2
+** ONTAP -- Lif4
+** Host -- HBA1
+
+
+

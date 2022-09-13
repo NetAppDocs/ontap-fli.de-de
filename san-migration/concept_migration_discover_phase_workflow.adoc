@@ -1,0 +1,59 @@
+---
+permalink: san-migration/concept_migration_discover_phase_workflow.html 
+sidebar: sidebar 
+keywords: discover phase workflow 
+summary: In der Erfassungsphase des Migrationsprozesses werden in den nachfolgenden Schritten Informationen erfasst, die zur Fehlerbehebung beim Host und zur Erstellung von Migrationsplänen verwendet werden. Die meisten Informationen werden automatisch mithilfe eines Datenerfassungs-Tools wie OneCollect erfasst. 
+---
+= Erkennung des Phase-Workflows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In der Erfassungsphase des Migrationsprozesses werden in den nachfolgenden Schritten Informationen erfasst, die zur Fehlerbehebung beim Host und zur Erstellung von Migrationsplänen verwendet werden. Die meisten Informationen werden automatisch mithilfe eines Datenerfassungs-Tools wie OneCollect erfasst.
+
+Die folgende Abbildung zeigt den Ablauf der Discover-Phase.
+
+image::../media/discover_phase_1.png[Entdecken Sie Phase 1]
+
+Die Tasks der Discover-Phase sind in der folgenden Tabelle aufgeführt.
+
+[cols="2*"]
+|===
+| Komponente | Aufgaben 
+
+
+ a| 
+Host
+ a| 
+. Identifizieren Sie HBA-WWPNs (wird für die Erstellung einer Zone verwendet).
+. LUN-Informationen identifizieren (Größe, Seriennummern, Partitions-Layouts und Offsets).
+. MPIO-Konfiguration von Drittanbietern, Host-Betriebssystem, HBA/CNA-Modelle und Firmware usw. ermitteln
+
+
+
+
+ a| 
+Fabric
+ a| 
+Host-zu-Quelle-Storage-Zonen identifizieren (Diese werden nach der Migration entfernt).
+
+
+
+ a| 
+Ziel-Storage
+ a| 
+Identifizieren Sie die WWPNs für die Ports, die für die Initiator-/Zielnutzung verwendet werden.
+
+
+
+ a| 
+Quell-Storage
+ a| 
+. Identifizieren Sie WWPNs (für die Erstellung einer Zone).
+. Identifizieren Sie LUNs, die dem Host zugeordnet sind.
+. Identifizieren Sie die Initiatordatensätze für den Host.
+
+
+|===

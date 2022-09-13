@@ -1,0 +1,49 @@
+---
+permalink: san-migration/concept_foreign_lun_import_overview.html 
+sidebar: sidebar 
+keywords: foreign, lun, import, overview 
+summary: 'Der Import fremder LUNs (Foreign LUN Import, FLI) ist eine in ONTAP integrierte Funktion, mit der Anwender Daten von LUNs aus dem Ausland einfach und effizient in NetApp LUNs importieren können.' 
+---
+= Übersicht zum Import fremder LUNs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Import fremder LUNs (Foreign LUN Import, FLI) ist eine in ONTAP integrierte Funktion, mit der Anwender Daten von LUNs aus dem Ausland einfach und effizient in NetApp LUNs importieren können.
+
+Alle FLI-Migrationen erfolgen auf LUN-Ebene. FLI ist ein rein Block-basiertes Tool. Dateien, Datensätze, NFS und CIFS-basierte Migrationen werden nicht unterstützt. Weitere Migrationsmethoden für File-Level-Protokolle wie NFS und CIFS/SMB finden Sie in der Kurzübersicht „_Data Migration Tools Quick Reference Guide_“.
+
+FLI nutzt die NetApp FlexArray Technologie, um die LUNs fremder RAID-Arrays zu erkennen und Daten daraus zu ziehen. Dank FlexArray kann ein NetApp ONTAP Controller als Initiator vor einem oder mehreren Drittanbieter-Arrays fungieren. FlexArray kann LUNs von diesen Arrays als Back-End Storage einbinden und dann den Speicherplatz dieser LUNs als NetApp Unified Storage (über den FCP-, FCoE-, iSCSI-, NFS- und CIFS-/SMB-Protokollzugriff) für Hosts in Ihrer SAN- oder NAS-Umgebung bereitstellen.
+
+FLI erfordert keine FlexArray-Lizenz. FLI nutzt FlexArray Technologie zum Kopieren der fremden LUN in ein NetApp ONTAP Array und erlaubt dann den Einsatz von Hosts und Applikationen, die diese LUN nutzen, auf das jeweilige NetApp Array, das jetzt die jeweilige LUN hostet. Obwohl ONTAP eine Migration im Rahmen von Professional Services nicht mehr erfordert, empfiehlt NetApp dringend die Beteiligung von Professional Services an Umfang, Planung und Schulung für alle einfachsten Migrationen.
+
+FLI wurde entwickelt, um SAN-LUNs zu ONTAP zu migrieren. FLI unterstützt verschiedene Migrationsanforderungen, u. a.:
+
+* Migration von Daten zwischen heterogenen Storage Arrays von EMC, Hitachi, HP und anderen Anbietern zu NetApp, wie von der FlexArray Konfiguration unterstützt
+* Vereinfachung und Beschleunigung der Blockdatenmigrationen während Datacenter-Standortwechsel, Konsolidierung und Austausch von Arrays
+* Konsolidierung der Migration und LUN-Neuausrichtungen in einem einzigen Workflow.
+
+
+Darüber hinaus ermöglicht das Umstiegsverfahren von 7-Mode auf ONTAP den Umstieg von 32-Bit- auf 64-Bit-Aggregate, die Behebung von Ausrichtungsproblemen und die Migration VON LUNS als ein einziger Vorgang.
+
+FLI ermöglicht den NetApp Storage das Erkennen der LUNs, die für die Datenmigration importiert werden sollen. Die fremden LUNs werden als Festplatten im NetApp Storage angezeigt und ihr keine Eigentumsrechte automatisch zugewiesen, sodass die Benutzerdaten nicht versehentlich überschrieben werden. Die Festplatten, die LUNs für Fremdarrays enthalten, müssen als „fremd“ gekennzeichnet werden. Die Regeln für die Konfiguration von LUNs fremder Arrays müssen strikt eingehalten werden, um FLI für NetApp Storage zu nutzen. Siehe das Thema, xref:concept_lun_requirements_and_limitations.adoc[LUN-Anforderungen und -Einschränkungen].
+
+FLI erfordert mindestens einen physischen FC Port auf jedem Controller und LUNs direkt im Initiatormodus. Es werden zwei Ports bevorzugt, einen Port für jede Fabric. Ein Port kann jedoch verwendet werden. Diese Ports werden verwendet, um eine Verbindung zum Quell-Array herzustellen, und müssen begrenzt und maskiert werden, damit die Quell-LUNs angezeigt und gemountet werden können. Wenn Sie einen Port von Ziel zu Initiator ändern müssen, lesen Sie im _FlexArray Installationsvoraussetzungen und Referenzhandbuch_ die Vorgehensweise beim Konvertieren eines FC-Ports von Ziel zu Initiator.
+
+FLI-Migrationen können entweder offline durchgeführt werden, wodurch Abläufe für die Dauer des Imports unterbrochen werden oder online, was hauptsächlich unterbrechungsfrei ist.
+
+Diese Abbildung zeigt eine FLI-Offline-Datenmigration, bei der der Host für die Migration offline geschaltet wird. Das NetApp Array kopiert die Daten direkt aus dem Drittanbieter-Array.
+
+image::../media/foreign_lun_import_overview_1.png[FLI Datenmigration – Übersicht]
+
+Diese Abbildung zeigt eine FLI Online-Datenmigration. Der Host ist mit dem NetApp Controller verbunden, wo die neue LUN jetzt gehostet wird. Der Host-Betrieb kann dann während des Imports fortgesetzt und fortgesetzt werden.
+
+image::../media/foreign_lun_import_overview_2.png[FLI Datenmigration – Übersicht]
+
+*Verwandte Informationen*
+
+https://library.netapp.com/ecm/ecm_get_file/ECMP12363719["Kurzübersicht Zu Datenmigrations-Tools"]
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"]

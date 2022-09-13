@@ -1,0 +1,23 @@
+---
+permalink: san-migration/concept_benchmarks_for_estimating_migration_durations.html 
+sidebar: sidebar 
+keywords: benchmarks, estimating, migration, durations 
+summary: Zur Planung können bestimmte Annahmen zur Schätzung des Aufwands und der Dauer der Datenmigration verwendet werden. 
+---
+= Benchmarks für die Schätzung der Migrationsdauer
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zur Planung können bestimmte Annahmen zur Schätzung des Aufwands und der Dauer der Datenmigration verwendet werden.
+
+Um eine genaue Schätzung der tatsächlichen Performance zu erhalten, sollten Sie eine Reihe von Testmigrationen unterschiedlicher Größen durchführen, um genaue Performance-Werte für Ihre spezifischen Umgebungen zu erzielen.
+
+[NOTE]
+====
+Die folgenden Benchmarks dienen lediglich der Planung und sind höchstwahrscheinlich nicht besonders akkurat für bestimmte Umgebungen.
+
+====
+Annahmen: Fünf Stunden je Host-Migration basiert auf einem Host mit 8 LUNs mit insgesamt 2 TB an Daten. Diese Parameter liefern eine Planungsnummer von etwa 400 GB pro Stunde.

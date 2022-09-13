@@ -1,0 +1,31 @@
+---
+permalink: san-migration/task_importing_non_fc_luns.html 
+sidebar: sidebar 
+keywords: import, non-fc luns 
+summary: 'Da der Import fremder LUNs (Foreign LUN Import, FLI) mithilfe von FlexArray Technologie LUNs für das Mounten fremder LUNs nutzt, kann dieser nur mithilfe von FCP eine Verbindung zu Quell-Arrays herstellen. Nur FC LUNs werden von FLI unterstützt. Es gibt jedoch eine Problemumgehung, mit der Sie iSCSI LUNs importieren können. Da Sie die iSCSI LUNs als FC LUNs importieren, im Gegensatz zu anderen Online FLI 7-Mode in ONTAP Workflows, würde das Unterbrechungsfenster diesen gesamten Workflow umfassen:' 
+---
+= Importieren von nicht-FC-LUNs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Da der Import fremder LUNs (Foreign LUN Import, FLI) mithilfe von FlexArray Technologie LUNs für das Mounten fremder LUNs nutzt, kann dieser nur mithilfe von FCP eine Verbindung zu Quell-Arrays herstellen. Nur FC LUNs werden von FLI unterstützt. Es gibt jedoch eine Problemumgehung, mit der Sie iSCSI LUNs importieren können. Da Sie die iSCSI LUNs als FC LUNs importieren, im Gegensatz zu anderen Online FLI 7-Mode in ONTAP Workflows, würde das Unterbrechungsfenster diesen gesamten Workflow umfassen:
+
+Da Sie die iSCSI LUNs als FC LUNs importieren, anders als andere Online FLI 7-Mode in ONTAP Workflows, würde das Unterbrechungsfenster diesen gesamten Workflow umfassen.
+
+.Schritte
+. Auf dem Quell-Array müssen Sie die Zuordnung der gewünschten iSCSI-LUN zu der iSCSI-Initiatorgruppe aufheben.
+. Ordnen Sie die LUN auf dem Quell-Array einer FC-Initiatorgruppe zu, indem Sie sicherstellen, dass der Initiatorgruppe die Ziel-Array-WWPNs hinzugefügt wurden.
+. Importieren Sie die LUN.
+. Nach dem Importieren der LUN können Sie eine neue iSCSI-Initiatorgruppe erstellen und die Hosts der Initiatorgruppe hinzufügen.
+. Auf den Hosts kann erneut nach LUNs gesucht werden.
++
+Überprüfen Sie mithilfe des Interoperabilitäts-Matrix-Tools (IMT) auf der NetApp Support-Website, ob die in diesem Dokument angegebenen Produktversionen und Funktionen in Ihrer IT-Umgebung unterstützt werden. Das NetApp IMT definiert die Produktkomponenten und -Versionen, die für von NetApp unterstützte Konfigurationen verwendet werden können. Die dort angezeigten Ergebnisse basieren auf der spezifischen Infrastruktur des jeweiligen Kunden bzw. auf den technischen Daten der in dieser Infrastruktur enthaltenen Komponenten.
+
+
+
+*Verwandte Informationen*
+
+https://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"]

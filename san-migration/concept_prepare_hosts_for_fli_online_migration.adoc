@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_prepare_hosts_for_fli_online_migration.html 
+sidebar: sidebar 
+keywords: prepare, hosts, fli, online, migration 
+summary: Die FLI Online-Ausführungsphase umfasst die Vorbereitung von Migrations-Hosts, um eine unterstützte Konfiguration zu erhalten. 
+---
+= Hosts für die Online-Migration zur FLI vorbereiten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die FLI Online-Ausführungsphase umfasst die Vorbereitung von Migrations-Hosts, um eine unterstützte Konfiguration zu erhalten.
+
+In vielen Fällen ist es möglich, diese Korrektur vor diesem Schritt durchzuführen. Falls nicht, führen Sie hier Probleme mit dem Host durch, wie z. B. das Installieren von Host-Anschluss-Kits oder DSMs. Aus der Analysephase haben Sie eine Lückenliste mit Elementen, die auf jedem Host ausgeführt werden müssen, damit dieser Host in einer unterstützten Konfiguration mit ONTAP sein kann. Je nach Art der Migration würde entweder der Host repariert und dann neu gestartet oder einfach repariert werden.

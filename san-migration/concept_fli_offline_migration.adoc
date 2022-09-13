@@ -1,0 +1,84 @@
+---
+permalink: san-migration/concept_fli_offline_migration.html 
+sidebar: sidebar 
+keywords: offline, migration, workflow 
+summary: Der Offline-Migrations-Workflow wird in der Ausführungsphase des Migrationsprozesses durchgeführt. Das Offline-Workflow-Diagramm zeigt die Aufgaben, die auf dem Host, der Fabric, dem Ziel-Storage und dem Quell-Storage ausgeführt werden. 
+---
+= Workflow für Offline-Migration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Offline-Migrations-Workflow wird in der Ausführungsphase des Migrationsprozesses durchgeführt. Das Offline-Workflow-Diagramm zeigt die Aufgaben, die auf dem Host, der Fabric, dem Ziel-Storage und dem Quell-Storage ausgeführt werden.
+
+image::../media/offline_migration_1.png[Offline-Migration 1]
+
+Die Offline-Workflow-Aufgaben sind in der folgenden Tabelle aufgeführt.
+
+[cols="2*"]
+|===
+| Komponente | Aufgaben 
+
+
+ a| 
+Host
+ a| 
+. Starten Sie den Host neu, und überprüfen Sie, ob alle Dateisysteme gemountet sind, alle LUN-Pfade verfügbar sind, und der Service wird gestartet.
+. Bereiten Sie den Host vor und fahren Sie den Host herunter.
+. Schalten Sie nach Abschluss der Migration den Host ein.
+. Konfigurieren Sie den HBA zur Verwendung der neuen SAN-Boot-LUN (nur SAN-Boot).
+. Deinstallieren Sie MPIO von Drittanbietern.
+. Installation der NetApp Host Software und Konfiguration von Multipathing.
+. Überprüfen Sie, ob alle Pfade zu SAN-Boot-LUN ordnungsgemäß sind (nur SAN-Boot).
+. Aktualisieren Sie Systemdateien und die Konfiguration, um neue Geräte wiederzugeben.
+. Vergewissern Sie sich, dass alle Pfade zu allen LUNs ordnungsgemäß sind.
+. Reaktivieren Sie alle Services und starten Sie den Host neu (überprüfen Sie, ob der Host wieder verfügbar ist, alle Dateisysteme gemountet werden, alle Dienste beginnen).
+. Konfigurieren Sie den HBA mit dem zweiten Pfad zur neuen SAN-Boot-LUN (nur SAN-Boot).
+
+
+
+
+ a| 
+Fabric
+ a| 
+. Heben Sie die Zone des Hosts vom Quellspeicher auf.
+. Host zu Ziel-Speicherzone erstellen.
+
+
+
+
+ a| 
+Ziel-Storage
+ a| 
+. Erkennen des Quell-Arrays und der neuen LUNs
+. Quell-LUNs als „fremd“ markieren.
+. Erstellen Sie Ziel-LUNs mithilfe von ausländischen LUNs.
+. Erstellen von Host-Initiator-Initiatorgruppen und Zuordnung von Ziel-LUNs zu igroup.Migration Snapshot Kopie.
+. Offline-Ziel-LUNs.
+. Erstellen von Importbeziehungen und Starten von Importjobs.
+. Erstellen Sie Jobs überprüfen (optional).
+. Importbeziehungen löschen.
+. Markieren Sie das Attribut „Foreign LUN“ auf „false“.
+. Online-Ziel-LUNs:
+. Snapshot Kopie erstellen, um Rollback der Ziel-LUN zu ermöglichen
+. Beschränkung der Konnektivität auf einen einzelnen Pfad (nur SAN-Boot)
+. Weisen Sie dem Host SAN Boot LUN zu; weisen Sie zu diesem Zeitpunkt keine Daten-LUNs zu (nur SAN Boot).
+. Überprüfen Sie, ob alle Host-Ports angemeldet sind.
+. Erstellen Sie regelmäßige Snapshot Kopien, um Rollbacks von Ziel-SAN Boot LUN zu ermöglichen (nur SAN Boot).
+. Aktivieren Sie alle Pfade zum SAN-Boot-LUN (nur SAN-Boot).
+. Weisen Sie Daten-LUNs dem Host zu.
+. Erstellen einer endgültigen Snapshot Kopie
+
+
+
+
+ a| 
+Quell-Storage
+ a| 
+. Quell-LUNs dem Ziel-Storage zuweisen
+. Entfernen Sie die Quell-LUNs, die dem Ziel-Storage zugewiesen sind.
+
+
+|===

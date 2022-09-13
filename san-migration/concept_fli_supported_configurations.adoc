@@ -1,0 +1,24 @@
+---
+permalink: san-migration/concept_fli_supported_configurations.html 
+sidebar: sidebar 
+keywords: fli, supported, configurations 
+summary: Die FLI-Umgebung muss unterstützt bereitgestellt werden, damit ein ordnungsgemäßer Betrieb und Support gewährleistet ist. Wenn das Engineering neue Konfigurationen qualifiziert, ändert sich die Liste der unterstützten Konfigurationen. Überprüfen Sie mithilfe der NetApp Interoperabilitäts-Matrix, ob bestimmte Konfigurationen unterstützt werden. 
+---
+= Unterstützte FLI-Konfigurationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die FLI-Umgebung muss unterstützt bereitgestellt werden, damit ein ordnungsgemäßer Betrieb und Support gewährleistet ist. Wenn das Engineering neue Konfigurationen qualifiziert, ändert sich die Liste der unterstützten Konfigurationen. Überprüfen Sie mithilfe der NetApp Interoperabilitäts-Matrix, ob bestimmte Konfigurationen unterstützt werden.
+
+ONTAP 8.3 und höher sind die einzigen unterstützten Ziel-Storage. Migrationen zu Storage-Lösungen anderer Hersteller werden nicht unterstützt.
+
+Eine Liste der unterstützten Quell-Storage-Arrays, Switches und Firmware finden Sie in der Interoperabilitäts-Matrix. Das Datenmigrationsprogramm bietet Unterstützung für die Konfigurationen in der NetApp Interoperabilitäts-Matrix.
+
+Sobald der Import abgeschlossen ist und alle LUNs zu NetApp Controllern migriert wurden, stellen Sie sicher, dass alle Konfigurationen unterstützt werden.
+
+*Verwandte Informationen*
+
+https://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"]

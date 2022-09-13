@@ -1,0 +1,27 @@
+---
+permalink: san-migration/concept_fli_7_mode_to_ontap_transition_workflow.html 
+sidebar: sidebar 
+keywords: fli, 7-mode, ontap, transition, workflow 
+summary: Dieser Abschnitt enthält ein Beispiel für den Workflow zur Transition von FLI 7-Mode zu ONTAP. Der Umstiegs-Workflow kann entweder als Online- oder Offline-Workflow ausgeführt werden. 
+---
+= Workflow zur Transition von FLI 7-Mode zu ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt enthält ein Beispiel für den Workflow zur Transition von FLI 7-Mode zu ONTAP. Der Umstiegs-Workflow kann entweder als Online- oder Offline-Workflow ausgeführt werden.
+
+Die FLI-Transition wird empfohlen, wenn entweder die Quell-LUN auf einem 32-Bit-Aggregat gehostet wird und/oder die LUN falsch ausgerichtet ist. Der Übergang von FLI 7-Mode zu ONTAP ist in der Lage, den Wechsel von LUN von 7-Mode zu ONTAP zusammen mit der Korrektur der LUN-Ausrichtung und dem Übergang des LUN von einem 32-Bit- zu einem 64-Bit-Aggregat zu kombinieren. Für andere Methoden der LUN-Transition einschließlich 7-Mode Transition Tool (7MTT) kann es vor der Umstellung auf ONTAP unbedingt erforderlich sein, die LUN-Ausrichtung zu beheben und/oder ein 32-Bit- zu 64-Bit-Aggregat zu konvertieren.
+
+Der Workflow für die Migration von FLI 7-Mode zu ONTAP kann entweder ein Online- oder Offline-Workflow sein. Diese Workflows identisch mit den beiden entsprechenden Offline- und Online-Migrations-Workflows zu FLI, wobei der Ausnahme ist, dass es sich bei dem Quell-Array um ein NetApp 7-Mode Storage-Array handelt. Beide Workflows haben dieselben Regeln und Verfahren wie ihre Migrationsäquivalenten. Dazu gehört auch die Support-Liste für den Online-Workflow-Host-Betrieb des FLI.
+
+Das angegebene Beispiel sollte einen detaillierten Rundgang durch den FLI 7-Mode to ONTAP Prozess geben. Der Datenfluss FLI 7-Mode zu ONTAP beinhaltet folgende Aufgaben:
+
+. Quell- und Ziel-Arrays werden vorbereitet
+. Durchführen einer disruptiven Umstellung
+. Daten werden importiert
+. Prüfen der Migrationsergebnisse
+. FLI-Transition Aufgaben nach der Migration
+

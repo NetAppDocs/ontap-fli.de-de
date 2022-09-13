@@ -1,0 +1,14 @@
+---
+permalink: san-migration/concept_how_to_configure_source_arrays.html 
+sidebar: sidebar 
+keywords: configure, source, arrays 
+summary: 'Lesen Sie die Array-Dokumentation für das Quell-Array, um einen Host-Eintrag für die Initiator-Ports hinzuzufügen (LUN-Masking, igroup im NetApp Partner). Diese Informationen können im Abschnitt Speichergruppen Ihres Arbeitsblatts zur Standortumfrage und -Planung abgerufen werden.' 
+---
+= So konfigurieren Sie Quell-Arrays
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lesen Sie die Array-Dokumentation für das Quell-Array, um einen Host-Eintrag für die Initiator-Ports hinzuzufügen (LUN-Masking, igroup im NetApp Partner). Diese Informationen können im Abschnitt Speichergruppen Ihres Arbeitsblatts zur Standortumfrage und -Planung abgerufen werden.

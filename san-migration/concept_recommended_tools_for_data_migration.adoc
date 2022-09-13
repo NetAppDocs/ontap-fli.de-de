@@ -1,0 +1,57 @@
+---
+permalink: san-migration/concept_recommended_tools_for_data_migration.html 
+sidebar: sidebar 
+keywords: recommended, tools, data, migration 
+summary: Service-Tools stellen eine standardisierte Methode zur Ausführung nützlicher Funktionen wie Remote-Datenerfassung, Konfiguration und Storage-Management-Aufgaben bereit. 
+---
+= Empfohlene Tools für die Datenmigration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Service-Tools stellen eine standardisierte Methode zur Ausführung nützlicher Funktionen wie Remote-Datenerfassung, Konfiguration und Storage-Management-Aufgaben bereit.
+
+Die folgenden Service-Tools werden zum Erfassen und Analysieren von Daten verwendet:
+
+* *OneCollect*
++
+NetApp Active IQ OneCollect, das über eine webbasierte Benutzeroberfläche oder die CLI verfügbar ist, unterstützt das Erfassen von Daten aus Storage, Hosts, Fabrics und Switches in SAN- und NAS-Umgebungen. Die erfassten Daten dienen zur Fehlerbehebung, Lösungsvalidierung, Datenmigration und Upgrade-Bewertung. Die diagnostischen Inhalte in Bezug auf Ihre Umgebung können entweder an NetApp gesendet oder vor Ort analysiert werden.
+
+* *NetApp Data Migration Solaris Relabeler*
++
+Solaris Relabeler ist ein Befehlszeilen-Utility, mit dem die Möglichkeit besteht, das ASCII-Etikett nach der Migration auf VTOC-Datentabellen (Volume Table of Contents) zu aktualisieren.
+
++
+Während der anfänglichen Initialisierungsroutinen für die VTOC-Festplatte führt der Befehl im Solaris-Format eine SCSI-Anfrage an die Festplatte aus und schreibt herstellerspezifische Informationen (Hersteller, Produkt und Revision) auf die Festplattenbezeichnung. Alle weiteren Anfragen richten sich an das Festplattenetikett und nicht an das eigentliche Gerät. Bei der Migration auf Blockebene wird dieses Festplattenetikett auf die neue Festplatte kopiert, während die Daten zu alten SCSI-Anfragen in den System-Tools und Protokollen weiterhin sichtbar sind. Der Relabeler aktualisiert die Festplatten nach der Migration mit neuen Anfragedaten.
+
+
+
+Diese Tools und Utilities eignen sich auch für FLI-Migrationsprojekte:
+
+* *Interoperabilitätsmatrix*
++
+Das Interoperabilitäts-Matrix-Tool (IMT) ist ein webbasiertes NetApp Utility, das zur Interoperabilitätsprüfung für Softwarekomponenten von NetApp, FlexArray und Drittanbietern verwendet wird.
+
+* *ONTAP System Manager*
++
+ONTAP System Manager ermöglicht das Remote Storage Management von NetApp FAS Systemen über eine grafische Schnittstelle.
+
+* *OnCommand Workflow Automation*
++
+WFA ist eine Softwarelösung, mit der Sie Storage-Workflows erstellen und Storage-Managementaufgaben, z. B. Bereitstellung, Migration, Ausmusterung und Klonen, automatisieren können.
+
+
+
+*Verwandte Informationen*
+
+https://mysupport.netapp.com/site/tools["NetApp Tools"]
+
+http://mysupport.netapp.com/NOW/download/tools/ndcp/["NetApp Tools: Data Center Planner"]
+
+https://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61372["NetApp Dokumentation: OnCommand System Manager (aktuelle Versionen)"]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61550["NetApp Dokumentation: OnCommand Workflow Automation (aktuelle Versionen)"]

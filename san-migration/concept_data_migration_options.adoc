@@ -1,0 +1,34 @@
+---
+permalink: san-migration/concept_data_migration_options.html 
+sidebar: sidebar 
+keywords: data, migration, options 
+summary: Bei der Auswahl der Option für die Datenmigration sollten Unternehmen eine Datenübertragungsanwendung oder eine applikationsbasierte Migration in Betracht ziehen. 
+---
+= Optionen für die Datenmigration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei der Auswahl der Option für die Datenmigration sollten Unternehmen eine Datenübertragungsanwendung oder eine applikationsbasierte Migration in Betracht ziehen.
+
+FLI ist zwar die beste Wahl für die meisten Migrationen, jedoch können andere Optionen unterbrechungsfrei durchgeführt werden und sind daher möglicherweise für eine Migration mithilfe von FLI vorzuziehen. Sie sollten Ihre Optionen berücksichtigen und das richtige Tool für jede Migration wählen. Alle diese Tools können für Teile Ihrer Migrationen verwendet werden, für die diese am besten geeignet sind.
+
+* Verwendung einer Datenübertragungsanwendung (DTA)
++
+Eine DTA ist eine NetApp Appliance, die mit der SAN Fabric verbunden ist, für die Migration nach TB-Daten lizenziert ist und sowohl Offline- als auch Online-Migrationen unterstützt.
+
+* Host-Betriebssystem- oder applikationsbasierte Migrationen
++
+Es stehen verschiedene Host-Betriebssysteme oder applikationsbasierte Datenmigrationsoptionen zur Verfügung, darunter:
+
++
+** VMware Storage vMotion
+** LVM-basierte Lösungen (Logical Volume Manager)
+** Dienstprogramme wie DD (Linux) und Robocopy (Windows)
+
+
+
+
+Unabhängig von den gewählten Verfahren und Tools können und sollten Sie die Datenmigrationsmethode verwenden, um die Migrationsauswahl und -Aufgaben zu bestimmen, zu planen und zu dokumentieren.

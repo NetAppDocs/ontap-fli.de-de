@@ -1,0 +1,33 @@
+---
+permalink: san-migration/reference_sample_site_survey_and_planning_worksheet.html 
+sidebar: sidebar 
+keywords: sample, site, survey and planning, worksheet 
+summary: Während der Analyse- und Planungsphase der Migrationsmethodik müssen Sie Ihre vorhandene Konfiguration, Zielkonfigurationen, Lücken und Problembehebungspläne mithilfe eines Arbeitsblatts für die Standortanalyse und -Planung dokumentieren. 
+---
+= Beispiel für ein Arbeitsblatt für die Standortumfrage und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Während der Analyse- und Planungsphase der Migrationsmethodik müssen Sie Ihre vorhandene Konfiguration, Zielkonfigurationen, Lücken und Problembehebungspläne mithilfe eines Arbeitsblatts für die Standortanalyse und -Planung dokumentieren.
+
+Dieser Abschnitt enthält Beispiele für Informationen, die in der Tabelle „Standortumfrage und Planung“ enthalten sein sollten. Die folgenden Registerkarten werden empfohlen:
+
+* Kontakt
+* Fragebogen
+* Schalter
+* Speichergeräte (Quelle)
+* Speichergeräte (Ziel)
+* Hosts
+* HBA- und Zoneninformationen
+* Quell-LUNs
+* Storage-Gruppen
+* LUN-Details
+* NetApp LUN-Layouts
+* Migrationsplan
+* Aggregatstatus
+* FAS- Konfig
+* SDS-CLI-Scripts
+

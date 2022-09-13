@@ -1,0 +1,23 @@
+---
+permalink: san-migration/task_rebooting_hosts_9207.html 
+sidebar: sidebar 
+keywords: reboot, hosts 
+summary: Sie haben die Möglichkeit, Hosts vor dem Start dieses Workflows neu zu starten, um zu überprüfen, ob der Host in einem bekannten Zustand ist. 
+---
+= Neubooten der Hosts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie haben die Möglichkeit, Hosts vor dem Start dieses Workflows neu zu starten, um zu überprüfen, ob der Host in einem bekannten Zustand ist.
+
+Dies wäre außerdem ein guter Zeitpunkt, eine Snapshot Kopie zu erstellen, um bei Bedarf später eine Wiederherstellung zu ermöglichen. Gehen Sie wie folgt vor, um zu überprüfen, ob die Serverkonfiguration beim Neustart persistent und makellos ist:
+
+.Schritte
+. Fahren Sie alle offenen Anwendungen herunter.
+. Überprüfen Sie die Protokolle auf Fehler.
+. Vergewissern Sie sich, dass der Host alle Pfade sieht.
+. Starten Sie den Host neu.
+

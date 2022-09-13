@@ -1,0 +1,25 @@
+---
+permalink: san-migration/concept_wiring_best_practices_for_fli.html 
+sidebar: sidebar 
+keywords: wire, best practices, fli migration 
+summary: Zur Konfiguration von ONTAP Storage für FLI-Migration sollten Sie den Quell-Storage basierend auf Ihren Planungsinformationen und empfohlenen Best Practices in das Fabric verkabeln. 
+---
+= Best Practices für die Verkabelung von FLI-Migration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zur Konfiguration von ONTAP Storage für FLI-Migration sollten Sie den Quell-Storage basierend auf Ihren Planungsinformationen und empfohlenen Best Practices in das Fabric verkabeln.
+
+Wenn Sie ONTAP Storage für die FLI-Migration konfigurieren, empfehlen wir die folgenden Best Practices zur Verkabelung.
+
+* Redundanz durch Dual Fabrics
+* Verwenden Sie für FLI-Migration mindestens zwei Initiatoren und zwei Ziel-Ports aus jedem Ziel-Storage.
+* Geben Sie keine Zonen der Ziel-Storage-Initiator-Ports mit dem Host ein. Initiator-Ports von ONTAP werden verwendet, um mit Ziel-Ports des Quell-Storage zu Zonen.
+
+
+Im Folgenden finden Sie ein Beispiel für die Verkabelung von Quell- und Ziel-Storage in einer Produktionsstruktur.
+
+image::../media/configure_ontap_storage_for_fli_migration_1.png[Verkabelung für Quell- und Zielspeicher in der Produktion]

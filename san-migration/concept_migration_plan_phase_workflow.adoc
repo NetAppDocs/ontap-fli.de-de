@@ -1,0 +1,62 @@
+---
+permalink: san-migration/concept_migration_plan_phase_workflow.html 
+sidebar: sidebar 
+keywords: plan, phase, workflow 
+summary: Die Planungsphase des Datenmigrationsprozesses konzentriert sich auf Aufgaben, die zum Erstellen detaillierter Migrationspläne erforderlich sind, und um sicherzustellen, dass alle Komponenten für die eigentliche Migration bereitstehen. Der Großteil der Migrationsarbeiten besteht in der Planung, die in dieser Phase durchgeführt wird. 
+---
+= Planungsphase-Workflow
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Planungsphase des Datenmigrationsprozesses konzentriert sich auf Aufgaben, die zum Erstellen detaillierter Migrationspläne erforderlich sind, und um sicherzustellen, dass alle Komponenten für die eigentliche Migration bereitstehen. Der Großteil der Migrationsarbeiten besteht in der Planung, die in dieser Phase durchgeführt wird.
+
+In der Planungsphase entwickeln Sie einen Korrekturplan anhand der Informationen zur Host-GAP-Analyse, die in der Analysephase erfasst wurden. Verwenden Sie während der Planung die Informationen zur Host-Fehlerbehebung. Nach der Überprüfung der End-to-End-Konnektivität wird eine Testmigration durchgeführt, um sicherzustellen, dass vor Beginn der Produktionsmigration alles ordnungsgemäß konfiguriert ist.
+
+Die folgende Abbildung zeigt den Plan-Workflow.
+
+image::../media/plan_and_prepare_phase_1.png[Phase 1 planen und vorbereiten]
+
+Die Aufgaben der Planungsphase sind in der folgenden Tabelle aufgeführt.
+
+[cols="2*"]
+|===
+| Komponente | Aufgaben 
+
+
+ a| 
+Fabric
+ a| 
+. Sichern Sie die vorhandenen Zoneets.
+. Zone des Quellspeichers auf den Zielspeicher.
+
+
+
+
+ a| 
+Ziel-Storage
+ a| 
+. Verbinden Sie die Initiator-Ports mit der Fabric.
+. Quell-Storage ermitteln und LUN testen Markieren Sie die Quell-LUN als „fremd“.
+. Erstellen Sie die Test-LUN mit fremder LUN.
+. Erstellen einer Testigroup und Zuordnung der Test-LUN.
+. Offline-Test-LUN.
+. Importbeziehung erstellen und Testmigration starten.
+. Löschen Sie die Importbeziehung und heben Sie die Zuordnung der Test-LUN auf.
+. Entfernen Sie die Test-LUN.
+
+
+
+
+ a| 
+Quell-Storage
+ a| 
+. Erstellen Sie eine Host-Gruppe für Ziel-Storage mit Initiator-Port-WWPNs.
+. Erstellen einer Test-LUN (1 GB)
+. Zuordnen (Zuordnung/Maske) einer Test-LUN zur Ziel-Storage-Host-Gruppe.
+. Entfernen Sie die Test-LUN.
+
+
+|===

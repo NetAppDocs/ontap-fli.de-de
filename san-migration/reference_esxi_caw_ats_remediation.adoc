@@ -1,0 +1,63 @@
+---
+permalink: san-migration/reference_esxi_caw_ats_remediation.html 
+sidebar: sidebar 
+keywords: esxi, caw/ats, remediation 
+summary: 'Online FLI unterstützt nicht VMware Atomic Test and Set (ATS)/SCSI Compare and Write (CAW). Dies ist wichtig, wenn Sie VMFS5 verwenden und Ihr Quell-Array CAW unterstützt. Um den Host zu korrigieren, müssen Sie den in diesem Abschnitt beschriebenen Prozess befolgen.' 
+---
+= ESXi CAW/ATS-Korrektur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Online FLI unterstützt nicht VMware Atomic Test and Set (ATS)/SCSI Compare and Write (CAW). Dies ist wichtig, wenn Sie VMFS5 verwenden und Ihr Quell-Array CAW unterstützt. Um den Host zu korrigieren, müssen Sie den in diesem Abschnitt beschriebenen Prozess befolgen.
+
+FLI Online-LUN-Beziehungen unterstützen keine ATS/CAW-Befehle, und das VMFS5-Dateisystem würde das Mounten auf dem Ziel-ESXi 5.x-Host nicht unterstützen. Dies ist das Ergebnis, dass VMware ein ATS-Bit auf dem VMFS5-Header aufrecht erhält, der CAW/ATS erzwingt und dem Header nicht erlaubt, ohne ATS auf einem Host oder Array zu arbeiten. Das ATS-Bit wird in den VMFS-Header übertragen, der Teil der ersten LUN ist, die in den übergreifenden_Partitionen_ aufgelistet ist. Dies ist die einzige LUN, wenn mehrere Extents aufgeführt sind, die repariert werden müssen.
+
+Wenn die LUN von mehr als einem Host gemeinsam genutzt wird, reicht eine Aktualisierung auf einem der Hosts aus. Alle anderen Hosts werden nach einem erneuten Scannen automatisch aktualisiert. Die Deaktivierung von ATS/CAW schlägt fehl, wenn auf der LUN beliebige VM- oder ESXi-aktive I/O-Vorgänge von einem der Sharing-Hosts ausgeführt werden. Wir empfehlen, die VMs und andere Hostcomputer, die die LUN gemeinsam nutzen, herunterzufahren, während die erforderlichen ATS/CAW-Änderungen vorgenommen werden. Diese Aktion kann zu Beginn der störenden Teile des Host-Neupunkts/der Umstellung durchgeführt werden, die im Abschnitt „ _disruptive Umstellung_“ des entsprechenden FLI-Workflows aufgeführt sind.
+
+Wenn die LUN von mehr als einem Host gemeinsam genutzt wird, müssen alle Hosts offline sein, während das ATS-Bit aktiviert oder deaktiviert ist. Nach dem Aktivieren oder Deaktivieren von ATS müssen Sie LUNs aktualisieren. Nachdem Sie alle Neuzuordnungen abgeschlossen haben, können Sie die Hosts wieder erstellen und überprüfen, ob Sie auf die LUNs zugreifen können.
+
+Wenn Sie eine frühere VMFS-Version oder ein Upgrade einer früheren Version ausführen, sollten keine Korrekturmaßnahmen erforderlich sein. Wenn Sie ATS/CAW aktivieren oder deaktivieren müssen, können Sie die unten aufgeführten Befehle verwenden. Allerdings werden auch keine Ergebnisse funktionieren, wenn die VM aktiv ist und I/O für den VMFS5 Datastore ausgeführt wird. Wir empfehlen, die Host Machine herunterzufahren, die erforderlichen ATS/CAW-Änderungen vorzunehmen und die restlichen, im Abschnitt „ _disruptive Umstellung_“ des entsprechenden FLI-Workflows aufgeführten, störenden Teile des Host-Neupunkts bzw. der Umstellung vorzunehmen.
+
+Sie können den ATS/CAW-Status überprüfen, indem Sie folgenden Befehl ausführen:
+
+[listing]
+----
+~ # vmkfstools -Ph -v 1 /vmfs/volumes/fli-orig-3
+VMFS-5.58 file system spanning 1 partitions.
+File system label (if any): fli-orig-3
+Mode: public ATS-only
+Capacity 99.8 GB, 58.8 GB available, file block size 1 MB, max file size 62.9 TB
+Volume Creation Time: Wed Jun 10 13:56:05 2015
+Files (max/free): 130000/129979
+Ptr Blocks (max/free): 64512/64456
+Sub Blocks (max/free): 32000/31995
+Secondary Ptr Blocks (max/free): 256/256
+File Blocks (overcommit/used/overcommit %): 0/41931/0
+Ptr Blocks  (overcommit/used/overcommit %): 0/56/0
+Sub Blocks  (overcommit/used/overcommit %): 0/5/0
+Volume Metadata size: 804159488
+UUID: 557841f5-145136df-8de6-0025b501a002
+Partitions spanned (on "lvm"):
+naa.60080e50001f83d4000003075576b218:1
+Is Native Snapshot Capable: YES
+OBJLIB-LIB: ObjLib cleanup done.
+~ # vmkfstools -Ph -v 1 /vmfs/volumes/fli-orig-3
+~ # vmkfstools --help
+----
+Wenn der Modus das Wort „_public only_“ genannt hätte, wäre keine Abhilfe erforderlich. Im obigen Fall _public ATS-Only_ bedeutet, dass die ATS aktiviert ist und deaktiviert werden muss, bis der Import abgeschlossen ist, zu welchem Zeitpunkt sie wieder aktiviert werden kann.
+
+Verwenden Sie den folgenden Befehl, um ATS/CAW auf einer LUN zu deaktivieren:
+
+[listing]
+----
+# vmkfstools --configATSOnly 0 /vmfs/devices/disks/naa.xxxxxxxxxxxxxxx
+----
+Um ATS/CAW nach Abschluss der Migration wieder zu aktivieren, verwenden Sie:
+
+[listing]
+----
+# vmkfstools --configATSOnly 1 /vmfs/devices/disks/naa.xxxxxxxxxxxxxxx
+----

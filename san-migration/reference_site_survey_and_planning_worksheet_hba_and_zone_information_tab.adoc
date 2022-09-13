@@ -1,0 +1,91 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_hba_and_zone_information_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, hba and zone information tab 
+summary: Als Teil Ihres Arbeitsblatt für die Standortumfrage und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zu Ihrem HBA und Ihrer Zone enthält. 
+---
+= Registerkarte HBA- und Zoneninformationen im Arbeitsblatt für Standortbefragungen und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatt für die Standortumfrage und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zu Ihrem HBA und Ihrer Zone enthält.
+
+Im Folgenden finden Sie ein Beispiel für die Einrichtung der Registerkarte HBA- und Zoneninformationen.
+
+[cols="4*"]
+|===
+4+| Fabric-Details 
+
+
+ a| 
+Host-Name
+ a| 
+Beschreibung
+ a| 
+WWPN
+ a| 
+Fabric-Name
+
+
+
+ a| 
+dm-rx200s6-21
+ a| 
+HBA0
+ a| 
+21:00:00:24:ff:xx:xx:xx
+ a| 
+Prod
+
+
+
+ a| 
+dm-rx200s6-21
+ a| 
+HBA1
+ a| 
+21:00:00:24:ff:xx:xx:xx
+ a| 
+Prod. B
+
+|===
+[cols="4*"]
+|===
+4+| Fabric-Details 
+
+
+ a| 
+VSAN/Domäne
+ a| 
+Portnummer
+ a| 
+Mitgliedschaft vor der Migration Zone
+ a| 
+Mitgliedschaft in der Zone nach der Migration
+
+
+
+ a| 
+10
+ a| 
+fc2/3
+ a| 
+Rx21_AMS2100
+ a| 
+Rx21_flicDOT
+
+
+
+ a| 
+10
+ a| 
+fc2/3
+ a| 
+Rx21_AMS2100
+ a| 
+Rx21_flicDOT
+
+|===

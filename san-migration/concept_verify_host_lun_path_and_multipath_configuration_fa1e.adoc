@@ -1,0 +1,14 @@
+---
+permalink: san-migration/concept_verify_host_lun_path_and_multipath_configuration_fa1e.html 
+sidebar: sidebar 
+keywords: verify, host lun path, multipath, configuration 
+summary: Vor der Migration sollten Sie überprüfen, ob Multipathing ordnungsgemäß konfiguriert ist und ordnungsgemäß funktioniert. Alle verfügbaren Pfade zu LUNs sollten aktiv sein. 
+---
+= Überprüfung des Host-LUN-Pfads und der Multipath-Konfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vor der Migration sollten Sie überprüfen, ob Multipathing ordnungsgemäß konfiguriert ist und ordnungsgemäß funktioniert. Alle verfügbaren Pfade zu LUNs sollten aktiv sein.

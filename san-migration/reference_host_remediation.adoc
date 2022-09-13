@@ -1,0 +1,30 @@
+---
+permalink: san-migration/reference_host_remediation.html 
+sidebar: sidebar 
+keywords: host remediation 
+summary: 'Je nach Migrationstyp kann die Behebung des Hosts innerhalb der Migration erfolgen (Foreign LUN Import online und 7-Mode zu ONTAP) oder es kann nach Abschluss der Migration auftreten (Foreign LUN Import offline).' 
+---
+= Host-Korrektur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Je nach Migrationstyp kann die Behebung des Hosts innerhalb der Migration erfolgen (Foreign LUN Import online und 7-Mode zu ONTAP) oder es kann nach Abschluss der Migration auftreten (Foreign LUN Import offline).
+
+Verwenden Sie die Schritte zur Problembehebung für verschiedene Host-Betriebssysteme. Wenden Sie sich an die GAP-Analyse, die während der Planungs- und Analysephase erstellt wurde, und lesen Sie die entsprechende Dokumentation von NetApp und Anbietern, um für die Migrationsschritte zu berücksichtigen.
+
+[NOTE]
+====
+FLI verwendet dieselben Korrekturverfahren, die mit 7MTT verwendet werden würden. Daher ist es sinnvoll, das gleiche Korrekturdokument zu nutzen, anstatt diese Verfahren mehrmals an verschiedenen Orten zu dokumentieren.
+
+====
+[NOTE]
+====
+Verwenden Sie für die CAW-Korrektur den ESXi CAW/ATS-Korrekturprozess.
+
+====
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap-7mode-transition/san-host/index.html["San-Host-Umstellung und Problembehebung"]

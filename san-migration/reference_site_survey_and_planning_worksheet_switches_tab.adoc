@@ -1,0 +1,64 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_switches_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, switches tab 
+summary: Als Teil Ihres Arbeitsblatts für die Standortuntersuchung und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zum Migrationsschalter enthält. 
+---
+= Registerkarte „Arbeitsblätter für Standortbefragungen und -Planung“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts für die Standortuntersuchung und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zum Migrationsschalter enthält.
+
+Das folgende Beispiel zeigt, wie Sie die Registerkarte Switches einrichten.
+
+|===
+8+| Schalter 
+
+
+ a| 
+Strom
+ a| 
+Von NetApp empfohlen
+
+
+
+ a| 
+Host-Name
+ a| 
+IP-Adresse
+ a| 
+Anbieter
+ a| 
+Modell
+ a| 
+Fabric-Name
+ a| 
+VSAN/Domäne
+ a| 
+Firmware
+ a| 
+Firmware
+
+
+
+ a| 
+C9506-1-A
+ a| 
+10.x.x.x
+ a| 
+Cisco
+ a| 
+9506
+ a| 
+Prod
+ a| 
+10
+ a| 
+3.3 (5a)
+ a| 
+
+|===

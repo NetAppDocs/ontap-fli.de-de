@@ -1,0 +1,177 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_questionnaire_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, questionnaire tab 
+summary: Im Arbeitsblatt für die Standortumfrage und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Migrationsprojekts aus Ihrer ersten Migrationsfrageboge enthält. 
+---
+= Registerkarte „Fragebogen für Standortbefragungen und -Planung“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im Arbeitsblatt für die Standortumfrage und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Migrationsprojekts aus Ihrer ersten Migrationsfrageboge enthält.
+
+Im Folgenden finden Sie ein Beispiel zum Einrichten der Registerkarte „Fragebogen“.
+
+|===
+3+| Informationen Zum Migrationsprojekt 
+
+
+ a| 
+Projekttyp
+ a| 
+☐ Datenmigration
+
+☐ Andere
+ a| 
+
+
+
+ a| 
+Ziele Für Datenmigration
+ a| 
+&#91;Ziele &#93;
+ a| 
+
+
+
+ a| 
+Quellgeräte
+ a| 
+Storage [Storage-Typ]
+
+Nein Der Geräte: [Nein Der Arrays]
+
+Thin Provisioning: ☐ ja ☐ Nein
+ a| 
+Alle Geräte auflisten
+
+
+
+ a| 
+Client-Geräte
+ a| 
+Betriebssystem: [Betriebssystemversion]
+
+SAN-Boot: ☐ Ja ☐ Nein
+
+MPIO: [MPIO-Version]
+
+HBAs: [HBA-Anbieter, -Modell, -Firmware]
+ a| 
+
+
+
+ a| 
+Fabric Switches
+ a| 
+Anbieter:
+
+Modell:
+
+Firmware:
+
+Nein Anzahl Ports:
+ a| 
+
+
+
+ a| 
+Aktuelle Protokolle
+ a| 
+☐ FCP
+
+☐ iSCSI
+ a| 
+
+
+
+ a| 
+Volume Manager
+ a| 
+Anbieter:
+
+Produkt:
+
+Version:
+ a| 
+
+
+
+ a| 
+Zielgeräte (Speicher)
+ a| 
+Storage [Storage]
+
+Nein [Nummer]
+
+Thin Provisioning: ☐ ja ☐ Nein
+ a| 
+Für diesen Service, nur NetApp Filer
+
+
+
+ a| 
+Zu migrierende Datenmenge (in TB)
+ a| 
+&#91;Datenmenge&#93;
+ a| 
+Zusammenfassung und Details (jedes Quellgerät)
+
+
+
+ a| 
+Anzahl LUNs
+ a| 
+&#91;Anzahl der LUNs&#93;
+ a| 
+Zusammenfassung und Details (jedes Quellgerät)
+
+
+
+ a| 
+Datenreorganisation
+ a| 
+☐ Ja☐ Nein
+ a| 
+Möchte der Kunde Volumes/Verzeichnisse/Ordner/Dateien im Rahmen der Migration in verschiedene Datenstrukturen verschieben?
+
+
+
+ a| 
+Ausfallerwartungen
+ a| 
+Ausfallzeitraum
+
+☐ vordefiniert ☐ flexibel
+
+Standard-Wartungsfenster Richtlinien : [Info]
+ a| 
+Anzahl und Dauer der möglichen Ausfälle. Nennen Sie ggf. Wartungsfenster.
+
+
+
+ a| 
+Gewünschter Zeitrahmen für den Abschluss
+ a| 
+&#91;gewünschter Zeitrahmen für die Fertigstellung&#93;&#91;Zeitempfindlichkeiten&#93;
+ a| 
+
+
+
+ a| 
+Weitere Relevante Informationen
+ a| 
+&#91;Weitere Relevante Informationen&#93;
+ a| 
+
+
+
+ a| 
+Name und Standort der Kundenorganisation (Stadt und Bundesland)
+ a| 
+ a| 
+
+|===

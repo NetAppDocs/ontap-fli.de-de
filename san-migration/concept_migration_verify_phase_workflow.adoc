@@ -1,0 +1,63 @@
+---
+permalink: san-migration/concept_migration_verify_phase_workflow.html 
+sidebar: sidebar 
+keywords: verify, phase, workflow 
+summary: Die Überprüfungsphase des Migrationsprozesses konzentriert sich auf die Bereinigung nach der Migration und die Bestätigung der Genauigkeit der Ausführung des Migrationsplans. Initiatoraufzeichnungen auf dem Quell-Storage und der Zone zwischen Quell- und Zielzone werden entfernt. 
+---
+= Überprüfung des Phase-Workflows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Überprüfungsphase des Migrationsprozesses konzentriert sich auf die Bereinigung nach der Migration und die Bestätigung der Genauigkeit der Ausführung des Migrationsplans. Initiatoraufzeichnungen auf dem Quell-Storage und der Zone zwischen Quell- und Zielzone werden entfernt.
+
+Die folgende Abbildung zeigt den Verify Phase Workflow.
+
+image::../media/verify_phase_1.png[Phase 1 überprüfen]
+
+Die Tasks der Phase überprüfen sind in der folgenden Tabelle aufgeführt.
+
+[cols="2*"]
+|===
+| Komponente | Aufgaben 
+
+
+ a| 
+Host
+ a| 
+Der Kunde führt Applikationstests durch.
+
+
+
+ a| 
+Fabric
+ a| 
+. Entfernen Sie die Host-zu-Quell-Speicherzonen aus dem Zoneet.
+. Entfernen Sie den Quell-Storage zu Zielzonen.
+. Sichern Sie das neue Zoneet.
+
+
+
+
+ a| 
+Ziel-Storage
+ a| 
+. Überprüfen Sie die LUN-Ausrichtung.
+. Sammeln Sie FLI-Importprotokolle aus dem Ereignisprotokoll.
+. Entfernen Sie manuell erstellte Snapshot Kopien, die während des Migrationsprozesses verwendet wurden.
+. Entfernen Sie das Quell-Array.
+. Endgültige Konfiguration dokumentieren.
+
+
+
+
+ a| 
+Quell-Storage
+ a| 
+. Entfernen Sie die Host-Storage-Initiatorgruppen.
+. Entfernen der Ziel-Storage-Initiatorgruppen
+
+
+|===

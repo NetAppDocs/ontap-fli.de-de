@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_fli_migration_clean_up_and_verify_phase.html 
+sidebar: sidebar 
+keywords: fli, migration, cleanup, verify, phase 
+summary: In der Aufbereinigungsphase erfassen Sie FLI-Migrationsprotokolle, entfernen die Quell-Storage-Konfiguration aus NetApp Storage und entfernen die NetApp Storage-Host-Gruppe aus dem Quell-Storage. Löschen Sie außerdem die Quelle in Zielzonen. An dieser Stelle wird die Genauigkeit der Ausführung des Migrationsplans ermittelt. 
+---
+= FLI-Migrationsbereinigung und -Überprüfung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In der Aufbereinigungsphase erfassen Sie FLI-Migrationsprotokolle, entfernen die Quell-Storage-Konfiguration aus NetApp Storage und entfernen die NetApp Storage-Host-Gruppe aus dem Quell-Storage. Löschen Sie außerdem die Quelle in Zielzonen. An dieser Stelle wird die Genauigkeit der Ausführung des Migrationsplans ermittelt.
+
+Überprüfen Sie die Protokolle auf Fehler, überprüfen Sie Pfade und führen Sie alle Applikationstests durch, um zu überprüfen, ob die Migration sauber und erfolgreich durchgeführt wurde.

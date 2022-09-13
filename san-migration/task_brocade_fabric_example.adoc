@@ -1,0 +1,52 @@
+---
+permalink: san-migration/task_brocade_fabric_example.html 
+sidebar: sidebar 
+keywords: brocade, fabric, example 
+summary: Dieses Verfahren zeigt, wie der Quellspeicher und die Host-Zone aus einem Brocade Fabric zoneset entfernt werden. 
+---
+= Beispiel: Brocade Fabric
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieses Verfahren zeigt, wie der Quellspeicher und die Host-Zone aus einem Brocade Fabric zoneset entfernt werden.
+
+[NOTE]
+====
+Der Zonenname für die Beispiele ist _rx21_AMS2100_.
+
+====
+.Schritte
+. Entfernen Sie die Zone aus dem Zoneet in Stoff A
++
+[listing]
+----
+cfgDelete "PROD_LEFT", "rx21_AMS2100"
+cfgDelete "PROD_LEFT", "rx22_AMS2100"
+cfgDelete "PROD_LEFT", "rx20_AMS2100"
+----
+. Aktivieren Sie das Zoneet in Stoff A.
++
+[listing]
+----
+cfgEnable "PROD_LEFT"
+cfgSave
+----
+. Entfernen Sie die Zone aus dem Zoneet in Stoff B.
++
+[listing]
+----
+cfgDelete "PROD_RIGHT", "rx21_AMS2100"
+cfgDelete "PROD_RIGHT", "rx22_AMS2100"
+cfgDelete "PROD_RIGHT", "rx20_AMS2100"
+----
+. Aktivieren Sie das Zoneet in Stoff B.
++
+[listing]
+----
+cfgEnable "PROD_RIGHT"
+cfgSave
+----
+

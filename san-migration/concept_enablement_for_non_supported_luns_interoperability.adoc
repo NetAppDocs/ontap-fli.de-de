@@ -1,0 +1,25 @@
+---
+permalink: san-migration/concept_enablement_for_non_supported_luns_interoperability.html 
+redirect: ontap-fli/san-migration/task_importing_non_fc_luns.html 
+sidebar: sidebar 
+keywords: enablement, non-supported, luns 
+summary: Es ist wichtig, dass Sie überprüfen, ob das Host OS, HBA, Switch und ONTAP Array für Ihr Quell-Array und Ihre endgültige Konfiguration unter der Interoperabilitäts-Matrix unterstützt werden. 
+---
+= Unterstützung für nicht unterstützte LUNs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es ist wichtig, dass Sie überprüfen, ob das Host OS, HBA, Switch und ONTAP Array für Ihr Quell-Array und Ihre endgültige Konfiguration unter der Interoperabilitäts-Matrix unterstützt werden.
+
+In den folgenden Abschnitten werden Informationen zu diesen Anwendungsfällen bereitgestellt:
+
+* Importieren von iSCSI-LUNs als FC-LUNs
+* Verschieben der migrierten LUNs zu AFF Plattformen
+
+
+*Verwandte Informationen*
+
+https://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"]

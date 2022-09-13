@@ -1,0 +1,40 @@
+---
+permalink: san-migration/concept_migration_analyze_phase_workflow.html 
+sidebar: sidebar 
+keywords: analyze, phase, workflow 
+summary: Die Analysephase konzentriert sich auf Komponenten, die vor der Migrationsplanung berücksichtigt werden müssen. Sie müssen Besonderheiten für die Host-Konfiguration erkennen, die nicht in der Interoperabilitäts-Matrix liegen. 
+---
+= Analyse des Phase-Workflows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Analysephase konzentriert sich auf Komponenten, die vor der Migrationsplanung berücksichtigt werden müssen. Sie müssen Besonderheiten für die Host-Konfiguration erkennen, die nicht in der Interoperabilitäts-Matrix liegen.
+
+Für jeden Host wird eine Zielkonfiguration (nach der Migration) identifiziert und eine GAP-Analyse durchgeführt, um spezifische Komponenten zu identifizieren, die nicht unterstützt werden. Die Host-Analyse sollte sofort nach Abschluss des Kurses überprüft werden. Erforderliche Updates können die Kompatibilität mit Anwendungen, die auf jedem Host ausgeführt werden, unterbrechen.
+
+Normalerweise können erforderliche Host-Änderungen erst nach dem eigentlichen Migrationsereignis vorgenommen werden. Dies liegt an der allgemeinen Notwendigkeit, Wartungsfenster zu planen, doch ist es oft weniger riskant, wenn möglich, Host-Änderungen im Voraus vorzunehmen, wie Systempatching und HBA-Updates (Host Bus Adapter). Außerdem werden häufig Systemaktualisierungen in Abstimmung mit Anwendungsaktualisierungen durchgeführt, die dieselben Wartungsereignisse nutzen. Normalerweise beeinträchtigen alle Änderungen an der Multipath I/O (MPIO)-Konfiguration vor der Migration auch die Unterstützung des aktuellen Storage. Wenn Sie z. B. PowerPath von einem Host entfernen und für die Verwendung von nativem MPIO und Asymmetric Logical Unit Access (ALUA) unter Linux neu konfigurieren, wird die aktuelle Speicherkonfiguration möglicherweise nicht unterstützt.
+
+Durch Verzögerung der Neukonfigurierung von MPIO bis nach der Migration wird der Rollback-Prozess bei Bedarf vereinfacht.
+
+Die Aufgaben der Planungsphase sind in der folgenden Tabelle aufgeführt.
+
+[cols="2*"]
+|===
+| Komponente | Aufgaben 
+
+
+ a| 
+Host
+ a| 
+. Führen Sie für jeden Host eine GAP-Analyse durch. Erforderliche Hotfixes/Patches, Betriebssystem-Updates, HBA-Treiber und Firmware-Upgrades ermitteln, die mit der ausgewählten Zielkonfiguration im NetApp IMT übereinstimmen Darüber hinaus sollten auch die Voraussetzungen für die Installation weiterer NetApp Software auf diesem Host berücksichtigt (SnapDrive®, SnapManager®).
+. Legen Sie für jeden Host eine Zielkonfiguration (nach der Migration) fest (Betriebssystemkonfiguration, MPIO, HBA-Details, Host Utility Kit-Version).
+. Zusätzliche NetApp Produktanforderungen ermitteln (SnapDrive, SnapManager)
+
+
+|===
+*Verwandte Informationen*
+
+https://mysupport.netapp.com/NOW/products/interoperability["NetApp Interoperabilität"]

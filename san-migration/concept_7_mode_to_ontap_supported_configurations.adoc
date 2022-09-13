@@ -1,0 +1,20 @@
+---
+permalink: san-migration/concept_7_mode_to_ontap_supported_configurations.html 
+sidebar: sidebar 
+keywords: 7-mode, ontap, fli, supported, configurations 
+summary: Es ist wichtig, sicherzustellen, dass das Host-Betriebssystem, HBA, Switch und das ONTAP-Array, auf das Sie später umstellen, unterstützt werden. 
+---
+= Von 7-Mode auf ONTAP unterstützte Konfigurationen FLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Es ist wichtig, sicherzustellen, dass das Host-Betriebssystem, HBA, Switch und das ONTAP-Array, auf das Sie später umstellen, unterstützt werden.
+
+Wenn Sie den Workflow zur Transition von FLI 7-Mode zu ONTAP verwenden, müssen Sie Ihre Quelle (7-Mode Controller) im FlexArray IMT nicht überprüfen. Sie wird nicht aufgeführt, wird aber ausdrücklich für diesen Umstiegsprozess unterstützt. Sie müssen weiterhin überprüfen, ob sich alle Hosts in einer unterstützten Konfiguration befinden.
+
+Es gibt keine FLI-spezifischen Plattformanforderungen. Außerdem gibt es keine Mindestversionen von 7-Mode Data ONTAP, obwohl die Version Fibre Channel Protocol (FCP) unterstützen müsste.
+
+Die maximale Größe einer LUN, die FLI importieren kann, beträgt 6 TB. Dies ist eine Einschränkung auf Grundlage der aktuellen von ONTAP unterstützten maximalen Größe. Wenn Sie versuchen, eine größere fremde LUN zu mounten, wird die LUN als beschädigt markiert und Sie können dann kein Etikett darauf schreiben.

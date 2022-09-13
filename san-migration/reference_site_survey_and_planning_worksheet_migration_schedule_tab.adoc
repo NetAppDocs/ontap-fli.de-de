@@ -1,0 +1,39 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, migration schedule tab 
+summary: Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihrem Migrationsplan enthält. 
+---
+= Registerkarte „Migrationsplan für Standortbefragungen und -Planung“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihrem Migrationsplan enthält.
+
+Das folgende Beispiel zeigt, wie Sie die Registerkarte Migrationsplan einrichten.
+
+|===
+8+| Migrationsplan 
+
+
+ a| 
+Migrationsdatum
+ a| 
+Host
+ a| 
+BETRIEBSSYSTEM
+ a| 
+Applikation
+ a| 
+Storage Controller
+ a| 
+LUN-UID
+ a| 
+Die LUN-Größe
+ a| 
+Status
+
+|===

@@ -1,0 +1,29 @@
+---
+permalink: san-migration/concept_reasons_to_perform_test_migrations.html 
+sidebar: sidebar 
+keywords: reasons, perform, test, migrations 
+summary: NetApp empfiehlt, alle Konfigurationen vor der Migration der Produktionsdaten in einer Testumgebung zu testen. 
+---
+= Gründe für Testmigrationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp empfiehlt, alle Konfigurationen vor der Migration der Produktionsdaten in einer Testumgebung zu testen.
+
+Vor der Produktionsmigration sollten mehrere Testmigrationen unterschiedlicher Größen durchgeführt werden. Die Durchführung von Testmigrationen vor der Produktionmigration bietet folgende Vorteile:
+
+* Ordnungsgemäße Storage- und Fabric-Konfiguration überprüfen
+* Schätzen Sie die Dauer und die Durchführung der Migration.
++
+Anhand der Ergebnisse der Testmigration können Sie schätzen, wie lange die Produktionsmigration dauert, und welchen Durchsatz Sie zu erwarten haben. Andernfalls gestaltet sich die Anzahl der Variablen, die berücksichtigen können, wie lange Migrationen dauern, eine genaue Einschätzung.
+
+
+
+[NOTE]
+====
+Die Testmigration sollte mindestens eine Woche vor Beginn der Migration der Produktionsdaten erfolgen. So bleibt genügend Zeit, um mögliche Probleme wie Zugriff, Speicherkonnektivität und Lizenzierung zu lösen.
+
+====

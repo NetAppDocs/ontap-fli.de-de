@@ -1,0 +1,77 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, netapp lun layouts tab 
+summary: Sie sollten als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung eine Registerkarte einrichten, die Informationen zu Ihren LUN-Layouts enthält. 
+---
+= Registerkarte „site Survey and Planning“ „NetApp LUN Layouts“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung eine Registerkarte einrichten, die Informationen zu Ihren LUN-Layouts enthält.
+
+Das folgende Beispiel zeigt, wie Sie die Registerkarte NetApp LUN-Layouts einrichten.
+
+|===
+7+| NetApp LUN-Informationen 
+
+
+ a| 
+Storage Controller
+ a| 
+Aggregat
+ a| 
+Volume-Name
+ a| 
+Volume-Größe
+ a| 
+Volume-Garantie
+ a| 
+Snap-Reserve
+ a| 
+Der LUN-Name
+
+|===
+|===
+7+| NetApp LUN-Informationen 
+
+
+ a| 
+S/N
+ a| 
+LUN-Typ
+ a| 
+Benutzerdefiniertes Präfix
+ a| 
+LUN-Beschreibung
+ a| 
+GB-Größe
+ a| 
+LUN-Reservierung
+ a| 
+Fraktionale Reserve
+
+|===
+|===
+7+| NetApp LUN-Informationen 
+
+
+ a| 
+Automatische Volumengröße
+ a| 
+Automatisches Löschen Von Snapshots
+ a| 
+Initiatorgruppe
+ a| 
+LUN-ID
+ a| 
+Host-Typ
+ a| 
+Laufwerksbuchstabe
+ a| 
+Host
+
+|===

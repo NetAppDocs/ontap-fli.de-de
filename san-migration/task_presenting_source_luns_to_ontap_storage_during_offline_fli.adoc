@@ -1,0 +1,20 @@
+---
+permalink: san-migration/task_presenting_source_luns_to_ontap_storage_during_offline_fli.html 
+sidebar: sidebar 
+keywords: present, source luns, ontap storage, fli 
+summary: Im Rahmen des Offline-FLI-Prozesses müssen Sie Ihren ONTAP-Speicher Ihre Quell-LUNs präsentieren. 
+---
+= Quell-LUNs werden während der FLI für ONTAP Storage bereitgestellt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Im Rahmen des Offline-FLI-Prozesses müssen Sie Ihren ONTAP-Speicher Ihre Quell-LUNs präsentieren.
+
+.Schritte
+. Melden Sie sich beim Quell-Array an.
+. Fügen Sie die NetApp-Initiatoren der während der Planungsphase erstellten Host-Gruppe hinzu.
+. Wählen Sie die Host-LUNs aus, die von verfügbaren logischen LUNs migriert werden sollen. Verwenden Sie für jeden Host die im Abschnitt Quell-LUNs in Ihrem Arbeitsblatt für die Standortbefragung und -Planung aufgeführt sind.
+

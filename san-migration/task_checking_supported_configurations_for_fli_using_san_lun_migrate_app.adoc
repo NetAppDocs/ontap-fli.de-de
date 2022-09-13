@@ -1,0 +1,24 @@
+---
+permalink: san-migration/task_checking_supported_configurations_for_fli_using_san_lun_migrate_app.html 
+sidebar: sidebar 
+keywords: check, supported configurations, fli, using, san lun migrate app 
+summary: Ab ONTAP 9.9 können Sie die SAN LUN Migrate App verwenden, um ein fremdes Quell-Array für FLI zu qualifizieren. Die SAN LUN Migrate App kann verwendet werden, wenn das gewünschte ausländische Array nicht im FLI IMT aufgeführt ist. 
+---
+= Überprüfen der unterstützten Konfigurationen für FLI mithilfe der SAN LUN Migrate App
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab ONTAP 9.9 können Sie die SAN LUN Migrate App verwenden, um ein fremdes Quell-Array für FLI zu qualifizieren. Die SAN LUN Migrate App kann verwendet werden, wenn das gewünschte ausländische Array nicht im FLI IMT aufgeführt ist.
+
+.Schritte
+. Rufen Sie die NetApp Support Site auf.
+. Wählen Sie unter *Filtern nach Kategorie* die Option *Migration*.
+. Klicken Sie unter *SAN LUN Migration* auf *App herunterladen*.
+. Führen Sie die App von einem FC- oder iSCSI-Linux-Host aus, der Blockzugriff auf das Quell-Array hat.
++
+Wenn das Array der Fremdquelle qualifiziert werden kann, wird ein grünes Häkchen angezeigt. Wenn das Quellarray nicht qualifiziert werden kann, wird ein rotes X angezeigt.
+
+

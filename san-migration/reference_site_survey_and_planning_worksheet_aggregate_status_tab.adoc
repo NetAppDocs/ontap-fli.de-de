@@ -1,0 +1,36 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_aggregate_status_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning, worksheet, aggregate status tab 
+summary: Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zum Aggregatstatus enthält. 
+---
+= Registerkarte „zusammengefasste Statusanzeige und -Planung“ auf der Registerkarte „Zusammenstellungsarbeitsblatt“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zum Aggregatstatus enthält.
+
+Im Folgenden finden Sie ein Beispiel, wie Sie die Registerkarte „Aggregatstatus“ einrichten.
+
+[cols="6*"]
+|===
+6+| NetApp Aggregate Informationen 
+
+
+ a| 
+Controller
+ a| 
+Aggregat
+ a| 
+Gesamtgröße (GB)
+ a| 
+Genutzte Kapazität (GB)
+ a| 
+Verfügbar (GB)
+ a| 
+Vorher zum Ausbauen
+
+|===

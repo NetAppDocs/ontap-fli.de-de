@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_discover_phase_procedures.html 
+sidebar: sidebar 
+keywords: discover, phase, data, collection, procedures 
+summary: In der Bestandsaufnahme werden die für eine erfolgreiche Migrationsplanung und -Ausführung erforderlichen Informationen zur Kundenumgebung erfasst. 
+---
+= Erkennung von Phase-Datenerfassungsverfahren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In der Bestandsaufnahme werden die für eine erfolgreiche Migrationsplanung und -Ausführung erforderlichen Informationen zur Kundenumgebung erfasst.
+
+Verwenden Sie Active IQ OneCollect in der Datenerfassungsphase. Sämtliche Details finden Sie im Active IQ OneCollect https://mysupport.netapp.com/site/tools["Dokumentation"].

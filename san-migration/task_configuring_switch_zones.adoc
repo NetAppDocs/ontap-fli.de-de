@@ -1,0 +1,80 @@
+---
+permalink: san-migration/task_configuring_switch_zones.html 
+sidebar: sidebar 
+keywords: configure, switch, zones 
+summary: Sie müssen erforderliche Zonen auf den SAN-Switches erstellen, um den Quell-Storage mit dem Ziel-Storage zu verbinden. 
+---
+= Switch-Zonen werden konfiguriert
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen erforderliche Zonen auf den SAN-Switches erstellen, um den Quell-Storage mit dem Ziel-Storage zu verbinden.
+
+.Schritte
+. Sichern Sie die vorhandenen zonesets auf jedem Switch in der Produktions- und Migrationsstruktur.
+. Zone des Quellspeichers und des Zielspeichers wie unten dargestellt.
++
+image::../media/configure_switch_zones_1.png[Quell- und Ziel-Storage Zoning]
+
+. Erstellen Sie die Zone, und fügen Sie sie dem Zoneet in Produktionsgewebe A hinzu
++
+Im Folgenden finden Sie ein Beispiel für die Produktionszone, Produktionsstruktur A für Zone ZONE_AMS2100_cDOT_Initiator_Faba.
+
++
+|===
+| WWPN | Mitglieder Der Zone 
+
+
+ a| 
+ 50:06:0e:80:10:46:b9:60 a| 
+ AMS2100 Ctrl 0 Port 0a
+
+
+ a| 
+ 50:06:0e:80:10:46:b9:68 a| 
+ AMS2100 Ctrl 1 Port 1a
+
+
+ a| 
+ 50:0a:09:80:00:d3:51:59 a| 
+ ONTAP Node 1 Port 0a
+
+
+ a| 
+ 50:0a:09:80:00:e7:81:04 a| 
+ ONTAP Node 2 Port 0a
+|===
+. Aktivieren Sie das Zoneet in Stoff A.
+. Erstellen Sie die Zone, und fügen Sie sie dem Zoneet in Produktionsgewebe B hinzu
++
+Im Folgenden finden Sie ein Beispiel für die Produktionszone, Produktionsstruktur A für Zone ZONE_AMS2100_cDOT_Initiator_FabB.
+
++
+|===
+| WWPN | Mitglieder Der Zone 
+
+
+ a| 
+ 50:06:0e:80:10:46:b9:64 a| 
+ AMS2100 Ctrl 0 Port 0e
+
+
+ a| 
+ 50:06:0e:80:10:46:b9:6c a| 
+ AMS2100 Ctrl 1 Port 1e
+
+
+ a| 
+ 50:0a:09:80:00:d3:51:59 a| 
+ ONTAP Node 1 Port 0b
+
+
+ a| 
+ 50:0a:09:80:00:e7:81:04 a| 
+ ONTAP Node 2 Port 0b
+|===
+. Aktivieren Sie das Zoneet in Produktionsgewebe B.
+

@@ -1,0 +1,22 @@
+---
+permalink: san-migration/concept_plan_phase_procedures.html 
+sidebar: sidebar 
+keywords: plan, prepare, phase, procedures 
+summary: Die FLI-Planungsphase konzentriert sich auf die Aufgaben, die zur Erstellung detaillierter Migrationspläne und zur Vorbereitung der Kundenumgebung auf die eigentliche Migration erforderlich sind. Während dieser Phase werden mindestens eine Testmigration durchgeführt, um die Installation und Einrichtung des Imports fremder LUNs zu überprüfen. 
+---
+= Planen und Vorbereiten von Phasenverfahren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die FLI-Planungsphase konzentriert sich auf die Aufgaben, die zur Erstellung detaillierter Migrationspläne und zur Vorbereitung der Kundenumgebung auf die eigentliche Migration erforderlich sind. Während dieser Phase werden mindestens eine Testmigration durchgeführt, um die Installation und Einrichtung des Imports fremder LUNs zu überprüfen.
+
+Die folgenden Aufgaben müssen während der Planungsphase ausgeführt werden:
+
+* Erstellen Sie eine Zuordnung der Quell- und Ziel-LUNs, indem Sie im Worksheet „Standortumfrage und Planung“ im Abschnitt „LUN-Details“ die Storage-Zuordnungsinformationen für jedes Storage-Array eingeben.
+* Verbinden Sie den Quell-Storage mit der Fabric anhand der Planungsinformationen.
+* Konfigurieren Sie die Switch-Zonen.
+* Führen Sie eine oder mehrere Testmigrationen durch, um die Installation und Einrichtung zu überprüfen.
+

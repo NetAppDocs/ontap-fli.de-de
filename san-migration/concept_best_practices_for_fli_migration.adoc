@@ -1,0 +1,21 @@
+---
+permalink: san-migration/concept_best_practices_for_fli_migration.html 
+sidebar: sidebar 
+keywords: best practices, foreign lun, import migration 
+summary: 'NetApp empfiehlt dringend eine Professional Services oder Professional Services von Partnern, zur Planung und Umfang der Migration sowie zur Schulung von Kundenmitarbeitern zur Durchführung von Datenmigrationen mithilfe des Imports fremder LUNs (Foreign LUN Import, FLI) 7-Mode auf ONTAP.' 
+---
+= Best Practices für die Migration zum Import fremder LUNs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp empfiehlt dringend eine Professional Services oder Professional Services von Partnern, zur Planung und Umfang der Migration sowie zur Schulung von Kundenmitarbeitern zur Durchführung von Datenmigrationen mithilfe des Imports fremder LUNs (Foreign LUN Import, FLI) 7-Mode auf ONTAP.
+
+* Führen Sie mindestens eine Woche vor Ihrem Migrationsprojekt eine oder mehrere Testmigrationen durch, um Konfiguration, Konnektivität und Durchsatz zu überprüfen, andere Probleme zu erkennen und Ihre Methodik zu validieren.
+* Führen Sie für einen maximalen Durchsatz nicht mehr als 16 Migrationen pro Node gleichzeitig aus.
+* Eine Überprüfung ist nicht erforderlich, aber wir empfehlen Ihnen, eine Teilmenge der importierten/migrierten LUNs zu überprüfen, um den Importprozess zu validieren.
+* Nutzen Sie den bei Ihren Testmigrationen beobachteten Durchsatz zur Planung der Migrationsdauer in der Produktion.
+* Migrieren Sie LUNs für optimale Performance in Zeiten ohne Spitzenauslastung.
+

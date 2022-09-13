@@ -1,0 +1,66 @@
+---
+permalink: san-migration/task_fli_online_verifying_migration_results.html 
+sidebar: sidebar 
+keywords: fli online, verify, migration, results 
+summary: Ein Verifizierungsjob ist optional, wird aber empfohlen. Es handelt sich um einen Block-für-Block-Vergleich der Quell- und Ziel-LUNs. Überprüfen Sie, dass Jobs fast gleich oder etwas länger dauern als die Migrationszeit. 
+---
+= FLI online: Migrationsergebnisse prüfen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Verifizierungsjob ist optional, wird aber empfohlen. Es handelt sich um einen Block-für-Block-Vergleich der Quell- und Ziel-LUNs. Überprüfen Sie, dass Jobs fast gleich oder etwas länger dauern als die Migrationszeit.
+
+Starten Sie den Auftrag überprüfen, um Quell- und Ziel-LUNs zu vergleichen. Überwachen Sie den Status der Überprüfung. Die LUNs, die überprüft werden, müssen für die Dauer der Verifizierungssitzung offline sein. Die Verifizierungssitzung kann potenziell zeitaufwändig sein, da sie einen Block-für-Block-Vergleich zwischen Quell- und Ziel-LUNs enthält. Obwohl keine Überprüfung erforderlich ist, ist es eine gute Idee, eine Teilmenge der importierten/migrierten LUNs zu überprüfen, um sich über den Importprozess wohl zu fühlen. Diese Prüfungen sollten zusätzlich zu den Prüfungen während der Test-/Pilotmigrationen durchgeführt werden.
+
+[NOTE]
+====
+Dieser Prozess ist störend.
+
+====
+[NOTE]
+====
+Der LUN-Import muss explizit angehalten werden, bevor die LUN wieder in den Online-Status versetzt wird. Andernfalls schlägt die LUN online fehl. Siehe die folgende CLI-Ausgabe.
+
+====
+.Schritte
+. Offline die LUNs, die überprüft werden sollen. <das Unterbrechungsfenster beginnt hier>
++
+[listing]
+----
+cluster::*> lun offline -vserver fli_72C -path /vol/flivol/72Clun1
+Warning: This command will take LUN "/vol/flivol/72Clun1" in Vserver "fli_72C" offline.
+Do you want to continue? {y|n}: y
+----
+. Starten Sie die LUN Verify.
++
+[listing]
+----
+lun import verify start -vserver fli_72C -path /vol/flivol/72Clun1
+----
+. Zeigt den Status der LUN-Überprüfung an.
++
+[listing]
+----
+ontaptme-fc-cluster::*> lun import show -vserver fli_72C -path /vol/flivol/72Clun1
+vserver foreign-disk   path                operation admin operational percent
+                                         in progress state state       complete
+-------------------------------------------------------------------------------
+fli_72C D0i1E+G8Wg6m   /vol/flivol/72Clun1 verify    started
+                                                                        9
+----
+. Beenden Sie die LUN-Überprüfung. Dieser Schritt muss manuell durchgeführt werden, selbst wenn der Status zeigt, dass die Überprüfung abgeschlossen ist.
++
+[listing]
+----
+lun import verify stop -vserver fli_72C -path /vol/flivol/72Clun1
+----
+. Online die LUN nach Abschluss der Überprüfung. <das Unterbrechungsfenster endet hier>
++
+[listing]
+----
+lun online -vserver fli_72C -path /vol/flivol/72Clun1
+----
+

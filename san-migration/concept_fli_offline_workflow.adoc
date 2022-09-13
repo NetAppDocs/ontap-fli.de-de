@@ -1,0 +1,23 @@
+---
+permalink: san-migration/concept_fli_offline_workflow.html 
+redirect: ontap-fli/san-migration/task_rebooting_the_host_to_validate_system_state.html 
+sidebar: sidebar 
+keywords: fli, offline, workflow 
+summary: Dieser Abschnitt enthält ein Beispiel für den FLI-Offline-Workflow, einen der vier FLI-Workflows. 
+---
+= FLI-Offline-Workflow
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieser Abschnitt enthält ein Beispiel für den FLI-Offline-Workflow, einen der vier FLI-Workflows.
+
+In diesem Workflow wird ein HDS AMS2100-Array als Quell-Array verwendet. Der Offline-Workflow umfasst die folgenden Aufgaben:
+
+. Vorbereitung auf die Umstellung
+. Daten werden importiert
+. Überprüfen der Migrationsergebnisse (optional)
+. FLI-Offline-Aufgaben nach der Migration
+

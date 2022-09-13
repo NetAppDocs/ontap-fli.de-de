@@ -1,0 +1,29 @@
+---
+permalink: san-migration/task_removing_destination_array_configuration.html 
+sidebar: sidebar 
+keywords: remove, destination, array, configuration 
+summary: Die folgenden Schritte zeigen, wie die Ziel-Array-Konfiguration nach Abschluss der FLI-Migration aus dem Quell-Array entfernt wird. 
+---
+= Konfiguration des Ziel-Arrays wird entfernt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die folgenden Schritte zeigen, wie die Ziel-Array-Konfiguration nach Abschluss der FLI-Migration aus dem Quell-Array entfernt wird.
+
+.Schritte
+. Melden Sie sich als System bei Hitachi Storage Navigator Modular an.
+. Wählen Sie *AMS 2100* Array und klicken Sie auf *Anzeigen* und *Array konfigurieren*.
+. Melden Sie sich mit root an.
+. Erweitern Sie Gruppen und wählen Sie *Host Groups*.
+. Wählen Sie *cDOT_FLI* Host Group und klicken Sie auf *Host Group löschen*.
++
+image::../media/remove_destination_array_configuration_from_source_array_1.png[Entfernen Sie die Ziel-Array-Konfiguration aus dem Quell-Array 1]
+
+. Bestätigen Sie das Löschen der Host-Gruppe.
++
+image::../media/remove_destination_array_configuration_from_source_array_2.png[Entfernen Sie die Ziel-Array-Konfiguration aus dem Quell-Array 2]
+
+

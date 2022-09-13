@@ -1,0 +1,36 @@
+---
+permalink: san-migration/concept_data_migration_methodology.html 
+sidebar: sidebar 
+keywords: data migration methodology 
+summary: Der Datenmigrationsprozess besteht aus Phasen, die eine getestete Methodik bereitstellen. Sie können die Datenmigrationsmethode verwenden, um Ihre Auswahlmöglichkeiten und Aufgaben bei der Migration zu bestimmen, zu planen und zu dokumentieren. 
+---
+= Datenmigrationsmethode
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Datenmigrationsprozess besteht aus Phasen, die eine getestete Methodik bereitstellen. Sie können die Datenmigrationsmethode verwenden, um Ihre Auswahlmöglichkeiten und Aufgaben bei der Migration zu bestimmen, zu planen und zu dokumentieren.
+
+. Bestandsaufnahme
++
+Sammlung von Informationen über Hosts, Storage und Fabric der Umgebung
+
+. Analysephase
++
+Analyse der gesammelten Daten und Bestimmung des geeigneten Migrationsansatzes für jeden Host oder jedes Storage-Array.
+
+. Planungsphase
++
+Erstellung und Test von Migrationsplänen, Bereitstellung von Ziel-Storage und Konfiguration der Migrationstools
+
+. Ausführungsphase
++
+Migration der Daten und Durchführung von Host-Korrekturmaßnahmen.
+
+. Verifizierungsphase
++
+Validieren der neuen Systemkonfigurationen und Bereitstellen der Dokumentation
+
+

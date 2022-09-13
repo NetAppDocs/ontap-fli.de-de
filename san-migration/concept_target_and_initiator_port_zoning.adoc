@@ -1,0 +1,39 @@
+---
+permalink: san-migration/concept_target_and_initiator_port_zoning.html 
+sidebar: sidebar 
+keywords: target, initiator, port, zoning 
+summary: Für die FLI-Migration ist ein Zugriff auf Quell-Storage LUNs durch NetApp Storage erforderlich. Dies wird durch das Zoning von Ziel-Ports des Quell-Storage mit Initiator-Ports des Ziel-Storage erreicht. 
+---
+= Ziel- und Initiator-Port-Zoning
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für die FLI-Migration ist ein Zugriff auf Quell-Storage LUNs durch NetApp Storage erforderlich. Dies wird durch das Zoning von Ziel-Ports des Quell-Storage mit Initiator-Ports des Ziel-Storage erreicht.
+
+Die vorhandenen Quell-Storage-zu-Host-Zonen werden nicht verändert und nach der Migration deaktiviert. Host-zu-Ziel-Storage-Zonen werden erstellt, um den Zugriff der migrierten LUNs vom Ziel-Storage durch den Host zu ermöglichen.
+
+Für ein Standardmigrationsszenario, das FLI verwendet, sind vier unterschiedliche Zonen erforderlich:
+
+* Zone 1: Quell-Storage auf Ziel-Storage (Produktions-Fabric A)
+* Zone 2: Quell-Storage auf Ziel-Storage (Produktions-Fabric B)
+* Zone 3: Host-zu-Ziel-Storage (Produktionsstruktur A)
+* Zone 4: Host-to-Ziel-Storage (Produktions-Fabric B)
+
+
+Folgen Sie den folgenden Best Practices für das Zoning:
+
+* Verwenden Sie keine Quell-Storage-Ziel-Ports und Ziel-Storage-Ziel-Ports in derselben Zone.
+* Kombinieren Sie keine Ziel-Storage-Initiator-Ports und Host-Ports in derselben Zone.
+* Setzen Sie keine Ziel-Storage-Ziel- und Initiator-Ports in derselben Zone zusammen.
+* Weisen Sie aus Redundanzgründen mindestens zwei Ports von jedem Controller auf.
+* NetApp empfiehlt Single Initiator und Single Target Zoning.
+
+
+[NOTE]
+====
+Nach dem Zoning der Ziel-Storage-Ziel-Ports mit den Ziel-Storage-Initiator-Ports wird der Quell-Storage mit dem Befehl show des Storage-Arrays im Ziel-Storage angezeigt.Wenn das Storage-Array zum ersten Mal erkannt wird, werden die NetApp Controller das Array möglicherweise nicht automatisch anzeigen. Beheben Sie dies durch Zurücksetzen des Switch-Ports, an dem ONTAP-Initiator-Ports verbunden sind.
+
+====

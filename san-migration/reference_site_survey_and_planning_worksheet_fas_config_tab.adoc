@@ -1,0 +1,111 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_fas_config_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, fas config tab 
+summary: Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zur FAS Konfiguration verfügen. 
+---
+= Registerkarte „FAS Config“ auf dem Arbeitsblatt für die Standortbefragung und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zur FAS Konfiguration verfügen.
+
+Im Folgenden finden Sie ein Beispiel für die Einrichtung der Registerkarte FAS-Konfiguration.
+
+|===
+| Cluster-Name | Cluster-Management-IP-Adresse | Cluster-Management-Anmeldedaten Verfügbar 2+| ONTAP System Manager Host 
+
+
+|  |  |  | *IP-Adresse* | *Anmeldeinformationen Verfügbar* 
+
+
+|  |  |  |  |  
+|===
+|===
+6+| Netzwerk-Ports 
+
+
+| Knoten | Schnittstellenname | Porttyp | Port-Geschwindigkeit | VLAN-Name/ID | IFGRP 
+
+
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+|===
+| SVM-Name | Typ | Protokolle | Aggregat | SVM-Root-Volume 
+
+
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+|===
+| SVM | Datenmenge | Aggregat | Größe | San 
+
+
+|  |  |  | *LUN-Name* | *LUN-Größe* 
+
+
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+|===
+6+| SVM-Netzwerkschnittstellen 
+
+
+| SVM | Schnittstellenname | Schnittstellenrolle | IP-Adresse/Netzmaske | Home Node/Home Port | Failover-Gruppe 
+
+
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+|===
+6+| FCP-Ziel-Ports der SVM 
+
+
+| SVM | FCP-Port-Name | WWPN | WWNN | Home Node | Home Port 
+
+
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+|===
+6+| FCP-Initiator-Ports für den Node 
+
+
+| Node-Name | FCP-Port-Name | WWPN | WWN | Homer-Knoten | Home Port 
+
+
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===

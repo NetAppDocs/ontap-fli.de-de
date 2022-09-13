@@ -1,0 +1,164 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_destination_storage_devices_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, destination storage devices tab 
+summary: Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren Ziel-Speichergeräten enthält. 
+---
+= Registerkarte Zielspeichergeräte für Standortbefragungen und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren Ziel-Speichergeräten enthält.
+
+[cols="6*"]
+|===
+6+| Storage-Systeme 
+
+
+ a| 
+Cluster-Name
+ a| 
+IP-Adresse
+ a| 
+Array-Modus
+ a| 
+ONTAP
+ a| 
+vserver
+ a| 
+Porttyp
+
+
+
+ a| 
+DataMig-cDOT
+ a| 
+10.x.x.x
+ a| 
+FAS8080
+ a| 
+8.3.1
+ a| 
+Datendatum
+ a| 
+Ziel
+
+
+
+ a| 
+DataMig-cDOT
+ a| 
+10.x.x.x
+ a| 
+FAS8080
+ a| 
+8.3.1
+ a| 
+Datendatum
+ a| 
+Ziel
+
+
+
+ a| 
+DataMig-cDOT
+ a| 
+10.x.x.x
+ a| 
+FAS8080
+ a| 
+8.3.1
+ a| 
+DatenMig-01
+ a| 
+Initiator
+
+
+
+ a| 
+DataMig-cDOT
+ a| 
+10.x.x.x
+ a| 
+FAS8080
+ a| 
+8.3.1
+ a| 
+DatenMig-01
+ a| 
+Initiator
+
+|===
+[cols="5*"]
+|===
+5+| Storage-Systeme 
+
+
+ a| 
+Port-Name
+ a| 
+Name LIF
+ a| 
+WWPN
+ a| 
+Fabric-Name
+ a| 
+Zieltyp
+
+
+
+ a| 
+0c
+ a| 
+Miglif1
+ a| 
+20:01:00:a0:98:2f:xx:xx
+ a| 
+Prod
+ a| 
+Ziel
+
+
+
+ a| 
+0d
+ a| 
+Miglif2
+ a| 
+20:01:00:a0:98:2f:xx:xx
+ a| 
+Prod. B
+ a| 
+Ziel
+
+
+
+ a| 
+0 a
+ a| 
+k. A.
+ a| 
+50:0a:09:81:00:xx:xx:xx
+ a| 
+Prod
+ a| 
+Ziel
+
+
+
+ a| 
+0b
+ a| 
+k. A.
+ a| 
+50:0a:09:81:00:xx:xx:xx
+ a| 
+Prod. B
+ a| 
+Ziel
+
+|===
+Das folgende Beispiel zeigt, wie Sie die Registerkarte Zielspeichergeräte einrichten.

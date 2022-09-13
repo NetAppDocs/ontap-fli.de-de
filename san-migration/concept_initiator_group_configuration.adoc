@@ -1,0 +1,37 @@
+---
+permalink: san-migration/concept_initiator_group_configuration.html 
+sidebar: sidebar 
+keywords: initiator, group, configuration 
+summary: 'Die ordnungsgemäße LUN-Maskierung ist für den korrekten Betrieb von großer Bedeutung. Alle Initiator-Ports (auf beiden Nodes) im ONTAP Storage müssen sich in derselben Initiatorgruppe befinden.' 
+---
+= Konfiguration der Initiatorgruppe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die ordnungsgemäße LUN-Maskierung ist für den korrekten Betrieb von großer Bedeutung. Alle Initiator-Ports (auf beiden Nodes) im ONTAP Storage müssen sich in derselben Initiatorgruppe befinden.
+
+Für die FLI-Migration ist ein Zugriff auf Quell-Storage LUNs durch NetApp Storage erforderlich. Um den Zugriff neben dem Zoning zu ermöglichen, ist das Erstellen von Initiatorgruppen auf dem Quell-Storage unter Verwendung des weltweiten Port-Namens (WWPN) der Initiator-Ports des Ziel-Storage erforderlich.
+
+
+NOTE: Die Beispiele in diesem Abschnitt verwenden ein Hitachi Data Systems (HDS) AMS-Array, und daher unterscheiden sich die Befehle des Fremdsystems je nach Drittanbieter-Array, von dem Sie migrieren.
+
+Aktivieren Sie Asymmetric Logical Unit Access (ALUA) auf Initiatorgruppen für NetApp Arrays.
+
+Initiatorgruppen werden abhängig vom Anbieter und Produkt unterschiedlich benannt. Beispiel:
+
+* Hitachi Data Systems (HDS) verwendet „`Host Group`“.
+* Die NetApp E-Series nutzt „`Host Entry`“.
+* EMC verwendet „`Initiator Record`“ oder „`sTorage Group`“.
+* NetApp verwendet „`igroup`“.
+
+
+Unabhängig von der Nomenklatur dient eine Initiatorgruppe dazu, Initiatoren anhand von WWPNs zu identifizieren, die dieselben LUN-Zuordnungen verwenden.
+
+Lesen Sie zum Definieren von Initiatorgruppen in der Array-Dokumentation, wie Sie LUN-Maskierung einrichten (Initiatorgruppen/Host-Gruppen/Storage-Gruppen usw.). Lesen Sie sich außerdem den _FlexArray Implementierungsleitfaden für Storage-Lösungen von Drittanbietern_ für die Anforderungen an die Storage-Konfiguration von Drittanbietern.
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["FlexArray Virtualisierungs-Implementierung für Storage von Drittanbietern"]

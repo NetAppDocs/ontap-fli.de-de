@@ -1,0 +1,36 @@
+---
+permalink: san-migration/task_removing_source_luns_from_host.html 
+sidebar: sidebar 
+keywords: remove, source, luns, hosts 
+summary: In den folgenden Schritten wird beschrieben, wie Sie Quell-LUNs nach Abschluss der FLI-Migration von Ihrem Host entfernen. 
+---
+= Quell-LUNs werden von Hosts entfernt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In den folgenden Schritten wird beschrieben, wie Sie Quell-LUNs nach Abschluss der FLI-Migration von Ihrem Host entfernen.
+
+
+NOTE: Diese Aufgabe verwendet in den Beispielen ein _HDS AMS2100_-Array. Ihre Aufgaben können sich unterscheiden, wenn Sie ein anderes Array oder eine andere Version der Array-GUI verwenden.
+
+Führen Sie die folgenden Schritte aus, um Quell-LUNs vom Host zu entfernen:
+
+.Schritte
+. Melden Sie sich bei Hitachi Storage Navigator Modular an.
+. Wählen Sie den Host aus, der migriert wird, und wählen Sie *Hostgruppe bearbeiten*.
++
+image::../media/remove_source_luns_from_host_1.png[Entfernen Sie Quell-luns von Host 1]
+
+. Wählen Sie die Option *Ports* und wählen Sie *Forced Set* für alle ausgewählten Ports aus.
++
+image::../media/remove_source_luns_from_host_2.png[Entfernen Sie Quell-luns von Host 2]
+
+. Wählen Sie die Host-LUNs aus, die von zugewiesenen logischen LUNs migriert werden. Verwenden Sie die LUN-Namen für jeden Host, der im Arbeitsblatt „Quell-LUNs“ aufgeführt ist. Wählen Sie hier LUNs von Windows 2012 Host aus und wählen Sie *Entfernen*.
++
+image::../media/remove_source_luns_from_host_3.png[Entfernen Sie Quell-luns von Host 3]
+
+. Wiederholen Sie die Schritte für Linux- und VMware ESX-Hosts.
+

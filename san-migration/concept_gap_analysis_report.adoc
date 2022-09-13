@@ -1,0 +1,24 @@
+---
+permalink: san-migration/concept_gap_analysis_report.html 
+sidebar: sidebar 
+keywords: gap, analysis, report 
+summary: Die GAP-Analyse ist ein Bericht der aktuellen und von NetApp empfohlenen Umgebung des Kunden. Es enthält alle empfohlenen Upgrades für die Kundenumgebung, die nach der Migration stattfinden müssen. 
+---
+= GAP-Analysebericht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die GAP-Analyse ist ein Bericht der aktuellen und von NetApp empfohlenen Umgebung des Kunden. Er enthält alle empfohlenen Upgrades für die Kundenumgebung, die nach der Migration stattfinden müssen.
+
+Die Zielkonfiguration (nach der Migration) umfasst Details für jeden Host (Betriebssystemkonfiguration, MPIO, HBA-Details, Host Utility Kit-Version usw.). Weitere Informationen über zusätzliche NetApp Produkte wie SnapDrive und SnapManager sind ebenfalls erhältlich.
+
+Die erforderlichen Änderungen werden in der Regel erst nach dem eigentlichen Migrationsereignis vorgenommen, da üblicherweise Wartungsfenster geplant werden müssen. In der Regel beeinträchtigen alle Änderungen an der MPIO-Konfiguration vor der Migration auch den Support des aktuellen Speichers.
+
+Der Abschnitt „von NetApp empfohlen“ im Abschnitt „Hosts“ Ihres Arbeitsblatts zur Standortanalyse und -Planung dient als Bericht zur GAP-Analyse. Die GAP-Analyse muss für jeden im Migrationsprojekt enthaltenen Host durchgeführt werden. Der vollständige Bericht zur GAP-Analyse muss mit dem Kunden geprüft werden.
+
+Im Folgenden finden Sie einen Beispiel für einen Bericht zur Lückenanalyse.
+
+image::../media/create_the_gap_analysis_report_1.png[Erstellen Sie den GAP-Analysebericht 1]

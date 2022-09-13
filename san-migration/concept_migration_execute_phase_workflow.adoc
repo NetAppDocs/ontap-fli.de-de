@@ -1,0 +1,18 @@
+---
+permalink: san-migration/concept_migration_execute_phase_workflow.html 
+sidebar: sidebar 
+keywords: execute, phase, workflows 
+summary: Die Ausw.Phase konzentriert sich auf die LUN-Migrationsaufgaben zur Durchführung einer FLI-Offline- oder Online-Migration. 
+---
+= Führen Sie Phase-Workflows aus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Ausw.Phase konzentriert sich auf die LUN-Migrationsaufgaben zur Durchführung einer FLI-Offline- oder Online-Migration.
+
+Die Host-Ereignisprotokolle werden überprüft, um Probleme zu finden und zu beheben und Risiken zu reduzieren. Die Hosts werden neu gebootet, um sicherzustellen, dass es keine zugrunde liegenden Probleme mit den Hosts gibt, bevor eine größere Neukonfiguration stattfindet.
+
+Nachdem die Quell-LUNs auf dem Ziel-Storage sichtbar sind, können Migrationsaufgaben erstellt und ausgeführt werden. Nach Abschluss von Migrationen (FLI offline) oder der FLI LUN-Beziehung (FLI online) wird der Host in den Ziel-Storage abgegrenzt. Neue LUNs werden zugeordnet, und die Behebung des Hosts kann für Treiber, Multipath-Software und alle anderen Updates, die in der Analysephase ermittelt wurden, beginnen.

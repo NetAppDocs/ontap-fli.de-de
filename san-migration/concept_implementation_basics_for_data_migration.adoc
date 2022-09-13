@@ -1,0 +1,17 @@
+---
+permalink: san-migration/concept_implementation_basics_for_data_migration.html 
+redirect: ontap-fli/san-migration/concept_physical_wiring_requirements_for_fli.html 
+sidebar: sidebar 
+keywords: implementation, basics, data, migration 
+summary: 'Ein Import fremder LUNs (Foreign LUN Import, FLI) umfasst die Schritte zur physischen Verkabelung, Zoning und Erstellung von Initiatoraufzeichnungen. Die Erstkonfiguration der NetApp Storage Initiator-Ports und des Quell-Storage bereiten die Umgebung für die Migration vor.' 
+---
+= Implementierungsgrundlagen für die Datenmigration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Import fremder LUNs (Foreign LUN Import, FLI) umfasst die Schritte zur physischen Verkabelung, Zoning und Erstellung von Initiatoraufzeichnungen. Die Erstkonfiguration der NetApp Storage Initiator-Ports und des Quell-Storage bereiten die Umgebung für die Migration vor.
+
+Die Beispiele in diesem Abschnitt verwenden ein Hitachi Data Systems (HDS) AMS-Array, und daher unterscheiden sich die Befehle des Fremdsystems je nach Drittanbieter-Array, von dem Sie migrieren.

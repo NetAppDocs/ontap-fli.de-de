@@ -1,0 +1,128 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_source_luns_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, source luns tab 
+summary: Sie sollten als Teil Ihres Arbeitsblatts zur Standortumfrage und -Planung eine Registerkarte einrichten, die Informationen zu den Quell-LUNs enthält. 
+---
+= Registerkarte Quell-LUNs des Arbeitsblatts für Standortbefragung und Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten als Teil Ihres Arbeitsblatts zur Standortumfrage und -Planung eine Registerkarte einrichten, die Informationen zu den Quell-LUNs enthält.
+
+Das folgende Beispiel zeigt, wie Sie die Registerkarte „Quell-LUNs“ einrichten.
+
+|===
+5+| Quell-LUNs 
+
+
+ a| 
+Maskierte LUNs
+
+
+
+ a| 
+Name Der Speichergruppe
+ a| 
+Host-LUN-ID
+ a| 
+Array-LUN-ID
+ a| 
+Dick/Dünn
+ a| 
+UID
+
+
+
+ a| 
+dm-rx200s6-21
+ a| 
+0
+ a| 
+30
+ a| 
+Dick
+ a| 
+60060e801046b96004f2bf4600001e
+
+
+
+ a| 
+dm-rx200s6-21
+ a| 
+1
+ a| 
+14
+ a| 
+Dick
+ a| 
+60060e801046b96004f2bf460000000e
+
+
+
+ a| 
+dm-rx200s6-21
+ a| 
+2
+ a| 
+15
+ a| 
+Dick
+ a| 
+60060e801046b96004f2bf460000000f
+
+|===
+|===
+5+| Quell-LUNs 
+
+
+ a| 
+Alle LUNS .2a
+| Benutzerdefiniertes Präfix 
+
+
+ a| 
+Der LUN-Name
+ a| 
+UID
+ a| 
+Sektor Wird Gestartet
+ a| 
+Partitionsverschiebung
+ a| 
+
+
+
+| LUN30  a| 
+ a| 
+ a| 
+368050176
+ a| 
+0
+
+
+
+ a| 
+LUN14
+ a| 
+ a| 
+ a| 
+33619968
+ a| 
+0
+
+
+
+ a| 
+LUN15
+ a| 
+ a| 
+ a| 
+33619968
+ a| 
+0
+
+|===

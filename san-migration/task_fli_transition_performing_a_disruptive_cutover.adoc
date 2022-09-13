@@ -1,0 +1,73 @@
+---
+permalink: san-migration/task_fli_transition_performing_a_disruptive_cutover.html 
+sidebar: sidebar 
+keywords: perform, disruptive, cutover, fli 7-mode, ontap 
+summary: Dieses Beispiel enthält die allgemeinen Schritte zur Durchführung einer disruptive Umstellung für den FLI-Übergangsprozess. 
+---
+= Durchführen einer disruptive Umstellung von FLI 7-Mode auf ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dieses Beispiel enthält die allgemeinen Schritte zur Durchführung einer disruptive Umstellung für den FLI-Übergangsprozess.
+
+Eine Anleitung zur Host-Fehlerbehebung für Windows-, Linux- und ESXi-Hosts finden Sie in den entsprechenden Themen in diesem Handbuch sowie in der Dokumentation zum Host-Betriebssystem und Host-Attached-Kit.
+
+.Schritte
+. Zeigen Sie auf dem 7-Mode System die Initiatorgruppe an, der die Quell-LUN zugeordnet ist.
++
+[listing]
+----
+stme-7ma> igroup show
+    FLI_on_fcp (FCP) (ostype: windows):
+        10:00:00:00:c9:e6:e2:79 (logged in on: 0c, vtic)
+        50:0a:09:81:00:96:43:70 (logged in on: 0c, vtic)
+        50:0a:09:81:00:96:3c:f0 (logged in on: 0c, vtic)
+----
++
+[NOTE]
+====
+Die Störung beginnt sofort, nachdem der Befehl „unmap“ ausgeführt wurde. Im Allgemeinen lässt sich das Unterbrechungsfenster in wenigen Minuten messen. Es dauert buchstäblich die Zeit, den Host zum neuen NetApp Ziel zu verschieben und nach LUNs zu suchen.
+
+====
+. Wenn sich die zu importierenden LUNs auf ESXi-Hosts befinden, prüfen und befolgen Sie die Anweisungen im Thema _ESXi CAW/ATS Remediation_.
+. Verwenden Sie die `unmap` Befehl, um die LUN von ihren Hosts zu verschieben. (Das Unterbrechungsfenster beginnt hier.)
++
+[listing]
+----
+stme-7ma> igroup remove -f FLI_on_fcp 10:00:00:00:c9:e6:e2:79
+----
+. Vergewissern Sie sich, dass die Host-Initiatoren nicht mehr vorhanden sind.
++
+[listing]
+----
+stme-7ma> igroup show
+    FLI_on_fcp (FCP) (ostype: windows):
+        50:0a:09:81:00:96:43:70 (logged in on: 0c, vtic)
+        50:0a:09:81:00:96:3c:f0 (logged in on: 0c, vtic)
+----
+. Versetzen Sie auf dem ONTAP Cluster die Ziel-LUN in den Online-Modus, und vergewissern Sie sich, dass sie zugeordnet ist.
++
+[listing]
+----
+cluster::*> lun online -vserver fli_72C -path /vol/flivol/72Clun1
+
+cluster::*> lun show -path /vol/flivol/72Clun1
+Vserver   Path                            State   Mapped   Type        Size
+--------- ------------------------------- ------- -------- -------- --------
+fli_72C   /vol/flivol/72Clun1             online  mapped   windows_2008
+                                                                      3.00GB
+----
+. Festplatten werden auf dem Host neu gescannt. Suchen Sie die LUN auf dem ONTAP Ziel.
++
+[NOTE]
+====
+Das Unterbrechungsfenster endet hier.
+
+====
++
+Die LUNs sind online und zugeordnet, und Hosts mounten nun die neue gehostete ONTAP LUN. Lesezugriffe werden durch das ONTAP Array an die Quell-LUN weitergeleitet, und Schreibzugriffe werden sowohl auf die neue gehostete ONTAP LUN als auch auf die ursprüngliche Quell-LUN geschrieben. Sowohl die Quell- als auch die Ziel-LUNs bleiben synchron, bis die Migration abgeschlossen ist und die LUN-Beziehung unterbrochen wurde.
+
+

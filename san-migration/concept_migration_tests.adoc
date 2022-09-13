@@ -1,0 +1,14 @@
+---
+permalink: san-migration/concept_migration_tests.html 
+sidebar: sidebar 
+keywords: migration, tests 
+summary: Sie sollten eine oder mehrere Testmigrationen durchführen, um zu überprüfen, ob Ihre Arrays, Switches und Hosts ordnungsgemäß konfiguriert sind. Außerdem sollten Sie mehrere Muster erhalten, die aus extrapoliert werden können, um die Migrationsdauer und den Aufwand zu bestimmen. 
+---
+= Migrationstests
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten eine oder mehrere Testmigrationen durchführen, um zu überprüfen, ob Ihre Arrays, Switches und Hosts ordnungsgemäß konfiguriert sind. Außerdem sollten Sie mehrere Muster erhalten, die aus extrapoliert werden können, um die Migrationsdauer und den Aufwand zu bestimmen.

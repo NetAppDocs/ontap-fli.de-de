@@ -1,0 +1,297 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_lun_details_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, lun details tab 
+summary: Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zu Ihren LUN-Details verfügen. 
+---
+= Registerkarte „LUN-Details“ im Arbeitsblatt für Standortbefragungen und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zu Ihren LUN-Details verfügen.
+
+Das folgende Beispiel zeigt, wie Sie die Registerkarte „LUN-Details“ einrichten.
+
+|===
+5+| LUN-Details 
+
+
+ a| 
+Quelle
+
+
+
+ a| 
+Host-Name
+ a| 
+Storage Group Zur Verfügung
+ a| 
+Betriebssystem
+ a| 
+Cluster
+ a| 
+Storage Controller
+
+
+
+ a| 
+dm-rx200s6-21
+ a| 
+dm-rx200s6-21
+ a| 
+Microsoft Windows Server 2012 R2 Datacenter
+ a| 
+Nein
+ a| 
+AMS2100
+
+
+
+ a| 
+dm-rx200s6-22
+ a| 
+dm-rx200s6-22
+ a| 
+Red hat Enterprise Linux Server Version 5.10
+ a| 
+Nein
+ a| 
+AMS2100
+
+
+
+ a| 
+dm-rx200s6-20
+ a| 
+dm-rx200s6-20
+ a| 
+ESXi 5.5.0 Build 1331820
+ a| 
+Nein
+ a| 
+AMS2100
+
+
+
+ a| 
+dm-rx200s6-20
+ a| 
+dm-rx200s6-20
+ a| 
+ESXi 5.5.0 Build 1331820
+ a| 
+Nein
+ a| 
+AMS2100
+
+|===
+|===
+5+| LUN-Details 
+
+
+ a| 
+Quelle
+
+
+
+ a| 
+Bereitstellungspunkt
+ a| 
+Nummer Des Physischen Laufwerks
+ a| 
+Port
+ a| 
+Bus
+ a| 
+Ziel
+
+
+
+ a| 
+C:
+ a| 
+PHYSISCHESLAUFWERK0
+ a| 
+2
+ a| 
+0
+ a| 
+0
+
+
+
+ a| 
+/
+ a| 
+sda
+ a| 
+0
+ a| 
+0
+ a| 
+0
+
+
+
+ a| 
+BootLUN_Datastore
+ a| 
+naa.60060e801046b96004f2bf46000014
+ a| 
+0
+ a| 
+0
+ a| 
+0
+
+
+
+ a| 
+VM_Datenspeicher
+ a| 
+naa.60060e801046b96004f2bf46000015
+ a| 
+0
+ a| 
+0
+ a| 
+0
+
+|===
+|===
+5+| LUN-Details 
+
+
+ a| 
+Quelle
+
+
+
+ a| 
+LUN
+ a| 
+PG80 SN
+ a| 
+PG83 SN/UID
+ a| 
+LUN-Größe (GB)
+ a| 
+Offset Wird Gestartet
+
+
+
+ a| 
+0
+ a| 
+ a| 
+60060e801046b96004f2bf4600001e
+ a| 
+40
+ a| 
+0
+
+
+
+ a| 
+0
+ a| 
+ a| 
+60060e801046b96004f2bf46000010
+ a| 
+20
+ a| 
+
+
+
+ a| 
+0
+ a| 
+ a| 
+60060e801046b96004f2bf46000014
+ a| 
+20
+ a| 
+
+
+
+ a| 
+1
+ a| 
+ a| 
+60060e801046b96004f2bf46000015
+ a| 
+40
+ a| 
+
+|===
+|===
+5+| LUN-Details 
+
+
+ a| 
+Quelle
+
+
+
+ a| 
+LUN-Typ
+ a| 
+Ausgerichtet
+ a| 
+Benutzerdefiniertes Präfix (Blöcke)
+ a| 
+Benutzerdefiniertes Präfix (Bytes)
+ a| 
+
+
+
+ a| 
+windows
+ a| 
+Ausgerichtet
+ a| 
+0
+ a| 
+0
+ a| 
+
+
+
+ a| 
+linux
+ a| 
+Ausgerichtet
+ a| 
+0
+ a| 
+0
+ a| 
+
+
+
+ a| 
+vmware
+ a| 
+Ausgerichtet
+ a| 
+0
+ a| 
+0
+ a| 
+
+
+
+ a| 
+vmware
+ a| 
+Ausgerichtet
+ a| 
+0
+ a| 
+0
+ a| 
+
+|===

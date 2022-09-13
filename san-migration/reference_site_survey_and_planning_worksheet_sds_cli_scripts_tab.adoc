@@ -1,0 +1,218 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_sds_cli_scripts_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, sds cli scripts tab 
+summary: Als Teil Ihres Arbeitsblatts für Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren SDS-CLI-Skripten enthält. 
+---
+= Registerkarte SDS-CLI-Skripts für die Site-Umfrage und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts für Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren SDS-CLI-Skripten enthält.
+
+Das folgende Beispiel zeigt, wie Sie die Registerkarte SDS-CLI-Skripts einrichten.
+
+|===
+| Controller 1 | Controller 2 
+
+
+ a| 
+vol Größe vol0 aggr0 108g
+ a| 
+
+
+
+ a| 
+Snap Reserve bootcampvol 0
+ a| 
+
+
+
+ a| 
+Snap-Reserve vol0 20
+ a| 
+
+
+
+ a| 
+Snap Autodelete Bootcampvol auf
+ a| 
+
+
+
+ a| 
+Snap Autodelete Bootcampvol Einsatz versuchen
+ a| 
+
+
+
+ a| 
+Snap Autodelete Bootcampvol Trigger Volume
+ a| 
+
+
+
+ a| 
+Snap Autodelete bootcampvol target_free_space 20
+ a| 
+
+
+
+ a| 
+Snap Autodelete bootcampvol reverate_delete user_created
+ a| 
+
+
+
+ a| 
+Snap Autodelete vol0 auf
+ a| 
+
+
+
+ a| 
+Snap Autodelete vol0 Engagement try
+ a| 
+
+
+
+ a| 
+Snap Autodelete vol0 Trigger Volume
+ a| 
+
+
+
+ a| 
+Snap Autodelete vol0 Target_free_space 20
+ a| 
+
+
+
+ a| 
+Snap Autodelete vol0 reverate_delete user_created
+ a| 
+
+
+
+ a| 
+vol Autosize Bootcampvol auf
+ a| 
+
+
+
+ a| 
+vol. Autosize vol0 auf
+ a| 
+
+
+
+ a| 
+vol Optionen bootcampvol try_first Volume_Grow
+ a| 
+
+
+
+ a| 
+vol Optionen bootcampvol fractional_Reserve 100
+ a| 
+
+
+
+ a| 
+vol Optionen vol0 try_first Volume_Grow
+ a| 
+
+
+
+ a| 
+vol Optionen vol0 Fractional_Reserve 100
+ a| 
+
+
+
+ a| 
+Qtree-Sicherheit /vol/Bootcampvol unix
+ a| 
+
+
+
+ a| 
+Qtree-Sicherheit /vol/vol0 ntfs
+ a| 
+
+
+
+ a| 
+Snap sched Bootcampvol 0 0 0
+ a| 
+
+
+
+ a| 
+Snap sched vol0 0 2 6@8,12,16,20
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/qavol_narayan/testlun übersprungen, da die LUN keiner Initiatorgruppe zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm25_Boot_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm25_data1_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm25_data2_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm26_Boot_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm26_data1_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm26_data2_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm27_Boot_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm27_data1_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+
+
+ a| 
+#LUN-Zuordnung für /vol/bootcampvol/dm27_data2_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.
+ a| 
+
+|===

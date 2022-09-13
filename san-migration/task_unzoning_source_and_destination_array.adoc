@@ -1,0 +1,90 @@
+---
+permalink: san-migration/task_unzoning_source_and_destination_array.html 
+sidebar: sidebar 
+keywords: unzone, source, destination, array 
+summary: Nach Abschluss aller Migrationen, Übergänge und Überprüfungen können Quell- und Ziel-Arrays entenzonen werden. 
+---
+= Aufheben des Zoning von Quell- und Ziel-Array
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach Abschluss aller Migrationen, Übergänge und Überprüfungen können Quell- und Ziel-Arrays entenzonen werden.
+
+Um Quell- und Ziel-Arrays zu entzonen zu lassen, entfernen Sie den Quell-Storage von beiden Fabrics in die Zielzone.
+
+Beispiel: Brocade Fabric
+
+.Schritte
+. Entfernen Sie die Zone aus dem Zoneet in Stoff A
++
+[listing]
+----
+cfgDelete "PROD_LEFT", "ZONE_AMS2100_cDOT_Initiator_fabA"
+zoneDelete "ZONE_AMS2100_cDOT_Initiator_fabA"
+----
+. Aktivieren Sie die Zoneets in Stoff A.
++
+[listing]
+----
+cfgEnable "PROD_LEFT"
+cfgSave
+----
+. Entfernen Sie die Zone aus dem Zoneet in Stoff B.
++
+[listing]
+----
+cfgDelete "PROD_RIGHT", "ZONE_AMS2100_cDOT_Initiator_fabB"
+zoneDelete "ZONE_AMS2100_cDOT_Initiator_fabA"
+----
+. Aktivieren Sie die Zoneets in Stoff B.
++
+[listing]
+----
+cfgEnable "PROD_RIGHT"
+cfgSave
+----
+
+
+Beispiel für Cisco Fabric
+
+.Schritte
+. Entfernen Sie die Zone aus dem Zoneet in Stoff A
++
+[listing]
+----
+conf t
+zoneset name PROD_LEFT vsan 10
+no member ZONE_AMS2100_cDOT_Initiator_fabA
+no zone name ZONE_AMS2100_cDOT_Initiator_fabA vsan 10
+exit
+----
+. Aktivieren Sie die Zoneets in Stoff A.
++
+[listing]
+----
+zoneset activate name PROD_LEFT vsan 10
+end
+copy running-config startup-config
+----
+. Entfernen Sie die Zone aus dem Zoneet in Stoff B.
++
+[listing]
+----
+conf t
+zoneset name PROD_RIGHT vsan 10
+no member ZONE_AMS2100_cDOT_Initiator_fabB
+no zone name ZONE_AMS2100_cDOT_Initiator_fabB vsan 10
+exit
+----
+. Aktivieren Sie die Zoneets in Stoff B.
++
+[listing]
+----
+zoneset activate name PROD_RIGHT vsan 10
+end
+Copy running-config startup-config
+----
+

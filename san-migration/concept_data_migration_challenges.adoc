@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_data_migration_challenges.html 
+sidebar: sidebar 
+keywords: data, migration, challenges 
+summary: Einige der Herausforderungen, die bei der Datenmigration auftreten, sind längere Ausfallzeiten, potenzielle Risiken, knappe Ressourcen und unzureichendes Know-how. 
+---
+= Herausforderungen bei der Datenmigration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Einige der Herausforderungen, die bei der Datenmigration auftreten, sind längere Ausfallzeiten, potenzielle Risiken, knappe Ressourcen und unzureichendes Know-how.
+
+Anforderungen an die Datenverfügbarkeit werden immer anspruchsvoller und Ausfallzeiten sind inakzeptabel, weil Geschäftsprozesse den Datenmigrationsprozess vorantreiben. Risikofaktoren wie die Auswirkungen auf die Performance auf Produktionssysteme, potenzielle Datenbeschädigung und -Verlust sind bei jeder Datenmigration ein Problem.

@@ -1,0 +1,16 @@
+---
+permalink: san-migration/concept_prepare_hosts_for_fli_offline_migration.html 
+sidebar: sidebar 
+keywords: prepare, hosts, fli, offline, migration 
+summary: Die Offline-Ausführungsphase zum FLI umfasst die Vorbereitung von Migrations-Hosts. 
+---
+= Hosts für die Offline-Migration von FLI vorbereiten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Offline-Ausführungsphase zum FLI umfasst die Vorbereitung von Migrations-Hosts.
+
+In vielen Fällen ist es möglich, diese Korrektur vor diesem Schritt durchzuführen. Falls nicht, führen Sie hier Probleme mit dem Host durch, wie z. B. das Installieren von Host-Anschluss-Kits oder DSMs. Aus der Analysephase haben Sie eine Lückenliste mit Elementen, die auf jedem Host ausgeführt werden müssen, damit dieser Host in einer unterstützten Konfiguration mit ONTAP sein kann. Je nach Art der Migration wird entweder der Host repariert und dann neu gestartet (online FLI/7-Mode zu ONTAP FLI) oder er würde repariert und dann heruntergefahren, bis der Migrationsprozess abgeschlossen ist (offline FLI).

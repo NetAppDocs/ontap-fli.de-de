@@ -1,0 +1,30 @@
+---
+permalink: san-migration/concept_physical_wiring_requirements_for_fli.html 
+sidebar: sidebar 
+keywords: physical, wiring, requirements, fli 
+summary: FLI hat die gleichen Verkabelungsanforderungen wie NetApp FlexArray. NetApp Storage Initiator-Ports sind mit dem Fabric verbunden, wo Quell-Storage-Ziel-Ports verbunden sind. Befolgen Sie die Best Practices von FlexArray, während Sie die Verbindung von Quell-Storage mit NetApp Storage herstellen. 
+---
+= Anforderungen an die physische Verkabelung von FLI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FLI hat die gleichen Verkabelungsanforderungen wie NetApp FlexArray. NetApp Storage Initiator-Ports sind mit dem Fabric verbunden, wo Quell-Storage-Ziel-Ports verbunden sind. Befolgen Sie die Best Practices von FlexArray, während Sie die Verbindung von Quell-Storage mit NetApp Storage herstellen.
+
+Die während der Migration verwendeten Storage Arrays müssen von jedem Controller (in Gebrauch) in beiden Fabrics einen primären Pfad aufweisen. Das bedeutet, dass sich das Quell-Array und die zu migrierenden Ziel-Array-Nodes in einer gemeinsamen Zone auf beiden Fabrics befinden müssen. Andere Controller müssen nicht zum NetApp Cluster hinzugefügt werden, sondern nur die, die tatsächlich LUNs importieren/migrieren. Sie können zwar indirekte Pfade für die Migration verwenden, aber es empfiehlt sich, aktive/optimierte Pfade zwischen den Quell- und Ziel-Arrays zu verwenden. Die folgende Abbildung zeigt, dass sowohl der HDS AMS2100- als auch der NetApp ONTAP-Storage über einen primären (aktiven) Pfad in beiden Fabrics verfügen.
+
+Diese Abbildung zeigt eine Speicherverkabelung für zwei Fabrics.
+
+image::../media/physical_wiring_1.png[Physische Verkabelung 1]
+
+Befolgen Sie die folgenden Best Practices für die Verkabelung:
+
+* Verwenden Sie die FlexArray Best Practices von NetApp für die Verkabelung von Quell- und Ziel-Storage, wie im _Installationsvoraussetzungen und Referenzhandbuch für die FlexArray-Virtualisierung erläutert.
+* ONTAP Storage erfordert kostenlose Initiator-Ports für die Verbindung zum Fabric. Konfigurieren Sie Initiator-Ports, wenn freie Ports nicht vorhanden sind.
+
+
+*Verwandte Informationen*
+
+https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"]

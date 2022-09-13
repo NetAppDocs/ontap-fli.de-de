@@ -1,0 +1,36 @@
+---
+permalink: san-migration/reference_site_survey_and_planning_worksheet_contacts_tab.html 
+sidebar: sidebar 
+keywords: site, survey and planning worksheet, contacts tab 
+summary: Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie eine Registerkarte einrichten, die Kontaktinformationen für das Migrationsprojekt enthält. 
+---
+= Registerkarte Kontakte im Arbeitsblatt zur Standortbefragung und -Planung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie eine Registerkarte einrichten, die Kontaktinformationen für das Migrationsprojekt enthält.
+
+Im Folgenden finden Sie ein Beispiel zum Einrichten der Registerkarte Kontakte.
+
+[cols="6*"]
+|===
+6+| Kontaktinformationen Für Das Migrationsprojekt 
+
+
+ a| 
+Ressourcenname
+ a| 
+Organisation
+ a| 
+Projektrolle
+ a| 
+Telefon (Geschäftlich
+ a| 
+Mobiltelefon
+ a| 
+E-Mail
+
+|===
