@@ -21,10 +21,6 @@ image::../media/physical_wiring_1.png[Physische Verkabelung 1]
 
 Befolgen Sie die folgenden Best Practices für die Verkabelung:
 
-* Verwenden Sie die FlexArray Best Practices von NetApp für die Verkabelung von Quell- und Ziel-Storage, wie im _Installationsvoraussetzungen und Referenzhandbuch für die FlexArray-Virtualisierung erläutert.
+* Verwenden Sie die NetApp FlexArray Best Practices für die Verkabelung von Quell- und Ziel-Storage, wie unter erläutert https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Installationsanforderungen für die FlexArray Virtualisierung"].
 * ONTAP Storage erfordert kostenlose Initiator-Ports für die Verbindung zum Fabric. Konfigurieren Sie Initiator-Ports, wenn freie Ports nicht vorhanden sind.
 
-
-*Verwandte Informationen*
-
-https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"]

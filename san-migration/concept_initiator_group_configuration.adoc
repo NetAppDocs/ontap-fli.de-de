@@ -30,8 +30,4 @@ Initiatorgruppen werden abhängig vom Anbieter und Produkt unterschiedlich benan
 
 Unabhängig von der Nomenklatur dient eine Initiatorgruppe dazu, Initiatoren anhand von WWPNs zu identifizieren, die dieselben LUN-Zuordnungen verwenden.
 
-Lesen Sie zum Definieren von Initiatorgruppen in der Array-Dokumentation, wie Sie LUN-Maskierung einrichten (Initiatorgruppen/Host-Gruppen/Storage-Gruppen usw.). Lesen Sie sich außerdem den _FlexArray Implementierungsleitfaden für Storage-Lösungen von Drittanbietern_ für die Anforderungen an die Storage-Konfiguration von Drittanbietern.
-
-*Verwandte Informationen*
-
-https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["FlexArray Virtualisierungs-Implementierung für Storage von Drittanbietern"]
+Lesen Sie zum Definieren von Initiatorgruppen in der Array-Dokumentation, wie Sie LUN-Maskierung einrichten (Initiatorgruppen/Host-Gruppen/Storage-Gruppen usw.). Sie können auch die überprüfen https://docs.netapp.com/us-en/ontap-flexarray/implement-third-party/index.html["FlexArray Virtualisierungs-Implementierung für Storage von Drittanbietern"] Für die Storage-Konfigurationsanforderungen von Drittanbietern.

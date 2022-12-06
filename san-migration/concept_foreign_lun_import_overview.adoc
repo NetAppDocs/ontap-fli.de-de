@@ -13,7 +13,7 @@ summary: 'Der Import fremder LUNs (Foreign LUN Import, FLI) ist eine in ONTAP in
 [role="lead"]
 Der Import fremder LUNs (Foreign LUN Import, FLI) ist eine in ONTAP integrierte Funktion, mit der Anwender Daten von LUNs aus dem Ausland einfach und effizient in NetApp LUNs importieren können.
 
-Alle FLI-Migrationen erfolgen auf LUN-Ebene. FLI ist ein rein Block-basiertes Tool. Dateien, Datensätze, NFS und CIFS-basierte Migrationen werden nicht unterstützt. Weitere Migrationsmethoden für File-Level-Protokolle wie NFS und CIFS/SMB finden Sie in der Kurzübersicht „_Data Migration Tools Quick Reference Guide_“.
+Alle FLI-Migrationen erfolgen auf LUN-Ebene. FLI ist ein rein Block-basiertes Tool. Dateien, Datensätze, NFS und CIFS-basierte Migrationen werden nicht unterstützt. Weitere Migrationsmethoden für File-Level-Protokolle wie NFS und CIFS/SMB finden Sie im Dokument https://library.netapp.com/ecm/ecm_get_file/ECMP12363719["Kurzübersicht Zu Datenmigrations-Tools"].
 
 FLI nutzt die NetApp FlexArray Technologie, um die LUNs fremder RAID-Arrays zu erkennen und Daten daraus zu ziehen. Dank FlexArray kann ein NetApp ONTAP Controller als Initiator vor einem oder mehreren Drittanbieter-Arrays fungieren. FlexArray kann LUNs von diesen Arrays als Back-End Storage einbinden und dann den Speicherplatz dieser LUNs als NetApp Unified Storage (über den FCP-, FCoE-, iSCSI-, NFS- und CIFS-/SMB-Protokollzugriff) für Hosts in Ihrer SAN- oder NAS-Umgebung bereitstellen.
 
@@ -30,7 +30,7 @@ Darüber hinaus ermöglicht das Umstiegsverfahren von 7-Mode auf ONTAP den Umsti
 
 FLI ermöglicht den NetApp Storage das Erkennen der LUNs, die für die Datenmigration importiert werden sollen. Die fremden LUNs werden als Festplatten im NetApp Storage angezeigt und ihr keine Eigentumsrechte automatisch zugewiesen, sodass die Benutzerdaten nicht versehentlich überschrieben werden. Die Festplatten, die LUNs für Fremdarrays enthalten, müssen als „fremd“ gekennzeichnet werden. Die Regeln für die Konfiguration von LUNs fremder Arrays müssen strikt eingehalten werden, um FLI für NetApp Storage zu nutzen. Siehe das Thema, xref:concept_lun_requirements_and_limitations.adoc[LUN-Anforderungen und -Einschränkungen].
 
-FLI erfordert mindestens einen physischen FC Port auf jedem Controller und LUNs direkt im Initiatormodus. Es werden zwei Ports bevorzugt, einen Port für jede Fabric. Ein Port kann jedoch verwendet werden. Diese Ports werden verwendet, um eine Verbindung zum Quell-Array herzustellen, und müssen begrenzt und maskiert werden, damit die Quell-LUNs angezeigt und gemountet werden können. Wenn Sie einen Port von Ziel zu Initiator ändern müssen, lesen Sie im _FlexArray Installationsvoraussetzungen und Referenzhandbuch_ die Vorgehensweise beim Konvertieren eines FC-Ports von Ziel zu Initiator.
+FLI erfordert mindestens einen physischen FC Port auf jedem Controller und LUNs direkt im Initiatormodus. Es werden zwei Ports bevorzugt, einen Port für jede Fabric. Ein Port kann jedoch verwendet werden. Diese Ports werden verwendet, um eine Verbindung zum Quell-Array herzustellen, und müssen begrenzt und maskiert werden, damit die Quell-LUNs angezeigt und gemountet werden können. Wenn Sie einen Port von Ziel zu Initiator ändern müssen, finden Sie unter https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"] Für eine Überprüfung des Prozesses der Konvertierung eines FC-Ports von Ziel zu Initiator.
 
 FLI-Migrationen können entweder offline durchgeführt werden, wodurch Abläufe für die Dauer des Imports unterbrochen werden oder online, was hauptsächlich unterbrechungsfrei ist.
 
@@ -41,9 +41,3 @@ image::../media/foreign_lun_import_overview_1.png[FLI Datenmigration – Übersi
 Diese Abbildung zeigt eine FLI Online-Datenmigration. Der Host ist mit dem NetApp Controller verbunden, wo die neue LUN jetzt gehostet wird. Der Host-Betrieb kann dann während des Imports fortgesetzt und fortgesetzt werden.
 
 image::../media/foreign_lun_import_overview_2.png[FLI Datenmigration – Übersicht]
-
-*Verwandte Informationen*
-
-https://library.netapp.com/ecm/ecm_get_file/ECMP12363719["Kurzübersicht Zu Datenmigrations-Tools"]
-
-https://docs.netapp.com/us-en/ontap-flexarray/install/index.html["Installationsanforderungen für FlexArray Virtualisierung und Referenz"]

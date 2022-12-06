@@ -11,9 +11,9 @@ summary: Dies ist das zweite der vier Beispiele für FLI-Workflows, die die FLI-
 
 
 [role="lead"]
-Dies ist das zweite der vier Beispiele für FLI-Workflows, die die FLI-Online-Migration umfassen.
+Dies ist das zweite der vier Beispiele für FLI-Workflows, die die FLI-Online-Migration umfassen. Das Quell-Array in diesem Beispiel ist eine EMC VNX5500.
 
-Das Quell-Array in diesem Beispiel ist eine EMC VNX5500. Das vorliegende Beispiel sollte einen gründlichen Rundgang durch den FLI Online-Prozess geben und ist darauf ausgelegt, mit den gemeinsamen Informationen und Prozessen zu arbeiten, die in früheren Teilen dieses Leitfadens besprochen wurden. Der Online-Workflow hat folgende Aufgaben:
+Der Online-Workflow hat folgende Aufgaben:
 
 . Vorbereiten des LUN-Pfads
 . Durchführen einer disruptiven Umstellung
