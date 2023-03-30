@@ -18,12 +18,12 @@ Dies sind die Schritte zum Importieren der Daten aus der Quell-LUN in die Ziel-L
 +
 [listing]
 ----
-cluster::*> lun import start -vserver fli_72C -path /vol/flivol/72Clun1
+cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
 ----
 . FLI-Status anzeigen.
 +
 [listing]
 ----
-cluster::*> lun import show -vserver fli_72C -path /vol/flivol/72Clun1
+cluster::*> lun import start -vserver fli -path /vol/fli_vol/OnlineFLI_LUN
 ----
 
