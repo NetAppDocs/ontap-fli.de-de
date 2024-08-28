@@ -1326,4 +1326,7 @@
   <block id="6c98897f95672b5dde701dffbd4b05a0" category="paragraph">Lesen Sie zum Definieren von Initiatorgruppen in der Array-Dokumentation, wie Sie LUN-Maskierung einrichten (Initiatorgruppen/Host-Gruppen/Storage-Gruppen usw.). Sie können auch prüfen<block ref="737823659babb212ffbc8948b616644f" category="inline-link-rx"></block> Für die Storage-Konfigurationsanforderungen von Drittanbietern.</block>
   <block id="29b512fbc4379581cd2fd8694ca529c4" category="inline-link-macro">Verwenden von Windows Server 2022 mit ONTAP</block>
   <block id="82e292bca3bfc1c57dd6f3dc796412a0" category="paragraph">Schritt-für-Schritt-Anweisungen für Windows-Hosts finden Sie im Abschnitt Multipathing von <block ref="cce832a1ed6f79df8eb06042aeeb6d79" category="inline-link-macro-rx"></block>.</block>
+  <block id="9a4c1be88c2720ce2a1f8a5fd2b27a5c" category="sidebar">FLI-Workflows</block>
+  <block id="9661e4f0a38203cee0d0ec82dcba896f" category="sidebar">Offline-Workflow</block>
+  <block id="afec4ed45e968a4fe6c00ed1c1e83691" category="sidebar">Online-Workflow</block>
 </blocks>
