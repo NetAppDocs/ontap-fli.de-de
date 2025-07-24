@@ -1,11 +1,13 @@
 ---
-permalink: reference_legal_notices.html 
+permalink: legal-notices.html 
 sidebar: sidebar 
 keywords: legal, notices, copyright, trademarks, patents 
 summary: Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken, Patente und mehr. 
 ---
 = Rechtliche Hinweise
 :allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
 
 
 Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken, Patente und mehr.

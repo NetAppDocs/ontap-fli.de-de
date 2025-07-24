@@ -15,7 +15,7 @@ Die Überprüfungsphase des Migrationsprozesses konzentriert sich auf die Berein
 
 Die folgende Abbildung zeigt den Verify Phase Workflow.
 
-image::../media/verify_phase_1.png[Phase 1 überprüfen]
+image::../media/verify_phase_1.png[Workflow der Migrationsüberprüfungsphase]
 
 Die Tasks der Phase überprüfen sind in der folgenden Tabelle aufgeführt.
 

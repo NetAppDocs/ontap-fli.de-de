@@ -21,4 +21,4 @@ Der Abschnitt „von NetApp empfohlen“ im Abschnitt „Hosts“ Ihres Arbeitsb
 
 Im Folgenden finden Sie einen Beispiel für einen Bericht zur Lückenanalyse.
 
-image::../media/create_the_gap_analysis_report_1.png[Erstellen Sie den GAP-Analysebericht 1]
+image::../media/create_the_gap_analysis_report_1.png[Beispiel für einen Lückenanalysebericht]

@@ -1,0 +1,27 @@
+---
+permalink: san-migration/prepare-host-online-migration.html 
+sidebar: sidebar 
+keywords: reboot, hosts, fli, online migration, prepare 
+summary: Bevor Sie mit einer FLI-Offlinemigration beginnen, sollten Sie alle zur Host-Sanierung erforderlichen Schritte durchführen. Anschließend sollten Sie Ihre Hosts neu starten und überprüfen, ob Host-Multipathing richtig konfiguriert ist. 
+---
+= Vorbereiten der Hosts für die ONTAP FLI-Onlinemigration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie mit der Online-Migration eines Foreign LUN Import (FLI) beginnen, sollten Sie alle in der Analysephase identifizierten Schritte zur Host-Sanierung durchführen, z. B. die Installation von Host Attach Kits oder DSMs. Nach der Durchführung der erforderlichen Sanierungsschritte wird ein Neustart der Hosts empfohlen.
+
+.Bevor Sie beginnen
+Erstellen Sie vorsichtshalber eine Snapshot-Kopie Ihrer Hostdaten, um bei Bedarf später eine Wiederherstellung zu ermöglichen.
+
+.Schritte
+. Führen Sie alle erforderlichen Schritte zur Host-Sanierung durch.
+. Fahren Sie alle offenen Anwendungen herunter.
+. Starten Sie den Host neu.
+. Überprüfen Sie die Protokolle auf Fehler.
+
+
+.Wie geht es weiter?
+link:create-lun-import-relationship-online.html["Erstellen der LUN-Importbeziehung"] .

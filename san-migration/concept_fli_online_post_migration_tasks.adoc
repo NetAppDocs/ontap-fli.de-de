@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli, online, post-migration, tasks 
 summary: Jegliche Server-Korrekturmaßnahmen, die nicht vor der Migration durchgeführt werden, werden während der Nachbearbeitung durchgeführt. 
 ---
-= FLI Online-Aufgaben nach der Migration
+= Führen Sie ONTAP FLI-Onlineaufgaben nach der Migration durch
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

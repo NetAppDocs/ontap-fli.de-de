@@ -1,23 +1,50 @@
 ---
 permalink: san-migration/concept_fli_offline_workflow.html 
-redirect: ontap-fli/san-migration/task_rebooting_the_host_to_validate_system_state.html 
 sidebar: sidebar 
 keywords: fli, offline, workflow 
-summary: Dieser Abschnitt enthält ein Beispiel für den FLI-Offline-Workflow, einen der vier FLI-Workflows. 
+summary: Bei einer FLI-Offline-Migration wird das Client-System während der Datenmigration vom Fremdspeicher-Array eines Drittanbieters zum NetApp -Speichersystem offline genommen. 
 ---
-= FLI-Offline-Workflow
+= Zusammenfassung des Workflows für die Offline-Migration von ONTAP FLI
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-Dieser Abschnitt enthält ein Beispiel für den FLI-Offline-Workflow, einen der vier FLI-Workflows.
+Eine Foreign LUN Import (FLI)-Datenmigration umfasst mehrere wichtige Schritte, um eine erfolgreiche Datenmigration von Drittanbieter-Speicher-Arrays auf NetApp -Speichersysteme sicherzustellen. FLI unterstützt Offline- und Online-Migrationen. Bei einer FLI-Offline-Migration wird das Clientsystem während der Datenmigration vom Drittanbieter-Speicher-Array zum NetApp -Speichersystem offline geschaltet.
 
-In diesem Workflow wird ein HDS AMS2100-Array als Quell-Array verwendet. Der Offline-Workflow umfasst die folgenden Aufgaben:
+.Bevor Sie beginnen
+* Sie sollten den link:concept_migration_discover_phase_workflow.html["Entdeckung"] , link:concept_migration_analyze_phase_workflow.html["Analyse"] , Und link:concept_migration_plan_phase_workflow.html["Planung"] Phasen des Migrationsprozesses.
+* Du solltest link:configure-fc-adapter-initiator.html["Konfigurieren Sie Ihre FC-Adapter für den Initiatormodus"] .
+* Du solltest link:concept_target_and_initiator_port_zoning.html["Zonen Sie Ihre Zielports für das Fremdarray mit den Ports des ONTAP Speicherinitiators"] .
 
-. Vorbereitung auf die Umstellung
-. Daten werden importiert
-. Überprüfen der Migrationsergebnisse (optional)
-. FLI-Offline-Aufgaben nach der Migration
 
+Der FLI-Offline-Workflow umfasst die Vorbereitung der Hosts und fremden LUNs für den Import, das Erstellen der LUN-Importbeziehung und das Importieren der Daten.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"]link:prepare-host-offline-migration.html["Bereiten Sie Ihren Host vor"] .
+[role="quick-margin-para"]
+Bevor Sie eine FLI-Offlinemigration durchführen, sollten Sie Ihre Hosts neu starten und die Multipathing-Konfiguration Ihres Hosts überprüfen.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"]link:prepare-foreign-lun-offline.html["Vorbereiten Ihrer fremden LUNs"] .
+[role="quick-margin-para"]
+Beim Offline-Migrationsprozess von FLI müssen Sie von Ihrem Fremd-Array aus manuelle Schritte ausführen, um die Fremdquell-LUN dem ONTAP Speichersystem zu präsentieren. Anschließend müssen Sie weitere manuelle Schritte ausführen, um die Fremdquell-LUN auf dem ONTAP -Speichersystem zu ermitteln.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drei"]link:create-lun-import-relationship-offline.html["Erstellen der LUN-Importbeziehung"] .
+[role="quick-margin-para"]
+Das Erstellen der LUN-Importbeziehung für FLI-Offlinemigrationen umfasst das Identifizieren der Quell-Array-LUNs als fremd in ONTAP, das Erstellen und Konfigurieren des Zielvolumes zur Aufnahme der fremden LUNs, das Erstellen von Ziel-LUNs und schließlich das Herstellen der Importbeziehung.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Vier"]link:task_fli_offline_importing_the_data.html["Importieren von LUN-Daten aus dem Fremd-Array"] .
+[role="quick-margin-para"]
+Verwenden Sie FLI, um LUN-Daten aus dem Fremd-Array zu importieren.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Fünf"]link:task_fli_offline_verifying_migration_results.html["Überprüfen der Migrationsergebnisse"] .
+[role="quick-margin-para"]
+Führen Sie einen Block-für-Block-Vergleich der Quell- und Ziel-LUNs durch, um sicherzustellen, dass die Migration vollständig und korrekt ist.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Sechs"]link:remove-lun-import-relationship-offline.html["Entfernen der LUN-Importbeziehung"] .
+[role="quick-margin-para"]
+Nachdem die FLI-Offlinemigration abgeschlossen ist, kann die LUN-Importbeziehung sicher entfernt werden.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sieben"]link:concept_fli_offline_post_migration_tasks.html["Ausführen von Aufgaben nach der Migration"] .
+[role="quick-margin-para"]
+Überprüfen Sie die Protokolle auf Fehler, überprüfen Sie die Multipathing-Konfiguration Ihres Hosts und führen Sie Anwendungstests durch, um sicherzustellen, dass Ihre Migration erfolgreich abgeschlossen wurde.

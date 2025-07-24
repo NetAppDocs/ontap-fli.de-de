@@ -1,0 +1,61 @@
+---
+permalink: san-migration/map-source-lun-to-destination-online-migration.html 
+sidebar: sidebar 
+keywords: fli online, perform, disruptive, cutover 
+summary: Dieses Beispiel enthält die allgemeinen Schritte zur störenden Umstellung für den Online-Migrationsprozess bei FLI. 
+---
+= Ordnen Sie die Quell-LUN dem ONTAP -Array für eine FLI-Onlinemigration zu
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um Daten von einer Fremd-Array-LUN zu importieren, muss die LUN zunächst auf dem Fremd-Array entkoppelt und Ihrem ONTAP Speichersystem neu zugeordnet werden. Die Befehle zum Entkoppeln einer LUN auf einem Fremd-Array variieren je nach Array-Anbieter. Befolgen Sie die angegebenen Schritte für den gesamten Prozess und lesen Sie die Dokumentation Ihres Fremd-Arrays für spezifische Befehle.
+
+.Bevor Sie beginnen
+Das Entfernen des Hosts (Initiators) aus einer Igroup wirkt sich auf alle dieser Igroup zugeordneten LUNs aus. Um Störungen anderer LUNs in Ihrem Fremd-Array zu vermeiden, muss die zu migrierende LUN die einzige LUN sein, die ihrer Igroup zugeordnet ist. Falls andere LUNs die Igroup gemeinsam nutzen, ordnen Sie diese einer anderen Igroup zu oder erstellen Sie eine neue Igroup speziell für die zu migrierende LUN. Die entsprechenden Befehle finden Sie in der Dokumentation des Herstellers.
+
+.Schritte
+. Zeigen Sie auf dem fremden Array die Speichergruppe an, der die Quell-LUN zugeordnet ist.
++
+Die entsprechenden Befehle finden Sie in der Anbieterdokumentation.
+
+. Wenn die importierten LUNs für einen ESXi-Host bestimmt sind, lesen und befolgen Sie die Anweisungen für link:reference_esxi_caw_ats_remediation.html["ESXi CAW/ATS-Korrektur"] .
+. Zuordnung der Quell-LUN zu den Hosts
++
+[NOTE]
+====
+Die Störung beginnt unmittelbar nach dem `unmap` Befehl wird ausgeführt. Im Allgemeinen lässt sich das Unterbrechungsfenster in wenigen Minuten messen. Das Unterbrechungsfenster dient dazu, den Host am neuen NetApp Ziel neu zu verweisen und nach LUNs zu suchen.
+
+====
+. Vergewissern Sie sich, dass die Host-Initiatoren nicht mehr vorhanden sind.
+. Versetzen Sie auf dem ONTAP Cluster die Ziel-LUN in den Online-Modus und vergewissern Sie sich, dass sie zugeordnet ist.
++
+[source, cli]
+----
+lun online -vserver <SVM_name> -path <volume_path|storage_unit_path>
+----
+. Vergewissern Sie sich, dass die LUN online ist.
++
+[source, cli]
+----
+lun show -vserver <SVM_name>
+----
+. Überprüfen Sie erneut die Festplatten auf dem Host, suchen Sie die LUN auf dem ONTAP Ziel und überprüfen Sie dann, ob DSM die LUN beansprucht hat.
++
+[NOTE]
+====
+Das Unterbrechungsfenster endet hier.
+
+====
+. Überprüfen Sie, ob Sie alle erwarteten Pfade sehen können, und überprüfen Sie Ihre Ereignisprotokolle, um zu überprüfen, ob keine Fehler vorhanden sind.
+
+
+.Ergebnis
+Der störende Teil dieser Migration ist abgeschlossen, es sei denn, es gibt noch ausstehende Host-Sanierungsaufgaben (die während Ihrer Analyse- und Planungsphasen identifiziert wurden), die störend sind.
+
+Die LUNs sind online und zugeordnet, und die Hosts Mounten nun die neue von ONTAP gehostete LUN. Lesezugriffe werden über das ONTAP Array an die Quell-LUN weitergeleitet. Schreibzugriffe werden sowohl auf die neue ONTAP gehostete LUN als auch auf die ursprüngliche Quell-LUN geschrieben. Die Quell-LUN und Ziel-LUN bleiben synchronisiert, bis die Migration abgeschlossen ist und die LUN-Beziehung unterbrochen wurde.
+
+.Wie geht es weiter?
+link:task_fli_online_importing_the_data.html["Importieren Sie Daten aus Ihren fremden LUNs"] .

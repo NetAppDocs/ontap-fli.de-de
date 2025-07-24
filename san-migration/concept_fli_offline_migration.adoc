@@ -13,7 +13,7 @@ summary: Der Offline-Migrations-Workflow wird in der Ausführungsphase des Migra
 [role="lead"]
 Der Offline-Migrations-Workflow wird in der Ausführungsphase des Migrationsprozesses durchgeführt. Das Offline-Workflow-Diagramm zeigt die Aufgaben, die auf dem Host, der Fabric, dem Ziel-Storage und dem Quell-Storage ausgeführt werden.
 
-image::../media/offline_migration_1.png[Offline-Migration 1]
+image::../media/offline_migration_1.png[FLI-Offline-Migrationsworkflow]
 
 Die Offline-Workflow-Aufgaben sind in der folgenden Tabelle aufgeführt.
 

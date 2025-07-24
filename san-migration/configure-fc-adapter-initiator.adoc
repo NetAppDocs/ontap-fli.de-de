@@ -1,0 +1,59 @@
+---
+permalink: san-migration/configure-fc-adapter-initiator.html 
+sidebar: sidebar 
+keywords: online, migration, workflow 
+summary: 'Der Initiatormodus wird verwendet, um die Ports mit Bandlaufwerken, Bandbibliotheken oder Speichergeräten von Drittanbietern mit Foreign LUN Import (FLI) zu verbinden.' 
+---
+= Konfigurieren von FC-Adaptern für den Initiatormodus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Initiatormodus dient zum Verbinden der Ports mit Bandlaufwerken, Bandbibliotheken oder Drittanbieterspeichern mit Foreign LUN Import (FLI). Um FLI nutzen zu können, müssen Sie Ihren FC-Zieladapter in den Initiatormodus konvertieren.
+
+.Bevor Sie beginnen
+* LIFs auf dem Adapter müssen aus allen Port-Sets entfernt werden, zu denen sie gehören.
+* Alle LIFs von jeder Storage Virtual Machine (SVM), die den zu ändernden physischen Port verwenden, müssen migriert oder zerstört werden, bevor die Persönlichkeit des physischen Ports vom Ziel zum Initiator geändert wird.
+
+
+.Schritte
+. Entfernen Sie alle LIFs vom Adapter:
++
+[source, cli]
+----
+network interface delete -vserver <SVM_name> -lif <lif_name>,<lif_name>
+----
+. Schalten Sie Ihren Adapter offline:
++
+[source, cli]
+----
+network fcp adapter modify -node <node_name> -adapter <adapter_port> -status-admin down
+----
++
+Wenn der Adapter nicht offline geht, können Sie das Kabel auch vom entsprechenden Adapteranschluss am System entfernen.
+
+. Ändern Sie den Adapter vom Ziel zum Initiator:
++
+[source, cli]
+----
+system hardware unified-connect modify -t initiator <adapter_port>
+----
+. Starten Sie den Knoten neu, auf dem sich der von Ihnen geänderte Adapter befindet.
+. Überprüfen Sie, ob die FC-Ports für Ihre Konfiguration im richtigen Status konfiguriert sind:
++
+[source, cli]
+----
+system hardware unified-connect show
+----
+. Bringen Sie den Adapter wieder online:
++
+[source, cli]
+----
+node run -node _node_name_ storage enable adapter <adapter_port>
+----
+
+
+.Wie geht es weiter?
+Ordnen Sie die Zielports des Fremd-Arrays den Initiatorports Ihres ONTAP Speichers zu.

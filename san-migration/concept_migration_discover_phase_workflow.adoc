@@ -15,7 +15,7 @@ In der Erfassungsphase des Migrationsprozesses werden in den nachfolgenden Schri
 
 Die folgende Abbildung zeigt den Ablauf der Discover-Phase.
 
-image::../media/discover_phase_1.png[Entdecken Sie Phase 1]
+image::../media/discover_phase_1.png[Arbeitsablauf der Discovery-Phase]
 
 Die Tasks der Discover-Phase sind in der folgenden Tabelle aufgeführt.
 

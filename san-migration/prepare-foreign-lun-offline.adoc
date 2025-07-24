@@ -1,0 +1,98 @@
+---
+permalink: san-migration/prepare-foreign-lun-offline.html 
+sidebar: sidebar 
+keywords: present, source luns, ontap storage, fli 
+summary: Im FLI-Offlinemigrationsprozess müssen Sie dem ONTAP Speicher die fremde Quell-LUN präsentieren. Anschließend müssen Sie die fremde Quell-LUN auf dem ONTAP -Speicher ermitteln. 
+---
+= Vorbereiten fremder Speicherarray-LUNs für eine ONTAP FLI-Offlinemigration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei einer Offlinemigration mit Foreign LUN Import (FLI) müssen Sie von Ihrem Fremdspeicher-Array aus manuelle Schritte unternehmen, um die Fremdquell-LUN Ihrem ONTAP Speichersystem zu präsentieren. Anschließend müssen Sie von Ihrem ONTAP Speichersystem aus Schritte unternehmen, um die Fremd-LUN zu ermitteln.
+
+
+
+== Schritt 1: Präsentieren Sie fremde Array-Quell-LUNs dem ONTAP -Speicher
+
+Bevor Sie mit dem Importieren von Daten aus einer LUN eines fremden Speicherarrays mithilfe einer FLI-Offlinemigration beginnen können, müssen Sie Ihrem ONTAP Speichersystem die Quell-LUNs auf Ihrem fremden Speicherarray präsentieren.
+
+.Schritte
+. Melden Sie sich beim Quell-Array an.
+. Fügen Sie die NetApp-Initiatoren der während der Planungsphase erstellten Host-Gruppe hinzu.
+. Wählen Sie die Host-LUNs aus, die aus verfügbaren logischen LUNs migriert werden müssen.
++
+Verwenden Sie LUN-Namen für jeden Host, der im Abschnitt „Quell-LUNs“ Ihres link:reference_site_survey_and_planning_worksheet_source_luns_tab.html["Arbeitsblatt „Standortuntersuchung und Planung“"] .
+
+
+
+
+
+== Schritt 2: Fremde Array-Quell-LUNs in ONTAP erkennen
+
+Nachdem Sie Ihrem ONTAP Speichersystem Ihre fremden Array-Quell-LUNs präsentiert haben, müssen die LUNs in ONTAP erkannt werden, bevor Sie die LUN-Importbeziehung erstellen können.
+
+.Schritte
+. Überprüfen Sie die Quell-LUNs und die Zuordnung vom Quellspeicher zum Zielspeicher.
+. Melden Sie sich als Administratorbenutzer über SSH beim ONTAP Speichersystem an.
+. Ändern Sie den Modus auf „Erweitert“.
++
+[source, cli]
+----
+set -privilege advanced
+----
+. Eingabe `y` Wenn Sie gefragt werden, ob Sie fortfahren möchten.
+. Ermitteln Sie das Quell-Array auf ONTAP. Warten Sie einige Minuten und versuchen Sie dann erneut, das Quell-Array zu ermitteln.
++
+[source, cli]
+----
+storage array show
+----
++
+Das folgende Beispiel zeigt die Erkennung eines Hitachi DF600F-Arrays.
+
++
+[listing]
+----
+DataMig-ontap::*> storage array show
+Prefix                         Name   Vendor            Model Options
+-------- ---------------------------- -------- ---------------- ----------
+HIT-1                HITACHI_DF600F_1  HITACHI           DF600F
+----
++
+[NOTE]
+====
+Wenn das Storage-Array zum ersten Mal erkannt wird, wird das Array von ONTAP möglicherweise nicht durch die automatische Erkennung angezeigt. Verwenden Sie die folgenden Anweisungen, um den Switch-Port zurückzusetzen, an dem ONTAP-Initiator-Ports angeschlossen sind.
+
+====
+. Vergewissern Sie sich, dass das Quell-Array über alle Initiator-Ports erkannt wird.
++
+[source, cli]
+----
+storage array config show -array-name <array_name>
+----
++
+Das folgende Beispiel zeigt das Hitachi DF600F-Array, das über alle Initiator-Ports erkannt wurde.
+
++
+[listing]
+----
+DataMig-ontap::*> storage array config show -array-name HITACHI_DF600F_1
+             LUN   LUN
+Node         Group Count     Array Name       Array Target Port Initiator
+------------ ----- ----- ---------------------------- -----------------------
+DataMig-ontap-01 0     1    HITACHI_DF600F_1     50060e801046b960        0a
+                                                 50060e801046b964        0b
+                                                 50060e801046b968        0a
+                                                 50060e801046b96c        0b
+DataMig-ontap-02 0     1    HITACHI_DF600F_1     50060e801046b960        0a
+                                                 50060e801046b964        0b
+                                                 50060e801046b968        0a
+                                                 50060e801046b96c        0b
+----
+
+
+.Wie geht es weiter?
+link:create-lun-import-relationship-offline.html["Erstellen der LUN-Importbeziehung"] .

@@ -20,10 +20,10 @@ Die folgenden Schritte zeigen, wie die Ziel-Array-Konfiguration nach Abschluss d
 . Erweitern Sie Gruppen und wählen Sie *Host Groups*.
 . Wählen Sie *cDOT_FLI* Host Group und klicken Sie auf *Host Group löschen*.
 +
-image::../media/remove_destination_array_configuration_from_source_array_1.png[Entfernen Sie die Ziel-Array-Konfiguration aus dem Quell-Array 1]
+image::../media/remove_destination_array_configuration_from_source_array_1.png[Entfernen der Ziel-Array-Konfiguration aus dem Quell-Array]
 
 . Bestätigen Sie das Löschen der Host-Gruppe.
 +
-image::../media/remove_destination_array_configuration_from_source_array_2.png[Entfernen Sie die Ziel-Array-Konfiguration aus dem Quell-Array 2]
+image::../media/remove_destination_array_configuration_from_source_array_2.png[Entfernen der Ziel-Array-Konfiguration aus dem Quell-Array]
 
 

@@ -13,7 +13,7 @@ summary: Der Online-Migrations-Workflow wird in der Ausführungsphase des Migrat
 [role="lead"]
 Der Online-Migrations-Workflow wird in der Ausführungsphase des Migrationsprozesses durchgeführt. Das Online-Workflow-Diagramm zeigt die Aufgaben, die auf dem Host, der Fabric, dem Ziel-Storage und dem Quell-Storage ausgeführt werden.
 
-image::../media/online_migration_1.png[Online-Migration 1]
+image::../media/online_migration_1.png[FlI Online-Migrationsworkflow]
 
 Die Online-Workflow-Aufgaben sind in der folgenden Tabelle aufgeführt.
 

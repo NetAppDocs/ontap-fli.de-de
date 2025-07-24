@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli, offline, post-migration, tasks 
 summary: Jegliche nicht zuvor durchgeführte Korrektur an Servern wird während der Nachmigration durchgeführt. 
 ---
-= FLI-Offline-Aufgaben nach der Migration
+= Führen Sie ONTAP FLI-Offline-Aufgaben nach der Migration durch
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

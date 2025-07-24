@@ -17,7 +17,7 @@ In der Planungsphase entwickeln Sie einen Korrekturplan anhand der Informationen
 
 Die folgende Abbildung zeigt den Plan-Workflow.
 
-image::../media/plan_and_prepare_phase_1.png[Phase 1 planen und vorbereiten]
+image::../media/plan_and_prepare_phase_1.png[Workflow für den Migrationsplan]
 
 Die Aufgaben der Planungsphase sind in der folgenden Tabelle aufgeführt.
 
