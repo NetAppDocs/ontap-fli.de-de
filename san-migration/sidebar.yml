@@ -49,7 +49,7 @@ entries:
   - title: Anforderungen an die physische Verkabelung von FLI
     url: "/san-migration/concept_physical_wiring_requirements_for_fli.html"
   - title: Konfigurieren von FC-Adaptern für den Initiatormodus
-    url: san-migration/configure-fc-adapter-initiator.html
+    url: "/san-migration/configure-fc-adapter-initiator.html"
   - title: Ziel- und Initiator-Port-Zoning für FLI
     url: "/san-migration/concept_target_and_initiator_port_zoning.html"
   - title: Konfiguration der Initiatorgruppe
