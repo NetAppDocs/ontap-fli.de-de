@@ -13,7 +13,7 @@ summary: Es ist wichtig, sicherzustellen, dass das Host-Betriebssystem, HBA, Swi
 [role="lead"]
 Es ist wichtig, sicherzustellen, dass das Host-Betriebssystem, HBA, Switch und das ONTAP-Array, auf das Sie später umstellen, unterstützt werden.
 
-Wenn Sie den Workflow zur Transition von FLI 7-Mode zu ONTAP verwenden, müssen Sie Ihre Quelle (7-Mode Controller) im FlexArray IMT nicht überprüfen. Sie wird nicht aufgeführt, wird aber ausdrücklich für diesen Umstiegsprozess unterstützt. Sie müssen weiterhin überprüfen, ob sich alle Hosts in einer unterstützten Konfiguration befinden.
+Wenn Sie den FLI 7-Mode-zu ONTAP Übergangsworkflow verwenden, müssen Sie Ihre Quelle (7-Mode-Controller) nicht im IMT überprüfen. Es wird zwar nicht aufgeführt, wird aber ausdrücklich für diesen Übergangsworkflow unterstützt. Sie müssen dennoch überprüfen, ob alle Hosts in einer unterstützten Konfiguration vorliegen.
 
 Es gibt keine FLI-spezifischen Plattformanforderungen. Außerdem gibt es keine Mindestversionen von 7-Mode Data ONTAP, obwohl die Version Fibre Channel Protocol (FCP) unterstützen müsste.
 

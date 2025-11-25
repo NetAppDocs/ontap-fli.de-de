@@ -32,7 +32,7 @@ Diese Tools und Utilities eignen sich auch für FLI-Migrationsprojekte:
 
 * *Interoperabilitätsmatrix*
 +
-Das Interoperabilitäts-Matrix-Tool (IMT) ist ein webbasiertes NetApp Utility, das zur Interoperabilitätsprüfung für Softwarekomponenten von NetApp, FlexArray und Drittanbietern verwendet wird.
+Das Interoperability Matrix Tool (IMT) ist ein webbasiertes Hilfsprogramm von NetApp , das für Interoperabilitätsprüfungen von NetApp und Drittanbieter-Softwarekomponenten verwendet wird.
 
 * *ONTAP System Manager*
 +
@@ -48,10 +48,6 @@ WFA ist eine Softwarelösung, mit der Sie Storage-Workflows erstellen und Storag
 
 https://mysupport.netapp.com/site/tools["NetApp Tools"]
 
-http://mysupport.netapp.com/NOW/download/tools/ndcp/["NetApp Tools: Data Center Planner"]
-
 https://mysupport.netapp.com/matrix["NetApp Interoperabilitäts-Matrix-Tool"]
-
-http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61372["NetApp Dokumentation: OnCommand System Manager (aktuelle Versionen)"]
 
 http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61550["NetApp Dokumentation: OnCommand Workflow Automation (aktuelle Versionen)"]

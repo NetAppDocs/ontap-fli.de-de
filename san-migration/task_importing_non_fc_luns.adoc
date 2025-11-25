@@ -2,7 +2,7 @@
 permalink: san-migration/task_importing_non_fc_luns.html 
 sidebar: sidebar 
 keywords: import, non-fc luns 
-summary: 'Da der Import fremder LUNs (Foreign LUN Import, FLI) mithilfe von FlexArray Technologie LUNs für das Mounten fremder LUNs nutzt, kann dieser nur mithilfe von FCP eine Verbindung zu Quell-Arrays herstellen. Nur FC LUNs werden von FLI unterstützt. Es gibt jedoch eine Problemumgehung, mit der Sie iSCSI LUNs importieren können. Da Sie die iSCSI LUNs als FC LUNs importieren, im Gegensatz zu anderen Online FLI 7-Mode in ONTAP Workflows, würde das Unterbrechungsfenster diesen gesamten Workflow umfassen:' 
+summary: 'Nur FC-LUNs werden von FLI unterstützt. Es gibt jedoch einen Workaround, der es Ihnen ermöglicht, iSCSI-LUNs zu importieren. Da Sie die iSCSI-LUNs als FC-LUNs importieren, würde sich das Unterbrechungsfenster im Gegensatz zu anderen FLI-Online-7-Mode-zu- ONTAP Workflows über den gesamten Workflow erstrecken:' 
 ---
 = Importieren von nicht-FC-LUNs
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 'Da der Import fremder LUNs (Foreign LUN Import, FLI) mithilfe von Flex
 
 
 [role="lead"]
-Da der Import fremder LUNs (Foreign LUN Import, FLI) mithilfe von FlexArray Technologie LUNs für das Mounten fremder LUNs nutzt, kann dieser nur mithilfe von FCP eine Verbindung zu Quell-Arrays herstellen. Nur FC LUNs werden von FLI unterstützt. Es gibt jedoch eine Problemumgehung, mit der Sie iSCSI LUNs importieren können. Da Sie die iSCSI LUNs als FC LUNs importieren, im Gegensatz zu anderen Online FLI 7-Mode in ONTAP Workflows, würde das Unterbrechungsfenster diesen gesamten Workflow umfassen:
+Nur FC-LUNs werden von FLI unterstützt. Es gibt jedoch einen Workaround, der es Ihnen ermöglicht, iSCSI-LUNs zu importieren. Da Sie die iSCSI-LUNs als FC-LUNs importieren, würde sich das Unterbrechungsfenster im Gegensatz zu anderen FLI-Online-7-Mode-zu- ONTAP Workflows über den gesamten Workflow erstrecken:
 
 Da Sie die iSCSI LUNs als FC LUNs importieren, anders als andere Online FLI 7-Mode in ONTAP Workflows, würde das Unterbrechungsfenster diesen gesamten Workflow umfassen.
 

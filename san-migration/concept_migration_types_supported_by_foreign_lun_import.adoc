@@ -19,6 +19,4 @@ FLI unterstützt vier Arten von Migrations-Workflows: Online, offline, Transitio
 * In einer automatisierten Migration nutzt FLI Workflow-Automatisierung (WFA) Software zur Automatisierung von Teilen des Migrationsprozesses. FLI mit WFA ist entweder im Online- oder Offline-Modus verfügbar.
 
 
-In der Architektur sind die drei Migrationen und der Transition Workflow recht ähnlich. Alle vier sind auf die FlexArray-Technologie von NetApp angewiesen, dass Ihr ONTAP-Controller als Initiator vor einem Quell-Array fungiert und diese Position zum Kopieren von LUNs für Block von der Quelle auf eine LUN auf dem Ziel-ONTAP-Array verwendet wird.
-
 Die Unterschiede zwischen den Workflows müssen bei Umstellungen, Länge des Unterbrechungsfensters und Automatisierung auftreten oder wenn es sich bei dem Quell-Array um ein NetApp Array mit ONTAP 7-Mode oder ein Drittanbieter-Array handelt.

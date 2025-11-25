@@ -14,7 +14,6 @@ summary: Die FLI-Lösung soll NetApp Kunden diesen Nutzen auch einen außergewö
 Die FLI-Lösung soll NetApp Kunden diesen Nutzen auch einen außergewöhnlichen Nutzen bieten.
 
 * FLI ist in ONTAP integriert und erfordert keine zusätzliche Lizenzierung.
-* FLI nutzt FlexArray Technologie, erfordert aber keine FlexArray-Lizenz.
 * FLI erfordert keine zusätzliche Hardware-Appliance für die Datenmigration.
 * FLI-basierte Lösungen unterstützen verschiedene Migrationstypen und Konfigurationen von Storage-Plattformen von Drittanbietern.
 * FLI richtet LUNs automatisch aus und kann eine LUN migrieren, die in einem 32-Bit-Aggregat zu einem 64-Bit-Aggregat auf einem ONTAP Array gehostet wird. Dies macht FLI für 7-Mode zu ONTAP eine hervorragende Wahl für die Transition von 7-Mode gehosteten LUNs, die auf 32-Bit-Aggregaten gehostet werden und/oder falsch ausgerichtet sind.

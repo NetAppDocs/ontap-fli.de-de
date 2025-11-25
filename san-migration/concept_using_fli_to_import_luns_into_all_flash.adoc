@@ -2,7 +2,7 @@
 permalink: san-migration/concept_using_fli_to_import_luns_into_all_flash.html 
 sidebar: sidebar 
 keywords: use, foreign lun import, import luns, aff 
-summary: 'AFF unterstützt FlexArray nicht in allen Versionen der ONTAP Software. In diesen Releases müssen Foreign LUN Imports (FLI) auf ein HA-Paar (High Availability, AFF) auf demselben Cluster mit der AFF eingerichtet werden.' 
+summary: Ab ONTAP 9.1 unterstützt AFF FLI. Mit FLI können Sie LUNs aus anderen Arrays direkt in ONTAP Cluster importieren. 
 ---
 = Importieren von LUNs in AFF mithilfe des Imports fremder LUNs
 :allow-uri-read: 
@@ -11,10 +11,8 @@ summary: 'AFF unterstützt FlexArray nicht in allen Versionen der ONTAP Software
 
 
 [role="lead"]
-AFF unterstützt FlexArray nicht in allen Versionen der ONTAP Software. In diesen Releases müssen Foreign LUN Imports (FLI) auf ein HA-Paar (High Availability, AFF) auf demselben Cluster mit der AFF eingerichtet werden.
+Ab ONTAP 9.1 unterstützt AFF FLI. Mit FLI können Sie LUNs aus anderen Arrays direkt in ONTAP Cluster importieren.
 
-Ab ONTAP 9.1 unterstützt AFF FLI. Mit FKU können LUNs aus anderen Arrays direkt in ONTAP-Cluster importiert werden.
+Ab ONTAP 8.3.2 kann AFF FLI mit einem genehmigten Process Variance Request (PVR) unterstützen. Wenden Sie sich an Ihr NetApp Kundenbetreuungsteam, um den PVR zur Genehmigung einzureichen. Nach der Genehmigung erhält der Einreicher, in der Regel ein NetApp -Systemingenieur, ein Genehmigungsschreiben mit Anweisungen zur Aktivierung der FLI-Funktionalität.
 
-Ab ONTAP 8.3 kann AFF FLI mithilfe einer genehmigten Process Variance Request (PVR) unterstützen. Wenden Sie sich an Ihr NetApp Account Team, um den PVR zur Genehmigung einzureichen. Nach Genehmigung erhält der Übermittler, in der Regel ein NetApp System Engineer, ein Genehmigungsschreiben mit Anweisungen zur Aktivierung der FLI-Funktionalität.
-
-Bei älteren Versionen der ONTAP-Software 8.3 unterstützt AFF derzeit FlexArray nicht, da einige der Schreiboptimierungen vorgenommen wurden. Sie müssen FLI-Importe in ein HA-Paar ohne All Flash FAS auf demselben Cluster mithilfe der AFF stappen. Nach Abschluss der Migration können Sie den unterbrechungsfreien Betrieb (NDO), z. B. Volume- oder LUN-Verschiebung, nutzen, um die migrierten LUNs auf AFF zu verschieben. Wenn sich in Ihrem AFF Cluster keine anderen Nodes als All Flash FAS befinden, sprechen Sie mit dem Account-Team darüber, wie sich Mietsysteme ausleihen lassen können. Dies erleichtert Ihnen die Nutzung.
+Bei ONTAP -Softwareversionen vor 8.3.2 müssen Sie FLI-Importe auf einem Nicht- AFF -HA-Paar auf demselben Cluster wie das AFF durchführen. Nach Abschluss der Migration können Sie dann nicht-unterbrechende Operationen (NDO) wie vol oder LUN move verwenden, um die migrierten LUNs nach AFF zu verschieben. Falls Ihr AFF Cluster keine Nicht- AFF Knoten enthält, sprechen Sie mit Ihrem Account-Team über die Möglichkeit, alternative Hardware auszuleihen, um dies zu ermöglichen.

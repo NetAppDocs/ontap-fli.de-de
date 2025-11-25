@@ -15,13 +15,11 @@ Der Import fremder LUNs (Foreign LUN Import, FLI) ist eine in ONTAP integrierte 
 
 Alle FLI-Migrationen erfolgen auf LUN-Ebene. FLI ist ein rein Block-basiertes Tool. Dateien, Datensätze, NFS und CIFS-basierte Migrationen werden nicht unterstützt. Weitere Migrationsmethoden für File-Level-Protokolle wie NFS und CIFS/SMB finden Sie im Dokument https://library.netapp.com/ecm/ecm_get_file/ECMP12363719["Kurzübersicht Zu Datenmigrations-Tools"].
 
-FLI nutzt die NetApp FlexArray Technologie, um die LUNs fremder RAID-Arrays zu erkennen und Daten daraus zu ziehen. Dank FlexArray kann ein NetApp ONTAP Controller als Initiator vor einem oder mehreren Drittanbieter-Arrays fungieren. FlexArray kann LUNs von diesen Arrays als Back-End Storage einbinden und dann den Speicherplatz dieser LUNs als NetApp Unified Storage (über den FCP-, FCoE-, iSCSI-, NFS- und CIFS-/SMB-Protokollzugriff) für Hosts in Ihrer SAN- oder NAS-Umgebung bereitstellen.
-
-FLI erfordert keine FlexArray-Lizenz. FLI nutzt FlexArray Technologie zum Kopieren der fremden LUN in ein NetApp ONTAP Array und erlaubt dann den Einsatz von Hosts und Applikationen, die diese LUN nutzen, auf das jeweilige NetApp Array, das jetzt die jeweilige LUN hostet. Obwohl ONTAP eine Migration im Rahmen von Professional Services nicht mehr erfordert, empfiehlt NetApp dringend die Beteiligung von Professional Services an Umfang, Planung und Schulung für alle einfachsten Migrationen.
+Obwohl ONTAP keine Migration durch einen professionellen Dienstleister mehr vorschreibt, empfiehlt NetApp dringend die Einbeziehung professioneller Dienstleister in die Planung, Durchführung und Schulung aller Migrationen außer den einfachsten.
 
 FLI wurde entwickelt, um SAN-LUNs zu ONTAP zu migrieren. FLI unterstützt verschiedene Migrationsanforderungen, u. a.:
 
-* Migration von Daten zwischen heterogenen Storage Arrays von EMC, Hitachi, HP und anderen Anbietern zu NetApp, wie von der FlexArray Konfiguration unterstützt
+* Datenmigration zwischen heterogenen Speichersystemen von EMC, Hitachi, HP und anderen Anbietern zu NetApp.
 * Vereinfachung und Beschleunigung der Blockdatenmigrationen während Datacenter-Standortwechsel, Konsolidierung und Austausch von Arrays
 * Konsolidierung der Migration und LUN-Neuausrichtungen in einem einzigen Workflow.
 
