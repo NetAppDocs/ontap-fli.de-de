@@ -14,12 +14,13 @@ summary: Ihre LUNs sollten die folgenden Anforderungen erfüllen, bevor Sie eine
 Ihre LUNs sollten die folgenden Anforderungen erfüllen, bevor Sie eine FLI-Migration beginnen.
 
 * FLI erfordert mindestens einen FC Port auf jedem Controller und LUNS direkt im Initiatormodus.
-* Ausländische LUN muss auf dem Ziel-Array als fremd markiert sein, um Zuweisungen von ONTAP zu vermeiden.
-* Vor dem Import muss sich die fremde LUN in einer Importbeziehung befindet.
-* Die LUN muss die Größe der ausländischen LUN haben und die gleiche Festplattenblockgröße haben. Beide Anforderungen werden während der Schritte zur LUN-Erstellung erfüllt.
+* Um Zuweisungen von ONTAP zu verhindern, muss die fremde LUN auf dem Ziel-Array als fremd gekennzeichnet werden.
+* Die ausländische LUN muss vor Beginn des Imports in einer Importbeziehung stehen.
+* Die LUN muss die gleiche Größe wie die fremde LUN haben. Diese Anforderung wird während der LUN-Erstellungsschritte berücksichtigt.
+* Die Blockgröße der ausländischen LUN muss 512 Byte betragen. NetApp LUNs unterstützen nur eine Blockgröße von 512 Byte.
 * Die LUN darf nicht erweitert oder schrumpfend sein.
 * Die LUN muss mindestens einer Initiatorgruppe zugeordnet sein.
-* NetApp LUN sollte vor dem Erstellen einer Beziehung in den Offline-Modus versetzt werden. Nach der Erstellung der LUN-Beziehung kann diese jedoch im Fall von Online FLI wieder online gebracht werden.
+* Die NetApp LUN sollte offline genommen werden, bevor eine Verbindung hergestellt wird. Sobald die LUN-Beziehung hergestellt ist, kann sie im Falle von Online-FLI wieder online geschaltet werden.
 
 
 

@@ -643,12 +643,8 @@
   <block id="18f3717603a0469912a341c387795b1b" category="list-text">Aktivieren Sie die Zone in Produktionsgewebe A.</block>
   <block id="3e93c4ba8debcbb0556af1cd7ab1b741" category="summary">Ihre LUNs sollten die folgenden Anforderungen erfüllen, bevor Sie eine FLI-Migration beginnen.</block>
   <block id="e80e48acabbfbfabe9d26f77e6893f2e" category="list-text">FLI erfordert mindestens einen FC Port auf jedem Controller und LUNS direkt im Initiatormodus.</block>
-  <block id="1aa4f2a052fd81ec3e8e4d05af38fa3d" category="list-text">Ausländische LUN muss auf dem Ziel-Array als fremd markiert sein, um Zuweisungen von ONTAP zu vermeiden.</block>
-  <block id="9aa3188a54765c6430f32b9c1bd813fd" category="list-text">Vor dem Import muss sich die fremde LUN in einer Importbeziehung befindet.</block>
-  <block id="44aa1f7a817892effc0c87066a63421e" category="list-text">Die LUN muss die Größe der ausländischen LUN haben und die gleiche Festplattenblockgröße haben. Beide Anforderungen werden während der Schritte zur LUN-Erstellung erfüllt.</block>
   <block id="712ab059b692b9bc1b27b9cc4debdd19" category="list-text">Die LUN darf nicht erweitert oder schrumpfend sein.</block>
   <block id="28346dfebd33c0a30bb74655c8205c5e" category="list-text">Die LUN muss mindestens einer Initiatorgruppe zugeordnet sein.</block>
-  <block id="1be37e9706ae71ec79642c4a74ddb6e4" category="list-text">NetApp LUN sollte vor dem Erstellen einer Beziehung in den Offline-Modus versetzt werden. Nach der Erstellung der LUN-Beziehung kann diese jedoch im Fall von Online FLI wieder online gebracht werden.</block>
   <block id="e646e16bee8b32e6ea29e30d01970a6c" category="section-title">Einschränkungen</block>
   <block id="9f0253275fe68858c0af6b82677674c0" category="list-text">Alle Migrationen sind auf LUN-Ebene durchgeführt.</block>
   <block id="627efaeda3a2eeb48c8581eb26bd2021" category="list-text">FLI unterstützt nur Fibre Channel-Verbindungen (FC).</block>
@@ -1581,4 +1577,9 @@
   <block id="c0be6833308ef6249cbd9f89e7a798b0" category="paragraph">Bei ONTAP -Softwareversionen vor 8.3.2 müssen Sie FLI-Importe auf einem Nicht- AFF -HA-Paar auf demselben Cluster wie das AFF durchführen. Nach Abschluss der Migration können Sie dann nicht-unterbrechende Operationen (NDO) wie vol oder LUN move verwenden, um die migrierten LUNs nach AFF zu verschieben. Falls Ihr AFF Cluster keine Nicht- AFF Knoten enthält, sprechen Sie mit Ihrem Account-Team über die Möglichkeit, alternative Hardware auszuleihen, um dies zu ermöglichen.</block>
   <block id="b259a08f8828833b95c5b4f5f88fa25b" category="list-text">Details zu den aufgeführten Speicherfehlern anzeigen. Bei einigen Fehlern ist möglicherweise ein Eingreifen erforderlich, bevor fortgefahren werden kann.</block>
   <block id="2496428c9cc7db06e462e33d26960f96" category="summary">Nur FC-LUNs werden von FLI unterstützt. Es gibt jedoch einen Workaround, der es Ihnen ermöglicht, iSCSI-LUNs zu importieren. Da Sie die iSCSI-LUNs als FC-LUNs importieren, würde sich das Unterbrechungsfenster im Gegensatz zu anderen FLI-Online-7-Mode-zu- ONTAP Workflows über den gesamten Workflow erstrecken:</block>
+  <block id="03bdcb1abadb9de7e792d4ea528ede06" category="list-text">Um Zuweisungen von ONTAP zu verhindern, muss die fremde LUN auf dem Ziel-Array als fremd gekennzeichnet werden.</block>
+  <block id="12c0657de6e3049dc1c10bc5be7c65ea" category="list-text">Die ausländische LUN muss vor Beginn des Imports in einer Importbeziehung stehen.</block>
+  <block id="54299053ded6ce9382d5400397c64c0a" category="list-text">Die LUN muss die gleiche Größe wie die fremde LUN haben. Diese Anforderung wird während der LUN-Erstellungsschritte berücksichtigt.</block>
+  <block id="c6f68a5b040db10ea284e182330b02fa" category="list-text">Die Blockgröße der ausländischen LUN muss 512 Byte betragen. NetApp LUNs unterstützen nur eine Blockgröße von 512 Byte.</block>
+  <block id="2f4de8a67de8d942e5c6cb3bc23f9971" category="list-text">Die NetApp LUN sollte offline genommen werden, bevor eine Verbindung hergestellt wird. Sobald die LUN-Beziehung hergestellt ist, kann sie im Falle von Online-FLI wieder online geschaltet werden.</block>
 </blocks>
