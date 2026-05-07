@@ -1,5 +1,5 @@
 ---
-permalink: san-migration/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html 
+permalink: sample-site/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html 
 sidebar: sidebar 
 keywords: site, survey and planning worksheet, migration schedule tab 
 summary: Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihrem Migrationsplan enthält. 
