@@ -1,0 +1,157 @@
+---
+permalink: phases/remediation-aix.html 
+sidebar: sidebar 
+keywords: ontap, fli, foreign lun import, aix host, pre-migration, offline fli, online fli 
+summary: Bevor Sie die ONTAP FLI-Migration auf einem AIX-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen. 
+---
+= ONTAP FLI AIX Host-Remediation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die ONTAP FLI-Migration auf einem AIX-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen.
+
+
+
+== Vormigration - Offline-FLI
+
+Diese Schritte sind sowohl für Online- als auch für Offline-FLI üblich. Bevor Sie die Quell-LUN vom Host entfernen, stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind.
+
+[cols="5"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Cluster | Sanboot 
+
+
+| Schritt 1: LUN-Details für die zu migrierenden Dateisysteme erfassen. | Schritt 1: Erfassen der LUN-Details, die als Rohblockgeräte (ohne Dateisystem) im Rahmen der Migration verwendet werden. | Schritt 1: Erfassen Sie die dem Host zugeordneten LUNs mit LVM-Konfiguration, die für die Migration vorgesehen sind. | Schritt 1: Erfassen Sie die allgemeinen Clusterdetails und die an der Migration beteiligten Datenträger. | Schritt 1: Erfassen Sie die Details der vom SAN gebooteten LUN und die zugehörigen Partitionsinformationen. 
+
+
+| Schritt 2: Das Dateisystem aushängen. | Schritt 2: Entfernen Sie die mit dem Multipath-Gerät verbundenen SCSI-Blockgeräte | Schritt 2: Hängen Sie das LVM-Gerät aus, falls es bereits eingehängt ist. | Schritt 2: Fahren Sie die Clusterdienste gemäß der empfohlenen Vorgehensweise ordnungsgemäß herunter. | Schritt 2: Überprüfen Sie die Liste der Startgeräte sowohl im Betriebssystem als auch im IPL (Initial Program Load)/SMS-Menü. Stellen Sie sicher, dass alle Geräte korrekt mit ihrem Gerätenamen referenziert werden. 
+
+
+| Schritt 3: Entfernen Sie die mit dem Multipath-Gerät verbundenen SCSI-Blockgeräte. | Schritt 3: Scannen Sie alle Geräte erneut. | Schritt 3: Erstellen Sie eine Sicherungskopie der VG und deaktivieren/varyoff die VG. Beispiel: `varyoffvg vg_name` | Schritt 3: Entfernen Sie die dem Multipath-Gerät zugeordneten SCSI-Blockgeräte. Beispiel: `rmdev -Rdl hdiskx` |  
+
+
+| Schritt 4: Scannen Sie den Host erneut, um sicherzustellen, dass keine veralteten Einträge der bestehenden Gerätezuordnung vorhanden sind. | Schritt 4: Scannen Sie den Host erneut, um sicherzustellen, dass keine veralteten Einträge der bestehenden Gerätezuordnung vorhanden sind. | Schritt 4: Scannen Sie den Host erneut, um sicherzustellen, dass keine veralteten Einträge der bestehenden Gerätezuordnung vorhanden sind. Beispiel: `cfgmgr` | Schritt 4: Scannen Sie den Host erneut, um sicherzustellen, dass keine veralteten Einträge in der bestehenden Gerätezuordnung vorhanden sind. |  
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+.Schritte
+. Speichergeräte identifizieren.
++
+[Source]
+----
+lsdev -Cc disk
+sanlun lun show all (This works only for NetApp storage)
+sanlun lun show all -pv
+lsmpio -l hdiskx
+----
+. Identifizieren Sie die Datenträgergruppe und die Dateisysteme.
++
+[Source]
+----
+lspv
+lsvg <vg_name>
+lsvg -l <vg_name>
+lsvg -p <vs_name>
+----
+. Varyoffvg und Dateisysteme aushängen.
++
+[Source]
+----
+df -g (to get the mount points)
+umount /mount_point
+varyoffvg <vg_name>
+df -g (to ensure its unmounted)
+----
+. Entfernen Sie die SCSI-Blockgeräte.
++
+rmdev -Rdl hdiskx
+
+. Prüfen Sie, ob das Gerät getrennt ist.
++
+lspv |grep hdiskx
+
+. Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen.
++
+cfgmgr
+
+
+
+
+
+== Vor der Migration – Online-FLI
+
+Nachfolgend sind die spezifischen Schritte für die Online-FLI aufgeführt, aber diesen Schritten müssen die im Abschnitt „Vormigration – Offline-FLI“ oben beschriebenen Schritte vorausgehen.
+
+Die folgenden Schritte müssen durchgeführt werden, nachdem die NetApp LUN dem Host bereitgestellt wurde.
+
+Zu diesem Zeitpunkt ist der LUN-Import bereits erstellt, die LUN ist der Host-Initiatorgruppe zugeordnet und es ist entweder ein iSCSI- oder ein FC-Initiator vom Host angemeldet.
+
+Bei Offline-FLI bleibt die NetApp LUN im Offline-Zustand.
+
+[cols="4"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Sanboot 
+
+
+| Schritt 1: Speicher auf allen zugeordneten AIX-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten AIX-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten AIX-Hosts erneut scannen. | Schritt 1: Schalten Sie den Server ein. 
+
+
+| Schritt 2: Identifizieren Sie die Mehrwegegeräte. Beispiel: `lsdev -Cc disk; lsmpio -l hdiskx` | Schritt 2: Identifizieren Sie die Mehrwegegeräte. Beispiel: `lsdev -Cc disk; lsmpio -l hdiskx` | Schritt 2: Identifizieren Sie die Mehrwegegeräte. Beispiel: `lsdev -Cc disk; lsmpio -l hdiskx` | Schritt 2: Überprüfen Sie, ob die Boot-Geräteliste im IPL (Initial Program Load)/SMS-Menü die neuen LUNs enthält, die auf die Geräteliste des neuen Storage-Geräts verweisen. Legen Sie die Bootreihenfolge auf den Pfad der neuen Geräteliste fest. 
+
+
+| Schritt 3: Überprüfen Sie die Dateisystemdetails. | Schritt 3: Ermitteln Sie die Multipath-Geräte-ID und präsentieren Sie sie der jeweiligen Anwendung. | Schritt 3: Sicherstellen, dass die neuen LUNs erkannt werden. | Schritt 3: Stellen Sie sicher, dass der Server ordnungsgemäß hochfährt. 
+
+
+| Schritt 4: Hängen Sie die Geräte wieder in die jeweiligen Ordner ein. |  | Schritt 4: Die VGs sollten automatisch aktiviert werden. |  
+
+
+|  |  | Schritt 5: Überprüfen Sie, ob die VG, LV und die Dateisysteme aktiv und einbindbar sind. |  
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+.Schritte
+. Speichergeräte identifizieren
++
+[Source]
+----
+lsdev -Cc disk
+sanlun lun show all (This works only for NetApp storage)
+sanlun lun show all -pv
+lsmpio -l hdiskx
+----
+. Identifizieren Sie die Datenträgergruppe und die Dateisysteme.
++
+[Source]
+----
+lspv
+lsvg <vg_name>
+lsvg -l <vg_name>
+lsvg -p <vs_name>
+----
+. Varyoffvg und Dateisysteme aushängen.
++
+[Source]
+----
+df -g (to get the mount points)
+umount /mount_point
+varyoffvg <vg_name>
+df -g (to ensure its unmounted)
+----
+. Entfernen Sie die SCSI-Blockgeräte.
++
+rmdev -Rdl
+
+. Prüfen Sie, ob das Gerät getrennt ist.
++
+lspv |grep hdiskx
+
+. Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen.
++
+cfgmgr
+
+

@@ -1,0 +1,56 @@
+---
+permalink: post-migration-performance/esxi-remediation.html 
+sidebar: sidebar 
+keywords: esxi remediation, vmfs, ats, caw, vaai, vmkfstools, datastore, online fli, foreign lun import, fli, vmware, ats-only 
+summary: Beheben Sie VMware ESXi-Datenspeicher mit ATS-only VMFS-Headern, die das Einbinden verhindern können, wenn sie über eine Online-FLI-Importbeziehung bereitgestellt werden. 
+---
+= Führen Sie die ONTAP FLI ESXi VMFSS ATS/CAW-Behebung durch
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei einer Online-FLI-Migration unterstützt die temporäre Importbeziehung weder VMware ATS noch CAW (VAAI Atomic Test and Set oder SCSI Compare And Write). Wenn Ihr Datenspeicher VMFS5 ist und auf einem Speichersystem erstellt wurde, das ATS unterstützt, kann VMware den VMFS-Header als „ATS-only“ kennzeichnen. In diesem Zustand kann die Einbindung des Datenspeichers über eine Online-FLI-Beziehung fehlschlagen.
+
+.Informationen zu diesem Vorgang
+* Die Einstellung „Nur ATS“ wird im VMFS-Header gespeichert, der sich im ersten Extent des Datenspeichers befindet. Wenn sich der Datenspeicher über mehrere Extents erstreckt, muss nur der erste Extent angepasst werden.
+* Wird der Datenspeicher von mehreren ESXi-Hosts gemeinsam genutzt, genügt in der Regel eine Aktualisierung von einem Host aus; andere Hosts übernehmen die Änderung nach einem erneuten Scan und einer erneuten Einbindung.
+* Während des Wechsels in den ATS-only-Modus dürfen keine aktiven E/A-Vorgänge auf dem Datenspeicher ausgeführt werden. VMware empfiehlt, VMs zu evakuieren und zu migrieren oder herunterzufahren sowie den Datenspeicher gegebenenfalls auszuhängen und wieder einzuhängen, um die Änderung anzuwenden.
+
+
+.Schritte
+. Überprüfen Sie den aktuellen ATS-Modus des Datenspeichers.
++
+Führen Sie dies auf einem ESXi-Host für das VMFS-Volume aus:
+
++
+[source, cli]
+----
+vmkfstools -Ph -v1 /vmfs/volumes/<DATASTORE_NAME_OR_UUID>
+----
+. ATS-only deaktivieren.
++
+
+IMPORTANT: Stellen Sie sicher, dass VMs migriert und heruntergefahren sowie der Datenspeicher von allen Hosts getrennt werden, sofern dies in Ihrem Änderungsplan erforderlich ist. Führen Sie den Befehl auf dem Gerätepfad der ersten Extent-LUN (naa.*) aus:
+
++
+[source, cli]
+----
+vmkfstools --configATSOnly 0 /vmfs/devices/disks/naa.<naa_id>:1
+----
++
+Dies ändert das Volume, um die Sperrung ohne ATS (öffentlich) zu ermöglichen.
+
+. Scannen Sie die Speicheradapter erneut (oder hängen Sie den Datenspeicher neu ein), damit die Hosts den aktualisierten Modus erneut einlesen.
+. ATS wieder aktivieren.
++
+Nachdem die Migration abgeschlossen ist und Sie das reine ATS-Verhalten wiederherstellen möchten:
+
++
+[source, cli]
+----
+vmkfstools --configATSOnly 1 /vmfs/devices/disks/naa.<naa_id>:1
+----
+. Führen Sie einen erneuten Scan und ein erneutes Einbinden durch, um die Änderung anzuwenden.
+

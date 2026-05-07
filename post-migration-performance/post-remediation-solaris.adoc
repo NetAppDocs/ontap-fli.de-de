@@ -1,0 +1,143 @@
+---
+permalink: post-migration-performance/post-remediation-solaris.html 
+sidebar: sidebar 
+keywords: host remediation, solaris, post-migration, fli, ontap 
+summary: Nach der Migration müssen auf Solaris-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt werden und funktionieren. 
+---
+= Führen Sie die ONTAP FLI Solaris-Host-Nachbearbeitung nach der Datenmigration durch.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Migration müssen auf Solaris-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt werden und funktionieren.
+
+
+
+== Nach der Migration – Offline-FLI
+
+Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
+
+[cols="5"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Cluster | Sanboot 
+
+
+| Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen | Schritt 1: Schalten Sie den Server ein 
+
+
+| Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Konfigurieren Sie im SPARC-Server-OBP das neue Boot-Gerät, das diesem Host-HBA präsentiert wird 
+
+
+| Schritt 3: Überprüfen Sie die Pooldetails | Schritt 3: Ermitteln Sie die Multipath-Geräte-ID und präsentieren Sie sie der jeweiligen Anwendung. | Schritt 3: Überprüfen Sie den Poolstatus | Schritt 3: Dateisystemdetails überprüfen | Schritt 3: Starten Sie den Host neu, um von der neu zugeordneten LUN zu booten, die Teil des LUN Import ist 
+
+
+| Schritt 4: Die Geräte wieder in die jeweiligen Ordner einbinden |  | Schritt 4: Pool importieren | Schritt 4: Überprüfen Sie die erforderliche Clusterkonfiguration und starten Sie die Clusteranwendung |  
+
+
+|  |  | Schritt 5: Listen Sie die im Pool vorhandenen FS auf. | Schritt 5: Überprüfen Sie den Clusterstatus und die Anwendung, die Ressourcen verbraucht. |  
+
+
+|  |  | Schritt 6: Das Dateisystem wieder in die jeweiligen Ordner einbinden |  |  
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+.Schritte
+. Nach dem Anbringen erneut scannen.
++
+[source, cli]
+----
+cfgadm -al
+----
+. Speichergeräte identifizieren.
++
+[source, cli]
+----
+format
+sanlun lun show all
+mpathadm list lu
+mpathadm show lu
+----
+. Prüfen Sie, ob das Gerät angeschlossen ist.
++
+[source, cli]
+----
+format |grep disk_id
+----
+. Importieren Sie den Zpool, und das Dateisystem wird automatisch eingebunden.
++
+[source, cli]
+----
+zpool import zpool_name
+df -g (to ensure its unmounted)
+----
+
+
+
+
+== Nach der Migration – Online-FLI
+
+Nach dem Löschen des LUN-Imports prüfen Sie, ob die LUN mit -space-reserve deaktiviert und -space-allocation aktiviert konfiguriert ist. Falls nicht, passen Sie sie entsprechend an.
+
+[cols="4"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Sanboot 
+
+
+| Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. 
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+.Schritte
+. Nach dem Anbringen erneut scannen.
++
+[source, cli]
+----
+cfgadm -al
+----
+. Speichergeräte identifizieren.
++
+[source, cli]
+----
+format
+sanlun lun show all
+mpathadm list lu
+mpathadm show lu
+----
+. Prüfen Sie, ob das Gerät angeschlossen ist.
++
+[source, cli]
+----
+`format |grep disk_id`
+----
+. Importieren Sie den Zpool, und das Dateisystem wird automatisch eingebunden.
++
+[source, cli]
+----
+zpool import zpool_name
+df -g
+----
+
+
+[cols="2"]
+|===
+|  | Solaris 
+
+
+| Schritt 1 | Hostinformationen erfassen. 
+
+
+| Schritt 2 | Hängen Sie das Dateisystem aus. 
+
+
+| Schritt 3 | Erstellen Sie eine Sicherungskopie der VG. 
+
+
+| Schritt 4 | Deaktivieren Sie die VG. 
+
+
+| Schritt 5 | Exportiere die VG. 
+|===

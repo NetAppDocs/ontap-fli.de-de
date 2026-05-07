@@ -1,0 +1,157 @@
+---
+permalink: phases/recommended-host-migration.html 
+sidebar: sidebar 
+keywords: discovery phase, foreign lun import, fli, active iq onecollect, fc fli, iscsi fli, intercluster lif, wwpn, iqn, foreign array, lun discovery, san migration 
+summary: 'Richten Sie das Host-Betriebssystem und die Speicherkonfiguration an dem empfohlenen Foreign LUN Import (FLI)-Ansatz aus, bevor Sie eine Migrationsmethode auswählen.' 
+---
+= Empfohlene ONTAP FLI-Ansätze nach Betriebssystem und Konfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Richten Sie das Host-Betriebssystem und die Speicherkonfiguration an dem empfohlenen Foreign LUN Import (FLI)-Ansatz aus, bevor Sie eine Migrationsmethode auswählen.
+
+
+
+== Absicht
+
+Die folgende Tabelle hilft, das Host-Betriebssystem und die Speicherkonfiguration mit dem empfohlenen Foreign LUN Import (FLI)-Ansatz abzugleichen, bevor eine Migrationsmethode ausgewählt wird. Für jeden Hosttyp und jedes Nutzungsmodell wird angegeben, ob Online-FLI, Offline-FLI oder beides geeignet ist. Die Spalte „Hinweise/Begründung“ hebt wichtige technische Einschränkungen hervor – wie Clustering-Semantik, SCSI-3-persistente Reservierungen und Boot-Abhängigkeiten –, die direkt beeinflussen, ob Host-I/O sicher mit einer aktiven Importbeziehung koexistieren kann. Diese Hinweise sollten frühzeitig in der Planung verwendet werden, um nicht unterstützte Arbeitsabläufe zu vermeiden und realistische Erwartungen hinsichtlich Ausfallzeiten und Behebungszeiten zu setzen.
+
+
+
+== Wichtige Hinweise
+
+* Clustering impliziert aufgrund der Anforderungen an die SCSI 3 Persistent Reservation fast immer Offline-FLI.
+* Standalone-Hosts und nicht geclusterte virtualisierte Workloads sind im Allgemeinen flexibel und können entweder Online- oder Offline-FLI verwenden.
+* SAN-Boot-Anwendungsfälle werden technisch in beiden Modi unterstützt, sind aber in der Praxis oft einfacher als Offline FLI auszuführen.
+* Bei der endgültigen Modusauswahl sollten neben der Protokollunterstützung auch die Toleranz gegenüber Anwendungsausfallzeiten, die Anforderungen an die Wiederherstellung und die betriebliche Komplexität berücksichtigt werden.
+
+
+
+
+== Detaillierte Anleitung
+
+
+
+=== Windows
+
+[cols="3"]
+|===
+| Konfiguration | Empfehlung | Gründe, falls vorhanden 
+
+
+| NTFS-Volume  a| 
+Online / Offline FLI
+| Unterstützt in beiden Modi; die Wahl hängt von der Toleranz der Anwendung gegenüber Ausfallzeiten ab. 
+
+
+| Windows-Failovercluster (WFSC) | Offline-FLI | SCSI 3 Persistent Reservations werden von WFSC benötigt und werden nicht unterstützt, solange sich eine LUN in einer aktiven Importbeziehung befindet. 
+
+
+| Hyper V | Online / Offline FLI | Standalone Hyper V wird unterstützt; Clustered Hyper V folgt den WFSC-Richtlinien. 
+
+
+| SAN Boot | Online / Offline FLI | Erfordert eine sorgfältige Umstellungsplanung; wird in der Regel als offline behandelt, es sei denn, die Ausfallzeiten werden gut kontrolliert. 
+|===
+
+
+=== Linux (RHEL/SLES)
+
+[cols="3"]
+|===
+| Konfiguration | Empfehlung | Gründe, falls vorhanden 
+
+
+| Dateisystem / RAW Disk | Online / Offline FLI | Unterstützt in beiden Modi mit Standard-Multipathing. 
+
+
+| LVM | Online / Offline FLI | Unterstützt; stellen Sie die korrekte Host-Erkennung und PV/VG-Konsistenz während der Umstellung sicher. 
+
+
+| Pacemaker Cluster | Online / Offline FLI | Unterstützt, aber das Clusterverhalten muss während der Umstellung validiert werden. 
+
+
+| SAN Boot | Online / Offline FLI | In der Regel ist der Betrieb online einfacher als offline, obwohl dies technisch unterstützt wird. 
+|===
+
+
+=== Solaris
+
+[cols="3"]
+|===
+| Konfiguration | Empfehlung | Gründe, falls vorhanden 
+
+
+| Eigenständig | Online / Offline FLI | Je nach Ausfalltoleranz wird jeder Modus unterstützt. 
+
+
+| Oracle Solaris Cluster (OSC / Sun Cluster) | Offline-FLI | Der Cluster erfordert exklusive SCSI-Verhaltensweisen, die während des aktiven Imports nicht unterstützt werden. 
+
+
+| SAN Boot | Online / Offline FLI | Behandeln Sie dies ähnlich wie andere OS-SAN-Boot-Szenarien. 
+|===
+
+
+=== AIX
+
+[cols="3"]
+|===
+| Konfiguration | Empfehlung | Gründe, falls vorhanden 
+
+
+| Eigenständig | Online / Offline FLI | Wird in beiden Modi unterstützt. 
+
+
+| PowerHA (HACMP) | Offline-FLI | Clustered disks erfordern eine Reservierungssemantik, die mit dem Online-Import nicht kompatibel ist. 
+
+
+| Virtualisiert (PowerVM NPIV/VFC, vSCSI - kein Clustering) | Online / Offline FLI | Unterstützt, wenn nicht Teil eines Clusters. 
+
+
+| Virtualisiert (PowerVM mit Clustering) | Offline-FLI | Gleiche Cluster-Beschränkungen wie bei physischem PowerHA. 
+
+
+| SAN Boot | Online / Offline FLI | Betriebspräferenz häufig offline. 
+|===
+
+
+=== HP-UX
+
+[cols="3"]
+|===
+| Konfiguration | Empfehlung | Gründe, falls vorhanden 
+
+
+| Eigenständig | Online / Offline FLI | Wird in beiden Modi unterstützt. 
+
+
+| Host-Clustering (MC/ServiceGuard) | Offline-FLI | Die Semantik von Cluster-Disks erfordert eine Offline-Migration. 
+
+
+| SAN Boot | Online / Offline FLI | In der Praxis üblicherweise als offline geplant. 
+|===
+
+
+=== VMware ESXi
+
+[cols="3"]
+|===
+| Konfiguration | Empfehlung | Gründe, falls vorhanden 
+
+
+| VMDK (Standard-Datenspeicher) | Online / Offline FLI | Beide Modi werden unterstützt; der Online-Modus minimiert die Ausfallzeit der VM. 
+
+
+| RDM (Standard) | Online / Offline FLI | Unterstützt; stellen Sie konsistente Host-Neuscans während der Umstellung sicher. 
+
+
+| VMSC / VMHA | Online / Offline FLI | Unterstützt durch sorgfältige Koordination. 
+
+
+| WFSC (Clustered VMDK) | Offline-FLI | Es gelten die Einschränkungen des Windows-Clustering. 
+
+
+| WFSC (RDM) | Offline-FLI | SCSI 3 PR erforderlich, Online-Import wird nicht unterstützt. 
+|===

@@ -1,0 +1,133 @@
+---
+permalink: phases/analyze-phase.html 
+sidebar: sidebar 
+keywords: analyze phase, foreign lun import, fli, gap analysis, interoperability matrix tool, imt, host remediation, hba, mpio, alua, san migration, iscsi fli, fc fli 
+summary: Lernen Sie die Analysephase kennen, in der Host- und SAN-Stack-Konfigurationen mit der NetApp Interoperabilitätsmatrix verglichen werden, um erforderliche Änderungen zu ermitteln. 
+---
+= ONTAP Foreign LUN Import (FLI) Analysephase
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Analysephase ermittelt, was behoben werden muss, bevor Sie mit der detaillierten Migrationsplanung und -durchführung beginnen. Das Hauptziel dieser Phase ist sicherzustellen, dass jeder Host und der gesamte SAN-Stack, von dem er abhängt (Betriebssystem, Volume-Manager, HBAs, Multipathing, Switch-Firmware und die Ziel-ONTAP-Version), in eine unterstützte Konfiguration nach der Migration überführt werden können. Dies geschieht durch den Vergleich des aktuellen Zustands jedes Hosts mit den unterstützten Kombinationen in der NetApp Interoperabilitätsmatrix (IMT), anschließend wird für jeden Host eine klare Zielkonfiguration definiert (Betriebssystemebene, MPIO/ALUA-Verhalten, HBA-Treiber/Firmware und alle erforderlichen Host-Tools) und eine Lückenanalyse erstellt, die die exakten Änderungen auflistet, die zur Erreichung dieses Ziels notwendig sind.
+
+Planen und überprüfen Sie die Lückenanalyse, um Korrekturmaßnahmen zu vermeiden, die die Anwendungskompatibilität und die Ausfallplanung beeinträchtigen können. In vielen Umgebungen ist es sicherer, einige Änderungen, wie z. B. OS-Patching oder HBA-Updates, vor dem Migrationszeitraum durchzuführen. Änderungen am Multipathing-Stack werden jedoch häufig bis zur Umstellung oder nach der Migration verschoben, da eine Änderung des MPIO-Verhaltens die Supportfähigkeit mit dem aktuellen Array beeinträchtigen und ein Rollback erschweren kann.
+
+Für iSCSI FLI sollte die Analysephase auch die iSCSI-spezifische Bereitschaft erfassen:
+
+* Bestätigen Sie, dass das iSCSI-Multipath-Design des Hosts nach der Umstellung weiterhin unterstützt wird.
+* Stellen Sie sicher, dass das fremde Array für die Verwendung als iSCSI-Backend qualifiziert ist, da Unterschiede im Backend-Transport das Interoperabilitätsverhalten verändern können.
+
+
+
+
+== ONTAP FLI Analysephasenaufgaben
+
+Die Analysephase ist hostzentriert, sollte aber auch die gesamte End-to-End-Supportkette (Host über Fabric zu ONTAP und zurück) validieren und die FLI-Backend-Interoperabilitätsposition bestätigen.
+
+[cols="1,2"]
+|===
+| Komponente | Aufgaben 
+
+
+| Host  a| 
+* Vergleichen Sie die aktuelle Hostkonfiguration mit den von IMT unterstützten Konfigurationen und bestimmen Sie die Zielkonfiguration nach der Migration:
++
+** OS-Ebene
+** Multipathing-Ansatz
+** HBA-Modell, Treiber und Firmware
+** Erforderliche Host-Tools
+
+
+* Erstellen Sie eine Lückenanalyse pro Host mit den erforderlichen:
++
+** Hotfixes und Patches
+** Betriebssystem-Updates
+** HBA-Treiber- und Firmware-Upgrades
+** Multipath-Änderungen
+** Führen Sie alle benötigten Dienstprogramme auf.
+
+
+
+
+
+
+| Fabric (FC/iSCSI-Netzwerk)  a| 
+* Validieren Sie in der End-to-End-Ansicht die Switch- und Fabric-Unterstützung (Modell und Firmware) und protokollieren Sie erforderliche Upgrades, falls die Fabric für die Zielkombination aus ONTAP und Host nicht unterstützt wird.
+
+
+
+
+| NetApp storage array (Ziel)  a| 
+* Prüfen Sie, ob die Ziel-ONTAP-Plattform und -Version mit dem vorgesehenen FLI-Workflow kompatibel sind, einschließlich aller anwendbaren AFF Enablement-Erwartungen, und dokumentieren Sie alle Voraussetzungen, die das Zieldesign beeinflussen.
+
+
+
+
+| Externes Speicherarray (Quelle)  a| 
+* Prüfen Sie, ob das Quell-Array durch die FLI-Backend-Interoperabilität abgedeckt ist. Falls Interoperabilität nicht im IMT für ONTAP 9.9.1 und spätere Versionen aufgeführt ist, verwenden Sie die SAN LUN Migrate App, um zu qualifizieren, ob sie möglicherweise unterstützt wird.
+
+
+|===
+
+
+== Verwenden Sie die IMT während der ONTAP FLI-Analysephase
+
+Das Interoperabilitätsmatrix-Tool (IMT) ist ein Konfigurationsarchiv und ein Leitfaden, um die Auswahl unterstützter End-to-End-Konfigurationen zu erleichtern, in denen NetApp Produkte mit Komponenten von Drittanbietern interoperieren. IMT kann sowohl unterstützte als auch zertifizierte Konfigurationen enthalten.
+
+* Unterstützte Konfigurationen werden von NetApp qualifiziert.
+* Zertifizierte Konfigurationen werden von einem unabhängigen Dritten für die Zusammenarbeit mit NetApp-Komponenten qualifiziert.
+
+
+.Prüfen Sie den IMT auf Folgendes:
+* Erfassen Sie IMT-Aktionen in Ihrem Arbeitsblatt: Dokumentieren Sie die von IMT empfohlenen Software, Patches und Upgrades für Hosts und Switches in Ihrem Planungsarbeitsblatt.
+* Beginnen Sie breit und verfeinern Sie dann: Beginnen Sie mit statischen Kriterien (ONTAP Release, Protokoll, HA-/Cluster-Modus) und fügen Sie dann das Host-Betriebssystem, den Volume-Manager und die HBA-Details mithilfe Ihrer Standortanalyse als Leitfaden hinzu.
+* Übermäßiges Filtern vermeiden: Wenn Ihre Suche zu spezifisch wird und keine Ergebnisse liefert, lockern Sie die Filter, überprüfen Sie mehrere gültige Konfigurationen und wählen Sie die am besten unterstützte Übereinstimmung.
+* Normalisieren Sie HBA-Kennungen: HBAs können als OEM-Teilenummern angezeigt werden. Überprüfen Sie diese, bevor Sie sie in das IMT eingeben.
+* Prüfen Sie jeden Host: Führen Sie die IMT Supportability-Prüfung für jeden im Migrationsbereich enthaltenen Host durch.
+* Führen Sie zwei Interoperabilitätsprüfungen durch:
++
+** Backend-FLI-Unterstützung: Bestätigen Sie, dass das Backend-Szenario für das Quell-Array unterstützt wird.
+** End-to-End-Support nach der Migration: Bestätigen Sie die Unterstützung für die Kombination aus ONTAP, Host-Betriebssystem, Multipath, HBAs und Switch-Fabric.
+
+
+* Praktischer IMT-Workflow:
++
+** Suchen Sie das Quellarray-Modell, wählen Sie dann „Foreign LUN Import (FLI) backend Interoperability“ und anschließend die ONTAP Plattform und ONTAP Version aus.
+** Zur Überprüfung der Host-Kompatibilität verwenden Sie „End-to-End-Ansicht mit ONTAP SAN host erstellen“, um das Betriebssystem, Multipath und den HBA zu validieren.
+** Zur Überprüfung der Switch-Kompatibilität verwenden Sie die Option „End-to-End-Ansicht für SAN-Switch erstellen“ in der SAN-Host-Ansicht, um die Fabric- und Switch-Unterstützung zu validieren.
+
+
+
+
+.Wenn das ausländische Array nicht in IMT (ONTAP 9.9.1 und höher) aufgeführt ist
+Ab ONTAP 9.9.1, wenn das fremde Array nicht als unterstützt im IMT aufgeführt ist, können Sie das SAN LUN Migrate Tool verwenden, um zu qualifizieren, ob das Array für FLI unterstützt werden könnte. Die App wird von der NetApp Support Site heruntergeladen und von einem Linux-Host mit Blockzugriff (FC oder iSCSI) auf die Quell-Array-LUN ausgeführt. Die Ergebnisse werden mit der Technik überprüft. Der Import vom fremden Array kann vor Ort qualifiziert werden. Bei iSCSI FLI ist der Import vom fremden Array immer vor Ort qualifiziert.
+
+
+
+== ONTAP FLI-Hoständerungen und Rollback-Strategie
+
+In der Analysephase sollte explizit festgelegt werden, was wann geändert wird, da Änderungen am Hostsystem Risiken bergen und die Unterstützung des aktuellen Speichers beeinträchtigen können. Dies ist wichtig, wenn der Host-Stack aktualisiert werden muss, bevor er mit ONTAP unterstützt werden kann.
+
+* Host-Updates (Patches, HBA-Firmware und Treiber) können sicherer sein, wenn sie nach Möglichkeit im Voraus durchgeführt werden, erfordern aber dennoch eine Abstimmung mit Wartungsfenstern und Anwendungsteams.
+* Änderungen am Multipathing-Stack (MPIO, ALUA und Multipath von Drittanbietern) können die aktuelle Array-Supportfähigkeit beeinträchtigen, daher werden sie oft bis zum Migrationsereignis oder sogar bis nach der Umstellung verschoben.
+* Durch eine Verzögerung der MPIO-Neukonfiguration kann das Rollback vereinfacht werden, falls Sie während des Ausfallzeitraums auf den ursprünglichen Speicher zurückgreifen müssen.
+
+
+
+
+== ONTAP FLI Lückenanalyse
+
+Die Lückenanalyse fasst die aktuelle Umgebung im Vergleich zur von NetApp empfohlenen Zielkonfiguration zusammen und listet Upgrades oder Korrekturmaßnahmen auf, die erforderlich sind, um einen unterstützten Zustand nach der Migration zu erreichen.
+
+Eine vollständige Zielkonfiguration pro Host umfasst typischerweise:
+
+* Betriebssystemkonfigurationsebene und erforderliche Patches oder Hotfixes
+* Multipathing-Ansatz und erforderliche Einstellungen (MPIO- und ALUA-Verhalten
+* HBA- und CNA-Modell, Treiber- und Firmwareversion
+* Host-Dienstprogramme und Tool-Anforderungen, die für Ihre Umgebung relevant sind, falls zutreffend
+
+
+Die Lückenanalyse sollte umgehend überprüft werden, da die erforderlichen Maßnahmen möglicherweise Ausfallzeiten erfordern und mit den Anforderungen an den Anwendungssupport in Konflikt geraten könnten.

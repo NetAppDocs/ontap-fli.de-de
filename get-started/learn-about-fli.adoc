@@ -1,0 +1,44 @@
+---
+permalink: get-started/learn-about-fli.html 
+sidebar: sidebar 
+keywords: foreign lun import, fli, ontap, block migration, lun migration, san migration, offline fli, online fli, fibre channel, iscsi, scsi initiator, import workflow, cutover, fc backend, iscsi backend 
+summary: Erfahren Sie, wie ONTAP Foreign LUN Import SAN-LUNs migriert, indem es als SCSI-Initiator fungiert, um von fremden Arrays zu lesen und auf Ziel-ONTAP-LUNs zu schreiben. 
+---
+= Erfahren Sie mehr über ONTAP Foreign LUN Import
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Foreign LUN Import (FLI) ist eine ONTAP-Funktion, die eine Datenmigration auf Blockebene (LUN) ermöglicht, indem Benutzerdaten von einer externen Array-LUN in eine ONTAP-LUN kopiert werden. ONTAP führt die Migration durch, indem es als SCSI-Initiator fungiert, der von der externen LUN liest und in die Ziel-ONTAP-LUN schreibt.
+
+FLI arbeitet ausschließlich auf LUN-Ebene und ist für SAN-Migrationen vorgesehen; es ist kein Migrationstool auf Dateiebene (NAS-/Dateiprotokollmigrationen wie NFS/SMB erfordern andere Ansätze). FLI unterstützt sowohl Offline- als auch Online-Migrationen. Im Offline-Modus wird die Host-E/A für die Dauer des Imports angehalten; im Online-Modus werden die Host-Operationen nach einer kurzen Umschaltung wieder aufgenommen, während der Import im Hintergrund fortgesetzt wird.
+
+Fremde LUNs erscheinen im ONTAP-Speicherstack und müssen explizit als fremd gekennzeichnet werden, um versehentliches Überschreiben/Eigentumsübernahme zu verhindern. FC FLI nutzte FC-Backend-Konnektivität (Initiator-Ports, Zoning/Maskierung), während bei iSCSI FLI im Backend ein iSCSI-Softwareinitiator verwendet wird, der an die Intercluster-Konnektivität gebunden ist, während das hostseitige (Frontend-)Protokoll nach der Datenmigration je nach Design weiterhin FC oder iSCSI sein kann.
+
+.Offline- und Online-FLI-Vergleich
+Im Folgenden werden die wichtigsten Unterschiede zwischen Offline- und Online-Migrationsansätzen zusammengefasst.
+
+[cols="3"]
+|===
+| Bereich | Offline-FLI | Online-FLI 
+
+
+| Host-E/A während des Imports | Die Host-E/A wird für die gesamte Importdauer angehalten. | Host-I/O kann während des Importvorgangs (nach der Umstellung) fortgesetzt werden. 
+
+
+| Ausfallzeitprofil | Erfordert Ausfallzeiten während des gesamten Importfensters. | Konzipiert, um größtenteils unterbrechungsfrei zu sein, wobei in der Regel nur eine kurze Ausfallzeit für die Umstellung erforderlich ist. 
+
+
+| Operativer Anwendungsfall | Am besten geeignet, wenn längere Ausfallzeiten akzeptabel oder durch die Anwendung oder das Host-Modell erforderlich sind. | Am besten geeignet, wenn Ausfallzeiten minimiert werden müssen und Sie Hintergrundkopiervorgänge tolerieren können. 
+|===
+.Offline-FLI-Workflow
+Im Offline-Workflow ist der Host für die gesamte Dauer des Imports getrennt.
+
+image::new-offline-fli.png[Offline-FLI-Workflow]
+
+.Online-FLI-Workflow
+Im Online-Workflow wird der Host nur für eine kurze Übergangszeit getrennt, während der Import vom Kopiervorgang zur Fertigstellung übergeht.
+
+image::new-online-fli.png[Offline-FLI-Workflow]

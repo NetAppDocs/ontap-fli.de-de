@@ -1,0 +1,27 @@
+---
+permalink: configure/fc-connectivity-wiring.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= ONTAP Foreign LUN Import (FLI) Konnektivität und Verkabelung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Import fremder LUNs über FC basiert auf einem Dual-Fabric-SAN-Design, damit die Ziel-ONTAP-Controller während der Erkennung und des Imports zuverlässig auf die LUNs des fremden Arrays zugreifen können. Für eine unterstützte Bereitstellung muss jeder verwendete Storage-Controller in beiden Fabrics über einen primären aktiven Pfad verfügen, was effektiv bedeutet, dass sich die Zielports des Quell-Arrays und die ONTAP-Initiator-Ports der Knoten, die den Import durchführen, in einer gemeinsamen Zone in Fabric A und Fabric B befinden müssen. Sie müssen nicht jeden Knoten im ONTAP Cluster einbeziehen – nur die Knoten, die tatsächlich LUNs importieren und migrieren. Obwohl indirekte Pfade funktionieren können, ist es Best Practice, aktive, optimierte Pfade zwischen Quelle und Ziel zu verwenden.
+
+
+
+== Empfohlene FC-Verkabelungs- und Zonierungspraktiken für ONTAP FLI
+
+* Verwenden Sie für Redundanz zwei Fabrics (A und B).
+* Stellen Sie sicher, dass in beiden Fabrics primäre, aktive Pfade von jedem verwendeten Controller vorhanden sind.
+* Verwenden Sie nach Möglichkeit mindestens zwei ONTAP-Initiator-Ports und zwei Source-Array-Ziel-Ports, um Single Points of Failure zu vermeiden.
+* Zonen Sie ONTAP-Initiator-Ports nicht mit dem Host. ONTAP-Initiator-Ports werden ausschließlich verwendet, um eine Verbindung zu den Zielports des Quell-Arrays für Import und Erkennung herzustellen.
+* Zonen Sie nur die ONTAP-Knoten, die an den Importen beteiligt sind, Sie müssen nicht den gesamten Cluster zonieren.
+
+
+image::new-zoning.png[FC-Zonierungsbeispiel für ONTAP FLI]

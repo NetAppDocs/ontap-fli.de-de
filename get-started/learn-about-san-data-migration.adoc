@@ -1,0 +1,44 @@
+---
+permalink: get-started/learn-about-san-data-migration.html 
+sidebar: sidebar 
+keywords: san migration, foreign lun import, fli, ontap, data transfer appliance, san lun migrate, active iq onecollect, interoperability matrix tool, imt, migration planning, online migration, offline migration, lun migration, migration tools 
+summary: Erkunden Sie SAN-Datenmigrationsoptionen für ONTAP, einschließlich Foreign LUN Import und empfohlener Tools zur Planung der Dauer und zur Qualifizierung von Konfigurationen. 
+---
+= Erfahren Sie mehr über die SAN Datenmigration zu ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Migration von SAN-Daten wird häufig durch kurze Ausfallzeiten, Produktionsrisiken und begrenzte Spezialistenressourcen eingeschränkt. ONTAP Foreign LUN Import (FLI) ist eine integrierte Blockmigrationsfunktion, die Daten von einer fremden (Drittanbieter-)Array-LUN auf eine native ONTAP-LUN kopiert und sowohl Offline- als auch Online-Migrationsstile unterstützt. Obwohl ONTAP keine von Professional Services geführte Migration erfordert, wird dennoch dringend empfohlen, NetApp oder qualifizierte Partner für die Bedarfsanalyse, Planung und Schulung einzubeziehen – insbesondere bei nicht-trivialen Umgebungen.
+
+
+
+== Die Wahl des richtigen Migrationsansatzes (Überblick)
+
+Eine praxisorientierte Migrationsstrategie kann eine primäre Methode nutzen und diese gegebenenfalls durch andere Ansätze ergänzen. Für Migrationen auf SAN/LUN-Ebene in ONTAP ist FLI häufig eine gute Wahl; in manchen Szenarien eignen sich jedoch Alternativen, die von vornherein nicht-disruptiv sind, besser.
+
+.Gängige Optionen:
+Foreign LUN Import (FLI):: Migration auf Block-/LUN-Ebene nach ONTAP mit Online- und Offline-Workflows.
+Datenübertragungsgerät (DTA):: Ein SAN-angeschlossenes Appliance-Modell, das pro migriertem TB lizenziert wird und Offline- und Online-Migrationen unterstützt.
+Migrationen basierend auf Host-Betriebssystem oder Anwendungen:: Nützlich, wenn die Plattform native Mobilität bietet oder wenn die Kontrolle über Host oder Anwendung bevorzugt wird (z. B. VMware Storage Mobility und hostbasierte Kopierverfahren).
+
+
+
+
+== Planung der Migrationsdauer
+
+Für die erste Planung wird häufig ein Richtwert von ca. 5 Stunden pro Host für einen Host mit 8 LUNs und insgesamt ca. 2 TB angenommen, was ungefähr 400 GB/Stunde entspricht. Dieser Wert ist bewusst grob geschätzt und trifft wahrscheinlich nicht auf jede Umgebung zu. Um eine genaue Schätzung zu erhalten, empfiehlt es sich, mehrere Testmigrationen unterschiedlicher Größe durchzuführen und den tatsächlichen Durchsatz unter Ihren eigenen Speicher-, Netzwerk- und Hostbedingungen zu messen.
+
+
+
+== Empfohlene Tools (Datenerfassung, Kompatibilität, Automatisierung, Qualifizierung)
+
+Service-Tools bieten eine standardisierte Methode, um Umgebungsdaten zu erfassen, die Unterstützbarkeit zu validieren und menschliche Fehler bei Planung und Ausführung zu reduzieren.
+
+Active IQ OneCollect:: Sammelt Daten von Speichern, Hosts, Fabrics und Switches zur Fehlerbehebung, Validierung, Migrationsplanung und Upgrade-Bewertung.
+Interoperability Matrix Tool (IMT):: Ein webbasiertes Dienstprogramm zur Bestätigung unterstützter Konfigurationen über NetApp und Komponenten von Drittanbietern.
+Solaris Relabeler (falls zutreffend):: Aktualisiert die VTOC-Datenträgerbezeichnungen nach der Migration, sodass die Systeme nach Migrationen auf Blockebene aktualisierte Anfrageinformationen widerspiegeln.
+SAN LUN Migrate (sanlunmigrate für FLI-Projekte):: Nutzen Sie einen Qualifizierungsansatz, um das Verhalten fremder Arrays/LUNs in der Kundenumgebung vor der Verpflichtung zur Produktionsmigration zu validieren; dies ist besonders wichtig, wenn sich das Verhalten des Transports oder des Anbieters unterscheidet.
+

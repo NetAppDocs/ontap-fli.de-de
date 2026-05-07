@@ -1,0 +1,157 @@
+---
+permalink: phases/remediation-solaris.html 
+sidebar: sidebar 
+keywords: ontap, fli, foreign lun import, solaris host, pre-migration, offline fli, online fli 
+summary: Bevor Sie die ONTAP FLI-Migration auf einem Solaris-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen. 
+---
+= ONTAP FLI Solaris Host-Sanierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die ONTAP FLI-Migration auf einem Solaris-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen.
+
+
+
+== Vormigration - Offline-FLI
+
+Diese Schritte sind sowohl für Online- als auch für Offline-FLI üblich. Bevor Sie die Quell-LUN vom Host entfernen, stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind.
+
+[cols="3"]
+|===
+| Dateisystem (ZFS/Zpool) | OSC (Oracle Sun Cluster) (SCSI3 PR) mit Zpool | SANBOOT 
+
+
+| Schritt 1: Erfassen der End-to-End-Blockgerätekonfiguration: Multipath-Status/Pfade, Zpool-Layout auf dem Blockgerät und OBP (ok prompt)-Einstellungen, die das korrekte Boot-Gerät und die Boot-Parameter bestätigen. | Schritt 1: Erfassen der End-to-End-Blockgerätekonfiguration: Multipath-Status/Pfade, LVM-Layout auf dem Blockgerät und OBP-Einstellungen zur Bestätigung des korrekten Boot-Geräts und der Boot-Parameter. | Schritt 1: Erfassen Sie die vollständige SAN-Boot-Konfiguration: Multipath-Status/Pfade, RPool-Layout auf der Boot-LUN und OBP-Einstellungen, die das korrekte Boot-Gerät und die Boot-Parameter bestätigen. 
+
+
+| Schritt 2: Stellen Sie sicher, dass alle Operationen an den Ziel-Mountpunkten angehalten sind. Stellen Sie sicher, dass keine Prozesse mehr auf das Blockgerät zugreifen. Falls erforderlich, leeren/beenden Sie die offenen Prozesshandles. | Schritt 2: Deaktivieren Sie die Cluster-Ressourcengruppen für die jeweiligen LUNs, die migriert werden. | Schritt 2: Starten Sie den Host neu, um sicherzustellen, dass er nach den oben genannten Änderungen einwandfrei funktioniert. Sobald der Host wieder einwandfrei läuft, verstehen Sie, dass der Host für die Vorab-Remediation für die FLI-Migration bereit ist. 
+
+
+| Schritt 3: Sicherstellen, dass der Pool nicht verwendet wird. Alle Dateisysteme, die den Pool verwenden, aushängen: | Schritt 3: Stellen Sie sicher, dass der Pool nicht verwendet wird | Schritt 3: Fahren Sie nun den sanboot Host herunter, um mit dem ONTAP FLI Workflow fortzufahren. 
+
+
+| Schritt 4: Pool exportieren Export überprüfen | Schritt 4: Entfernen Sie die Quell-LUNs aus der OSC-Konfiguration. |  
+
+
+| Schritt 5: Führen Sie bei Bedarf einen erneuten Scan des Host-SCSI-Busses durch. Beispiel: `devfsadm` | Schritt 5: Entfernen Sie alle veralteten SCSI-Gerätedateien, falls vorhanden HINWEIS: Falls persistente LUN-Reservierungen vorhanden sind, löschen Sie diese und stellen Sie sicher, dass keine PR-Schlüssel vorhanden sind |  
+
+
+|  | Schritt 6: Scannen Sie den Host erneut, um sicherzustellen, dass keine veralteten Einträge in der bestehenden Gerätezuordnung vorhanden sind. |  
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+.Schritte
+. Speichergeräte identifizieren.
++
+[Source]
+----
+echo | format
+sanlun lun show all (This is only applicable for NetApp devices)
+mpathadm list lu
+mpathadm show lu lu_name
+luxadm display node wwn/ disk path
+----
+. Identifizieren Sie den Zpool und die Dateisysteme.
++
+[Source]
+----
+zpool status <zpool_name>
+df -h
+----
+. Dateisysteme aushängen und exportieren.
++
+[Source]
+----
+zfs umount /mount_point
+zpool export <zpool_name>
+df -h (to ensure its unmounted)
+----
+. Entfernen Sie die SCSI-Blockgeräte.
++
+[Source]
+----
+rm /dev/rdsk/disk_ID
+----
+. Prüfen Sie, ob das Gerät getrennt ist.
++
+format | grep disk_id
+
+. Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen.
++
+cfgadm -al
+
+
+
+
+
+== Vor der Migration – Online-FLI
+
+Nachfolgend sind die spezifischen Schritte der Online-FLI aufgeführt, aber diese Schritte müssen durch Schritte der Pre-Migration – Offline-FLI – vorausgegangen sein. Die folgenden Schritte müssen ausgeführt werden, nachdem die NetApp LUN dem Host zugewiesen wurde.
+
+[cols="4"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Sanboot 
+
+
+| Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Solaris-Hosts erneut scannen. | Schritt 1: Schalten Sie den Server ein. 
+
+
+| Schritt 2: Identifizieren Sie die Multipath-Speichergeräte. | Schritt 2: Identifizieren Sie die Multipath-Geräte. | Schritt 2: Identifizieren Sie die Multipath-Geräte. | Schritt 2: Konfigurieren Sie im SPARC-Server-OBP das neue Boot-Gerät, das diesem Host-HBA präsentiert wird. Ändern Sie die nvalias, um den neuen Festplattenpfad darzustellen. 
+
+
+| Schritt 3: Überprüfen Sie die Dateisystemdetails. | Schritt 3: Ermitteln Sie die Multipath-Geräte-ID und präsentieren Sie sie der jeweiligen Anwendung. | Schritt 3: Überprüfen Sie den Poolstatus. | Schritt 3: Starten Sie den Host neu, um von der neu zugeordneten LUN zu booten, die Teil des LUN Import ist. 
+
+
+| Schritt 4: Hängen Sie die Geräte wieder in die jeweiligen Ordner ein. |  | Schritt 4: Importieren Sie den Pool. |  
+
+
+|  |  | Schritt 5: Überprüfen Sie den Poolstatus. |  
+
+
+|  |  | Schritt 6: Pool/ZFS einbinden. |  
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+.Schritte
+. Speichergeräte identifizieren.
++
+[Source]
+----
+format
+sanlun lun show all
+mpathadm list lu
+mpathadm show lu
+----
+. Identifizieren Sie den Zpool und die Dateisysteme.
++
+[Source]
+----
+zpool status <zpool_name>
+df -h
+----
+. Varyoffvg und Dateisysteme aushängen.
++
+[Source]
+----
+zfs umount /mount_point
+zpool export <zpool_name>
+df -h (to ensure its unmounted)
+----
+. Entfernen Sie die SCSI-Blockgeräte.
++
+rm /dev/rdsk/disk_ID
+
+. Prüfen Sie, ob das Gerät getrennt ist.
++
+format | grep disk_id
+
+. Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen.
++
+cfgadm -al
+
+

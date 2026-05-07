@@ -1,0 +1,109 @@
+---
+permalink: phases/discovery-phase.html 
+sidebar: sidebar 
+keywords: discovery phase, foreign lun import, fli, active iq onecollect, fc fli, iscsi fli, intercluster lif, wwpn, iqn, foreign array, lun discovery, san migration 
+summary: Lernen Sie die Discovery-Phase kennen, in der Informationen über die Quellumgebung und die Konnektivität gesammelt werden, um die Grundlage für die Migrationsplanung zu schaffen. 
+---
+= ONTAP Foreign LUN Import (FLI) Discovery-Phase
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die ONTAP FLI-Erkennungsphase ist der erste Schritt im Migrationsprozess. Es ist entscheidend, alle notwendigen Informationen über die Quellumgebung, die Konnektivität und das Ziel-ONTAP-System zu erfassen, um eine reibungslose Migration zu gewährleisten. Die Erkennungsphase bildet die Grundlage für die Planung, Vorbereitung, Durchführung und Überprüfung der Migration.
+
+
+
+== Bereiten Sie eine iSCSI-Migration mit ONTAP FLI vor
+
+Die ONTAP FLI-Erkennungsphase sammelt die technischen Details, die für den Abschluss der Migration erforderlich sind:
+
+* Planen Sie den Migrationsablauf (online vs offline)
+* Führen Sie die Host-Sanierung sicher durch
+* Überprüfen Sie die Konnektivität und die Erkennung der fremden LUN auf ONTAP, bevor Sie die Importbeziehung erstellen
+
+
+Für eine strukturierte, wiederholbare Datenerfassung über Hosts, NetApp-Controller und Fabrics hinweg können Sie NetApp Active IQ OneCollect verwenden. OneCollect ist dafür ausgelegt, Informationen von Storage, Hosts, Fabrics und Switches für die Migrationsplanung und Validierung zu sammeln.
+
+Bei FC FLI muss in der Erkennungsphase der Zielport-WWPNs des fremden Arrays erfasst werden.
+
+Für iSCSI FLI muss die Erkennungsphase Folgendes beinhalten:
+
+* Erfassen der Zielportal-IPs und Ziel-IQNs des fremden Arrays
+* IC-LIF-Erreichbarkeit prüfen
+* Planen Sie vollständige iSCSI-Mesh-Sitzungen (jeder HA-Knoten ist mit jedem Zielportal verbunden), um sicherzustellen, dass die fremde LUN über alle verfügbaren Pfade gefunden wird
+
+
+
+
+== ONTAP FLI-Erkennungsphasenaufgaben
+
+Jede Komponente verfügt über eine Reihe von Aufgaben zur Datenerfassung oder Verbindungsprüfung.
+
+[cols="1,2"]
+|===
+| Komponente | Aufgaben 
+
+
+| Host  a| 
+* Ermitteln Sie die Host-OS-Version, den Multipathing-Stack und die Konfiguration sowie alle speziellen Verbrauchsmodelle, wie Dateisystem, Raw Device oder Cluster Disk, um die Host-Sanierungs- und Umstellungsschritte zu steuern.
+* Erfassen Sie das LUN-Inventar, einschließlich der Größe, Kennungen oder Seriennummern, Partitionslayouts oder Offsets sowie der Art und Weise, wie jede LUN von Anwendungen für Planung und Rollback genutzt wird.
+* Für FC-Frontend-Umgebungen die Host-Initiator-WWPNs protokollieren. Diese werden für die Zonierung und Maskierung verwendet, sofern dies für das gesamte Migrations- und Umstellungsdesign zutrifft.
+* Bei iSCSI-Frontend-Umgebungen sollten, falls diese nach der Migration verwendet werden, die Host-Initiator-IQNs und die Zielportal-IPs aufgezeichnet werden, die der Host nach der Umstellung für die Anmeldung verwenden wird.
+
+
+
+
+| Fabric und Netzwerk  a| 
+* Für FC-Umgebungen:
++
+** Dokumentieren Sie die aktuelle Zonierung (zu und von den Host- und Quell-Array-Zonen), damit sie nach der Umstellung sicher entfernt oder aktualisiert werden kann.
+** Erfassen Sie die Switch-Kennungen und die beteiligten Ports.
+
+
+* Für iSCSI-Umgebungen:
++
+** Dokumentieren Sie VLAN, Subnetz und Routingpfad zwischen ONTAP IC LIFs und externen Array-Zielportalen
+** Prüfen Sie, ob keine Firewalls oder ACLs die Kommunikation blockieren.
+
+
+
+
+
+
+| NetApp storage array (Ziel)  a| 
+* Bestätigen Sie die ONTAP Version und die ECV-Bereitschaft für iSCSI FLI.
++
+
+NOTE: Die Erstellung eines Initiators ist blockiert, wenn der Cluster nicht dem unterstützten Stand entspricht.
+
+* Ermitteln Sie, welche Knoten teilnehmen werden, z. B. der Knoten mit der LUN und sein HA-Partner, und protokollieren Sie die auf diesen Knoten verfügbaren Intercluster-LIFs. Planen Sie Redundanz ein; planen Sie IC-LIFs, Initiatoren und Sitzungen auf beiden HA-Knoten ein.
+* Notieren Sie den IC LIF IPspace und das Subnetz und überprüfen Sie, ob diese ausländische Zielportale erreichen können. Vermeiden Sie die Erstellung neuer IC LIFs in einem anderen Subnetz, wenn bereits IC LIFs an anderer Stelle im Cluster verwendet werden.
+* Prüfen Sie während der Planung die zielseitigen Einschränkungen, die Sie unbedingt einhalten müssen, wie die maximale Importgröße, die Blockgrößenanforderung von 512B sowie die Skalierungsgrenzen für Sitzungen und Importe, die für iSCSI FLI relevant sind.
+
+
+
+
+| Externes Speicherarray (Quelle)  a| 
+* Ermitteln Sie die Zielportal-IPs des fremden Arrays und die Ziel-IQNs; iSCSI-Erkennungssitzungen werden für iSCSI FLI nicht unterstützt, daher müssen diese im Voraus explizit bekannt sein.
+* Ermitteln Sie die dem Quellhost zugeordneten LUNs, einschließlich LUN-Größe und Blockgröße. Stellen Sie sicher, dass die LUN stabil ist, sich nicht erweitert und für die Importplanung geeignet ist.
+* Protokollieren Sie Hostzugriffs- und Maskierungsobjekte wie Host- und Initiatordatensätze, damit Sie während der Umstellung sicher die Zuordnung aufheben oder ändern und die Rollback-Bereitschaft überprüfen können.
+* Planen und Durchführen der Fremd-Array-Qualifizierung.
++
+
+NOTE: Für iSCSI FLI ist eine Feldqualifizierung erforderlich; gehen Sie nicht davon aus, dass FC-qualifizierte Arrays automatisch für iSCSI qualifiziert sind.
+
+
+
+|===
+
+
+== Empfohlene ONTAP FLI-Ermittlungsergebnisse
+
+* Eine einzige Inventarliste ordnet Folgendes zu: Host → Quell-LUN(s) → Fremdes Zielportal/IQN → ONTAP IC LIFs/Knoten → Ziel-LUN(s) für saubere Ausführung und Rollback.
+* Ein OneCollect Paket (oder Äquivalent), das vor der Ausführung der Änderung erfasst wird, um die Triagezeit bei auftretenden Problemen zu verkürzen.
+
+
+.Verwandte Informationen
+link:https://mysupport.netapp.com/site/tools["Tools"]

@@ -1,0 +1,226 @@
+---
+permalink: phases/remediation-windows.html 
+sidebar: sidebar 
+keywords: ontap, fli, foreign lun import, windows host, pre-migration, offline fli, online fli 
+summary: Bevor Sie die ONTAP FLI-Migration auf einem Windows-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen. 
+---
+= ONTAP FLI Windows-Host-Sanierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die ONTAP FLI-Migration auf einem Windows-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen.
+
+
+
+== Vormigration - Offline-FLI
+
+Diese Schritte gelten sowohl für Offline- als auch für Online-FLI. Führen Sie die folgenden Vorbereitungen auf Hostseite durch, bevor Sie die Quell-LUNs vom Windows-Host entfernen.
+
+[cols="4"]
+|===
+| Dateisystemgeräte | Physische Laufwerke (ohne Dateisystem) | WSFC (WFC) | Hyper V 
+
+
+| Schritt 1: Identifizieren Sie die Dateisystemdatenträger, die für die Migration vorgesehen sind | Schritt 1: Identifizieren Sie die physischen Datenträger, die für die Migration vorgesehen sind | Schritt 1: Identifizieren Sie die Cluster-Datenträger, die für die Migration vorgesehen sind | Schritt 1: Beenden Sie alle Anwendungen auf den virtuellen Maschinen und fahren Sie die virtuellen Maschinen herunter. 
+
+
+| Schritt 2: Die Anwendungen ordnungsgemäß herunterfahren | Schritt 2 Anwendungen ordnungsgemäß herunterfahren | Schritt 2 Anwendungen ordnungsgemäß herunterfahren | Schritt 2: Die Festplatte vom Host offline schalten. 
+
+
+| Schritt 3: Festplatten offline nehmen |  | Schritt 3: Den Cluster herunterfahren und die Clusterdienste auf allen Clusterknoten beenden | Schritt 3: Alle LUNs vom Host entfernen. 
+|===
+
+
+=== Dateisystemgeräte
+
+.Schritte
+. Identifizieren Sie die Dateisystemdatenträger, die für die Migration vorgesehen sind.
++
+Get-Disk | Format-Table Nummer, FriendlyName, Größe, PartitionStyle
+
+. Die Anwendungen ordnungsgemäß beenden.
++
+Stop-Service -Name <ServiceName>
+
+. Die Festplatten offline nehmen.
++
+Set-Disk -Number <DiskNumber> -IsOffline $true
+
+
+
+
+
+=== Physische Laufwerke (ohne Dateisystem)
+
+.Schritte
+. Identifizieren Sie die physischen Datenträger, die für die Migration vorgesehen sind.
++
+Get-PhysicalDisk | Format-Table FriendlyName, Size, MediaType
+
+. Die Anwendungen ordnungsgemäß beenden.
++
+Stop-Service -Name <ServiceName>
+
+
+
+
+
+=== WSFC (Windows Server Failover Clustering)
+
+.Schritte
+. Identifizieren Sie die Cluster-Datenträger, die für die Migration vorgesehen sind.
++
+Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
+
+. Die Anwendungen ordnungsgemäß beenden.
++
+Stop-ClusterResource -Name <ResourceName>
+
+. Den Cluster herunterfahren und die Clusterdienste auf allen Clusterknoten stoppen.
++
+Stop-Cluster -Name <ClusterName>
+
+
+
+
+
+=== Hyper V
+
+.Schritte
+. Beenden Sie alle Anwendungen auf den virtuellen Maschinen und fahren Sie die virtuellen Maschinen herunter.
++
+Stop-VM -Name <VM_Name> -Force
+
+. Die Festplatte vom Host offline nehmen.
++
+Set-Disk -Number <DiskNumber> -IsOffline $true
+
+. Alle LUNs müssen auf der Seite des Speichersystems vom Host entmappt werden.
+. Stellen Sie sicher, dass die Festplatten ordnungsgemäß aus dem Host entfernt werden.
++
+Get-Disk | Where-Object OperationalStatus -ne "Online"
+
+
+
+
+
+== Vor der Migration – Online-FLI
+
+Nachfolgend sind die spezifischen Schritte des Online-FLI aufgeführt, diesen Schritten müssen jedoch Schritte im Rahmen des Offline-FLI vor der Migration vorausgehen.
+
+Die folgenden Schritte müssen durchgeführt werden, nachdem die NetApp LUN dem Host bereitgestellt wurde.
+
+Zu diesem Zeitpunkt ist der LUN-Import bereits erstellt, die LUN ist der Host-Initiatorgruppe zugeordnet und es ist entweder ein iSCSI-Initiator oder ein FC-Initiator vom Host angemeldet.
+
+Bei Offline-FLI bleibt die NetApp LUN im Offline-Zustand.
+
+[cols="2"]
+|===
+| Dateisystemgeräte | Physische Laufwerke (ohne Dateisystem) 
+
+
+| Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut. | Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut. 
+
+
+| Schritt 2: Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online. | Schritt 2: Fügen Sie die physische Festplatte der gewünschten Anwendung hinzu und starten Sie. 
+
+
+| Schritt 3: Überprüfen Sie, ob alle Dateisystemdatenträger verfügbar und funktionsfähig sind. |  
+
+
+| Schritt 4: Starten Sie die erforderlichen Anwendungen. |  
+|===
+
+
+=== Dateisystemgeräte
+
+.Schritte
+. Scannen Sie den Speicher auf allen zugeordneten Hosts erneut.
++
+Update-HostStorageCache
+
+. Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online.
++
+[Source]
+----
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+----
+. Überprüfen Sie, ob alle Dateisystemfestplatten verfügbar und funktionsfähig sind.
++
+Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
+
+. Starten Sie die erforderlichen Anwendungen.
++
+Start-Service -Name <ServiceName>
+
+
+
+
+
+=== Physische Laufwerke (ohne Dateisystem)
+
+.Schritte
+. Scannen Sie den Speicher auf allen zugeordneten Hosts erneut.
++
+Update-HostStorageCache
+
+. Fügen Sie die physische Festplatte zur gewünschten Anwendung hinzu und starten Sie.
++
+Anwendungsspezifische Konfiguration
+
+
+
+
+
+=== WSFC
+
+.Schritte
+. Scannen Sie den Speicher auf allen zugeordneten Hosts erneut.
++
+Update-HostStorageCache
+
+. Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online.
++
+[Source]
+----
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+----
+. Überprüfen Sie, ob auf allen zugeordneten Hosts die Laufwerke verfügbar und online sind.
++
+Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
+
+. Starten Sie die WSFC-Clusteranwendung und konfigurieren Sie die erforderlichen Clusterressourcen.
++
+[Source]
+----
+Start-Cluster -Name <ClusterName>
+Start-ClusterResource -Name <ResourceName>
+----
+
+
+
+
+=== Hyper V
+
+.Schritte
+. Scannen Sie die Datenträgerverwaltung erneut, alle Datenträger sollten verbunden sein.
++
+Update-HostStorageCache
+
+. Wählen Sie die Datenträger aus und schalten Sie sie online, alle sollten ONLINE gehen und ihren ursprünglichen Namen und Datenträgerbuchstaben erhalten.
++
+[Source]
+----
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+----
+. Versuchen Sie, die virtuellen Maschinen einzuschalten. Die virtuelle Maschine sollte ohne Probleme online gehen.
++
+Start-VM -Name <VM_Name>
+
+

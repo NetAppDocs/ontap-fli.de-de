@@ -1,0 +1,70 @@
+---
+permalink: phases/execute-phase.html 
+sidebar: sidebar 
+keywords: execute phase, foreign lun import, fli, offline fli, online fli, cutover, import jobs, san migration, zoning, host remediation, iscsi fli, fc fli 
+summary: Lernen Sie die Ausführungsphase kennen, die alle erforderlichen Aufgaben für die Durchführung einer Offline- oder Online-FLI-Migration und die Umstellung des Hostzugriffs auf ONTAP abdeckt. 
+---
+= ONTAP Foreign LUN Import (FLI) Ausführungsphase
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In der Ausführungsphase wird die Migration durchgeführt. Sie umfasst alle erforderlichen Schritte für den Offline- oder Online-Import einer fremden LUN und die Umstellung des Hostzugriffs vom fremden Array auf das ONTAP Array.
+
+
+
+== ONTAP FLI führt Aufgaben der Ausführungsphase aus
+
+Nachfolgend sind die ONTAP FLI-Ausführungsaufgaben für jede Komponente aufgeführt.
+
+[cols="1,2"]
+|===
+| Komponente | Aufgaben 
+
+
+| Host  a| 
+* Überprüfen Sie die Ereignis- und Systemprotokolle des Hosts, um Probleme frühzeitig zu erkennen und Risiken vor größeren Neukonfigurationen zu minimieren.
+* Starten Sie die Hosts gegebenenfalls neu, um die Stabilität vor der vorzeitigen Umstellung oder Fehlerbehebung sicherzustellen.
+* Nach der Umstellung sollte der Hostzugriff überprüft werden. Alle erwarteten Geräte sind vorhanden, Multipathing funktioniert einwandfrei und Anwendungen sowie Dateisysteme starten problemlos.
+
+
+
+
+| iSCSI FLI und das Netzwerk  a| 
+* Bestätigen Sie die Erreichbarkeit der Zielportale des ausländischen Arrays über IC LIF und stellen Sie sicher, dass die Backend-Konnektivität während des gesamten Imports stabil bleibt.
+* Überprüfen Sie, ob die iSCSI-Sitzungen intakt bleiben, da sie die Erkennung fremder LUNs und die Pfadverfügbarkeit steuern.
+
+
+
+
+| Fabric  a| 
+* Stellen Sie sicher, dass die erforderliche Zonierung und Maskierung eingerichtet ist, damit ONTAP Initiator-Ports auf die fremden Array-LUNs für Erkennung und Import zugreifen können.
+* Nach der Umstellung aktualisieren Sie die Zoneneinteilung nach Bedarf, damit die Hosts auf die Ziel-ONTAP-LUNs zugreifen können, und bereiten Sie die spätere Bereinigung vor.
+
+
+
+
+| NetApp storage array (Ziel)  a| 
+* Bestätigen Sie, dass fremde LUNs in ONTAP erkannt werden, bevor Sie Importaufträge erstellen.
+* Erstellen Sie die Importbeziehung und starten Sie die Importaufträge, nachdem die Erkennung bestätigt wurde.
+* Überwachen Sie den Importfortschritt und behandeln Sie Ausnahmen. Verwenden Sie „Pause“ und „Fortsetzen“ nach Bedarf, um die Kopierströme zu regulieren, insbesondere wenn die Host-Latenz zunimmt.
+* Umstellungsabwicklung:
++
+** Die Offline-FLI-Umstellung erfolgt nach Abschluss des Imports.
+** Die Umstellung auf den Online-FLI-Host erfolgt früher, während der Import im Hintergrund fortgesetzt wird.
+
+
+
+
+
+
+| Externes Speicherarray (Quelle)  a| 
+* Stellen Sie sicher, dass die für die Migration vorgesehenen Quell-LUNs für die ONTAP-Erkennung und den Import korrekt präsentiert werden (FC-Maskierung oder iSCSI-Ziel-Sichtbarkeit, abhängig vom Transport).
+* Stellen Sie sicher, dass während des Imports nicht über den Host auf die Quell-LUNs zugegriffen wird. Dies ist entscheidend, um zu verhindern, dass Schreibvorgänge nicht von mehreren Quellen erfolgen.
+* Während der Online-Umstellung sind gegebenenfalls Aufhebungs- und Neuzuordnungsmaßnahmen zu koordinieren, um eine doppelte Darstellung zu verhindern und einen reibungslosen Übergang des Hosts zu ONTAP.
+
+
+|===
+Sowohl bei FC- als auch bei iSCSI-Backend-FLI hängt der Erfolg der Ausführung maßgeblich von einer stabilen Backend-Verbindung ab, indem die Integrität der FC/iSCSI-Sitzung und vollständige Pfadredundanz zum fremden LUN sichergestellt wird. Da Host-I/O (online) und Importkopie um dieselben Backend-Ressourcen konkurrieren können, kann der Import bei Bedarf operativ gedrosselt werden (zum Beispiel durch Anhalten und Fortsetzen), um die Host-Latenz zu schützen, und Migrationen werden typischerweise während Nicht-Spitzenzeiten geplant.

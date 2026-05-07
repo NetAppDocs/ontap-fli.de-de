@@ -1,0 +1,157 @@
+---
+permalink: post-migration-performance/post-remediation-windows.html 
+sidebar: sidebar 
+keywords: host remediation, windows, post-migration, fli, ontap 
+summary: Nach der Migration müssen auf den Windows-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt werden und funktionieren. 
+---
+= Führen Sie die Host-Sanierung nach der Migration von ONTAP FLI Windows durch
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Migration müssen auf den Windows-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt werden und funktionieren.
+
+
+
+== Nach der Migration – Offline FLI
+
+Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
+
+[cols="4"]
+|===
+| Dateisystemgeräte | Physische Laufwerke (ohne Dateisystem) | WFSC | Hyper V 
+
+
+| Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut | Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut | Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut | Schritt 1: Scannen Sie die Datenträgerverwaltung erneut. Alle Datenträger sollten verbunden sein. 
+
+
+| Schritt 2: Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online | Schritt 2: Fügen Sie die physische Festplatte der gewünschten Anwendung hinzu und starten Sie. | Schritt 2: Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online. | Schritt 2: Wählen Sie die Datenträger aus und schalten Sie sie online, alle sollten ONLINE gehen und ihren ursprünglichen Namen und Datenträgerbuchstaben erhalten. 
+
+
+| Schritt 3: Überprüfen Sie, ob alle Dateisystemdatenträger verfügbar und funktionsfähig sind. |  | Schritt 3: Überprüfen Sie, ob auf allen zugeordneten Hosts die Laufwerke verfügbar und ONLINE sind | Schritt 3: Versuchen Sie, die virtuellen Maschinen einzuschalten. Die virtuelle Maschine sollte ohne Probleme online gehen. 
+
+
+| Schritt 4: Starten Sie die erforderlichen Anwendungen |  | Schritt 4: Starten Sie die WFSC-Clusteranwendung und konfigurieren Sie die erforderlichen Clusterressourcen. |  
+|===
+
+
+== Nach der Migration – Online-FLI
+
+Nach dem Löschen des LUN-Imports prüfen Sie, ob die LUN mit -space-reserve deaktiviert und -space-allocation aktiviert konfiguriert ist. Falls nicht, passen Sie sie entsprechend an.
+
+[cols="2"]
+|===
+| Dateisystemgeräte | Physische Laufwerke (ohne Dateisystem) 
+
+
+| Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut | Schritt 1: Scannen Sie den Speicher auf allen zugeordneten Hosts erneut 
+
+
+| Schritt 2: Wenn die Speicherplatzzuweisung auf der Zielseite aktiviert ist, ist ein Neustart des Hosts erforderlich, damit die Änderungen wirksam werden. | Schritt 2: Wenn die Speicherplatzzuweisung auf der Zielseite aktiviert ist, ist ein Neustart des Hosts erforderlich, damit die Änderungen wirksam werden. 
+|===
+
+
+=== Dateisystemgeräte
+
+.Schritte
+. Scannen Sie den Speicher auf allen zugeordneten Hosts erneut
++
+[source, cli]
+----
+Update-HostStorageCache
+----
+. Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online.
++
+[source, cli]
+----
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+----
+. Überprüfen Sie, ob alle Dateisystemfestplatten verfügbar und funktionsfähig sind.
++
+[source, cli]
+----
+Get-Volume | Format-Table DriveLetter, FileSystemLabel, Size, SizeRemaining
+----
+. Starten Sie die erforderlichen Anwendungen.
++
+[source, cli]
+----
+Start-Service -Name <ServiceName>
+----
+
+
+
+
+=== Physische Laufwerke (ohne Dateisystem)
+
+.Schritte
+. Scannen Sie den Speicher auf allen zugeordneten Hosts erneut.
++
+[source, cli]
+----
+Update-HostStorageCache
+----
+. Fügen Sie die physische Festplatte zur gewünschten Anwendung hinzu und starten Sie.
+
+
+
+
+=== WSFC
+
+.Schritte
+. Scannen Sie den Speicher auf allen zugeordneten Hosts erneut.
++
+[source, cli]
+----
+Update-HostStorageCache
+----
+. Identifizieren Sie die aufgelisteten Laufwerke und schalten Sie die Datenträger online.
++
+[source, cli]
+----
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+----
+. Überprüfen Sie, ob auf allen zugeordneten Hosts die Laufwerke verfügbar und ONLINE sind.
++
+[source, cli]
+----
+Get-ClusterResource | Where-Object ResourceType -eq "Physical Disk"
+----
+. Starten Sie die WSFC-Clusteranwendung und konfigurieren Sie die erforderlichen Clusterressourcen.
++
+[source, cli]
+----
+Start-Cluster -Name <ClusterName>
+Start-ClusterResource -Name <ResourceName>
+----
+
+
+
+
+=== Hyper V
+
+.Schritte
+. Scannen Sie die Datenträgerverwaltung erneut, alle Datenträger sollten verbunden sein.
++
+[source, cli]
+----
+Update-HostStorageCache
+----
+. Wählen Sie die Datenträger aus und schalten Sie sie online, alle sollten ONLINE gehen und ihren ursprünglichen Namen und Datenträgerbuchstaben erhalten.
++
+[source, cli]
+----
+Get-Disk | Where-Object IsOffline -eq $true
+Set-Disk -Number <DiskNumber> -IsOffline $false
+----
+. Versuchen Sie, die virtuellen Maschinen einzuschalten. Die virtuelle Maschine sollte ohne Probleme online gehen.
++
+[source, cli]
+----
+Start-VM -Name <VM_Name>
+----
+

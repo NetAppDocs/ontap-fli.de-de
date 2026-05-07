@@ -1,0 +1,193 @@
+---
+permalink: phases/remediation-esxi.html 
+sidebar: sidebar 
+keywords: ontap, fli, foreign lun import, esxi host, pre-migration, offline fli, online fli 
+summary: Bevor Sie die ONTAP FLI-Migration auf einem ESXi-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen. 
+---
+= ONTAP FLI ESXi Host-Remediation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die ONTAP FLI-Migration auf einem ESXi-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen.
+
+
+
+== Vormigration - Offline-FLI
+
+Diese Schritte sind sowohl für Online- als auch für Offline-FLI üblich. Bevor Sie die Quell-LUN vom Host entfernen, stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind.
+
+[cols="4"]
+|===
+| VMs/VMDK | RDM | WSFC | VMSC 
+
+
+ a| 
+Schritt 1: Gast-VMs ordnungsgemäß herunterfahren.
+ a| 
+Schritt 1: Bei VMs, die RDMs verwenden, identifizieren Sie die Backend-Zuordnung mit nmp device und entfernen Sie die RDM-Disks ordnungsgemäß.
+ a| 
+Schritt 1: Falls WFSC vorhanden ist, fahren Sie das Cluster ordnungsgemäß herunter und befolgen Sie die Windows-Reparaturschritte, um die Datenträger zu entfernen.
+ a| 
+Schritt 1: Wenn VM-HA oder VMSC konfiguriert ist, deaktivieren Sie HA, geben Sie gegebenenfalls die Heartbeat-Disks frei und passen Sie die Clusterkonfiguration nach Bedarf an.
+
+
+
+ a| 
+Schritt 2: Datenspeicher, die für die Migration vorgesehen sind, aushängen; falls gemeinsam genutzt, von allen Hosts aushängen.
+ a| 
+Schritt 2: Trennen Sie die relevanten NMP-Geräte, die an der Migration beteiligt sind.
+ a| 
+Schritt 2: Gast-VMs ordnungsgemäß herunterfahren.
+ a| 
+Schritt 2: Datenspeicher, die für die Migration vorgesehen sind, aushängen; falls gemeinsam genutzt, von allen Hosts aushängen.
+
+
+
+ a| 
+Schritt 3: Überprüfen Sie den VMFS-Sperrmodus (nur ATS vs. ATS+SCSI). Falls nur ATS aktiviert ist, wechseln Sie zu SCSI (nur für Online FLI erforderlich).
+ a| 
+ a| 
+Schritt 3: Datenspeicher, die zur Migration vorgesehen sind, aushängen; wenn gemeinsam genutzt, von allen Hosts aushängen. a
+ a| 
+Schritt 3: Trennen Sie die relevanten NMP-Geräte, die an der Migration beteiligt sind.
+
+
+
+ a| 
+Schritt 4: Trennen Sie die relevanten NMP-Geräte, die an der Migration beteiligt sind.
+|   a| 
+Schritt 4: Trennen Sie die relevanten NMP-Geräte, die an der Migration beteiligt sind.
+|  
+|===
+.Wichtige Punkte, die man wissen sollte
+* Die *ATS-only*-Einstellung wird im VMFS-Header gespeichert, der sich im ersten Extent des Datenspeichers befindet. Wenn sich der Datenspeicher über mehrere Extents erstreckt, muss nur der erste Extent angepasst werden.
+* Wird der Datenspeicher von mehreren ESXi-Hosts gemeinsam genutzt, genügt in der Regel eine Aktualisierung von einem Host aus; die anderen Hosts übernehmen die Änderung nach einem erneuten Scan/Remount.
+* Während des Wechsels in den ATS-only-Modus dürfen keine aktiven E/A-Vorgänge auf dem Datenspeicher ausgeführt werden. VMware empfiehlt, VMs zu evakuieren/migrieren oder herunterzufahren und sie gegebenenfalls auszuhängen/wieder einzuhängen, um die Änderung anzuwenden.
+
+
+
+
+=== ESX-Beispielbefehle: Sync Block
+
+Host in den Wartungsmodus versetzen::
+
+
+esxcli system maintenanceMode set --enable true
+
+Speichergeräte und Datenspeicher identifizieren::
+
+
+[Source]
+----
+esxcli storage core device list
+esxcli storage filesystem list
+----
+Überprüfen Sie den VMFS-ATS-Sperrmodus::
+
+
+vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>
+
+Datenspeicher aushängen (auf allen ESXi-Hosts wiederholen, falls gemeinsam genutzt)::
+
+
+esxcli storage filesystem unmount -l <DATASTORE_NAME>
+
+Trennen Sie das zugehörige Gerät (NMP-/naa-Gerät)::
+
+
+esxcli storage core device set -d <naa.ID> --state=off
+
+Prüfen Sie, ob das Gerät getrennt ist.::
+
+
+esxcli storage core device list -d <naa.ID>
+
+Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen::
+
+
+esxcli storage core adapter rescan --all
+
+Wartungsmodus nach Abschluss beenden::
+
+
+esxcli system maintenanceMode set --enable false
+
+
+
+== Vor der Migration – Online-FLI
+
+Nachfolgend sind die einzelnen Schritte des Online-FLI aufgeführt, aber diesen Schritten müssen die Schritte des Pre-Migration Offline-FLI vorausgehen.
+
+Die folgenden Schritte müssen durchgeführt werden, nachdem die NetApp LUN dem Host bereitgestellt wurde.
+
+Zu diesem Zeitpunkt ist der LUN-Import bereits erstellt, die LUN ist der Host-Initiatorgruppe zugeordnet und es ist entweder ein iSCSI- oder ein FC-Initiator vom Host angemeldet.
+
+Im Falle eines Offline-FLI bleibt die NetApp LUN im Offline-Zustand.
+
+[cols="3"]
+|===
+| VMs/VMDK | RDM | VMSC 
+
+
+| Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. 
+
+
+| Schritt 2: Listen Sie die Volume-/Gerätedetails auf, um die Dateisystemdetails auf der LUN zu bestätigen. | Schritt 2: Neue NAA-IDs identifizieren und RDMs wieder zu den jeweiligen VMs hinzufügen. | Schritt 2: Listen Sie die Volume-/Gerätedetails auf, um die Dateisystemdetails auf der LUN zu bestätigen. 
+
+
+| Schritt 3: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. | Schritt 3: Gast-VMs einschalten und Anwendungen starten. | Schritt 3: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. 
+
+
+| Schritt 4: Gast-VMs einschalten und Anwendungen starten. |  | Schritt 4: Gast-VMs einschalten und Anwendungen starten. 
+
+
+|  |  | Schritt 5: Gast-VMs einschalten und Anwendungen starten 
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des OS Vendors.
+
+Host in den Wartungsmodus versetzen::
+
+
+esxcli system maintenanceMode set --enable true
+
+Speichergeräte und Datenspeicher identifizieren::
+
+
+[Source]
+----
+esxcli storage core device list
+esxcli storage filesystem list
+----
+Überprüfen Sie den VMFS-ATS-Sperrmodus::
+
+
+vmkfstools --queryfs -h /vmfs/volumes/<DATASTORE_NAME>
+
+Datenspeicher aushängen (auf allen ESXi-Hosts wiederholen, falls gemeinsam genutzt)::
+
+
+esxcli storage filesystem unmount -l <DATASTORE_NAME>
+
+Wenn nur ATS erkannt wird, konvertieren Sie zu ATS+SCSI::
+
+
+vmkfstools --configATSOnly 0 /vmfs/volumes/<DATASTORE_NAME>
+
+Trennen Sie das zugehörige Gerät (NMP-/naa-Gerät)::
+
+
+esxcli storage core device set -d <naa.ID> --state=off
+
+Prüfen Sie, ob das Gerät getrennt ist.::
+
+
+esxcli storage core device list -d <naa.ID>
+
+Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen::
+
+
+esxcli storage core adapter rescan --all

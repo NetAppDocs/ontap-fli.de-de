@@ -1,0 +1,25 @@
+---
+section: post-migration-performance
+title: FLI nach der Migration
+entries:
+- title: Überblick nach der Migration
+  url: "/post-migration-performance/post-migration-overview.html"
+- title: Führen Sie die Bereinigung nach der Migration durch
+  url: "/post-migration-performance/clean-up.html"
+- title: ESXi VMFSS ATS/CAW-Sanierung durchführen
+  url: "/post-migration-performance/esxi-remediation.html"
+- title: Führen Sie die ONTAP FLI ESXi-Host-Sanierung nach der Migration durch
+  url: "/post-migration-performance/post-remediation-esxi.html"
+- title: Führen Sie die Host-Sanierung nach der Migration von ONTAP FLI AIX durch
+  url: "/post-migration-performance/post-remediation-aix.html"
+- title: Führen Sie die ONTAP FLI HP-Host-Sanierung nach der Migration durch.
+  url: "/post-migration-performance/post-remediation-hp.html"
+- title: Führen Sie die Host-Sanierung nach der Migration von ONTAP FLI Linux durch
+  url: "/post-migration-performance/post-remediation-linux.html"
+- title: Führen Sie die ONTAP FLI Solaris-Host-Nachbearbeitung nach der Datenmigration
+    durch.
+  url: "/post-migration-performance/post-remediation-solaris.html"
+- title: Führen Sie die Host-Sanierung nach der Migration von ONTAP FLI Windows durch
+  url: "/post-migration-performance/post-remediation-windows.html"
+- title: FLI-Leistung
+  url: "/post-migration-performance/performance.html"

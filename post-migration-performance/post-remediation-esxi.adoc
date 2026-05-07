@@ -1,0 +1,242 @@
+---
+permalink: post-migration-performance/post-remediation-esxi.html 
+sidebar: sidebar 
+keywords: host remediation, esxi, post-migration, fli, ontap 
+summary: Nach der Migration müssen auf den ESXi-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt werden und funktionsfähig sind. 
+---
+= Führen Sie die ONTAP FLI ESXi-Host-Sanierung nach der Migration durch
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Migration müssen auf den ESXi-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt werden und funktionsfähig sind.
+
+
+
+== Nach der Migration – Offline FLI
+
+Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
+
+[cols="4"]
+|===
+| VMs/VMDK | RDM | WFSC | VMSC 
+
+
+| Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. 
+
+
+| Schritt 2: Listen Sie die Volume-/Gerätedetails auf, um die Dateisystemdetails auf der LUN zu bestätigen. | Schritt 2: Neue NAA-IDs identifizieren und RDMs wieder zu den jeweiligen VMs hinzufügen. | Schritt 2: Listen Sie die Volume-/Gerätedetails auf, um die Dateisystemdetails auf der LUN zu bestätigen. | Schritt 2: Listen Sie die Volume-/Gerätedetails auf, um die Dateisystemdetails auf der LUN zu bestätigen. 
+
+
+| Schritt 3: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. | Schritt 3: Gast-VMs einschalten und Anwendungen starten. | Schritt 3: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. | Schritt 3: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. 
+
+
+| Schritt 4: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. |  | Schritt 4: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. | Schritt 4: Gast-VMs einschalten und Anwendungen starten. 
+
+
+|  |  | Schritt 5: Identifizieren Sie die vom Cluster verwendeten RDM-Festplatten und ordnen Sie diese den WFSC-Clusterknoten unter Verwendung der gleichen Controller-IDs und Gerätenummern (z. B. SCSI1:0) zu, um die Konsistenz mit der vorherigen Konfiguration zu gewährleisten. | Schritt 5: Gast-VMs einschalten und Anwendungen starten 
+
+
+|  |  | Schritt 6: Schalten Sie die Gast-VMs ein und starten Sie die Clusteranwendung. |  
+|===
+
+NOTE: Die aktuellste und aktualisierte Befehlsliste finden Sie in der Dokumentation des Betriebssystemherstellers.
+
+Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen::
+
+
+[source, cli]
+----
+esxcli storage core adapter rescan --all
+----
+Wartungsmodus nach Abschluss beenden::
+
+
+[source, cli]
+----
+esxcli system maintenanceMode set --enable false
+----
+Speicher auf allen ESXi-Hosts, die der LUN zugeordnet sind, erneut scannen::
+
+
+[source, cli]
+----
+esxcli storage core adapter rescan --all
+----
+Geräte und Dateisysteme auflisten, um LUN-/Dateisystemdetails zu bestätigen::
+
+
+[source, cli]
+----
+esxcli storage core device list
+esxcli storage filesystem list
+----
+Ermitteln Sie neue NAA-IDs, falls diese sich nach der Migration geändert haben.::
+
+
+[source, cli]
+----
+esxcli storage core device list | grep -i naa
+----
+VMFS-Datenspeicher wieder in ESXi einbinden::
+
+
+[source, cli]
+----
+esxcli storage filesystem mount -l <DATASTORE_NAME>
+----
+Überprüfen Sie die Datenspeichereinbindung::
+
+
+[source, cli]
+----
+esxcli storage filesystem list
+----
+RDM wieder zur VM hinzufügen (über die vSphere UI):: Die CLI wird in der Regel nicht verwendet; überprüfen Sie stattdessen die Sichtbarkeit des Backend-Geräts.
++
+--
+[source, cli]
+----
+esxcli storage core device list -d <naa.ID>
+----
+--
+Wartungsmodus beenden (falls zutreffend)::
+
+
+[source, cli]
+----
+esxcli system maintenanceMode set --enable false
+----
+Gast-VMs einschalten::
++
+--
+(VM-Energieverwaltungsvorgänge werden typischerweise über vCenter durchgeführt, die Überprüfung kann jedoch auf dem ESXi-Host erfolgen)
+
+[source, cli]
+----
+vim-cmd vmsvc/getallvms
+vim-cmd vmsvc/power.on <VMID>
+----
+--
+
+
+
+
+== Nach der Migration – Online-FLI
+
+Nach dem Löschen der Importbeziehung bestätigen Sie, dass die neue LUN unabhängig mit aktiviertem CAW/UNMAP/XCOPY/WRITESAME arbeitet.
+
+Setzen Sie den VMFS-Sperrmodus auf ATS-only, indem Sie den Datenspeicher aushängen, ATS-only einstellen und ihn anschließend wieder einhängen. Prüfen Sie nach dem Löschen des LUN-Imports, ob die LUN mit -space-reserve deaktiviert und -space-allocation aktiviert konfiguriert ist. Falls nicht, passen Sie sie entsprechend an.
+
+[cols="3"]
+|===
+| VMs/VMDK | RDM | VMSC 
+
+
+| Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten ESXi-Hosts erneut scannen. 
+
+
+| Schritt 2: Gast-VMs ordnungsgemäß herunterfahren. |  | Schritt 2: Gast-VMs ordnungsgemäß herunterfahren. 
+
+
+| Schritt 3: Datenspeicher, die für die Migration vorgesehen sind, aushängen; falls gemeinsam genutzt, von allen Hosts aushängen. |  | Schritt 3: Datenspeicher, die für die Migration vorgesehen sind, aushängen; falls gemeinsam genutzt, von allen Hosts aushängen. 
+
+
+| Schritt 4: Überprüfen Sie den VMFS-Sperrmodus (nur ATS vs. ATS+SCSI). Wenn ATS-SCSI, ändern Sie auf nur ATS. |  | Schritt 4: Überprüfen Sie den VMFS-Sperrmodus (nur ATS vs. ATS+SCSI). Wenn ATS-SCSI, ändern Sie auf nur ATS. 
+
+
+| Schritt 5: Datenspeicherdetails ermitteln und Datenspeicher wieder in ESXi einbinden. |  | Schritt 5: Aktivieren Sie VM-HA / DRS und konfigurieren Sie gegebenenfalls die erforderlichen Heartbeat-Disks. 
+
+
+| Schritt 6: Gast-VMs einschalten und Anwendungen starten. |  | Schritt 6: Gast-VMs einschalten und Anwendungen starten 
+
+
+| Schritt 7: Datenspeicher-Sperrmodus und VM-/Anwendungsgesundheit validieren |  | Schritt 7: Datenspeicher-Sperrmodus und VM-/Anwendungsgesundheit validieren 
+|===
+Nach dem Abtrennen erneut scannen, um den sauberen Zustand zu bestätigen::
+
+
+[source, cli]
+----
+esxcli storage core adapter rescan --all
+----
+Wartungsmodus nach Abschluss beenden::
+
+
+[source, cli]
+----
+esxcli system maintenanceMode set --enable false
+----
+Speicher auf allen ESXi-Hosts, die der LUN zugeordnet sind, erneut scannen::
+
+
+[source, cli]
+----
+esxcli storage core adapter rescan --all
+----
+Geräte und Dateisysteme auflisten, um LUN-/Dateisystemdetails zu bestätigen::
+
+
+[source, cli]
+----
+esxcli storage core device list
+esxcli storage filesystem list
+----
+Ermitteln Sie neue NAA-IDs, falls diese sich nach der Migration geändert haben.::
+
+
+[source, cli]
+----
+esxcli storage core device list | grep -i naa
+----
+VMFS-Datenspeicher wieder in ESXi einbinden::
+
+
+[source, cli]
+----
+esxcli storage filesystem mount -l <DATASTORE_NAME>
+----
+Überprüfen Sie die Datenspeichereinbindung::
+
+
+[source, cli]
+----
+esxcli storage filesystem list
+----
+RDM wieder zur VM hinzufügen (über die vSphere UI)::
++
+--
+Die CLI wird in der Regel nicht verwendet; überprüfen Sie stattdessen die Sichtbarkeit des Backend-Geräts.
+
+[source, cli]
+----
+esxcli storage core device list -d <naa.ID>
+----
+--
+Wartungsmodus beenden (falls zutreffend)::
+
+
+[source, cli]
+----
+esxcli system maintenanceMode set --enable false
+----
+Gast-VMs einschalten::
++
+--
+(VM-Energieverwaltungsvorgänge werden typischerweise über vCenter durchgeführt, die Überprüfung kann jedoch auf dem ESXi-Host erfolgen)
+
+[source, cli]
+----
+vim-cmd vmsvc/getallvms
+vim-cmd vmsvc/power.on <VMID>
+----
+--
+Wenn ATS+SCSI erkannt wird, in ATS-only umwandeln::
+
+
+[source, cli]
+----
+vmkfstools --configATSOnly 1 /vmfs/volumes/<DATASTORE_NAME>
+----

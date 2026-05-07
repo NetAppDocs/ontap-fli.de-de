@@ -1,0 +1,95 @@
+---
+permalink: get-started/supported-configurations.html 
+sidebar: sidebar 
+keywords: supported configurations, foreign lun import, fli, ontap fli, aff, asa, fas, ontap select, cloud volumes ontap, cvo, iscsi fli, fc fli, interoperability, san migration, lun import, supported platforms 
+summary: Prüfen Sie die unterstützten Plattformen und Konfigurationen für ONTAP FLI, einschließlich der FC- und iSCSI-Backend-Optionen sowie der wichtigsten Einschränkungen für die Migrationsplanung. 
+---
+= Erfahren Sie mehr über die von ONTAP Foreign LUN Import unterstützten Konfigurationen und Plattformen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ONTAP FLI muss in einer unterstützten Konfiguration eingesetzt werden, um ein vorhersehbares Verhalten und volle Supportfähigkeit zu gewährleisten.
+
+* Alle FLI-Migrationen werden auf LUN-Ebene (Blockebene) durchgeführt; Migrationen auf Datei- und Protokollebene fallen nicht in den ONTAP FLI-Bereich.
+* Planen Sie mit bis zu 8 gleichzeitigen Importen pro Knoten. Die tatsächliche sichere Parallelität hängt von der beobachteten Host-Latenz und der Importlatenz ab.
+* Die maximale Größe einer fremden LUN für den Import beträgt 4 TB pro LUN.
+* iSCSI-Sitzungsskalierungsgrenzen (Backend-iSCSI):
++
+** 1 Initiator pro IC LIF
+** Bis zu 16 Sitzungen pro LIF
+** Bis zu 32 Sitzungen pro Knoten
+
+
+* Einschränkungen des iSCSI-Protokolls:
++
+** Keine iSCSI-Erkennungssitzungen
+** Keine Mehrfachverbindungssitzungen (MCS)
+** Fehlerwiederherstellungsstufe > 0 wird nicht unterstützt (nur ERL0)
+** IPv6 wird für die Verwendung von iSCSI-Initiator-LIFs nicht unterstützt
+
+
+* Verfügbarkeitshinweise für Sicherheit und Verwaltung:
++
+** CHAP ist nicht enthalten
+** Die REST API-Abdeckung für iSCSI FLI-Operationen ist nicht verfügbar (nur CLI-Workflow).
+
+
+* Operativer Planungshinweis für Online-Importe:
++
+** Bei Online-FLI teilen sich Host-I/O und Importkopie Backend-Ressourcen
+** Importvorgänge können pausiert und fortgesetzt werden, um die Latenz des Hosts zu schützen
+** Migrationen sollten nach Möglichkeit außerhalb der Spitzenzeiten geplant werden
+
+
+
+
+
+
+== Unterstützte Konfigurationen und Plattform
+
+ONTAP FLI muss in einer unterstützten Konfiguration bereitgestellt werden, um vorhersehbares Verhalten und volle Supportfähigkeit zu gewährleisten. Da im Laufe der Zeit neue Konfigurationen qualifiziert werden, können sich die unterstützten Kombinationen ändern. Validieren Sie bei jeder Datenmigration den gesamten Stack (Quell-Array + Host + Fabric/Netzwerk + ONTAP-Ziel) anhand der aktuellen Interoperabilitätsrichtlinien.
+
+.Unterstütztes Ziel (wohin Sie migrieren können)
+* ONTAP ist das einzige unterstützte Ziel für FLI-Migrationen. FLI ist für den Import von Daten in ONTAP LUNs konzipiert; Migrationen zu Speichersystemen von Drittanbietern werden nicht unterstützt.
+* Für iSCSI FLI ist der iSCSI-Softwareinitiator in den FLI-Stack integriert und dient speziell dazu, die Erkennung und den Import fremder LUNs über eine iSCSI/TCP-Backend-Verbindung zu ermöglichen.
+
+
+.Unterstützte ONTAP-Plattformabdeckung (Zielplattformen)
+Die Plattformabdeckung hängt vom verwendeten Backend-Transport für die Erkennung/den Import ab:
+
+* FC-Backend FLI (traditionell) unterstützt ONTAP auf AFF / ASA / ASA r2 / FAS (gemäß der Vergleichstabelle im iSCSI-Testdesign).
+* iSCSI-Backend-FLI erweitert die Abdeckung um AFF / ASA / ASA r2 / FAS / ONTAP Select / Cloud Volumes ONTAP (CVO) (gemäß demselben Vergleich).
+
+
+.Unterstützte Quellarrays und Qualifizierungsansatz
+* Bei FC-Backend-FLI werden unterstützte ausländische Arrays typischerweise über etablierte Interoperabilitätslisten und Qualifizierungsrichtlinien validiert (die unterstützte Liste entwickelt sich weiter, sobald neue Arrays qualifiziert werden).
+* Bei iSCSI-Backend-FLI werden keine fremden Arrays standardmäßig vorqualifiziert; von den Kunden wird erwartet, dass sie die Qualifizierung mit den bereitgestellten Qualifizierungstools (z. B. sanlunmigrate / offtap sanlunmigrate) durchführen, bevor sie sich auf eine Produktionsmigration festlegen.
+
+
+.Host-Betriebssysteme und Fabric-/Switch-Unterstützung (End-to-End-Validierung)
+* Die Unterstützung des Host-Betriebssystems sollte mit den Interoperabilitätsrichtlinien für den SAN-Host für das gewählte Frontend-Protokoll (FC oder iSCSI) und die Host-Konfiguration nach der Datenmigration übereinstimmen.
+* Die Unterstützung von Switches/Fabrics muss ebenfalls im Rahmen der End-to-End-Konfiguration validiert werden (insbesondere für FC-Umgebungen, in denen Zoning/Masking erforderlich ist).
+
+
+.Anforderung nach der Migration (Support nach der Umstellung aufrechterhalten)
+Nachdem der Import abgeschlossen ist und die Hosts auf ONTAP-LUNs laufen, stellen Sie sicher, dass die endgültige stabile Konfiguration unterstützt wird. Dies umfasst Host-Multipathing, HBA-/Treiber-/Firmware-Level, Zoning/Masking (FC), iSCSI-Konfiguration (falls verwendet) und alle ONTAP-Funktionsinteraktionen, die Sie zu verwenden planen.
+
+.iSCSI FLI-spezifische Schutzmechanismen (wichtig für die Supportfähigkeit)
+* iSCSI FLI verwendet Intercluster-LIFs (IC-LIFs) für Backend-iSCSI-Sitzungen. Das Erstellen neuer IC-LIFs in einem anderen Subnetz ausschließlich zum Erreichen fremder Ziele, wenn bereits IC-LIFs in einem anderen Subnetz eingerichtet sind, wird als nicht unterstützte Planungsvorgabe betrachtet.
+* Die iSCSI-Initiator-Sitzungskonfiguration ist nur für die Dauer der Migration vorgesehen und sollte nach Abschluss der Migration bereinigt werden, um betriebliche Nebenwirkungen, einschließlich Upgrade- und Rücksetzungsüberlegungen, zu vermeiden.
+
+
+
+
+== Best Practices
+
+NetApp empfiehlt dringend eine Professional Services oder Professional Services von Partnern, zur Planung und Umfang der Migration sowie zur Schulung von Kundenmitarbeitern zur Durchführung von Datenmigrationen mithilfe des Imports fremder LUNs (Foreign LUN Import, FLI) 7-Mode auf ONTAP.
+
+* Führen Sie mindestens eine Woche vor Ihrem Migrationsprojekt eine oder mehrere Testmigrationen durch, um Konfiguration, Konnektivität und Durchsatz zu überprüfen, weitere Probleme aufzudecken und Ihre Methodik zu validieren.
+* Führen Sie für einen maximalen Durchsatz nicht mehr als 16 Migrationen pro Node gleichzeitig aus.
+* Eine Überprüfung ist nicht erforderlich, aber wir empfehlen Ihnen, eine Teilmenge der importierten und migrierten LUNs zu überprüfen, um den Importprozess zu validieren.
+* Nutzen Sie den in Ihren Testmigrationen beobachteten Durchsatz, um die Produktionsmigration zu planen.
+

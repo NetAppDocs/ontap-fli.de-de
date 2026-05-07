@@ -1,0 +1,70 @@
+---
+permalink: phases/verify-phase.html 
+sidebar: sidebar 
+keywords: verify phase, foreign lun import, fli, post-migration cleanup, application validation, fc zoning, iscsi cleanup, ontap configuration, migration documentation, san migration 
+summary: Erfahren Sie mehr über die Verifizierungsphase, die bestätigt, dass die Migration wie geplant abgeschlossen wurde und die während des Migrationszeitraums verwendeten temporären Konfigurationen entfernt. 
+---
+= ONTAP Foreign LUN Import (FLI) Verifizierungsphase
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Verifizierungsphase bestätigt den planmäßigen Abschluss der Migration und konzentriert sich auf die Bereinigung nach der Migration. Dies umfasst die Überprüfung des Anwendungsverhaltens, die Bestätigung des korrekten Hostzugriffs und der Pfade zu den ONTAP LUNs, das Sammeln von Migrationsprotokollen für Audits und die Fehlerbehebung sowie das Entfernen temporärer Verbindungen und Konfigurationen, die ausschließlich für die Migration verwendet wurden.
+
+Im Rahmen der Bereinigung entfernen Sie nicht mehr benötigte Quellseiten-Initiatordatensätze und Zoneneinteilungen und dokumentieren die endgültige Konfiguration, damit die Betriebsteams einen klaren „Ist-Zustand“ vorfinden.
+
+Bei iSCSI FLI sollte die Verifizierungsphase auch das Entfernen der Software-iSCSI-Initiatorsitzungen und Initiatoren umfassen, die auf Intercluster-LIFs erstellt wurden. Wurden die Intercluster-LIFs nur für den Import fremder LUNs erstellt, müssen auch diese LIFs gelöscht werden.
+
+
+
+== ONTAP FLI-Verifizierungsphasenaufgaben
+
+Nachfolgend sind die ONTAP FLI-Verifizierungsaufgaben für jede Komponente aufgeführt.
+
+[cols="1,2"]
+|===
+| Komponente | Aufgaben 
+
+
+| Host  a| 
+* Führen Sie eine Validierung auf Anwendungsebene für die migrierten LUNs durch. (Dateisystemkonsistenzprüfung, Prüfsummenfehler, dbcc checkdb (MS SQL), rman (Oracle))
+* Prüfen Sie, ob alle erwarteten Dateisysteme, Datenspeicher und Cluster-Festplatten nach Migration und Behebung der Mängel zugänglich und stabil sind.
+* Prüfen Sie, ob die Anzahl der E/A-Pfade und der Pfadtyp den erwarteten Werten entsprechen.
+
+
+
+
+| FC FLI Fabric  a| 
+* Entfernen Sie Host-zu-Quellspeicherzonen aus dem aktiven Zonensatz oder entsprechende Zugriffsregeln, falls diese nicht bereits während der frühen Umstellung entfernt wurden.
+* Entfernen Sie Quell-zu-Ziel-Konnektivitätszonen, die speziell für die Migration erstellt wurden.
+* Sichern Sie den nach der Migration aktualisierten Zonensatz für Rollback- und Prüfungszwecke.
+
+
+
+
+| iSCSI FLI-Netzwerk  a| 
+* Entfernen Sie die für die Migration erstellten iSCSI FLI-Backend-Konnektivitätsobjekte.
+* Die iSCSI-Initiator-Sitzungen müssen gelöscht werden und das auf den Intercluster-LIFs erstellte iSCSI-Initiatorobjekt muss gelöscht werden.
+
+
+
+
+| NetApp storage array (Ziel)  a| 
+* Überprüfen Sie die Korrektheit des Speichers nach der Migration, einschließlich der LUN-Ausrichtung, sofern dies von Ihrem Host oder Anwendungsfall erforderlich ist.
+* Sammeln Sie FLI-Migrationsimportprotokolle für Prüf- und Fehlerbehebungszwecke. Lösen Sie AutoSupport aus, nachdem die Migration abgeschlossen ist.
+* Entfernen Sie alle manuell erstellten Snapshot-Kopien, die ausschließlich für Rollbacks während des Migrationszeitraums verwendet wurden.
+* Entfernen Sie Konfigurationsartefakte des Quell-Arrays aus ONTAP, die nicht mehr benötigt werden, wie z. B. Quell-Array-Objekte und Details zur Zuordnung fremder Datenträger. Bestätigen Sie dies mit dem Befehl storage disk show.
+* Dokumentieren Sie die endgültige ONTAP Konfiguration, einschließlich der LUN-Pfade, Zuordnungen, Initiatorgruppen, Initiatoren und des Host-Zugriffsmodells.
+
+
+
+
+| Externes Speicherarray (Quelle)  a| 
+* Entfernen Sie die Ziel-Storage-NetApp-Initiatorgruppen und Hostgruppen, die erstellt wurden, um Quell-LUNs während der Migration an ONTAP zu präsentieren.
+* Entfernen Sie Host-Initiatorgruppen und Host-Einträge, die mit der ursprünglichen Host-Zuordnung verbunden sind, wenn Sie den Quellzugriff außer Betrieb nehmen.
+* Stellen Sie sicher, dass die migrierten Quell-LUNs nicht mehr so präsentiert werden, dass es zu einer doppelten Präsentation auf dem Host kommen könnte. Dies ist von entscheidender Bedeutung und muss während der gesamten Migration gewährleistet sein.
+
+
+|===

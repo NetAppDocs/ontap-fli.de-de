@@ -1,0 +1,35 @@
+---
+permalink: configure/fc-zoning-model-best-practices.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= ONTAP Foreign LUN Import empfohlene FC-Verkabelungs- und Zonierungspraktiken
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Foreign LUN Import (FLI) erfordert, dass die Quell-LUNs für ONTAP zugänglich sind, was durch das Zonen von Quell-Zielports zu ONTAP-Initiatorports erreicht wird. Die bestehenden Quell-zu-Host-Zonen werden während der Migration in der Regel nicht verändert und können nach der Migration entfernt oder deaktiviert werden.
+
+.Das Standard-FC-FLI-Szenario verwendet 4 verschiedene Zonen
+* Zone 1: Quellspeicher zu Zielspeicher (Fabric A)
+* Zone 2: Quellspeicher zum Zielspeicher (Fabric B)
+* Zone 3: Host-zu-Ziel-Speicher (Fabric A)
+* Zone 4: Host-zu-Zielspeicher (Fabric B)
+
+
+.Best Practices für Zoning
+* Mischen Sie keine Quell-Zieladapter-Ports und Ziel-Zieladapter-Ports in derselben Zone.
+* Mischen Sie nicht Ziel-Initiator-Ports und Host-Ports in derselben Zone.
+* Mischen Sie nicht Ziel- und Zielinitiator-Ports in derselben Zone.
+* Zone mit mindestens zwei Ports pro Controller zur Gewährleistung von Redundanz, sofern möglich.
+* Bevorzugen Sie die Zoneneinteilung mit einem einzelnen Initiator und einem einzelnen Ziel.
+* Verwenden Sie die für das im FLI-Workflow erforderliche Zonierungsmodell geeigneten physischen Port-WWPNs. Verwenden Sie keine NPIV-WWPNs, wenn dies in den Migrationszonierungsrichtlinien ausdrücklich untersagt ist.
+
+
+image::new-fc-zoning-model.png[FC-Zonierungsmodellbeispiel für ONTAP FLI]
+
+
+NOTE: Nach der Zuordnung der Quell-Ziele zu den Ziel-Initiatoren sollte der Quellspeicher über ONTAP mittels Discovery-Befehlen sichtbar werden. Falls das Array beim ersten Mal nicht angezeigt wird, kann in manchen Umgebungen ein Zurücksetzen des mit den ONTAP-Initiatoren verbundenen Switch-Ports erforderlich sein.

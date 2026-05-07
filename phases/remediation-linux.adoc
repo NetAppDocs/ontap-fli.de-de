@@ -1,0 +1,68 @@
+---
+permalink: phases/remediation-linux.html 
+sidebar: sidebar 
+keywords: ontap, fli, foreign lun import, linux host, pre-migration, offline fli, online fli 
+summary: Bevor Sie die ONTAP FLI-Migration auf einem Linux-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen. 
+---
+= ONTAP FLI Linux-Host-Sanierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie die ONTAP FLI-Migration auf einem Linux-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen.
+
+
+
+== Vormigration - Offline-FLI
+
+Diese Schritte sind sowohl für Online- als auch für Offline-FLI üblich. Bevor Sie die Quell-LUN vom Host entfernen, stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind.
+
+[cols="3"]
+|===
+| Dateisystem (LVM & Nicht-LVM) | Pacemaker mit LVM (SCSI3 PR) | SANBOOT 
+
+
+| Schritt 1: Erfassen der End-to-End-Blockgerätekonfiguration: Multipath-Status/Pfade, LVM-Layout auf dem Blockgerät und GRUB/Bootloader-Einstellungen zur Bestätigung des korrekten Bootgeräts und der Bootparameter. | Schritt 1: Erfassen der End-to-End-Blockgerätekonfiguration: Multipath-Status/Pfade, LVM-Layout auf dem Blockgerät und GRUB/Bootloader-Einstellungen zur Bestätigung des korrekten Bootgeräts und der Bootparameter. | Schritt 1: Erfassen Sie die vollständige SAN-Boot-Konfiguration: Multipath-Status/Pfade, LVM-Layout auf der Boot-LUN und GRUB/Bootloader-Einstellungen, um das korrekte Boot-Gerät und die Boot-Parameter zu bestätigen. 
+
+
+| Schritt 2: Stellen Sie sicher, dass die  `/etc/fstab` Einträge für die jeweiligen Datengeräte (LVM/Nicht-LVM) über ihre FS-UUID referenziert werden. | Schritt 2: Deaktivieren Sie die Cluster-Ressourcengruppen für die jeweiligen zu migrierenden LUNs. Sobald sie deaktiviert sind, löschen Sie die Ressourcengruppen. | Schritt 2: Stellen Sie sicher, dass die  `/etc/fstab` Einträge für das SAN-Bootgerät einschließlich der Datengeräte (lvm/nonlvm) über ihre FS-UUID referenziert werden. 
+
+
+| Schritt 3: Stellen Sie sicher, dass alle Operationen an den Ziel-Mountpunkten angehalten sind. Vergewissern Sie sich, dass keine Prozesse mehr auf das Blockgerät zugreifen. Beenden oder beenden Sie gegebenenfalls die offenen Prozesshandles. | Schritt 3: Sichern Sie die LVM-VG-Konfiguration der soeben deaktivierten/gelöschten Ressourcengruppen in einer Datei. Deaktivieren Sie anschließend die VGs. | Schritt 3: Stellen Sie sicher, dass Sie die  `GRUB_CMDLINE_LINUX` Zeile mit den korrekten UUID-Referenzen aktualisiert haben. Erstellen Sie neue GRUB-Einstellungen basierend auf den UUID-Gerätereferenzen. 
+
+
+| Schritt 4: Hängen Sie das Dateisystem aus und führen Sie eine Sicherung der LVM-Volume-Gruppenkonfiguration durch. Deaktivieren Sie die VG und exportieren Sie die VG | Schritt 4: Entfernen Sie die Quell-LUNs aus der PCS-Stonith-Konfiguration. | Schritt 4: Überprüfen Sie die Änderungen mit den neuen Grub-Einstellungen und erstellen Sie das neue initrd-Image neu, um die Änderungen mit dem SAN Boot Device widerzuspiegeln. 
+
+
+| Schritt 5: Löschen Sie die Multipath-Konfiguration für das Gerät und entfernen Sie alle veralteten SCSI-Gerätedateien. | Schritt 5: Löschen Sie die Multipath-Konfiguration des Geräts und entfernen Sie alle veralteten SCSI-Gerätedateien. HINWEIS: Falls persistente LUN-Reservierungen vorhanden sind, löschen Sie diese und stellen Sie sicher, dass keine PR-Schlüssel vorhanden sind. | Schritt 5: Starten Sie den Host neu, um sicherzustellen, dass der Host nach den oben genannten Änderungen einwandfrei hochfährt. Sobald der Host einwandfrei hochgefahren ist, wissen Sie, dass der Host für die Vorab-Remediation für die FLI-Migration bereit ist. 
+
+
+| Schritt 6: Laden Sie die Multipath-Konfiguration neu, damit der Host über die aktualisierte Geräteliste verfügt. Führen Sie gegebenenfalls einen erneuten SCSI-Bus-Scan des Hosts durch. | Schritt 6: Scannen Sie den Host erneut, um sicherzustellen, dass keine veralteten Einträge in der bestehenden Gerätezuordnung vorhanden sind. | Schritt 6: Fahren Sie nun den sanboot-Host herunter, um mit dem ONTAP FLI-Workflow fortzufahren. 
+|===
+
+
+== Vor der Migration – Online-FLI
+
+Nachfolgend sind die spezifischen Schritte der Online-FLI aufgeführt, aber diesen Schritten müssen die Schritte der Offline-FLI vor der Migration vorausgehen. Die folgenden Schritte müssen ausgeführt werden, nachdem die NetApp LUN dem Host zugewiesen wurde. Diese Schritte müssen ausgeführt werden, nachdem die NetApp LUN dem Host zugewiesen wurde. Und sie gelten ausschließlich für die Online-FLI.
+
+[cols="3"]
+|===
+| Dateisystem (LVM & Nicht-LVM) | Pacemaker mit LVM (SCSI3 PR) | SANBOOT 
+
+
+| Schritt 1: Speicher auf allen zugeordneten Linux-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten Linux-Hosts erneut scannen. | Schritt 1: Schalten Sie den Server ein. 
+
+
+| Schritt 2: Multipath-Geräte ermitteln. | Schritt 2: Ermitteln Sie die Multipath-Geräte. Stellen Sie sicher, dass die migrierten LUNs zur PCS Stonith Configuration hinzugefügt wurden. | Schritt 2: Konfigurieren Sie im BIOS oder UEFI des Server-HBA das neue Boot-Gerät, das diesem Host-HBA präsentiert wird. 
+
+
+| Schritt 3: Importieren Sie die Volumengruppen und führen Sie die VG-Aktivierung durch. | Schritt 3: Führen Sie eine Wiederherstellung der VG-Konfigurationssicherung für die neu entdeckten VG/LVM durch, gefolgt von der VG-Aktivierung. | Schritt 3: Starten Sie den Host neu, um von der neu zugeordneten LUN zu booten, die Teil des LUN Import ist. 
+
+
+| Schritt 4: Mounten Sie die LVM-Konfiguration an den jeweiligen Mountpunkten. | Schritt 4: Erstellen Sie die neuen PCS-Ressourcengruppen und fügen Sie die entsprechenden Ressourcen für die verfügbaren LV und Dateisysteme hinzu. HINWEIS: Bitte beachten Sie, dass die neu aktivierten LVM-Objekte die LV- und Dateisystemstrukturen beibehalten. |  
+
+
+|  | Schritt 5: Überprüfen Sie den PCS-Clusterstatus für alle Ressourcen, ob sie online und verfügbar sind. |  
+|===

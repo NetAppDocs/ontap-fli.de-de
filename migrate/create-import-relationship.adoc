@@ -1,0 +1,88 @@
+---
+permalink: migrate/create-import-relationship.html 
+sidebar: sidebar 
+keywords: lun import relationship, foreign lun import, fli, ontap, create import relationship, lun create, igroup, lun mapping, destination lun, foreign disk, asa r2, san migration, offline fli, online fli 
+summary: Erstellen Sie die LUN-Importbeziehung, um die fremde LUN mit einer Ziel-ONTAP-LUN zu verknüpfen, deren Größe automatisch an die der Quell-LUN angepasst wird. 
+---
+= Erstellen Sie die ONTAP FLI LUN-Importbeziehung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem die fremde LUN erkannt und als fremd markiert wurde, können Sie die LUN-Importbeziehung erstellen, um die fremde LUN mit einer Ziel-ONTAP-LUN zu verknüpfen. Die Ziel-ONTAP-LUN wird anhand der Kennung der fremden Festplatte erstellt, sodass sie automatisch auf die Größe der Quelle abgestimmt wird. Die Ziel-LUN wird der entsprechenden Initiatorgruppe basierend auf dem vorgesehenen Frontend-Protokoll und dem Cutover-Plan zugeordnet und anschließend vor der Importeinrichtung aus Sicherheitsgründen offline genommen.
+
+Verwenden Sie die  `lun create` und  `lun import create` Befehle wie beschrieben, um Folgendes durchzuführen:
+
+* Erstellen Sie die Ziel-ONTAP-LUN mithilfe der Kennung des externen Datenträgers, sodass das Ziel automatisch auf die Größe der Quelle abgestimmt wird.
+* Bereiten Sie den Hostzugriff vor, indem Sie die entsprechende Initiatorgruppe basierend auf dem beabsichtigten Frontend-Protokoll definieren und die Ziel-LUN gemäß dem Umstellungsplan zuordnen.
+* Nehmen Sie die Ziel-LUN vor der Einrichtung des Imports zur Sicherheit offline.
+* Erstellen Sie die LUN-Importbeziehung, die die fremde Festplatte dauerhaft mit der Ziel-ONTAP-LUN verknüpft und sie für den nachfolgenden Datenkopiervorgang vorbereitet.
+
+
+.Informationen zu diesem Vorgang
+Ab ONTAP 9.17.1 wird die Datenmigration von externen LUNs mittels FLI-Offline-Migration auf ASA r2-Systemen unterstützt. ASA r2-Systeme unterscheiden sich von anderen ONTAP Systemen (ASA, AFF und FAS) in der Implementierung ihrer Speicherschicht. Auf ASA r2-Systemen werden Volumes automatisch erstellt, sobald eine Speichereinheit (LUN oder Namespace) angelegt wird. Jedes Volume enthält genau eine Speichereinheit. Daher ist es bei ASA r2-Systemen nicht erforderlich, beim Erstellen der LUN den Volume-Namen in der  `-path` Option anzugeben; stattdessen sollte der Pfad zur Speichereinheit angegeben werden.
+
+.Schritte
+. Erstellen Sie eine NetApp Ziel-LUN, deren Größe der der externen Festplatte entspricht:
++
+Dadurch wird sichergestellt, dass die NetApp LUN und die Foreign LUN die gleiche Größe haben.
+
++
+[source, cli]
+----
+lun create -vserver <SVM> -path /vol/<VOL>/<lun_name> -ostype <ostype> -foreign-disk <foreign_serial>
+----
+. Erstellen Sie die Initiatorgruppe und ordnen Sie die Ziel-LUN zu (das Protokoll hängt vom Frontend-Plan ab):
++
+[source, cli]
+----
+igroup create -vserver <SVM> -igroup <igroup> -protocol <iscsi|fcp|mixed> -ostype <ostype> -initiator <host_initiator>
+----
+. Ordnen Sie die NetApp LUN des Speicherarrays dem Host zu:
++
+[source, cli]
+----
+lun map -vserver <SVM> -path /vol/<VOL>/<LUN_NAME> -igroup <igroup>
+----
+. LUN vor dem Import offline halten (empfohlene Vorgehensweise):
++
+[source, cli]
+----
+lun offline -vserver <SVM> -path /vol/<VOL>/<LUN_NAME>
+----
+. Importbeziehung erstellen:
++
+[source, cli]
+----
+lun import create -vserver <SVM> -foreign-disk <foreign_serial> -path /vol/<VOL>/<lun_name>
+----
+. Bestätigen Sie, dass die Importbeziehung besteht:
++
+[source, cli]
+----
+lun import show -vserver <svm_name>
+----
++
+[NOTE]
+====
+Wenn die LUN in diesem Schritt nicht online geschaltet wird, wird der Workflow als Offline-FLI betrachtet und die NetApp Storage-Array-LUN wird vom Host nicht erkannt, um E/A-Operationen durchzuführen.
+
+** Offline-FLI bedeutet, dass der Host während des gesamten Importfensters offline bleibt. ONTAP führt die Blockkopie von der fremden LUN auf die NetApp LUN durch, während die Anwendungen gestoppt sind, und Host-Remediation- sowie Cutover-Aktivitäten erfolgen erst nach Abschluss des Imports und der Validierung.
+** Online-FLI bedeutet, dass der Host einmalig umgestellt wird, dann der Importvorgang im Hintergrund fortgesetzt wird. In der Regel kommt es während der Umstellung nur zu einer kurzen Ausfallzeit, und Host-Behebungs- sowie Umstellungsaktivitäten finden statt, bevor der Import abgeschlossen ist, während ONTAP weiterhin Daten kopiert.
+
+
+Aus Sicht des ONTAP-Workflows sind die Kernimportbefehle in beiden Modi identisch (`lun import create/start/show/verify/delete`). Der praktische Unterschied liegt im LUN-Status und im Timing: Bei Offline-FLI bleibt die Ziel-LUN in der Regel offline, bis Sie bereit sind, den Vorgang abzuschließen und zu präsentieren, während bei Online-FLI die Ziel-LUN früher online geschaltet und präsentiert werden kann, um den Hostzugriff während des Hintergrundkopiervorgangs zu ermöglichen.
+
+====
+. Für Online-FLI bringen Sie die LUN in den Online-Status:
++
+[source, cli]
+----
+lun online -vserver <SVM> -path /vol/<VOL>/<lun_name>
+----
++
+Nachdem die LUN online geschaltet wurde, erkennen Sie die LUN auf dem Host, führen Sie alle nachfolgenden hostspezifischen Korrekturen durch und dann können Sie die Workloads auf der LUN starten.
+
+

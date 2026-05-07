@@ -1,0 +1,74 @@
+---
+permalink: phases/plan-overview.html 
+sidebar: sidebar 
+keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning 
+summary: Lernen Sie die Planungs- und Vorbereitungsphase kennen, in der die Ergebnisse der Ermittlung und Analyse in einen ausführbaren Migrationsplan umgewandelt und die Bereitschaft der Umgebung validiert werden. 
+---
+= ONTAP Foreign LUN Import (FLI) Planungs- und Vorbereitungsphase
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Planungs- und Vorbereitungsphase wandelt die Ergebnisse der Analyse in einen ausführbaren Migrationsplan um und stellt sicher, dass die Umgebung für das Migrationsfenster bereit ist. Der Großteil des Projektaufwands entfällt typischerweise auf diese Phase, da hier der Umstellungsansatz, online oder offline, finalisiert, die End-to-End-Konnektivität validiert und der Workflow durch eine oder mehrere Testmigrationen vor dem Übergang in die Produktion nachgewiesen wird.
+
+Für iSCSI FLI muss in dieser Phase auch die Designbeschränkungen des iSCSI-Backends validiert werden. Der ONTAP iSCSI Softwareinitiator verwendet IC LIFs, benötigt eine explizite Zielportal-IP und einen Ziel-IQN, keine Discovery-Sitzungen und ist für den Betrieb innerhalb definierter Skalierungsgrenzen ausgelegt (Importe pro Knoten, Sitzungen pro LIF/Knoten, Initiator pro LIF, maximale Importgröße).
+
+
+
+== Ergebnisse der ONTAP FLI-Planungs- und Vorbereitungsphase
+
+* Finalisieren Sie den Sanierungsplan unter Verwendung der Host-Lückenanalyse, einschließlich der Änderungen, die vor der Migration vorgenommen werden, einschließlich der Änderungen, die während des Umstellungszeitraums vorgenommen werden, wie z. B. MPIO-Änderungen.
+* Erstellen Sie die Quell-zu-Ziel-LUN-Zuordnung, Quell-LUN-Kennungen und Seriennummern zu den Ziel-ONTAP-LUN-Namen und -Pfaden, einschließlich Rollback-Zuordnung.
+* Validieren Sie die Backend-Konnektivität von ONTAP zum externen Array mithilfe der IC-LIF-Erreichbarkeit und einer vollständig vermaschten Sitzungstopologie, bei der jeder HA-Knoten Sitzungen zu jedem Zielportal herstellt. Dies ist die Voraussetzung für die zuverlässige Erkennung von fremden LUNs.
+* Führen Sie eine oder mehrere Testmigrationen durch, um die Korrektheit der Konfiguration zu bestätigen und Durchsatzbeispiele zu sammeln, die bei der Abschätzung der Produktionsdauer und des Personalaufwands helfen.
+
+
+
+
+== ONTAP FLI-Planungs- und Vorbereitungsphasenaufgaben
+
+Nachfolgend sind die ONTAP FLI Aufgaben zur Planung und Vorbereitung für jede Komponente aufgeführt.
+
+[cols="1,2"]
+|===
+| Komponente | Aufgaben 
+
+
+| Host  a| 
+* Finalisieren Sie den Host-Sanierungsplan unter Verwendung der Lückenanalyse, einschließlich der Entscheidung, ob die Änderung vor der Migration, während der Umstellung oder nach der Migration erfolgen soll.
+* Wählen Sie den Migrationsmodus, online oder offline, basierend auf der Toleranz gegenüber Ausfallzeiten und der Kritikalität der Arbeitslast; stimmen Sie das Timing der Behebung entsprechend ab.
+* Validieren und dokumentieren Sie die Schritte zur erneuten Erkennung und Behebung auf Host-Seite für den vorgesehenen Anwendungsfall, Standard-LUN, Cluster-Disk, RDM/VMFS-Datenspeicher usw., die während des Migrationsfensters verwendet werden sollen.
+
+
+
+
+| Fabric / Netzwerk  a| 
+* FC-Umgebungen: Sichern Sie bestehende Zonensätze und planen Sie die für die Umstellung und die Bereinigung nach der Migration erforderlichen Zonenänderungen.
+* iSCSI-Backend-Umgebungen: Überprüfen Sie die End-to-End-IP-Erreichbarkeit zwischen ONTAP IC LIFs und den Zielportal-IPs des fremden Arrays (Routing/VLAN/Firewall inkl. TCP/3260) und stellen Sie Redundanz sicher.
+* Fügen Sie keine neuen IC LIFs in einem anderen Subnetz hinzu, nur um ausländische Ziele zu erreichen, wenn bereits IC LIFs in einem anderen Subnetz verwendet werden (behandeln Sie dies als nicht unterstützte Planung).
+
+
+
+
+| NetApp Storage-Array (Ziel-ONTAP)  a| 
+* Bestätigen Sie die ONTAP Cluster-Bereitschaft für iSCSI FLI (unterstützte Version/ECV) und dass die ausschließlich für die Migration verwendete iSCSI-Backend-Konfiguration nach der Migration entfernt wird (wichtig für die Upgrade-/Revert-Bereitschaft).
+* Identifizieren und bestätigen Sie IC LIFs auf dem LUN-besitzenden Knoten und dem HA-Partner und planen Sie die Ausfallsicherheit (üblicherweise zwei IC LIFs pro Knoten an verschiedenen Ports).
+* Erstellen Sie Softwareinitiatoren für iSCSI (einen Initiator pro IC LIF) und richten Sie vollständige Mesh-Sitzungen ein (jeder HA-Knoten für jedes fremde Zielportal und IQN) und überprüfen Sie, ob die Sitzungen fehlerfrei funktionieren.
+* Ermitteln Sie fremde LUNs in ONTAP mithilfe des Befehls storage disk show, validieren Sie die Pfadgesundheit und die grundlegenden Eigenschaften einschließlich der 512B-Anforderung, und markieren Sie dann die fremden LUNs als fremd.
+* Stellen Sie eine Test-Ziel-LUN mit Parität unter Verwendung des Parameters -foreign-disk bereit, ordnen Sie sie mit dem geplanten Frontend-Protokoll (FC oder iSCSI) zu und führen Sie mindestens eine Testmigration durch, um den End-to-End-Workflow zu validieren und den Durchsatz zu erfassen.
+* Stellen Sie sicher, dass der Plan die iSCSI FLI-Beschränkungen einhält (keine Discovery-Sitzungen, kein MCS, nur ERL0, Import- und Sitzungsbeschränkungen sowie maximale Importgröße).
+
+
+
+
+| Externes Speicherarray (Quelle)  a| 
+* Sammeln Sie Zielportal-IPs und Ziel-IQNs, die Sitzungen werden explizit erstellt und Discovery-Sitzungen werden nicht verwendet.
+* Erstellen Sie ein herstellerseitiges Zugriffsobjekt (Host/Host-Gruppen-Äquivalent) für ONTAP-Initiatoren und ordnen Sie eine kleine Test-LUN (üblicherweise ~1 GB) ausschließlich den ONTAP-Initiatoren zur Qualifizierung und zum Testen zu.
+* Prüfen Sie, ob das ausländische Ziel ONTAP Initiator-Logins und -Sitzungen erkennt und ob die richtigen LUNs für den Import zugeordnet sind.
+* Stellen Sie sicher, dass dem Produktionshost während der Umstellung nicht gleichzeitig die gleiche Quell-LUN präsentiert wird, um eine doppelte Präsentation zu vermeiden.
+* Vor Produktionsimporten muss die Qualifizierung ausländischer Arrays mithilfe der unterstützten Qualifizierungswerkzeuge und -methoden abgeschlossen werden.
+
+
+|===

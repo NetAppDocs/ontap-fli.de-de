@@ -1,0 +1,115 @@
+---
+permalink: post-migration-performance/post-remediation-hp.html 
+sidebar: sidebar 
+keywords: host remediation, hp-ux, post-migration, fli, ontap 
+summary: Nach der Migration müssen auf HP-UX-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt und funktionsfähig sind. 
+---
+= Führen Sie die ONTAP FLI HP-Host-Sanierung nach der Migration durch.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Migration müssen auf HP-UX-Hosts Korrekturmaßnahmen durchgeführt werden, um sicherzustellen, dass die neu importierten LUNs ordnungsgemäß erkannt und funktionsfähig sind.
+
+
+
+== Nach der Migration – Offline-FLI
+
+Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
+
+[cols="5"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Cluster | Sanboot 
+
+
+| Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen | Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen | Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen | Schritt 1: Schalten Sie den Server ein 
+
+
+| Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Identifizieren der Multipath-Geräte | Schritt 2: Überprüfen Sie in der UEFI-Shell die Gerätezuordnungstabelle und starten Sie hpux vom neuen Storage-Gerät. Legen Sie das primäre Startgerät auf die neue Storage-LUN fest. 
+
+
+| Schritt 3: Dateisystemdetails überprüfen | Schritt 3: Ermitteln Sie die Multipath-Geräte-ID und präsentieren Sie sie der jeweiligen Anwendung. | Schritt 3: Stellen Sie sicher, dass die neuen LVM-Gerätedateien ordnungsgemäß erkannt werden | Schritt 3: Dateisystemdetails überprüfen | Schritt 3: Starten Sie den Host neu, um von der neu zugeordneten LUN zu booten, die Teil des LUN Import ist 
+
+
+| Schritt 4: Die Geräte wieder in die jeweiligen Ordner einbinden |  | Schritt 4: Importieren Sie die VG/LVM | Schritt 4: Überprüfen Sie die erforderliche Clusterkonfiguration und starten Sie die Clusteranwendung |  
+
+
+|  |  | Schritt 5: VG aktivieren | Schritt 5: Überprüfen Sie den Clusterstatus und die Anwendung, die Ressourcen verbraucht. |  
+
+
+|  |  | Schritt 6: Listen Sie die auf dem VG vorhandenen LVs auf. |  |  
+
+
+|  |  | Schritt 7: Die LVMs wieder in die jeweiligen Ordner einbinden |  |  
+|===
+
+
+== Nach der Migration – Online-FLI
+
+Nach dem Löschen des LUN-Imports prüfen Sie, ob die LUN mit `-space-reserve disabled` und `-space-allocation enabled` versehen ist. Falls nicht, passen Sie sie entsprechend an.
+
+Damit die SCSI-UNMAP-Funktion ordnungsgemäß funktioniert, konsultieren Sie bitte die Dokumentation des Herstellers, um die unterstützten Softwareversionen zu überprüfen. Die Kombination aus Veritas VxVM + VxFS ist erforderlich, um diese Funktion zu aktivieren.
+
+[cols="4"]
+|===
+| Dateisystem | Blockgerät | LVM (FS) | Sanboot 
+
+
+| Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen | Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen. | Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen | Schritt 1: Speicher auf allen zugeordneten HP-UX-Hosts erneut scannen 
+|===
+.Schritte
+. Speichergeräte identifizieren.
++
+[source, cli]
+----
+ioscan -fnC disk
+insf -e
+sanlun lun show all
+sanlun lun show all -pv
+sanlun lun show -wwpn
+----
+. Importieren Sie VG und schalten Sie VG online.
++
+[source, cli]
+----
+vgimport /dev/vg_name /dev/disk/disk_name
+vgchange -a y /dev/vg_name
+----
+. Identifizieren Sie die Datenträgergruppe und die Dateisysteme.
++
+[source, cli]
+----
+vgdisplay -v /dev/vg_name
+vgdisplay /dev/vg_name
+lvdisplay /dev/vg_name/lv_name
+----
+. Das Dateisystem einbinden.
++
+[source, cli]
+----
+bdf
+mount /dev/vg_name/vol_name /mount_point
+----
+
+
+[cols="2"]
+|===
+|  | HP-UX 
+
+
+| Schritt 1 | Hostinformationen erfassen. 
+
+
+| Schritt 2 | Hängen Sie das Dateisystem aus. 
+
+
+| Schritt 3 | Erstellen Sie eine Sicherungskopie der VG. 
+
+
+| Schritt 4 | Deaktivieren Sie die VG. 
+
+
+| Schritt 5 | Exportiere die VG. 
+|===
