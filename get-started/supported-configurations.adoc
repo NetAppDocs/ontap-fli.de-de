@@ -48,6 +48,7 @@ ONTAP FLI muss in einer unterstützten Konfiguration eingesetzt werden, um ein v
 
 
 
+[[supported-configurations-and-platform]]
 == Unterstützte Konfigurationen und Plattform
 
 ONTAP FLI muss in einer unterstützten Konfiguration bereitgestellt werden, um vorhersehbares Verhalten und volle Supportfähigkeit zu gewährleisten. Da im Laufe der Zeit neue Konfigurationen qualifiziert werden, können sich die unterstützten Kombinationen ändern. Validieren Sie bei jeder Datenmigration den gesamten Stack (Quell-Array + Host + Fabric/Netzwerk + ONTAP-Ziel) anhand der aktuellen Interoperabilitätsrichtlinien.
@@ -84,6 +85,7 @@ Nachdem der Import abgeschlossen ist und die Hosts auf ONTAP-LUNs laufen, stelle
 
 
 
+[[best-practices]]
 == Best Practices
 
 NetApp empfiehlt dringend eine Professional Services oder Professional Services von Partnern, zur Planung und Umfang der Migration sowie zur Schulung von Kundenmitarbeitern zur Durchführung von Datenmigrationen mithilfe des Imports fremder LUNs (Foreign LUN Import, FLI) 7-Mode auf ONTAP.

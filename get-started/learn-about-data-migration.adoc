@@ -23,6 +23,7 @@ iSCSI und FC ONTAP FLI unterstützen sowohl Offline-Importe (keine Host-E/A wäh
 
 
 
+[[key-terms]]
 == Schlüsselbegriffe
 
 Fremdes Array:: Jedes Speichersystem, das nicht ONTAP ausführt (einschließlich NetApp 7 Mode im Kontext eines Übergangs von 7 Mode zu ONTAP).
@@ -33,6 +34,7 @@ LUN-Import:: Der Prozess, der die Blöcke von der fremden LUN in die ONTAP LUN �
 
 
 
+[[high-level-methodology]]
 == Hochrangige Methodik
 
 Bestandsaufnahme:: Erstellen Sie eine vollständige Bestandsaufnahme der Umgebung—Hosts, Speichersysteme und SAN-/Netzwerkstrukturen—, damit Sie verstehen, was vorhanden ist und wie alles miteinander verbunden ist.
@@ -44,6 +46,7 @@ Verifizierungsphase:: Prüfen Sie, ob sich die migrierten Daten und die Konfigur
 
 
 
+[[intended-audience]]
 == Zielgruppe
 
 Diese Informationen richten sich an Kunden, Partner und NetApp Außendienstteams, die SAN (Block/LUN)-Datenmigrationen zu ONTAP planen oder durchführen, insbesondere Migrationen, die Foreign LUN Import (FLI) und verwandte Migrationsoptionen verwenden.

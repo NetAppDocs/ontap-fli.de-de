@@ -15,6 +15,7 @@ Bevor Sie die ONTAP FLI-Migration auf einem Windows-Host ausführen, müssen Sie
 
 
 
+[[pre-migration-offline-fli]]
 == Vormigration - Offline-FLI
 
 Diese Schritte gelten sowohl für Offline- als auch für Online-FLI. Führen Sie die folgenden Vorbereitungen auf Hostseite durch, bevor Sie die Quell-LUNs vom Windows-Host entfernen.
@@ -34,6 +35,7 @@ Diese Schritte gelten sowohl für Offline- als auch für Online-FLI. Führen Sie
 |===
 
 
+[[filesystem-devices]]
 === Dateisystemgeräte
 
 .Schritte
@@ -53,6 +55,7 @@ Set-Disk -Number <DiskNumber> -IsOffline $true
 
 
 
+[[physical-drives-no-filesystem]]
 === Physische Laufwerke (ohne Dateisystem)
 
 .Schritte
@@ -68,6 +71,7 @@ Stop-Service -Name <ServiceName>
 
 
 
+[[wsfc-windows-server-failover-clustering]]
 === WSFC (Windows Server Failover Clustering)
 
 .Schritte
@@ -87,6 +91,7 @@ Stop-Cluster -Name <ClusterName>
 
 
 
+[[hyper-v]]
 === Hyper V
 
 .Schritte
@@ -107,6 +112,7 @@ Get-Disk | Where-Object OperationalStatus -ne "Online"
 
 
 
+[[pre-migration-online-fli]]
 == Vor der Migration – Online-FLI
 
 Nachfolgend sind die spezifischen Schritte des Online-FLI aufgeführt, diesen Schritten müssen jedoch Schritte im Rahmen des Offline-FLI vor der Migration vorausgehen.
@@ -135,6 +141,7 @@ Bei Offline-FLI bleibt die NetApp LUN im Offline-Zustand.
 |===
 
 
+[[filesystem-devices]]
 === Dateisystemgeräte
 
 .Schritte
@@ -161,6 +168,7 @@ Start-Service -Name <ServiceName>
 
 
 
+[[physical-drives-no-filesystem]]
 === Physische Laufwerke (ohne Dateisystem)
 
 .Schritte
@@ -176,6 +184,7 @@ Anwendungsspezifische Konfiguration
 
 
 
+[[wsfc]]
 === WSFC
 
 .Schritte
@@ -205,6 +214,7 @@ Start-ClusterResource -Name <ResourceName>
 
 
 
+[[hyper-v]]
 === Hyper V
 
 .Schritte

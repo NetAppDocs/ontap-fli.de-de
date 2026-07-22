@@ -18,6 +18,7 @@ Erfahren Sie mehr über die neuen Funktionen in ONTAP für die SAN-Datenmigratio
 
 
 
+[[ontap-9-19-1]]
 == ONTAP 9.19.1
 
 * Ab ONTAP 9.19.1 unterstützt ONTAP FLI das iSCSI-Protokoll für die Backend-Konnektivität.
@@ -25,6 +26,7 @@ Erfahren Sie mehr über die neuen Funktionen in ONTAP für die SAN-Datenmigratio
 
 
 
+[[ontap-9-17-1]]
 == ONTAP 9.17.1
 
 * Ab ONTAP 9.17.1 werden ASA R2-Systeme für die FLI-Migration unterstützt.

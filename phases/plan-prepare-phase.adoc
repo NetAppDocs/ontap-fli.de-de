@@ -23,6 +23,7 @@ Eine gute Testmigration bestätigt:
 
 
 
+[[test-migration-example-using-hitachi-ams2100]]
 == Testbeispiel für die Migration mit Hitachi AMS2100
 
 Im Folgenden finden Sie ein Beispiel für eine Testmigration mit einem Hitachi AMS2100 als Fremdarray. Abhängig von den betroffenen Arrays, Host-Betriebssystemen und anderen Variablen können die Schritte unterschiedlich sein.

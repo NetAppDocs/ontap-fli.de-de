@@ -15,6 +15,7 @@ Der Import fremder LUNs über FC basiert auf einem Dual-Fabric-SAN-Design, damit
 
 
 
+[[ontap-fli-recommended-fc-wiring-and-zoning-practices]]
 == Empfohlene FC-Verkabelungs- und Zonierungspraktiken für ONTAP FLI
 
 * Verwenden Sie für Redundanz zwei Fabrics (A und B).

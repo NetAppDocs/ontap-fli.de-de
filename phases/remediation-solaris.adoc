@@ -15,6 +15,7 @@ Bevor Sie die ONTAP FLI-Migration auf einem Solaris-Host ausführen, führen Sie
 
 
 
+[[pre-migration-offline-fli]]
 == Vormigration - Offline-FLI
 
 Diese Schritte sind sowohl für Online- als auch für Offline-FLI üblich. Bevor Sie die Quell-LUN vom Host entfernen, stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind.
@@ -88,6 +89,7 @@ cfgadm -al
 
 
 
+[[pre-migration-online-fli]]
 == Vor der Migration – Online-FLI
 
 Nachfolgend sind die spezifischen Schritte der Online-FLI aufgeführt, aber diese Schritte müssen durch Schritte der Pre-Migration – Offline-FLI – vorausgegangen sein. Die folgenden Schritte müssen ausgeführt werden, nachdem die NetApp LUN dem Host zugewiesen wurde.

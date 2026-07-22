@@ -17,6 +17,7 @@ Für iSCSI FLI muss in dieser Phase auch die Designbeschränkungen des iSCSI-Bac
 
 
 
+[[ontap-fli-plan-and-prepare-phase-results]]
 == Ergebnisse der ONTAP FLI-Planungs- und Vorbereitungsphase
 
 * Finalisieren Sie den Sanierungsplan unter Verwendung der Host-Lückenanalyse, einschließlich der Änderungen, die vor der Migration vorgenommen werden, einschließlich der Änderungen, die während des Umstellungszeitraums vorgenommen werden, wie z. B. MPIO-Änderungen.
@@ -27,6 +28,7 @@ Für iSCSI FLI muss in dieser Phase auch die Designbeschränkungen des iSCSI-Bac
 
 
 
+[[ontap-fli-plan-and-prepare-phase-tasks]]
 == ONTAP FLI-Planungs- und Vorbereitungsphasenaufgaben
 
 Nachfolgend sind die ONTAP FLI Aufgaben zur Planung und Vorbereitung für jede Komponente aufgeführt.

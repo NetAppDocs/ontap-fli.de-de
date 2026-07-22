@@ -19,6 +19,7 @@ Bei iSCSI FLI sollte die Verifizierungsphase auch das Entfernen der Software-iSC
 
 
 
+[[ontap-fli-verify-phase-tasks]]
 == ONTAP FLI-Verifizierungsphasenaufgaben
 
 Nachfolgend sind die ONTAP FLI-Verifizierungsaufgaben für jede Komponente aufgeführt.

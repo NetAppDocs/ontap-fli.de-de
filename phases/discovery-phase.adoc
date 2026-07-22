@@ -15,6 +15,7 @@ Die ONTAP FLI-Erkennungsphase ist der erste Schritt im Migrationsprozess. Es ist
 
 
 
+[[prepare-for-an-iscsi-migration-with-ontap-fli]]
 == Bereiten Sie eine iSCSI-Migration mit ONTAP FLI vor
 
 Die ONTAP FLI-Erkennungsphase sammelt die technischen Details, die für den Abschluss der Migration erforderlich sind:
@@ -37,6 +38,7 @@ Für iSCSI FLI muss die Erkennungsphase Folgendes beinhalten:
 
 
 
+[[ontap-fli-discovery-phase-tasks]]
 == ONTAP FLI-Erkennungsphasenaufgaben
 
 Jede Komponente verfügt über eine Reihe von Aufgaben zur Datenerfassung oder Verbindungsprüfung.
@@ -99,6 +101,7 @@ NOTE: Für iSCSI FLI ist eine Feldqualifizierung erforderlich; gehen Sie nicht d
 |===
 
 
+[[recommended-ontap-fli-discovery-deliverables]]
 == Empfohlene ONTAP FLI-Ermittlungsergebnisse
 
 * Eine einzige Inventarliste ordnet Folgendes zu: Host → Quell-LUN(s) → Fremdes Zielportal/IQN → ONTAP IC LIFs/Knoten → Ziel-LUN(s) für saubere Ausführung und Rollback.

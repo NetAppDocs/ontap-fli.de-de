@@ -15,6 +15,7 @@ Nach der Migration müssen auf den ESXi-Hosts Korrekturmaßnahmen durchgeführt 
 
 
 
+[[post-migration-offline-fli]]
 == Nach der Migration – Offline FLI
 
 Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
@@ -124,6 +125,7 @@ vim-cmd vmsvc/power.on <VMID>
 
 
 
+[[post-migration-online-fli]]
 == Nach der Migration – Online-FLI
 
 Nach dem Löschen der Importbeziehung bestätigen Sie, dass die neue LUN unabhängig mit aktiviertem CAW/UNMAP/XCOPY/WRITESAME arbeitet.

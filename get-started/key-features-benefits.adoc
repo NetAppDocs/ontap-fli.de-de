@@ -15,6 +15,7 @@ ONTAP Foreign LUN Import (FLI) ist eine integrierte Blockmigrationsfunktion, die
 
 
 
+[[key-features]]
 == Hauptmerkmale
 
 * Online- und Offline-Migrationen zur Erfüllung der Anforderungen an die Ausfallzeiten des Unternehmens.
@@ -27,6 +28,7 @@ ONTAP Foreign LUN Import (FLI) ist eine integrierte Blockmigrationsfunktion, die
 
 
 
+[[key-benefits]]
 == Wichtigste Vorteile
 
 * ONTAP FLI ist in ONTAP enthalten. Für den Import von FLI-basierten LUNs ist keine separate Migrations-Appliance erforderlich.

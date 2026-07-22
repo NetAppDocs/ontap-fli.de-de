@@ -15,6 +15,7 @@ Die Migration von SAN-Daten wird häufig durch kurze Ausfallzeiten, Produktionsr
 
 
 
+[[choosing-the-right-migration-approach-high-level]]
 == Die Wahl des richtigen Migrationsansatzes (Überblick)
 
 Eine praxisorientierte Migrationsstrategie kann eine primäre Methode nutzen und diese gegebenenfalls durch andere Ansätze ergänzen. Für Migrationen auf SAN/LUN-Ebene in ONTAP ist FLI häufig eine gute Wahl; in manchen Szenarien eignen sich jedoch Alternativen, die von vornherein nicht-disruptiv sind, besser.
@@ -27,12 +28,14 @@ Migrationen basierend auf Host-Betriebssystem oder Anwendungen:: Nützlich, wenn
 
 
 
+[[planning-migration-duration]]
 == Planung der Migrationsdauer
 
 Für die erste Planung wird häufig ein Richtwert von ca. 5 Stunden pro Host für einen Host mit 8 LUNs und insgesamt ca. 2 TB angenommen, was ungefähr 400 GB/Stunde entspricht. Dieser Wert ist bewusst grob geschätzt und trifft wahrscheinlich nicht auf jede Umgebung zu. Um eine genaue Schätzung zu erhalten, empfiehlt es sich, mehrere Testmigrationen unterschiedlicher Größe durchzuführen und den tatsächlichen Durchsatz unter Ihren eigenen Speicher-, Netzwerk- und Hostbedingungen zu messen.
 
 
 
+[[recommended-tools-data-collection-compatibility-automation-qualification]]
 == Empfohlene Tools (Datenerfassung, Kompatibilität, Automatisierung, Qualifizierung)
 
 Service-Tools bieten eine standardisierte Methode, um Umgebungsdaten zu erfassen, die Unterstützbarkeit zu validieren und menschliche Fehler bei Planung und Ausführung zu reduzieren.

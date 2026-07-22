@@ -23,6 +23,7 @@ Für iSCSI FLI sollte die Analysephase auch die iSCSI-spezifische Bereitschaft e
 
 
 
+[[ontap-fli-analyze-phase-tasks]]
 == ONTAP FLI Analysephasenaufgaben
 
 Die Analysephase ist hostzentriert, sollte aber auch die gesamte End-to-End-Supportkette (Host über Fabric zu ONTAP und zurück) validieren und die FLI-Backend-Interoperabilitätsposition bestätigen.
@@ -73,6 +74,7 @@ Die Analysephase ist hostzentriert, sollte aber auch die gesamte End-to-End-Supp
 |===
 
 
+[[use-the-imt-during-the-ontap-fli-analyze-phase]]
 == Verwenden Sie die IMT während der ONTAP FLI-Analysephase
 
 Das Interoperabilitätsmatrix-Tool (IMT) ist ein Konfigurationsarchiv und ein Leitfaden, um die Auswahl unterstützter End-to-End-Konfigurationen zu erleichtern, in denen NetApp Produkte mit Komponenten von Drittanbietern interoperieren. IMT kann sowohl unterstützte als auch zertifizierte Konfigurationen enthalten.
@@ -107,6 +109,7 @@ Ab ONTAP 9.9.1, wenn das fremde Array nicht als unterstützt im IMT aufgeführt 
 
 
 
+[[ontap-fli-host-changes-and-rollback-strategy]]
 == ONTAP FLI-Hoständerungen und Rollback-Strategie
 
 In der Analysephase sollte explizit festgelegt werden, was wann geändert wird, da Änderungen am Hostsystem Risiken bergen und die Unterstützung des aktuellen Speichers beeinträchtigen können. Dies ist wichtig, wenn der Host-Stack aktualisiert werden muss, bevor er mit ONTAP unterstützt werden kann.
@@ -118,6 +121,7 @@ In der Analysephase sollte explizit festgelegt werden, was wann geändert wird, 
 
 
 
+[[ontap-fli-gap-analysis]]
 == ONTAP FLI Lückenanalyse
 
 Die Lückenanalyse fasst die aktuelle Umgebung im Vergleich zur von NetApp empfohlenen Zielkonfiguration zusammen und listet Upgrades oder Korrekturmaßnahmen auf, die erforderlich sind, um einen unterstützten Zustand nach der Migration zu erreichen.

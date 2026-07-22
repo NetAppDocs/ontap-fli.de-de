@@ -15,6 +15,7 @@ Bevor Sie die ONTAP FLI-Migration auf einem AIX-Host ausführen, führen Sie die
 
 
 
+[[pre-migration-offline-fli]]
 == Vormigration - Offline-FLI
 
 Diese Schritte sind sowohl für Online- als auch für Offline-FLI üblich. Bevor Sie die Quell-LUN vom Host entfernen, stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind.
@@ -82,6 +83,7 @@ cfgmgr
 
 
 
+[[pre-migration-online-fli]]
 == Vor der Migration – Online-FLI
 
 Nachfolgend sind die spezifischen Schritte für die Online-FLI aufgeführt, aber diesen Schritten müssen die im Abschnitt „Vormigration – Offline-FLI“ oben beschriebenen Schritte vorausgehen.

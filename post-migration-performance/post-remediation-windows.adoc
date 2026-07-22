@@ -15,6 +15,7 @@ Nach der Migration müssen auf den Windows-Hosts Korrekturmaßnahmen durchgefüh
 
 
 
+[[post-migration-offline-fli]]
 == Nach der Migration – Offline FLI
 
 Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
@@ -37,6 +38,7 @@ Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht un
 |===
 
 
+[[post-migration-online-fli]]
 == Nach der Migration – Online-FLI
 
 Nach dem Löschen des LUN-Imports prüfen Sie, ob die LUN mit -space-reserve deaktiviert und -space-allocation aktiviert konfiguriert ist. Falls nicht, passen Sie sie entsprechend an.
@@ -53,6 +55,7 @@ Nach dem Löschen des LUN-Imports prüfen Sie, ob die LUN mit -space-reserve dea
 |===
 
 
+[[filesystem-devices]]
 === Dateisystemgeräte
 
 .Schritte
@@ -85,6 +88,7 @@ Start-Service -Name <ServiceName>
 
 
 
+[[physical-drives-no-filesystem]]
 === Physische Laufwerke (ohne Dateisystem)
 
 .Schritte
@@ -99,6 +103,7 @@ Update-HostStorageCache
 
 
 
+[[wsfc]]
 === WSFC
 
 .Schritte
@@ -132,6 +137,7 @@ Start-ClusterResource -Name <ResourceName>
 
 
 
+[[hyper-v]]
 === Hyper V
 
 .Schritte

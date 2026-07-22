@@ -15,6 +15,7 @@ Nach der Migration müssen auf HP-UX-Hosts Korrekturmaßnahmen durchgeführt wer
 
 
 
+[[post-migration-offline-fli]]
 == Nach der Migration – Offline-FLI
 
 Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht und bestätigt wurde, dass die Host-Initiatoren verbunden sind.
@@ -46,6 +47,7 @@ Für Offline-FLI bringen Sie die LUN online, nachdem der LUN-Import gelöscht un
 |===
 
 
+[[post-migration-online-fli]]
 == Nach der Migration – Online-FLI
 
 Nach dem Löschen des LUN-Imports prüfen Sie, ob die LUN mit `-space-reserve disabled` und `-space-allocation enabled` versehen ist. Falls nicht, passen Sie sie entsprechend an.

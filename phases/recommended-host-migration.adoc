@@ -15,12 +15,14 @@ Richten Sie das Host-Betriebssystem und die Speicherkonfiguration an dem empfohl
 
 
 
+[[intent]]
 == Absicht
 
 Die folgende Tabelle hilft, das Host-Betriebssystem und die Speicherkonfiguration mit dem empfohlenen Foreign LUN Import (FLI)-Ansatz abzugleichen, bevor eine Migrationsmethode ausgewählt wird. Für jeden Hosttyp und jedes Nutzungsmodell wird angegeben, ob Online-FLI, Offline-FLI oder beides geeignet ist. Die Spalte „Hinweise/Begründung“ hebt wichtige technische Einschränkungen hervor – wie Clustering-Semantik, SCSI-3-persistente Reservierungen und Boot-Abhängigkeiten –, die direkt beeinflussen, ob Host-I/O sicher mit einer aktiven Importbeziehung koexistieren kann. Diese Hinweise sollten frühzeitig in der Planung verwendet werden, um nicht unterstützte Arbeitsabläufe zu vermeiden und realistische Erwartungen hinsichtlich Ausfallzeiten und Behebungszeiten zu setzen.
 
 
 
+[[key-guidance]]
 == Wichtige Hinweise
 
 * Clustering impliziert aufgrund der Anforderungen an die SCSI 3 Persistent Reservation fast immer Offline-FLI.
@@ -31,10 +33,12 @@ Die folgende Tabelle hilft, das Host-Betriebssystem und die Speicherkonfiguratio
 
 
 
+[[detailed-guidance]]
 == Detaillierte Anleitung
 
 
 
+[[windows]]
 === Windows
 
 [cols="3"]
@@ -57,6 +61,7 @@ Online / Offline FLI
 |===
 
 
+[[linux-rhelsles]]
 === Linux (RHEL/SLES)
 
 [cols="3"]
@@ -77,6 +82,7 @@ Online / Offline FLI
 |===
 
 
+[[solaris]]
 === Solaris
 
 [cols="3"]
@@ -94,6 +100,7 @@ Online / Offline FLI
 |===
 
 
+[[aix]]
 === AIX
 
 [cols="3"]
@@ -117,6 +124,7 @@ Online / Offline FLI
 |===
 
 
+[[hp-ux]]
 === HP-UX
 
 [cols="3"]
@@ -134,6 +142,7 @@ Online / Offline FLI
 |===
 
 
+[[vmware-esxi]]
 === VMware ESXi
 
 [cols="3"]
