@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, sds cli scripts tab 
 summary: Als Teil Ihres Arbeitsblatts für Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren SDS-CLI-Skripten enthält. 
 ---
-= Registerkarte SDS-CLI-Skripts für die Site-Umfrage und -Planung
+= ONTAP FLI Site Survey and Planning Arbeitsblatt Registerkarte SDS CLI Scripts
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

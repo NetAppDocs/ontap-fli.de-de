@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: discover foreign luns, foreign lun import, fli, ontap, storage disk show, mark foreign lun, fc backend, iscsi backend, foreign disk, lun discovery, san migration 
 summary: Deprovisionieren Sie die fremde LUN vom Host und ordnen Sie sie dem ONTAP-Initiator zu, damit ONTAP die LUN in seinem Speicher-Stack erkennen kann. 
 ---
-= Fremde LUNs für die FLI-Migration ermitteln
+= Fremde LUNs für die ONTAP FLI Migration ermitteln
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

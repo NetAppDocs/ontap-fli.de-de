@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: esxi remediation, vmfs, ats, caw, vaai, vmkfstools, datastore, online fli, foreign lun import, fli, vmware, ats-only 
 summary: Beheben Sie VMware ESXi-Datenspeicher mit ATS-only VMFS-Headern, die das Einbinden verhindern können, wenn sie über eine Online-FLI-Importbeziehung bereitgestellt werden. 
 ---
-= Führen Sie die ONTAP FLI ESXi VMFSS ATS/CAW-Behebung durch
+= Führen Sie die ONTAP FLI ESXi VMFS ATS/CAW-Behebung durch
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

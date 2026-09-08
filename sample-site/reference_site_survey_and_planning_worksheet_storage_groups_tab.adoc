@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, storage groups tab 
 summary: Als Teil Ihres Arbeitsblatts zur Standortumfrage und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren Speichergruppen enthält. 
 ---
-= Registerkarte Speichergruppen des Arbeitsblatts „Standortbefragung und -Planung“
+= ONTAP FLI Site Survey and Planning worksheet Registerkarte Storage Groups
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

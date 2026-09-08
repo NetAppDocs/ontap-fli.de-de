@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, contacts tab 
 summary: Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie eine Registerkarte einrichten, die Kontaktinformationen für das Migrationsprojekt enthält. 
 ---
-= Registerkarte Kontakte im Arbeitsblatt zur Standortbefragung und -Planung
+= ONTAP FLI Site Survey and Planning worksheet Registerkarte Kontakte
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

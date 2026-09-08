@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning, worksheet, aggregate status tab 
 summary: Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zum Aggregatstatus enthält. 
 ---
-= Registerkarte „zusammengefasste Statusanzeige und -Planung“ auf der Registerkarte „Zusammenstellungsarbeitsblatt“
+= ONTAP FLI Site Survey and Planning worksheet Registerkarte Aggregate Status
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

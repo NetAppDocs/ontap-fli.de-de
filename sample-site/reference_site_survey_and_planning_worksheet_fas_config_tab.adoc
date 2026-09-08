@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, fas config tab 
 summary: Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zur FAS Konfiguration verfügen. 
 ---
-= Registerkarte „FAS Config“ auf dem Arbeitsblatt für die Standortbefragung und -Planung
+= ONTAP FLI Standorterkundungs- und Planungsarbeitsblatt FAS Config Registerkarte
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

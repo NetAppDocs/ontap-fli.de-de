@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: fli prerequisites, foreign lun import, ontap fli, fc backend, iscsi backend, intercluster lif, lun discovery, import relationship, 512 byte sectors, igroup, lun mapping, fibre channel, iscsi initiator 
 summary: Prüfen Sie die Voraussetzungen für ONTAP Foreign LUN Import, einschließlich Backend-Konnektivität sowie Anforderungen an die LUN-Erkennung und Importbeziehung. 
 ---
-= Erfahren Sie mehr über die Voraussetzungen für den ONTAP Foreign LUN Import
+= Voraussetzungen für ONTAP Foreign LUN Import
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

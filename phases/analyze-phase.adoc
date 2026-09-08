@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: analyze phase, foreign lun import, fli, gap analysis, interoperability matrix tool, imt, host remediation, hba, mpio, alua, san migration, iscsi fli, fc fli 
 summary: Lernen Sie die Analysephase kennen, in der Host- und SAN-Stack-Konfigurationen mit der NetApp Interoperabilitätsmatrix verglichen werden, um erforderliche Änderungen zu ermitteln. 
 ---
-= ONTAP Foreign LUN Import (FLI) Analysephase
+= Informationen zur ONTAP FLI Analysephase
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

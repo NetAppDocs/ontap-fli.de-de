@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: plan and prepare phase, foreign lun import, fli, migration planning, test migration, cutover, intercluster lif, iscsi fli, gap analysis, san migration, fc fli, zoning 
 summary: Lernen Sie die Planungs- und Vorbereitungsphase kennen, in der die Ergebnisse der Ermittlung und Analyse in einen ausführbaren Migrationsplan umgewandelt und die Bereitschaft der Umgebung validiert werden. 
 ---
-= ONTAP Foreign LUN Import (FLI) Planungs- und Vorbereitungsphase
+= Informationen zur ONTAP FLI Plan- und Vorbereitungsphase
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

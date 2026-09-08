@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify import, delete import relationship, foreign lun import, fli, lun import delete, lun import verify, import cleanup, san migration, offline verification, asa r2 
 summary: Schließen Sie die Migration ab, indem Sie die Importbeziehung nach Abschluss des Kopiervorgangs löschen und optional die Datenintegrität auf Block-Ebene vor der Entfernung überprüfen. 
 ---
-= Überprüfen und löschen Sie die FLI-LUN-Importbeziehung
+= Die ONTAP FLI LUN Importbeziehung überprüfen und löschen
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: sample, site, survey and planning, worksheet 
 summary: Während der Analyse- und Planungsphase der Migrationsmethodik müssen Sie Ihre vorhandene Konfiguration, Zielkonfigurationen, Lücken und Problembehebungspläne mithilfe eines Arbeitsblatts für die Standortanalyse und -Planung dokumentieren. 
 ---
-= Beispiel für ein Arbeitsblatt für die Standortumfrage und -Planung
+= ONTAP FLI Beispiel Site Survey und Planungsarbeitsblatt
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, hp host, pre-migration, offline fli, online fli 
 summary: Bevor Sie die ONTAP FLI-Migration auf einem HP-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen. 
 ---
-= ONTAP FLI HP Host-Remediation
+= ONTAP FLI HP Pre-Migration Host-Remediation durchführen
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

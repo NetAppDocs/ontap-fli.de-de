@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, lun details tab 
 summary: Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zu Ihren LUN-Details verfügen. 
 ---
-= Registerkarte „LUN-Details“ im Arbeitsblatt für Standortbefragungen und -Planung
+= ONTAP FLI Site Survey and Planning Arbeitsblatt Registerkarte LUN-Details
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

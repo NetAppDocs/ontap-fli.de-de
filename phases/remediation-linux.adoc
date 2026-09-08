@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, linux host, pre-migration, offline fli, online fli 
 summary: Bevor Sie die ONTAP FLI-Migration auf einem Linux-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen. 
 ---
-= ONTAP FLI Linux-Host-Sanierung
+= ONTAP FLI Linux Vormigrations-Hostbereinigung durchführen
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

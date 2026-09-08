@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: discovery phase, foreign lun import, fli, active iq onecollect, fc fli, iscsi fli, intercluster lif, wwpn, iqn, foreign array, lun discovery, san migration 
 summary: Lernen Sie die Discovery-Phase kennen, in der Informationen über die Quellumgebung und die Konnektivität gesammelt werden, um die Grundlage für die Migrationsplanung zu schaffen. 
 ---
-= ONTAP Foreign LUN Import (FLI) Discovery-Phase
+= Informationen zur ONTAP FLI Erkennungsphase
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

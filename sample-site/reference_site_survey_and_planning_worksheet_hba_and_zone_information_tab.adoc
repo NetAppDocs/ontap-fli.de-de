@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, hba and zone information tab 
 summary: Als Teil Ihres Arbeitsblatt für die Standortumfrage und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zu Ihrem HBA und Ihrer Zone enthält. 
 ---
-= Registerkarte HBA- und Zoneninformationen im Arbeitsblatt für Standortbefragungen und -Planung
+= ONTAP FLI Standorterkundungs- und Planungsarbeitsblatt Registerkarte HBA- und Zoneninformationen
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

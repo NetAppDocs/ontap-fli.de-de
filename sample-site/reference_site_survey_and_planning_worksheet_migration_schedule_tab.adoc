@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, migration schedule tab 
 summary: Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihrem Migrationsplan enthält. 
 ---
-= Registerkarte „Migrationsplan für Standortbefragungen und -Planung“
+= ONTAP FLI Site Survey and Planning worksheet Registerkarte Migrationsplan
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

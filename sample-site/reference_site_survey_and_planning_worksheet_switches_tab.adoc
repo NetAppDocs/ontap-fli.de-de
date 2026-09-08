@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, switches tab 
 summary: Als Teil Ihres Arbeitsblatts für die Standortuntersuchung und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zum Migrationsschalter enthält. 
 ---
-= Registerkarte „Arbeitsblätter für Standortbefragungen und -Planung“
+= ONTAP FLI Standortanalyse und Planungsarbeitsblatt Registerkarte Switches
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

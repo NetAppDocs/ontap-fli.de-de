@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, source storage devices tab 
 summary: Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu den Storage-Geräten Ihrer Migrationsquelle enthält. 
 ---
-= Registerkarte Quellspeichergeräte für Standortbefragungen und -Planung
+= ONTAP FLI Site Survey and Planning worksheet Registerkarte Quellspeichergeräte
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

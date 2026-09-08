@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, windows host, pre-migration, offline fli, online fli 
 summary: Bevor Sie die ONTAP FLI-Migration auf einem Windows-Host ausführen, müssen Sie diese Vorbereitungsschritte durchführen. Es gibt separate Schritte für Offline- und Online-Migrationen. 
 ---
-= ONTAP FLI Windows-Host-Sanierung
+= ONTAP FLI Windows Pre-Migration-Host-Bereinigung durchführen
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

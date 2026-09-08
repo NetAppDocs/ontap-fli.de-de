@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords:  
 summary:  
 ---
-= FC-Adapter für den Initiatormodus für ONTAP Foreign LUN Import (FLI)-Migration konfigurieren
+= FC-Adapter für den Initiatormodus in ONTAP FLI konfigurieren
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

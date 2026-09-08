@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, source luns tab 
 summary: Sie sollten als Teil Ihres Arbeitsblatts zur Standortumfrage und -Planung eine Registerkarte einrichten, die Informationen zu den Quell-LUNs enthält. 
 ---
-= Registerkarte Quell-LUNs des Arbeitsblatts für Standortbefragung und Planung
+= ONTAP FLI Site Survey and Planning worksheet Registerkarte „Source LUNs“
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

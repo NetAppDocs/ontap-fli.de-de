@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: ontap, fli, foreign lun import, solaris host, pre-migration, offline fli, online fli 
 summary: Bevor Sie die ONTAP FLI-Migration auf einem Solaris-Host ausführen, führen Sie diese Vorbereitungsschritte durch. Es gibt separate Schritte für Offline- und Online-Migrationen. 
 ---
-= ONTAP FLI Solaris Host-Sanierung
+= ONTAP FLI Solaris Pre-Migration Host-Remediation durchführen
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

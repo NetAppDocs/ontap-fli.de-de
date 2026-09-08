@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: site, survey and planning worksheet, hosts tab 
 summary: Als Teil des Arbeitsblatts für Standortbefragung und -Planung sollten Sie eine Registerkarte mit Hostinformationen für das Migrationsprojekt einrichten. 
 ---
-= Registerkarte „Hosts für die Standortbefragung und -Planung“
+= ONTAP FLI Site Survey and Planning Arbeitsblatt Registerkarte Hosts
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/

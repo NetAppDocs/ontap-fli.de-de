@@ -4,7 +4,7 @@ sidebar: sidebar
 keywords: verify phase, foreign lun import, fli, post-migration cleanup, application validation, fc zoning, iscsi cleanup, ontap configuration, migration documentation, san migration 
 summary: Erfahren Sie mehr über die Verifizierungsphase, die bestätigt, dass die Migration wie geplant abgeschlossen wurde und die während des Migrationszeitraums verwendeten temporären Konfigurationen entfernt. 
 ---
-= ONTAP Foreign LUN Import (FLI) Verifizierungsphase
+= Informationen zur ONTAP FLI Verify-Phase
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
