@@ -7,6 +7,7 @@ summary: Erfahren Sie, wie ONTAP Foreign LUN Import SAN-LUNs migriert, indem es 
 = Erfahren Sie mehr über ONTAP Foreign LUN Import
 :allow-uri-read: 
 :icons: font
+:linkattrs: 
 :imagesdir: ../media/
 
 
@@ -42,3 +43,149 @@ image::new-offline-fli.png[Offline-FLI-Workflow]
 Im Online-Workflow wird der Host nur für eine kurze Übergangszeit getrennt, während der Import vom Kopiervorgang zur Fertigstellung übergeht.
 
 image::new-online-fli.png[Offline-FLI-Workflow]
+
+
+
+[[learn-about-key-features-and-benefits-of-ontap-foreign-lun-import]]
+== Erfahren Sie mehr über die wichtigsten Funktionen und Vorteile von ONTAP Foreign LUN Import
+
+ONTAP Foreign LUN Import (FLI) ist eine integrierte Blockmigrationsfunktion, die Daten von einer externen (Drittanbieter-)Array-LUN auf eine native ONTAP-LUN kopiert und sowohl Offline- als auch Online-Migrationsstile unterstützt. FLI ist dafür konzipiert, SAN-LUNs von einer Reihe von Drittanbieter-Arrays nach ONTAP zu migrieren, und bietet eine konsistente Migrationsmethodik, die hilft, Planung, Ausführung und Validierung über verschiedene Hosts und Arrays hinweg zu standardisieren.
+
+
+
+[[key-features]]
+=== Hauptmerkmale
+
+* Online- und Offline-Migrationen zur Erfüllung der Anforderungen an die Ausfallzeiten des Unternehmens.
+* Die Migration auf Blockebene, die unabhängig vom Betriebssystem erfolgt, benötigt weder Host-Volume-Manager noch Betriebssystem-Dienstprogramme zum Verschieben der Daten.
+* Funktioniert in heterogenen SAN-Umgebungen und ist für die Migration von SAN-LUNs von einer Reihe von Drittanbieter-Arrays in ONTAP konzipiert.
+* Der Backend-Transport ist flexibel und bietet sowohl FC- als auch iSCSI-Backend-Konnektivität, obwohl die unterstützten Konfigurationen von der Interoperabilitätsvalidierung abhängen.
+* Native Unterstützung für Multipathing und Load Balancing unter Nutzung standardmäßiger SAN-Pfadmodelle.
+* CLI-gesteuerte Steuerung und Sichtbarkeit, die wiederholbare Ausführung und operative Überwachung ermöglichen.
+
+
+
+
+[[key-benefits]]
+=== Wichtigste Vorteile
+
+* ONTAP FLI ist in ONTAP enthalten. Für den Import von FLI-basierten LUNs ist keine separate Migrations-Appliance erforderlich.
+* Verringert das Ausfallrisiko durch die Ermöglichung eines Online-Workflows, bei dem der Hostzugriff nach einer kurzen Umstellung wiederhergestellt werden kann, während der Import im Hintergrund fortgesetzt wird.
+* Eine einheitliche Migrationsmethodik, die dazu beiträgt, Planung, Ausführung und Validierung über verschiedene Hosts und Arrays hinweg zu standardisieren.
+* Unterstützt komplexe Übergangsszenarien, einschließlich 7 Mode zu ONTAP-Migrationen, bei denen Ausrichtungs- und Formatüberlegungen als Teil des Übergangsworkflows berücksichtigt werden können.
+* Stark unterstütztes Betriebsmodell, obwohl professionelle Dienstleistungen nicht obligatorisch sind, empfiehlt NetApp professionelle Dienstleistungen oder qualifizierte Partner für die Abgrenzung, Planung und Schulung für alles, was über einfache Migrationen hinausgeht.
+
+
+
+
+[[learn-about-the-ontap-foreign-lun-import-prerequisites]]
+== Erfahren Sie mehr über die Voraussetzungen für den ONTAP Foreign LUN Import
+
+Vor dem Start eines ONTAP Foreign LUN Import (FLI) müssen mehrere Voraussetzungen erfüllt sein, um eine erfolgreiche Datenmigration zu gewährleisten. Diese Voraussetzungen umfassen Kompatibilitäts-, Verbindungs- und Konfigurationsanforderungen, die für das korrekte Funktionieren des FLI-Prozesses unerlässlich sind.
+
+* Für das gewählte Transportprotokoll muss eine Backend-Konnektivität verfügbar sein:
++
+** FC FLI benötigt mindestens einen FC-Port pro Controller, der im Initiator-Modus arbeiten kann (zwei Ports, einer pro Fabric, sind aus Redundanzgründen vorzuziehen).
+** Für iSCSI FLI werden Intercluster (IC) LIFs (oder Ethernet-Ports, die IC LIFs aufnehmen können) benötigt, da der iSCSI-Softwareinitiator ausgehende Sitzungen an die IC-Konnektivität bindet.
+
+
+* Die fremde LUN muss in ONTAP vor dem Import auffindbar sein. Die fremde Array-LUN muss im ONTAP-Speicherstack sichtbar sein (die Auffindbarkeit ist Voraussetzung für den Import).
+* Markieren Sie die Quell-LUN als „fremd“ in ONTAP. Nachdem die fremde LUN erkannt wurde, muss sie explizit als fremd markiert werden, um versehentliche Besitzübernahmen oder Überschreibungen zu verhindern.
+* Die Quell-LUN muss stabil sein. Die Fremd-LUN darf sich während des Importvorgangs weder vergrößern noch verkleinern.
+* Für die Importkompatibilität muss die fremde LUN 512-Byte-Sektoren (512B-Blockgröße) verwenden, andere Sektorgrößen werden für den Import nicht unterstützt.
+* Die Größe der Ziel-ONTAP-LUN muss der Größe der Quell-LUN entsprechen. Der Workflow „LUN mit externem Datenträger erstellen“ stellt sicher, dass die Ziel-LUN in der korrekten Größe erstellt wird.
+* Die Ziel-ONTAP-LUN muss mindestens einer Initiatorgruppe auf Basis des Frontend-Protokollplans zugeordnet werden, damit der Host in der richtigen Phase des Workflows angebunden werden kann.
+* Die ausländische LUN und die Ziel-ONTAP-LUN müssen vor Beginn des Importkopiervorgangs über eine Importbeziehung gekoppelt werden.
+
+
+Halten Sie die Ziel-ONTAP-LUN offline, bevor Sie die Importbeziehung erstellen; nach dem Erstellen der Beziehung kann die LUN nur dann online geschaltet werden, wenn Sie Online-FLI durchführen, damit der Host die E/A wieder aufnehmen kann, während der Kopiervorgang fortgesetzt wird.
+
+
+
+[[learn-about-ontap-foreign-lun-import-supported-configurations-and-platforms]]
+== Erfahren Sie mehr über die von ONTAP Foreign LUN Import unterstützten Konfigurationen und Plattformen
+
+ONTAP FLI muss in einer unterstützten Konfiguration eingesetzt werden, um ein vorhersehbares Verhalten und volle Supportfähigkeit zu gewährleisten.
+
+* Alle FLI-Migrationen werden auf LUN-Ebene (Blockebene) durchgeführt; Migrationen auf Datei- und Protokollebene fallen nicht in den ONTAP FLI-Bereich.
+* Als empfohlener Ausgangspunkt gilt, bis zu 8 gleichzeitige Importe pro Knoten einzuplanen. Unter optimalen Bedingungen sollten 16 gleichzeitige Migrationen pro Knoten nicht überschritten werden, und die Parallelität ist zu reduzieren, wenn eine erhöhte Host-Latenz oder Import-Latenz festgestellt wird.
+* Ab ONTAP 9.12.1 beträgt die maximale Größe einer importierbaren externen LUN 125 TB pro LUN. Siehe den Knowledge Base Artikel link:https://kb.netapp.com/on-prem/ontap/da/SAN/SAN-KBs/Unable_to_migrate_Array_lun_greater_than_16_TB_using_FLI["Migration von Array-LUNs mit mehr als 16 TB mithilfe von FLI nicht möglich"^] für weitere Details.
+* iSCSI-Sitzungsskalierungsgrenzen (Backend-iSCSI):
++
+** 1 Initiator pro IC LIF
+** Bis zu 16 Sitzungen pro LIF
+** Bis zu 32 Sitzungen pro Knoten
+
+
+* Einschränkungen des iSCSI-Protokolls:
++
+** Keine iSCSI-Erkennungssitzungen
+** Keine Mehrfachverbindungssitzungen (MCS)
+** Fehlerwiederherstellungsstufe > 0 wird nicht unterstützt (nur ERL0)
+** IPv6 wird für die Verwendung von iSCSI-Initiator-LIFs nicht unterstützt
+
+
+* Verfügbarkeitshinweise für Sicherheit und Verwaltung:
++
+** CHAP ist nicht enthalten
+** Die REST API-Abdeckung für iSCSI FLI-Operationen ist nicht verfügbar (nur CLI-Workflow).
+
+
+* Operativer Planungshinweis für Online-Importe:
++
+** Bei Online-FLI teilen sich Host-I/O und Importkopie Backend-Ressourcen
+** Importvorgänge können pausiert und fortgesetzt werden, um die Latenz des Hosts zu schützen
+** Migrationen sollten nach Möglichkeit außerhalb der Spitzenzeiten geplant werden
+
+
+
+
+
+
+[[supported-configurations-and-platform]]
+=== Unterstützte Konfigurationen und Plattform
+
+Da im Laufe der Zeit neue Konfigurationen qualifiziert werden, können sich die unterstützten Kombinationen ändern. Validieren Sie bei jeder Datenmigration den gesamten Stack (Quell-Array + Host + Fabric/Netzwerk + ONTAP-Ziel) anhand der aktuellen Interoperabilitätsrichtlinien.
+
+.Unterstütztes Ziel (wohin Sie migrieren können)
+* ONTAP ist das einzige unterstützte Ziel für FLI-Migrationen. FLI ist für den Import von Daten in ONTAP LUNs konzipiert; Migrationen zu Speichersystemen von Drittanbietern werden nicht unterstützt.
+* Für iSCSI FLI ist der iSCSI-Softwareinitiator in den FLI-Stack integriert und dient speziell dazu, die Erkennung und den Import fremder LUNs über eine iSCSI/TCP-Backend-Verbindung zu ermöglichen.
+
+
+.Unterstützte ONTAP-Plattformabdeckung (Zielplattformen)
+Die Plattformabdeckung hängt vom verwendeten Backend-Transport für die Erkennung/den Import ab:
+
+* FC-Backend FLI (traditionell) unterstützt ONTAP auf AFF / ASA / ASA r2 / FAS (gemäß der Vergleichstabelle im iSCSI-Testdesign).
+* iSCSI-Backend-FLI erweitert die Abdeckung um AFF / ASA / ASA r2 / FAS / ONTAP Select / Cloud Volumes ONTAP (CVO) (gemäß demselben Vergleich).
+
+
+.Unterstützte Quellarrays und Qualifizierungsansatz
+* Bei FC-Backend-FLI werden unterstützte ausländische Arrays typischerweise über etablierte Interoperabilitätslisten und Qualifizierungsrichtlinien validiert (die unterstützte Liste entwickelt sich weiter, sobald neue Arrays qualifiziert werden).
+* Bei iSCSI-Backend-FLI werden keine fremden Arrays standardmäßig vorqualifiziert; von den Kunden wird erwartet, dass sie die Qualifizierung mit den bereitgestellten Qualifizierungstools (z. B. sanlunmigrate / offtap sanlunmigrate) durchführen, bevor sie sich auf eine Produktionsmigration festlegen.
+
+
+.Host-Betriebssysteme und Fabric-/Switch-Unterstützung (End-to-End-Validierung)
+* Die Unterstützung des Host-Betriebssystems sollte mit den Interoperabilitätsrichtlinien für den SAN-Host für das gewählte Frontend-Protokoll (FC oder iSCSI) und die Host-Konfiguration nach der Datenmigration übereinstimmen.
+* Die Unterstützung von Switches/Fabrics muss ebenfalls im Rahmen der End-to-End-Konfiguration validiert werden (insbesondere für FC-Umgebungen, in denen Zoning/Masking erforderlich ist).
+
+
+.Anforderung nach der Migration (Support nach der Umstellung aufrechterhalten)
+Nachdem der Import abgeschlossen ist und die Hosts auf ONTAP-LUNs laufen, stellen Sie sicher, dass die endgültige stabile Konfiguration unterstützt wird. Dies umfasst Host-Multipathing, HBA-/Treiber-/Firmware-Level, Zoning/Masking (FC), iSCSI-Konfiguration (falls verwendet) und alle ONTAP-Funktionsinteraktionen, die Sie zu verwenden planen.
+
+.iSCSI FLI-spezifische Schutzmechanismen (wichtig für die Supportfähigkeit)
+* iSCSI FLI verwendet Intercluster-LIFs (IC-LIFs) für Backend-iSCSI-Sitzungen. Das Erstellen neuer IC-LIFs in einem anderen Subnetz ausschließlich zum Erreichen fremder Ziele, wenn bereits IC-LIFs in einem anderen Subnetz eingerichtet sind, wird als nicht unterstützte Planungsvorgabe betrachtet.
+* Die iSCSI-Initiator-Sitzungskonfiguration ist nur für die Dauer der Migration vorgesehen und sollte nach Abschluss der Migration bereinigt werden, um betriebliche Nebenwirkungen, einschließlich Upgrade- und Rücksetzungsüberlegungen, zu vermeiden.
+
+
+
+
+[[best-practices]]
+=== Best Practices
+
+NetApp empfiehlt dringend eine Professional Services oder Professional Services von Partnern, zur Planung und Umfang der Migration sowie zur Schulung von Kundenmitarbeitern zur Durchführung von Datenmigrationen mithilfe des Imports fremder LUNs (Foreign LUN Import, FLI) 7-Mode auf ONTAP.
+
+* Führen Sie mindestens eine Woche vor Ihrem Migrationsprojekt eine oder mehrere Testmigrationen durch, um Konfiguration, Konnektivität und Durchsatz zu überprüfen, weitere Probleme aufzudecken und Ihre Methodik zu validieren.
+* Führen Sie für einen maximalen Durchsatz nicht mehr als 16 Migrationen pro Node gleichzeitig aus.
+* Eine Überprüfung ist nicht erforderlich, aber wir empfehlen Ihnen, eine Teilmenge der importierten und migrierten LUNs zu überprüfen, um den Importprozess zu validieren.
+* Nutzen Sie den in Ihren Testmigrationen beobachteten Durchsatz, um die Produktionsmigration zu planen.
+

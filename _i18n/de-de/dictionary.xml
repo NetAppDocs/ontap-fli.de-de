@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <blocks>
-  <block id="3be720072e03679f7ed0f85258130b70" category="summary">ONTAP Import fremder LUNs</block>
   <block id="dbd3f1a817d137c052ec01ef60940131" category="doc">ONTAP Dokumentation zum Importieren fremder LUNs</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">Schritte</block>
   <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
   <block id="f2b84afd0523a6df7547c404aa3647d8" category="doc">Zielgruppe</block>
   <block id="d349791b0d71ed5b5f5c14e0ca2c1683" category="doc">Host-Korrektur</block>
   <block id="5adfe538d2e4bb2201ca3cd266686c4c" category="summary">Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zu Ihren LUN-Details verfügen.</block>
-  <block id="e74172a70ff5d3d9f3c490416dc3bd83" category="doc">Registerkarte „LUN-Details“ im Arbeitsblatt für Standortbefragungen und -Planung</block>
   <block id="0c9aa58f5194cebe062fd903e101ba7f" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte „LUN-Details“ einrichten.</block>
   <block id="72db9d9344319d56fe15f5a344ca2954" category="cell">LUN-Details</block>
   <block id="f31bbdd1b3e85bccd652680e16935819" category="paragraph">Quelle</block>
@@ -59,7 +57,6 @@
   <block id="e206a54e97690cce50cc872dd70ee896" category="paragraph">linux</block>
   <block id="92963abd36c896b93a36b8e296ff3387" category="paragraph">vmware</block>
   <block id="cd2ea2efb6e484e9f76aa6c911f083cf" category="summary">Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte mit Informationen zur FAS Konfiguration verfügen.</block>
-  <block id="d816e66cd7b51d120e7ae740a2d2b7d8" category="doc">Registerkarte „FAS Config“ auf dem Arbeitsblatt für die Standortbefragung und -Planung</block>
   <block id="cb27b289fa8961c6a3dcd409d777c342" category="paragraph">Im Folgenden finden Sie ein Beispiel für die Einrichtung der Registerkarte FAS-Konfiguration.</block>
   <block id="d6ed36bb2b00046e0edf3d24b526b7ad" category="cell">Cluster-Name</block>
   <block id="b84efa9ec93a064c12da482ba494099b" category="cell">Cluster-Management-IP-Adresse</block>
@@ -101,7 +98,6 @@
   <block id="22bb75b17c257e3403e89aa51a170ac3" category="cell">WWN</block>
   <block id="ce9f3448f4c39e84f8694df961238e2d" category="cell">Homer-Knoten</block>
   <block id="2021cbde5bf5dfd18378e28e081ea40f" category="summary">Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie eine Registerkarte einrichten, die Kontaktinformationen für das Migrationsprojekt enthält.</block>
-  <block id="9f2428b49944ffbe41d6eaaae6141691" category="doc">Registerkarte Kontakte im Arbeitsblatt zur Standortbefragung und -Planung</block>
   <block id="830bf6266222d642dda54d3adac324b5" category="paragraph">Im Folgenden finden Sie ein Beispiel zum Einrichten der Registerkarte Kontakte.</block>
   <block id="23bd44903908dd85f008af4416f452f2" category="cell">Kontaktinformationen Für Das Migrationsprojekt</block>
   <block id="cfad9f5ea3aed693642b36f141e70160" category="paragraph">Ressourcenname</block>
@@ -111,7 +107,6 @@
   <block id="faab5da77b26184402e64e2ee7a70060" category="paragraph">Mobiltelefon</block>
   <block id="ce8ae9da5b7cd6c3df2929543a9af92d" category="paragraph">E-Mail</block>
   <block id="cb3628a430baab7a93ffd421b659b087" category="summary">Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu den Storage-Geräten Ihrer Migrationsquelle enthält.</block>
-  <block id="66d379978b8364c9b7e4cace88b5bf8f" category="doc">Registerkarte Quellspeichergeräte für Standortbefragungen und -Planung</block>
   <block id="e11ebb23473888246705e815adf2fb83" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte Quellspeichergeräte einrichten.</block>
   <block id="5c6ab1284b6b7a5a7102854a969c99be" category="cell">Storage-Systeme</block>
   <block id="55fe6d37857f38fc5f2d32415d6be244" category="paragraph">Array-Name</block>
@@ -140,7 +135,6 @@
   <block id="ef615563c8e8ea902c7fcac3cd2c4246" category="cell">Aufgaben</block>
   <block id="c2ca16d048ec66e04bca283eab048ec2" category="paragraph">Host</block>
   <block id="af99c9abf614a82b80d08359e5e0a888" category="summary">Sie sollten als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung eine Registerkarte einrichten, die Informationen zu Ihren LUN-Layouts enthält.</block>
-  <block id="f01d3ff99f3ac13d61d7586c2e8dc665" category="doc">Registerkarte „site Survey and Planning“ „NetApp LUN Layouts“</block>
   <block id="e672da4fadd27ee2f19017ef42dce852" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte NetApp LUN-Layouts einrichten.</block>
   <block id="f4dc3ce9f4d7c741a2ac13a451458d51" category="cell">NetApp LUN-Informationen</block>
   <block id="5a33fdd3ad048388d676b3cfe62a76b4" category="paragraph">Volume-Name</block>
@@ -162,7 +156,6 @@
   <block id="16b78e95661c918bc1b982fd64852c02" category="paragraph">Laufwerksbuchstabe</block>
   <block id="0ac79129f2a7ba5db5e1f4d755cb3231" category="paragraph">Fabric</block>
   <block id="b84408b5a0a0c7cc2f546b003567651a" category="summary">Als Teil Ihres Arbeitsblatt für die Standortumfrage und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zu Ihrem HBA und Ihrer Zone enthält.</block>
-  <block id="e73883227bd8b82a32f523f166de0ff8" category="doc">Registerkarte HBA- und Zoneninformationen im Arbeitsblatt für Standortbefragungen und -Planung</block>
   <block id="b40869fd3c3553f482c858fa5ac4d4f6" category="paragraph">Im Folgenden finden Sie ein Beispiel für die Einrichtung der Registerkarte HBA- und Zoneninformationen.</block>
   <block id="09eaea7cdd5eb7f40566ce88dd148114" category="cell">Fabric-Details</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="paragraph">Beschreibung</block>
@@ -180,7 +173,6 @@
   <block id="5f3087cbd50e3ef143e7c737a425867a" category="paragraph">Rx21_AMS2100</block>
   <block id="ec194d0acc244f4d9246902066321e8e" category="paragraph">Rx21_flicDOT</block>
   <block id="5dd04a70c599dd3aba4af817ed8f940a" category="summary">Als Teil Ihres Arbeitsblatts für Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren SDS-CLI-Skripten enthält.</block>
-  <block id="fcbc52c1e9e3f483b5dd4306a9c74eb7" category="doc">Registerkarte SDS-CLI-Skripts für die Site-Umfrage und -Planung</block>
   <block id="2c87f12de6046ab2b53a48c94446ddc6" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte SDS-CLI-Skripts einrichten.</block>
   <block id="8d1fc7e767a7204d770eb56c7989e03b" category="cell">Controller 1</block>
   <block id="48ed192757d1bc6d4a36d16a10893f48" category="cell">Controller 2</block>
@@ -218,7 +210,6 @@
   <block id="6c5395fbe7637c1c2d92859d967cb804" category="paragraph">#LUN-Zuordnung für /vol/bootcampvol/dm27_data1_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.</block>
   <block id="a73c68c63356315bd4ea581710355d69" category="paragraph">#LUN-Zuordnung für /vol/bootcampvol/dm27_data2_lun übersprungen, da die LUN keiner iGroup zugeordnet ist.</block>
   <block id="dbe84cd10fc78ddffac6c2603bb5e334" category="summary">Während der Analyse- und Planungsphase der Migrationsmethodik müssen Sie Ihre vorhandene Konfiguration, Zielkonfigurationen, Lücken und Problembehebungspläne mithilfe eines Arbeitsblatts für die Standortanalyse und -Planung dokumentieren.</block>
-  <block id="52d8ff059d88cc5b65a5a53537d4c524" category="doc">Beispiel für ein Arbeitsblatt für die Standortumfrage und -Planung</block>
   <block id="7bafc2e73cbb5786f7652b776e4d06e8" category="paragraph">Dieser Abschnitt enthält Beispiele für Informationen, die in der Tabelle „Standortumfrage und Planung“ enthalten sein sollten. Die folgenden Registerkarten werden empfohlen:</block>
   <block id="bbaff12800505b22a853e8b7f4eb6a22" category="list-text">Kontakt</block>
   <block id="179d692ef9707bcf6d92ff37fd394ec8" category="list-text">Fragebogen</block>
@@ -237,7 +228,6 @@
   <block id="9299ae51d5e390720987a49406f73c6c" category="summary">NetApp empfiehlt dringend eine Professional Services oder Professional Services von Partnern, zur Planung und Umfang der Migration sowie zur Schulung von Kundenmitarbeitern zur Durchführung von Datenmigrationen mithilfe des Imports fremder LUNs (Foreign LUN Import, FLI) 7-Mode auf ONTAP.</block>
   <block id="d1c7f10a927287be4073a34e717a5457" category="list-text">Führen Sie für einen maximalen Durchsatz nicht mehr als 16 Migrationen pro Node gleichzeitig aus.</block>
   <block id="c614218c0adf7263666120fbe714869d" category="summary">Als Teil Ihres Arbeitsblatts für die Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zum Aggregatstatus enthält.</block>
-  <block id="acf867d4e1dc8af3eb922419a5b3fe21" category="doc">Registerkarte „zusammengefasste Statusanzeige und -Planung“ auf der Registerkarte „Zusammenstellungsarbeitsblatt“</block>
   <block id="bceb4f070020d638ef1535978542228d" category="paragraph">Im Folgenden finden Sie ein Beispiel, wie Sie die Registerkarte „Aggregatstatus“ einrichten.</block>
   <block id="911f94bc298fc88538ecc2c44b5d778d" category="cell">NetApp Aggregate Informationen</block>
   <block id="9bbf373797bf7cf7ba62c80023682e25" category="paragraph">Controller</block>
@@ -247,7 +237,6 @@
   <block id="0d4f11be31f944fbc267afc1f7a2f666" category="paragraph">Vorher zum Ausbauen</block>
   <block id="883000da1c165b2e9103461f4f129399" category="paragraph">Wenn das Storage-Array zum ersten Mal erkannt wird, wird das Array von ONTAP möglicherweise nicht durch die automatische Erkennung angezeigt. Verwenden Sie die folgenden Anweisungen, um den Switch-Port zurückzusetzen, an dem ONTAP-Initiator-Ports angeschlossen sind.</block>
   <block id="8802080a4dc2981f17e7c4648f43afe7" category="summary">Sie sollten als Teil Ihres Arbeitsblatts zur Standortumfrage und -Planung eine Registerkarte einrichten, die Informationen zu den Quell-LUNs enthält.</block>
-  <block id="4037e8193f042717a79bf3fdefd4aae6" category="doc">Registerkarte Quell-LUNs des Arbeitsblatts für Standortbefragung und Planung</block>
   <block id="46fdb96658c0c805a565f783cb6eb4a2" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte „Quell-LUNs“ einrichten.</block>
   <block id="40336b4a1c70e07af22b9f21262986c6" category="paragraph">Maskierte LUNs</block>
   <block id="05ae95ecb2f7d95ca46671f2f897261f" category="paragraph">Name Der Speichergruppe</block>
@@ -270,7 +259,6 @@
   <block id="558325bdc5d5119e93467e7fe7fcea48" category="paragraph">33619968</block>
   <block id="3498819c9e2fcba4d3ad19d511ca5791" category="paragraph">LUN15</block>
   <block id="d5fe299d7d92cd0254874c8e18bd6667" category="summary">Als Teil Ihres Arbeitsblatts zur Umfrage und Planung der Site sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihrem Migrationsplan enthält.</block>
-  <block id="9ae6059c986f115d805804d9750f95c8" category="doc">Registerkarte „Migrationsplan für Standortbefragungen und -Planung“</block>
   <block id="d658998d22d4a15ffcb56abb26b97f6c" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte Migrationsplan einrichten.</block>
   <block id="db5249c8de64163f6987af1bf7d7b50f" category="paragraph">Migrationsdatum</block>
   <block id="17bc10091293fdc562a6db69940ee924" category="paragraph">BETRIEBSSYSTEM</block>
@@ -279,7 +267,6 @@
   <block id="43435c05e45d87cb6fa23f7523ba2959" category="paragraph">Die LUN-Größe</block>
   <block id="ec53a8c4f07baed5d8825072c89799be" category="paragraph">Status</block>
   <block id="da561bf84fa67d613a7bc697632e7936" category="summary">Als Teil Ihres Arbeitsblatts zur Standortumfrage und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren Speichergruppen enthält.</block>
-  <block id="a2aabbf550b46ec2c7ba272d1cc49cfe" category="doc">Registerkarte Speichergruppen des Arbeitsblatts „Standortbefragung und -Planung“</block>
   <block id="d11cedfe393a70a8914339a7ddcf0db4" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte Speichergruppen einrichten.</block>
   <block id="12007e1d59f4d09c87dbe2c438256244" category="paragraph">Ziel</block>
   <block id="9507dd645d6ad56791c558168f66d3c5" category="paragraph">Initiatorgruppenbefehle</block>
@@ -290,7 +277,6 @@
   <block id="a1f5a153bb25ffa89fc874e242492ae8" category="paragraph">21:00:00:24:ff:30:03:ea21:00:00:24:ff:30:03:eb</block>
   <block id="ca4cbb35f003ffb63d5fef7c9ccb68ba" category="paragraph"><block ref="152829f67d31f8f365eacbfbb15bbe9f" prefix="" category="inline-code"></block> vmware<block ref="ecc1164617b0fb52f8f44b689df1dcfd" prefix=" " category="inline-code"></block> fcp<block ref="b058e17241aaaab6fd881949dfb6df3e" prefix=" " category="inline-code"></block> Datendatum <block ref="b65a4559124433be5c5fb8157d252940" prefix="-" category="inline-code"></block> dm-rx200s6-20<block ref="4e91f42d85c76346fbc5f287a7331ff3" prefix=" " category="inline-code"></block> 21:00:00:24:ff:30:03:ea,21:00:00:24:ff:30:03:eb</block>
   <block id="d7da563f3152abd7a93b06abdd4d95c6" category="summary">Als Teil des Arbeitsblatts für Standortbefragung und -Planung sollten Sie eine Registerkarte mit Hostinformationen für das Migrationsprojekt einrichten.</block>
-  <block id="36231dd03efc078aabef212947a5b33e" category="doc">Registerkarte „Hosts für die Standortbefragung und -Planung“</block>
   <block id="396cb26dedacf281d09182445c92324a" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte Hosts einrichten.</block>
   <block id="bc8586f2230ff2687e94e61c5bcb4855" category="paragraph">*Strom*</block>
   <block id="c5f59086da2596c74d6daf4ba11dfaef" category="paragraph">*NetApp empfohlen*</block>
@@ -307,7 +293,6 @@
   <block id="1b6dec684aa1f6e66018baa0a87b5a75" category="list-text">Ausführungsphase</block>
   <block id="4a906f3b5858522ee75dd08c0279ffaa" category="list-text">Verifizierungsphase</block>
   <block id="54011b62f41dfb303a3eed8e66adacf5" category="summary">Als Teil Ihres Arbeitsblatts für die Standortbefragung und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Ihren Ziel-Speichergeräten enthält.</block>
-  <block id="cd1e0a3493fa61cb2dd0db1374b4f62b" category="doc">Registerkarte Zielspeichergeräte für Standortbefragungen und -Planung</block>
   <block id="592841d56fa2f5fffbdfe26b71543b0b" category="paragraph">Array-Modus</block>
   <block id="253b40ae359ba25b56231803430c4873" category="paragraph">ONTAP</block>
   <block id="5999e4ab912c7c1d8aa6fd2225491ef2" category="paragraph">vserver</block>
@@ -329,7 +314,6 @@
   <block id="347017fd1e37a22faf91875981bc4fb3" category="paragraph">0b</block>
   <block id="e3be5aecfb0260579fe80049e1c8a50c" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte Zielspeichergeräte einrichten.</block>
   <block id="0e307f6ea434bd4d2171f6accce0a9ba" category="summary">Im Arbeitsblatt für die Standortumfrage und -Planung sollten Sie über eine Registerkarte verfügen, die Informationen zu Migrationsprojekts aus Ihrer ersten Migrationsfrageboge enthält.</block>
-  <block id="a9045dbda21a2daa2214c339015b971e" category="doc">Registerkarte „Fragebogen für Standortbefragungen und -Planung“</block>
   <block id="10bb602bb2e1131312be193830955c41" category="paragraph">Im Folgenden finden Sie ein Beispiel zum Einrichten der Registerkarte „Fragebogen“.</block>
   <block id="56693cf67971d000c20732a5b7bdbb95" category="cell">Informationen Zum Migrationsprojekt</block>
   <block id="245fe794333c2b0d5c513129b346b93f" category="paragraph">Projekttyp</block>
@@ -381,7 +365,6 @@
   <block id="63a1e1b7612a2397b4ff57c141a827e7" category="paragraph">&amp;#91;Weitere Relevante Informationen&amp;#93;</block>
   <block id="22b9ca50d26528cdb88e0eafc47518f8" category="paragraph">Name und Standort der Kundenorganisation (Stadt und Bundesland)</block>
   <block id="82beca5dd3e21da8b12776479d520195" category="summary">Als Teil Ihres Arbeitsblatts für die Standortuntersuchung und -Planung sollten Sie eine Registerkarte einrichten, die Informationen zum Migrationsschalter enthält.</block>
-  <block id="9924c373f5e060d3e81782c12188defd" category="doc">Registerkarte „Arbeitsblätter für Standortbefragungen und -Planung“</block>
   <block id="e309370bdd52477ef0d27ea92e98564d" category="paragraph">Das folgende Beispiel zeigt, wie Sie die Registerkarte Switches einrichten.</block>
   <block id="222a267cc5778206b253be35ee3ddab5" category="paragraph">Strom</block>
   <block id="2fc6fbf9fba075ae2c24a4af4477f7f0" category="paragraph">Von NetApp empfohlen</block>
@@ -427,9 +410,6 @@
   <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">Patente</block>
   <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">Eine aktuelle Liste der NetApp Patente finden Sie unter:</block>
   <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">Datenschutzrichtlinie</block>
-  <block id="9273826bb0d876c78b121ff252c71f0e" category="sidebar">ONTAP FLI-Dokumente</block>
-  <block id="3b878279a04dc47d60932cb294d96259" category="sidebar">Überblick</block>
-  <block id="8d98bee06f527b9e9c395ead1ae98be3" category="sidebar">Import fremder LUN</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="sidebar">Bevor Sie beginnen</block>
   <block id="76d4d65ac11114e948cdba5790db04c7" category="inline-link-macro">ASA R2-Systeme</block>
   <block id="78f511731820f6cf51be2ac1a22bdfae" category="paragraph">Erfahren Sie mehr über <block ref="bf5d9e0b88ffc589ea0cce1a42d0e835" category="inline-link-macro-rx"></block> .</block>
@@ -450,7 +430,6 @@
   <block id="2f60f93c0bb2f87f067f123be1aa8949" category="list-text">Den FC-Adapteranschluss vom Zielmodus in den Initiatormodus umwandeln:</block>
   <block id="938f1047c15f00fdd0cbfc8e4cfa15e1" category="paragraph">*Beispiel*</block>
   <block id="4020824310d3e82e0619ba8f6c0ff418" category="list-text">Vergewissern Sie sich, dass der Adapter wieder online und im Initiatormodus ist:</block>
-  <block id="222d7e5febe8f4e6f73f6044620d0122" category="doc">ONTAP Foreign LUN Import (FLI) Konnektivität und Verkabelung</block>
   <block id="d2c21174503152dd8670ca67b8d64d0b" category="paragraph">Der Import fremder LUNs über FC basiert auf einem Dual-Fabric-SAN-Design, damit die Ziel-ONTAP-Controller während der Erkennung und des Imports zuverlässig auf die LUNs des fremden Arrays zugreifen können. Für eine unterstützte Bereitstellung muss jeder verwendete Storage-Controller in beiden Fabrics über einen primären aktiven Pfad verfügen, was effektiv bedeutet, dass sich die Zielports des Quell-Arrays und die ONTAP-Initiator-Ports der Knoten, die den Import durchführen, in einer gemeinsamen Zone in Fabric A und Fabric B befinden müssen. Sie müssen nicht jeden Knoten im ONTAP Cluster einbeziehen – nur die Knoten, die tatsächlich LUNs importieren und migrieren. Obwohl indirekte Pfade funktionieren können, ist es Best Practice, aktive, optimierte Pfade zwischen Quelle und Ziel zu verwenden.</block>
   <block id="1a10e21b90026ba7da0260204fc9970c" category="section-title">Empfohlene FC-Verkabelungs- und Zonierungspraktiken für ONTAP FLI</block>
   <block id="ddbf253cffbc1b35811df4915daa4ef9" category="list-text">Verwenden Sie für Redundanz zwei Fabrics (A und B).</block>
@@ -474,7 +453,6 @@
   <block id="b3a3f4589f48a2d30102b5eb0df42fba" category="list-text">Verwenden Sie die für das im FLI-Workflow erforderliche Zonierungsmodell geeigneten physischen Port-WWPNs. Verwenden Sie keine NPIV-WWPNs, wenn dies in den Migrationszonierungsrichtlinien ausdrücklich untersagt ist.</block>
   <block id="69974507777b94693b1e9b10550b6733" category="image-alt">FC-Zonierungsmodellbeispiel für ONTAP FLI</block>
   <block id="939904c079e5426d15e2ddb0d0402edd" category="admonition">Nach der Zuordnung der Quell-Ziele zu den Ziel-Initiatoren sollte der Quellspeicher über ONTAP mittels Discovery-Befehlen sichtbar werden. Falls das Array beim ersten Mal nicht angezeigt wird, kann in manchen Umgebungen ein Zurücksetzen des mit den ONTAP-Initiatoren verbundenen Switch-Ports erforderlich sein.</block>
-  <block id="d62c4d88e818e20e884188368abe0a19" category="doc">ONTAP Foreign LUN Import (FLI) empfohlene FC-Verkabelungs- und Zonierungspraktiken</block>
   <block id="5c1fca0fc7986dddf497f2fe19cbfc2d" category="paragraph">ONTAP iSCSI FLI verwendet einen ONTAP Software-iSCSI-Initiator, der in den FLI-Stack integriert ist und ausgehende iSCSI-Sitzungen an Intercluster-LIFs bindet, wobei die Backend-Konnektivität durch Intercluster-LIF-Netzwerke und nicht durch Host-Daten-LIFs gesteuert wird.</block>
   <block id="b262c31fdeaba5bf2ea87682b7d98750" category="paragraph">Da Sitzungen auf Intercluster-LIFs basieren, planen Sie die Platzierung, Erreichbarkeit und Redundanz der Intercluster-LIFs, die typischerweise auf dem LUN-besitzenden Knoten und seinem HA-Partner liegen, mit einer ausfallsicheren Platzierung über Ports, um Single Points of Failure zu vermeiden. Bevor Sie Sitzungen erstellen, validieren Sie das End-to-End-Routing mit VLAN-Erreichbarkeit zwischen den Intercluster-LIF-IPs und den Zielportal-IPs des fremden Arrays, einschließlich der Freigabe von TCP-Port 3260, da eine erfolgreiche Netzwerkverbindung eine Voraussetzung für die LUN-Erkennung ist.</block>
   <block id="dfe583d1386b5fe1068349b7c8085216" category="paragraph">Sitzungen müssen explizit unter Verwendung der Zielportal-IP und des Ziel-IQN erstellt werden. iSCSI-Erkennungssitzungen werden nicht verwendet. Das vorgesehene Resilienzmodell ist eine vollständige Mesh-Konnektivität, bei der jeder teilnehmende ONTAP-Knoten Sitzungen zu jedem fremden Zielportal herstellt, sodass die fremde LUN vor Beginn des Imports über alle verfügbaren Pfade sichtbar ist.</block>
@@ -503,7 +481,6 @@
   <block id="1f7e2afdd5005873644bb37a3ac9f046" category="list-text">Überprüfen Sie die Konnektivität des externen Arrays:</block>
   <block id="45a909869405fe8ef132d26fc306a055" category="paragraph">In dieser Phase muss das iSCSI-Ziel des externen Speichersystems eine aktive Anmeldung und Sitzung vom NetApp iSCSI-Initiator erkennen und bestätigen können. Verwenden Sie die vom Hersteller empfohlenen Befehle auf dem externen Speichersystem, um zu überprüfen, ob der Initiator verbunden ist und die Sitzungen fehlerfrei sind.</block>
   <block id="6e8e6a4392d50fc320af33541d5b911a" category="paragraph">*Erkennungs-Checkpoint*: Wenn Sitzungen eingerichtet sind, sollte ONTAP Speicherpfade hinzufügen und die fremden LUNs im Speicherstapel erkennen, was die Voraussetzung ist, um die Festplatte als fremd zu kennzeichnen und mit dem Import-Workflow fortzufahren.</block>
-  <block id="165bfafafc6e957d5e0754f65dda7b0f" category="summary">Erfahren Sie mehr über die wichtigsten Funktionen und Vorteile von ONTAP FLI, einschließlich Online- und Offline-Migrationsoptionen sowie der Block-Level-LUN-Migration für SAN-Umgebungen.</block>
   <block id="7f57df50c07d397c153ac86c88babe24" category="paragraph">ONTAP Foreign LUN Import (FLI) ist eine integrierte Blockmigrationsfunktion, die Daten von einer externen (Drittanbieter-)Array-LUN auf eine native ONTAP-LUN kopiert und sowohl Offline- als auch Online-Migrationsstile unterstützt. FLI ist dafür konzipiert, SAN-LUNs von einer Reihe von Drittanbieter-Arrays nach ONTAP zu migrieren, und bietet eine konsistente Migrationsmethodik, die hilft, Planung, Ausführung und Validierung über verschiedene Hosts und Arrays hinweg zu standardisieren.</block>
   <block id="be01a357ae2c9752875b5385c732b017" category="section-title">Hauptmerkmale</block>
   <block id="6f85cdaea1ce05195fb644beb9b6e016" category="list-text">Online- und Offline-Migrationen zur Erfüllung der Anforderungen an die Ausfallzeiten des Unternehmens.</block>
@@ -576,7 +553,6 @@
   <block id="5e0a6f26caee0cc99e62c1641030b645" category="paragraph">Im Offline-Workflow ist der Host für die gesamte Dauer des Imports getrennt.</block>
   <block id="6fd02e7a6282ae060788d11e7f924787" category="paragraph-title">Online-FLI-Workflow</block>
   <block id="9672edc62c90b2277bb4c1b036da5b00" category="paragraph">Im Online-Workflow wird der Host nur für eine kurze Übergangszeit getrennt, während der Import vom Kopiervorgang zur Fertigstellung übergeht.</block>
-  <block id="369facb7b2f9e0e9004f0f614cfa7bfd" category="summary">Erkunden Sie SAN-Datenmigrationsoptionen für ONTAP, einschließlich Foreign LUN Import und empfohlener Tools zur Planung der Dauer und zur Qualifizierung von Konfigurationen.</block>
   <block id="a925a3b763aaaa6fe447ade6f390d7e9" category="doc">Erfahren Sie mehr über die SAN Datenmigration zu ONTAP</block>
   <block id="21f811674d967c4b45da23ea8ca6d6d5" category="paragraph">Die Migration von SAN-Daten wird häufig durch kurze Ausfallzeiten, Produktionsrisiken und begrenzte Spezialistenressourcen eingeschränkt. ONTAP Foreign LUN Import (FLI) ist eine integrierte Blockmigrationsfunktion, die Daten von einer fremden (Drittanbieter-)Array-LUN auf eine native ONTAP-LUN kopiert und sowohl Offline- als auch Online-Migrationsstile unterstützt. Obwohl ONTAP keine von Professional Services geführte Migration erfordert, wird dennoch dringend empfohlen, NetApp oder qualifizierte Partner für die Bedarfsanalyse, Planung und Schulung einzubeziehen – insbesondere bei nicht-trivialen Umgebungen.</block>
   <block id="425cf7f284241ed618d076f456939be1" category="section-title">Die Wahl des richtigen Migrationsansatzes (Überblick)</block>
@@ -587,7 +563,6 @@
   <block id="7699a77797b0ab6ea1ac16233a43ac2c" category="list-text">Datenübertragungsgerät (DTA)</block>
   <block id="d03c0be8ae3e195bb3ea4e4be9fa05d8" category="list-text">Ein SAN-angeschlossenes Appliance-Modell, das pro migriertem TB lizenziert wird und Offline- und Online-Migrationen unterstützt.</block>
   <block id="7d8daad43771792ab26009fb21686ca8" category="list-text">Migrationen basierend auf Host-Betriebssystem oder Anwendungen</block>
-  <block id="bfc71c0d817c858ea99158fc51f399c6" category="list-text">Nützlich, wenn die Plattform native Mobilität bietet oder wenn die Kontrolle über Host oder Anwendung bevorzugt wird (z. B. VMware Storage Mobility und hostbasierte Kopierverfahren).</block>
   <block id="12a61ce147f37cdef06ca60fca2126c1" category="section-title">Planung der Migrationsdauer</block>
   <block id="ab5e38c0165fd6b9849993e469688bb5" category="paragraph">Für die erste Planung wird häufig ein Richtwert von ca. 5 Stunden pro Host für einen Host mit 8 LUNs und insgesamt ca. 2 TB angenommen, was ungefähr 400 GB/Stunde entspricht. Dieser Wert ist bewusst grob geschätzt und trifft wahrscheinlich nicht auf jede Umgebung zu. Um eine genaue Schätzung zu erhalten, empfiehlt es sich, mehrere Testmigrationen unterschiedlicher Größe durchzuführen und den tatsächlichen Durchsatz unter Ihren eigenen Speicher-, Netzwerk- und Hostbedingungen zu messen.</block>
   <block id="a4cefc4155fec80ce802dbe85fdfbb17" category="section-title">Empfohlene Tools (Datenerfassung, Kompatibilität, Automatisierung, Qualifizierung)</block>
@@ -600,7 +575,6 @@
   <block id="bb3114ffbc1b8e593b0955364cf66fff" category="list-text">Aktualisiert die VTOC-Datenträgerbezeichnungen nach der Migration, sodass die Systeme nach Migrationen auf Blockebene aktualisierte Anfrageinformationen widerspiegeln.</block>
   <block id="64ea75caa71920ec87ff578169f0075a" category="list-text">SAN LUN Migrate (sanlunmigrate für FLI-Projekte)</block>
   <block id="ff76beca36064e56282d13cd22862ba8" category="list-text">Nutzen Sie einen Qualifizierungsansatz, um das Verhalten fremder Arrays/LUNs in der Kundenumgebung vor der Verpflichtung zur Produktionsmigration zu validieren; dies ist besonders wichtig, wenn sich das Verhalten des Transports oder des Anbieters unterscheidet.</block>
-  <block id="233991137dfdbb7ef01b6ac53fd5eb26" category="summary">Prüfen Sie die Voraussetzungen für ONTAP Foreign LUN Import, einschließlich Backend-Konnektivität sowie Anforderungen an die LUN-Erkennung und Importbeziehung.</block>
   <block id="6d1cae9dd026a35e9f3c2b33e8998dc6" category="paragraph">Vor dem Start eines ONTAP Foreign LUN Import (FLI) müssen mehrere Voraussetzungen erfüllt sein, um eine erfolgreiche Datenmigration zu gewährleisten. Diese Voraussetzungen umfassen Kompatibilitäts-, Verbindungs- und Konfigurationsanforderungen, die für das korrekte Funktionieren des FLI-Prozesses unerlässlich sind.</block>
   <block id="0621ec7ccdf71517b26fc85ecec39c14" category="list-text">Für das gewählte Transportprotokoll muss eine Backend-Konnektivität verfügbar sein:</block>
   <block id="17f9cbbbf5f6b5f84d47d7ce5be8481b" category="list-text">FC FLI benötigt mindestens einen FC-Port pro Controller, der im Initiator-Modus arbeiten kann (zwei Ports, einer pro Fabric, sind aus Redundanzgründen vorzuziehen).</block>
@@ -613,11 +587,8 @@
   <block id="875df9dde0081e2e8eb6dfd4f5af293d" category="list-text">Die Ziel-ONTAP-LUN muss mindestens einer Initiatorgruppe auf Basis des Frontend-Protokollplans zugeordnet werden, damit der Host in der richtigen Phase des Workflows angebunden werden kann.</block>
   <block id="cf282bc9d5e2cafd322cc0eab6aca317" category="list-text">Die ausländische LUN und die Ziel-ONTAP-LUN müssen vor Beginn des Importkopiervorgangs über eine Importbeziehung gekoppelt werden.</block>
   <block id="882b8625fb0676274db3decc8486f6d7" category="paragraph">Halten Sie die Ziel-ONTAP-LUN offline, bevor Sie die Importbeziehung erstellen; nach dem Erstellen der Beziehung kann die LUN nur dann online geschaltet werden, wenn Sie Online-FLI durchführen, damit der Host die E/A wieder aufnehmen kann, während der Kopiervorgang fortgesetzt wird.</block>
-  <block id="6cc95584903beea076e0f01f0960ebbc" category="summary">Prüfen Sie die unterstützten Plattformen und Konfigurationen für ONTAP FLI, einschließlich der FC- und iSCSI-Backend-Optionen sowie der wichtigsten Einschränkungen für die Migrationsplanung.</block>
   <block id="114e9c31f071edc22a1ebd2d95e7ac56" category="paragraph">ONTAP FLI muss in einer unterstützten Konfiguration eingesetzt werden, um ein vorhersehbares Verhalten und volle Supportfähigkeit zu gewährleisten.</block>
   <block id="a8a512b2fe98c374c8ce645e66e96c79" category="list-text">Alle FLI-Migrationen werden auf LUN-Ebene (Blockebene) durchgeführt; Migrationen auf Datei- und Protokollebene fallen nicht in den ONTAP FLI-Bereich.</block>
-  <block id="0223ac1546a1a57bee09547782d1dec3" category="list-text">Planen Sie mit bis zu 8 gleichzeitigen Importen pro Knoten. Die tatsächliche sichere Parallelität hängt von der beobachteten Host-Latenz und der Importlatenz ab.</block>
-  <block id="2011c83e3fce0d0c44dcd6bab161dbb8" category="list-text">Die maximale Größe einer fremden LUN für den Import beträgt 4 TB pro LUN.</block>
   <block id="c7da8e3638b3d8bec6619fec0f6397a5" category="list-text">iSCSI-Sitzungsskalierungsgrenzen (Backend-iSCSI):</block>
   <block id="142bbe83dcdddad04981129f50ea07ad" category="list-text">1 Initiator pro IC LIF</block>
   <block id="96425a0cf48bbfac682bc2597c729858" category="list-text">Bis zu 16 Sitzungen pro LIF</block>
@@ -635,7 +606,6 @@
   <block id="6d952fae28b2f6e37252cedc5f46cf30" category="list-text">Importvorgänge können pausiert und fortgesetzt werden, um die Latenz des Hosts zu schützen</block>
   <block id="1a50fc38537ab121331841b20b2676ca" category="list-text">Migrationen sollten nach Möglichkeit außerhalb der Spitzenzeiten geplant werden</block>
   <block id="16a0fcd0634e9d98b9de61b579ea5b9d" category="section-title">Unterstützte Konfigurationen und Plattform</block>
-  <block id="e71a324035dfc6c7aaae52a91474d1db" category="paragraph">ONTAP FLI muss in einer unterstützten Konfiguration bereitgestellt werden, um vorhersehbares Verhalten und volle Supportfähigkeit zu gewährleisten. Da im Laufe der Zeit neue Konfigurationen qualifiziert werden, können sich die unterstützten Kombinationen ändern. Validieren Sie bei jeder Datenmigration den gesamten Stack (Quell-Array + Host + Fabric/Netzwerk + ONTAP-Ziel) anhand der aktuellen Interoperabilitätsrichtlinien.</block>
   <block id="60275e850515ec6445d453446471e302" category="list-title">Unterstütztes Ziel (wohin Sie migrieren können)</block>
   <block id="31b1e937ec753ba0844224ec51b406af" category="list-text">ONTAP ist das einzige unterstützte Ziel für FLI-Migrationen. FLI ist für den Import von Daten in ONTAP LUNs konzipiert; Migrationen zu Speichersystemen von Drittanbietern werden nicht unterstützt.</block>
   <block id="b5421379fb9801395072f840c80c4b13" category="list-text">Für iSCSI FLI ist der iSCSI-Softwareinitiator in den FLI-Stack integriert und dient speziell dazu, die Erkennung und den Import fremder LUNs über eine iSCSI/TCP-Backend-Verbindung zu ermöglichen.</block>
@@ -730,7 +700,6 @@
   <block id="5d3f76a7a08e389eab72bac918401022" category="list-text">Stopp-Verifizierung (erforderlich, bevor die LUN online geschaltet wird):</block>
   <block id="8e9e5ec1440c677b8737da612be3f2ad" category="list-text">Schalten Sie die LUN online (das Störungsfenster endet hier):</block>
   <block id="ac5ca742cf0c971c951be489b99b0a87" category="summary">Lernen Sie die Analysephase kennen, in der Host- und SAN-Stack-Konfigurationen mit der NetApp Interoperabilitätsmatrix verglichen werden, um erforderliche Änderungen zu ermitteln.</block>
-  <block id="a0cf9d93b0627bff5a27ee9afc20088e" category="doc">ONTAP Foreign LUN Import (FLI) Analysephase</block>
   <block id="1c875fa63302c8275b957732af8f5c6e" category="paragraph">Die Analysephase ermittelt, was behoben werden muss, bevor Sie mit der detaillierten Migrationsplanung und -durchführung beginnen. Das Hauptziel dieser Phase ist sicherzustellen, dass jeder Host und der gesamte SAN-Stack, von dem er abhängt (Betriebssystem, Volume-Manager, HBAs, Multipathing, Switch-Firmware und die Ziel-ONTAP-Version), in eine unterstützte Konfiguration nach der Migration überführt werden können. Dies geschieht durch den Vergleich des aktuellen Zustands jedes Hosts mit den unterstützten Kombinationen in der NetApp Interoperabilitätsmatrix (IMT), anschließend wird für jeden Host eine klare Zielkonfiguration definiert (Betriebssystemebene, MPIO/ALUA-Verhalten, HBA-Treiber/Firmware und alle erforderlichen Host-Tools) und eine Lückenanalyse erstellt, die die exakten Änderungen auflistet, die zur Erreichung dieses Ziels notwendig sind.</block>
   <block id="fad187fdae563300b8b6ebe777c2b046" category="paragraph">Planen und überprüfen Sie die Lückenanalyse, um Korrekturmaßnahmen zu vermeiden, die die Anwendungskompatibilität und die Ausfallplanung beeinträchtigen können. In vielen Umgebungen ist es sicherer, einige Änderungen, wie z. B. OS-Patching oder HBA-Updates, vor dem Migrationszeitraum durchzuführen. Änderungen am Multipathing-Stack werden jedoch häufig bis zur Umstellung oder nach der Migration verschoben, da eine Änderung des MPIO-Verhaltens die Supportfähigkeit mit dem aktuellen Array beeinträchtigen und ein Rollback erschweren kann.</block>
   <block id="3b539ba231a3912d3b8ec45beaba5268" category="paragraph">Für iSCSI FLI sollte die Analysephase auch die iSCSI-spezifische Bereitschaft erfassen:</block>
@@ -788,7 +757,6 @@
   <block id="d834ecd82f50589b3a142b7eb46d0781" category="list-text">Host-Dienstprogramme und Tool-Anforderungen, die für Ihre Umgebung relevant sind, falls zutreffend</block>
   <block id="41cb02d9e78bdaf5550268e87618ee26" category="paragraph">Die Lückenanalyse sollte umgehend überprüft werden, da die erforderlichen Maßnahmen möglicherweise Ausfallzeiten erfordern und mit den Anforderungen an den Anwendungssupport in Konflikt geraten könnten.</block>
   <block id="05b150074b327a7baccec3e557859a8f" category="summary">Lernen Sie die Discovery-Phase kennen, in der Informationen über die Quellumgebung und die Konnektivität gesammelt werden, um die Grundlage für die Migrationsplanung zu schaffen.</block>
-  <block id="55af0622ab213baaf3057522b24d27e0" category="doc">ONTAP Foreign LUN Import (FLI) Discovery-Phase</block>
   <block id="fc79032502cbbccfa9568227b7ea9bcf" category="paragraph">Die ONTAP FLI-Erkennungsphase ist der erste Schritt im Migrationsprozess. Es ist entscheidend, alle notwendigen Informationen über die Quellumgebung, die Konnektivität und das Ziel-ONTAP-System zu erfassen, um eine reibungslose Migration zu gewährleisten. Die Erkennungsphase bildet die Grundlage für die Planung, Vorbereitung, Durchführung und Überprüfung der Migration.</block>
   <block id="0d85720e731a7f5d198d0d8360fc0ef6" category="section-title">Bereiten Sie eine iSCSI-Migration mit ONTAP FLI vor</block>
   <block id="d96fd2346a4850898ade5cd6ad803229" category="paragraph">Die ONTAP FLI-Erkennungsphase sammelt die technischen Details, die für den Abschluss der Migration erforderlich sind:</block>
@@ -832,7 +800,6 @@
   <block id="8625e1de7be14c39b1d14dc03d822497" category="inline-link-macro">Tools</block>
   <block id="0a66f896342ea7f47d260394b6ad1b4b" category="paragraph"><block ref="0a66f896342ea7f47d260394b6ad1b4b" category="inline-link-macro-rx"></block></block>
   <block id="e8f511eaa2512ab9e62d0fba0e4609c4" category="summary">Lernen Sie die Ausführungsphase kennen, die alle erforderlichen Aufgaben für die Durchführung einer Offline- oder Online-FLI-Migration und die Umstellung des Hostzugriffs auf ONTAP abdeckt.</block>
-  <block id="95f7abfb0a974b90a472f20b5b729ea1" category="doc">ONTAP Foreign LUN Import (FLI) Ausführungsphase</block>
   <block id="d36f458b43304ed2a97d64e7a9a11390" category="paragraph">In der Ausführungsphase wird die Migration durchgeführt. Sie umfasst alle erforderlichen Schritte für den Offline- oder Online-Import einer fremden LUN und die Umstellung des Hostzugriffs vom fremden Array auf das ONTAP Array.</block>
   <block id="2c6249e25c55f7b0c94b984bd80d76b5" category="section-title">ONTAP FLI führt Aufgaben der Ausführungsphase aus</block>
   <block id="d69a01a57b5c3741168e311b2b16ac9b" category="paragraph">Nachfolgend sind die ONTAP FLI-Ausführungsaufgaben für jede Komponente aufgeführt.</block>
@@ -861,7 +828,6 @@
   <block id="318b34580548f8e2dcdc895e0c8d4666" category="paragraph">Dieser Abschnitt beschreibt die vollständige Methodik für die Durchführung von Foreign LUN Import (FLI)-Migrationen – mit besonderem Fokus auf iSCSI-Backend-FLI – anhand eines strukturierten, phasenweisen Ansatzes. Er erläutert die Ziele, Eingaben, Validierungspunkte und Ergebnisse der Phasen Discovery, Analyze, Plan &amp; Prepare, Execute und Verify, um eine vorhersehbare, supportfähige und risikoarme Migration von einem Foreign Storage Array zu ONTAP.</block>
   <block id="616f44f9cac42c23c1acc19f0622813e" category="paragraph">Der Workflow legt Wert auf die frühzeitige Datenerfassung und Interoperabilitätsprüfung, die Vorbereitung von Host und Fabric, explizite Designbeschränkungen für das iSCSI-Backend (IC-LIF-Nutzung, explizite Zielportale/IQNs, vollständige Mesh-Konnektivität und Skalierungsgrenzen) sowie ein diszipliniertes Änderungsmanagement, um die Anwendungsverfügbarkeit und Rollback-Optionen zu gewährleisten. Durch die Kombination von IMT-gesteuerter Supportvalidierung, gezielter Behebungsplanung, Testmigrationen und einer sorgfältigen Nachbereitung der Migration stellt der Ansatz sicher, dass die Migrationen erfolgreich abgeschlossen werden und ein vollständig unterstützter, gut dokumentierter und betriebsbereiter Zustand nach der Migration sowohl für FC- als auch für iSCSI-basierte FLI-Szenarien entsteht.</block>
   <block id="fd8608bbb22ccea340655cd143a089cd" category="summary">Lernen Sie die Planungs- und Vorbereitungsphase kennen, in der die Ergebnisse der Ermittlung und Analyse in einen ausführbaren Migrationsplan umgewandelt und die Bereitschaft der Umgebung validiert werden.</block>
-  <block id="313e596acc382dfaa062620985696574" category="doc">ONTAP Foreign LUN Import (FLI) Planungs- und Vorbereitungsphase</block>
   <block id="1c2df568210409fb8aa79cb19258fc22" category="paragraph">Die Planungs- und Vorbereitungsphase wandelt die Ergebnisse der Analyse in einen ausführbaren Migrationsplan um und stellt sicher, dass die Umgebung für das Migrationsfenster bereit ist. Der Großteil des Projektaufwands entfällt typischerweise auf diese Phase, da hier der Umstellungsansatz, online oder offline, finalisiert, die End-to-End-Konnektivität validiert und der Workflow durch eine oder mehrere Testmigrationen vor dem Übergang in die Produktion nachgewiesen wird.</block>
   <block id="77beacef8a48deffcb4df223b65d0dba" category="paragraph">Für iSCSI FLI muss in dieser Phase auch die Designbeschränkungen des iSCSI-Backends validiert werden. Der ONTAP iSCSI Softwareinitiator verwendet IC LIFs, benötigt eine explizite Zielportal-IP und einen Ziel-IQN, keine Discovery-Sitzungen und ist für den Betrieb innerhalb definierter Skalierungsgrenzen ausgelegt (Importe pro Knoten, Sitzungen pro LIF/Knoten, Initiator pro LIF, maximale Importgröße).</block>
   <block id="bd6961906e0f900da571a6829afc4387" category="section-title">Ergebnisse der ONTAP FLI-Planungs- und Vorbereitungsphase</block>
@@ -1279,7 +1245,6 @@
   <block id="5ce73a5588f444f9a6774815e4fafde0" category="list-text">Versuchen Sie, die virtuellen Maschinen einzuschalten. Die virtuelle Maschine sollte ohne Probleme online gehen.</block>
   <block id="f54f8723cdd855de6b42f8c6088ea7cf" category="paragraph">Start-VM -Name &lt;VM_Name&gt;</block>
   <block id="3530aa78abbe00fb441a6a913266c4f5" category="summary">Erfahren Sie mehr über die Verifizierungsphase, die bestätigt, dass die Migration wie geplant abgeschlossen wurde und die während des Migrationszeitraums verwendeten temporären Konfigurationen entfernt.</block>
-  <block id="c7b5ec48b58689a14b9ca8360ae61c36" category="doc">ONTAP Foreign LUN Import (FLI) Verifizierungsphase</block>
   <block id="312705c3917e0ecf74999294476290b4" category="paragraph">Im Rahmen der Bereinigung entfernen Sie nicht mehr benötigte Quellseiten-Initiatordatensätze und Zoneneinteilungen und dokumentieren die endgültige Konfiguration, damit die Betriebsteams einen klaren „Ist-Zustand“ vorfinden.</block>
   <block id="f67442f7dd9efc703506d4e505684839" category="paragraph">Bei iSCSI FLI sollte die Verifizierungsphase auch das Entfernen der Software-iSCSI-Initiatorsitzungen und Initiatoren umfassen, die auf Intercluster-LIFs erstellt wurden. Wurden die Intercluster-LIFs nur für den Import fremder LUNs erstellt, müssen auch diese LIFs gelöscht werden.</block>
   <block id="c8253ba169277559e143f0f27d32ba7a" category="section-title">ONTAP FLI-Verifizierungsphasenaufgaben</block>
@@ -1475,19 +1440,11 @@
   <block id="ee001a59316150af276e4c324261dd99" category="list-text">Überprüfen Sie, ob auf allen zugeordneten Hosts die Laufwerke verfügbar und ONLINE sind.</block>
   <block id="59a30fddf92f777406c9eff6f1781bb2" category="list-text">Scannen Sie die Datenträgerverwaltung erneut, alle Datenträger sollten verbunden sein.</block>
   <block id="bf6e2cf7dd3238c30a78f920f9b6db33" category="list-text">Wählen Sie die Datenträger aus und schalten Sie sie online, alle sollten ONLINE gehen und ihren ursprünglichen Namen und Datenträgerbuchstaben erhalten.</block>
-  <block id="39abfbcb8f794e6556653a316243e4a0" category="summary">Erfahren Sie mehr über die neuen Funktionen in ONTAP für die SAN-Datenmigration.</block>
-  <block id="d6c68509cd1238fb729ae14d92123e83" category="doc">Was ist neu in ONTAP für SAN Datenmigration</block>
   <block id="ea7f38fbe84ac28be0f7c90cca730a69" category="section-title">ONTAP 9.19.1</block>
   <block id="c03b12479929cc0eaa58c5ab80e27fd1" category="list-text">Ab ONTAP 9.19.1 unterstützt ONTAP FLI das iSCSI-Protokoll für die Backend-Konnektivität.</block>
   <block id="ea1ad38d91c2e87ef2e9571bd55654fd" category="section-title">ONTAP 9.17.1</block>
   <block id="c48f6bb5f2a6b62c3d142a871035bd10" category="list-text">Ab ONTAP 9.17.1 werden ASA R2-Systeme für die FLI-Migration unterstützt.</block>
-  <block id="5dd03e8d039863e563e049be198c3fd3" category="sidebar">Versionshinweise</block>
   <block id="6ac40cb1ad8111f5c96838a8b9237e22" category="sidebar">Was ist neu in ONTAP für SAN Datenmigration</block>
-  <block id="e0c4332e8c13be976552a059f106354f" category="sidebar">Los geht's</block>
-  <block id="417ff747c3d49e0a649bfd727e936822" category="sidebar">FLI-Phasen</block>
-  <block id="f90f37e42713bfc0dc52131faef7107c" category="sidebar">FLI-Konfiguration</block>
-  <block id="cc3f33b68a9c6ce80c40e4f3f6c8e1c4" category="sidebar">FLI-Migration</block>
-  <block id="abb0bd5d7f81ab393f640d362f21c99b" category="sidebar">FLI nach der Migration</block>
   <block id="2fc41ad59b94c124216aa8e6633771aa" category="sidebar">Führen Sie die Bereinigung nach der Migration durch</block>
   <block id="e823fdf739fb5edf6da9a877f91b05af" category="sidebar">ESXi VMFSS ATS/CAW-Sanierung durchführen</block>
   <block id="258b2584dfd26cd7e5ecfdd8544956db" category="sidebar">FLI-Leistung</block>
@@ -1495,11 +1452,7 @@
   <block id="2508d28e156f66cd4ca6a2b4abeb95a3" category="sidebar">FC-Konnektivität und Verkabelung</block>
   <block id="d87d23378ba30e257e3b48bce358eb71" category="sidebar">FC-Zoneneinteilung Best Practices</block>
   <block id="e7b9a0f54244458403194a0fb34d0912" category="sidebar">iSCSI-Backend konfigurieren</block>
-  <block id="4d2b886016c0696388cb5a9bbde7fdd2" category="sidebar">SAN Datenmigration zu ONTAP</block>
   <block id="500091d9d4c213e75086f1fd00b56409" category="sidebar">FLI-Migration von 7-Mode zu ONTAP</block>
-  <block id="0e4395f2de244a3e68e98f9b5a3746bb" category="sidebar">Hauptmerkmale und Vorteile</block>
-  <block id="3b96ee9dd133f64afb5632a8bafaef5d" category="sidebar">FLI-Voraussetzungen</block>
-  <block id="fd7c3742abee8ab17925ff747b729fae" category="sidebar">Unterstützte Konfigurationen und Plattformen</block>
   <block id="9f0671d0cf8775d206b8c08b4985cfa9" category="sidebar">FLI-Migration</block>
   <block id="da2ebaaeec9841b4a44d8b0a368877dd" category="sidebar">Fremde LUNs entdecken</block>
   <block id="d318f1f81c06c0ed2a327f578fc3ac40" category="sidebar">Importbeziehung erstellen</block>
@@ -1521,8 +1474,6 @@
   <block id="40cd014b7b6251e3a22e6a45a73a64e1" category="sidebar">Ausführen</block>
   <block id="5a750f86ef41f22f852c43351e3ff383" category="sidebar">Verifizieren</block>
   <block id="144e3bff2769f72c63f6e00004097fcc" category="sidebar">FLI nach der Migration</block>
-  <block id="259c870f8a8594516755af0729eb847a" category="sidebar">Überblick nach der Migration</block>
-  <block id="5d793778d9d63a7b0602b47ee814bd26" category="sidebar">Was ist neu bei der SAN-Datenmigration</block>
   <block id="d6fe85b2a7716d9377c34dd3d6ea37c4" category="paragraph">Die Verifizierungsphase bestätigt den planmäßigen Abschluss der Migration und konzentriert sich auf die Bereinigung nach der Migration. Dies umfasst die Überprüfung des Anwendungsverhaltens, die Bestätigung des korrekten Hostzugriffs und der Pfade zu den ONTAP LUNs, das Sammeln von Migrationsprotokollen für Audits und die Fehlerbehebung sowie das Entfernen temporärer Verbindungen und Konfigurationen, die ausschließlich für die Migration verwendet wurden.</block>
   <block id="52009bb7ee17227f566cd26a02caee56" category="inline-link-macro"><block ref="52009bb7ee17227f566cd26a02caee56" category="inline-link-rx"></block></block>
   <block id="a1a9afcf552a769c282769271829889a" category="paragraph"><block ref="a1a9afcf552a769c282769271829889a" category="inline-link-macro-rx"></block></block>
@@ -1536,11 +1487,7 @@
   <block id="4dbb6aad45c8e3f8971fa73b8fb1cb65" category="doc">ONTAP FLI FC Konnektivität und Verkabelungs Best Practices</block>
   <block id="f4c33d13d9f0daaebef59efa47d35887" category="doc">ONTAP FLI FC Zonierungsmodell und bewährte Verfahren</block>
   <block id="e5433016407dc6d5f7f37c33415d8dd8" category="doc">iSCSI-Backend-Konnektivität für ONTAP FLI einrichten</block>
-  <block id="076672f300ffdefd8a4b41ffe8bdb05c" category="doc">Hauptmerkmale und Vorteile von ONTAP Foreign LUN Import</block>
   <block id="e5a84d75421369af41a6022dabb96e58" category="doc">Informationen zum Foreign LUN Import 7-Mode zu ONTAP Übergang</block>
-  <block id="edcf274d613b1fd3721fb03b9159a221" category="doc">Voraussetzungen für ONTAP Foreign LUN Import</block>
-  <block id="035581abad561e88980523560196a593" category="doc">Unterstützte Konfigurationen für ONTAP Foreign LUN Import</block>
-  <block id="afe9db30e9034e965c6e02e6756b98f0" category="doc">Rechtliche Hinweise für ONTAP FLI</block>
   <block id="754301ce7ba113a08fa49d266a9b75d8" category="doc">Fremde LUNs für die ONTAP FLI Migration ermitteln</block>
   <block id="32cbbba88160bd8d4144465f439f9bf4" category="doc">Den ONTAP FLI LUN Import ausführen und überwachen</block>
   <block id="b59970b095c3d11135d476b0588c57e4" category="doc">Die ONTAP FLI LUN Importbeziehung überprüfen und löschen</block>
@@ -1575,4 +1522,44 @@
   <block id="66a3fec0a9750426f0214cd67c946497" category="doc">ONTAP FLI Site Survey and Planning worksheet Registerkarte Quellspeichergeräte</block>
   <block id="c0ebf75273b086525a388999bf478927" category="doc">ONTAP FLI Site Survey and Planning worksheet Registerkarte Storage Groups</block>
   <block id="c9ab231f3a6a537a1fdc8be5ba0eaa5c" category="doc">ONTAP FLI Standortanalyse und Planungsarbeitsblatt Registerkarte Switches</block>
+  <block id="516f70ec805d7bb8aa14c794e96a1a44" category="list-text">Nützlich, wenn die Plattform native Mobilität bietet oder wenn die Kontrolle durch Host oder Anwendung bevorzugt wird (zum Beispiel VMware storage mobility und hostbasierte Kopierverfahren).</block>
+  <block id="267dcc9397ed4992a5f6de3164460880" category="section-title">Erfahren Sie mehr über die wichtigsten Funktionen und Vorteile von ONTAP Foreign LUN Import</block>
+  <block id="043d06edeed4fa95f43af01f2f2f6113" category="section-title">Erfahren Sie mehr über die Voraussetzungen für den ONTAP Foreign LUN Import</block>
+  <block id="f07bea32571fee7ebcbee5f0dd81797f" category="section-title">Erfahren Sie mehr über die von ONTAP Foreign LUN Import unterstützten Konfigurationen und Plattformen</block>
+  <block id="072fe6a12766df05754602a47c7b750f" category="list-text">Als empfohlener Ausgangspunkt gilt, bis zu 8 gleichzeitige Importe pro Knoten einzuplanen. Unter optimalen Bedingungen sollten 16 gleichzeitige Migrationen pro Knoten nicht überschritten werden, und die Parallelität ist zu reduzieren, wenn eine erhöhte Host-Latenz oder Import-Latenz festgestellt wird.</block>
+  <block id="16b59d73b18e2c1a984d60963400b789" category="inline-link-macro">Migration von Array-LUNs mit mehr als 16 TB mithilfe von FLI nicht möglich</block>
+  <block id="f49b99693fc191d8f86767cdc759d1a2" category="list-text">Ab ONTAP 9.12.1 beträgt die maximale Größe einer importierbaren externen LUN 125 TB pro LUN. Siehe den Knowledge Base Artikel <block ref="d8105941975edebf152ce49ff43f8a15" category="inline-link-macro-rx"></block> für weitere Details.</block>
+  <block id="4c3ff86f9932f5d15b87eb3fe5bef469" category="paragraph">Da im Laufe der Zeit neue Konfigurationen qualifiziert werden, können sich die unterstützten Kombinationen ändern. Validieren Sie bei jeder Datenmigration den gesamten Stack (Quell-Array + Host + Fabric/Netzwerk + ONTAP-Ziel) anhand der aktuellen Interoperabilitätsrichtlinien.</block>
+  <block id="b4de17ead867a3cf0b9d11e57e562672" category="section-title">Maschinelle Übersetzung</block>
+  <block id="dd3918c571093dff2b94f7cef5066d01" category="inline-link-macro">netapp.com</block>
+  <block id="178761dc5a14b2537b196d4faff0398b" category="paragraph">Wichtige Informationen zu lokalisierten Inhalten sind verfügbar unter <block ref="3838f9aa83384410da26ac78c9080b24" category="inline-link-macro-rx"></block></block>
+  <block id="c910b0c602f4d79f37bcc17e3b225da2" category="summary">Informationen zu den neuen Funktionen, die in ONTAP für Foreign LUN Import (FLI) verfügbar sind.</block>
+  <block id="4299cbe7da51d6fe5d6c531027e23fb9" category="doc">Neuerungen im ONTAP Foreign LUN Import (FLI)</block>
+  <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">Los geht's</block>
+  <block id="9b4859f81391751aa861e207472c37ed" category="sidebar">FLI-Konfiguration</block>
+  <block id="997000c257e78ce562e5bbb3c47655c3" category="sidebar">ONTAP FLI Konnektivität und Verkabelung</block>
+  <block id="3994c035de26cf9743b3789acec26fc2" category="sidebar">Beispielhafte Standortuntersuchung und Planung</block>
+  <block id="9a079bf50d1382cff875dfe6e33c7255" category="sidebar">Beispielhaftes Arbeitsblatt für Standortanalyse und Planung</block>
+  <block id="f19e56a975c9247e8e98b2a618a07fdb" category="sidebar">ONTAP Foreign LUN Import Dokumentation</block>
+  <block id="9eec4014779de909ac7f85f3c58e0ebb" category="sidebar">Informationen zur ONTAP Datenmigration</block>
+  <block id="8a2553b01e76e6d371e08a17dae387bd" category="sidebar">Informationen zum Foreign LUN Import</block>
+  <block id="e8d1a7b302822b03b874bd729b1f3e16" category="sidebar">Informationen zu Planung und Vorbereitung</block>
+  <block id="185422fe75783a697193f0fa7d197559" category="sidebar">Informationen zur Zeit nach der Migration</block>
+  <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">Was ist neu</block>
+  <block id="8dfe62d694d9a9d551edff2e399a526d" category="sidebar">Informationen zu Beispielstandortbegehungen und Planung</block>
+  <block id="e23785140a406495a9e6575cc2fc2ec7" category="sidebar">Registerkarte Kontakte im Arbeitsblatt zur Standortanalyse und Planung</block>
+  <block id="cfccc87352e11bc536f7c377e87d5861" category="sidebar">Registerkarte „Fragebogen zur Standortanalyse und Planung“</block>
+  <block id="ad7a1e73bfb2d7b8d833ca98830d060a" category="sidebar">Registerkarte „Site survey and planning worksheet Switches“</block>
+  <block id="b89483c4b2d08bbbbcc33e0c77112600" category="sidebar">Registerkarte „Quell-Storage-Geräte“ des Arbeitsblatts zur Standortanalyse und -planung</block>
+  <block id="7b09aa21e88886ffe9f52800535f25c2" category="sidebar">Registerkarte „Standortvermessung und Planungsarbeitsblatt Zielspeichergeräte“</block>
+  <block id="25f70209fb08d78b79730237f0174638" category="sidebar">Registerkarte „Standortvermessung und Planungsarbeitsblatt Hosts“</block>
+  <block id="13d5bd0792c9b606b6882bd1dd3873f5" category="sidebar">Arbeitsblatt für Standortanalyse und Planung, Registerkarte HBA- und Zoneninformationen</block>
+  <block id="8f9c82fe9a9a42fe4aa0be6215fb30a6" category="sidebar">Arbeitsblatt zur Standortanalyse und Planung, Registerkarte Quell-LUNs</block>
+  <block id="6b9dded1d988328f873a38cca5f7e668" category="sidebar">Registerkarte Speichergruppen im Arbeitsblatt zur Standortvermessung und -planung</block>
+  <block id="03f2f43ca4799283b2c368bc33a2806b" category="sidebar">Registerkarte „LUN-Details“ im Arbeitsblatt zur Standortanalyse und Planung</block>
+  <block id="293e3deed1e3cfa806e4447c4e96079d" category="sidebar">Arbeitsblatt für Standortanalyse und Planung, Registerkarte NetApp LUN-Layouts</block>
+  <block id="17aef2bb4412a672071aae2a16c1738e" category="sidebar">Registerkarte „Migrationszeitplan für Standortvermessungs- und Planungsarbeitsblatt“</block>
+  <block id="b2d71f70e33627ee08a0e2d4adf8658d" category="sidebar">Registerkarte „Aggregatstatus“ des Arbeitsblatts zur Standortvermessung und -planung</block>
+  <block id="ac595b309538d10512c32f6682e101bc" category="sidebar">Arbeitsblatt für Standortanalyse und Planung FAS Konfigurationsregisterkarte</block>
+  <block id="89d6f5401c85b11327fdc2aaf07a23f3" category="sidebar">Arbeitsblatt für Standortanalyse und Planung, Registerkarte SDS CLI-Skripte</block>
 </blocks>

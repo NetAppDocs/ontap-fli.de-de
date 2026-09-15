@@ -1,39 +1,39 @@
 ---
 section: sample-site
-title: Beispiel für ein Arbeitsblatt für die Standortumfrage und -Planung
+title: Beispielhaftes Arbeitsblatt für Standortanalyse und Planung
 entries:
-- title: Überblick
+- title: Informationen zu Beispielstandortbegehungen und Planung
   url: "/sample-site/reference_sample_site_survey_and_planning_worksheet.html"
-- title: Registerkarte Kontakte im Arbeitsblatt zur Standortbefragung und -Planung
+- title: Registerkarte Kontakte im Arbeitsblatt zur Standortanalyse und Planung
   url: "/sample-site/reference_site_survey_and_planning_worksheet_contacts_tab.html"
-- title: Registerkarte „Fragebogen für Standortbefragungen und -Planung“
+- title: Registerkarte „Fragebogen zur Standortanalyse und Planung“
   url: "/sample-site/reference_site_survey_and_planning_worksheet_questionnaire_tab.html"
-- title: Registerkarte „Arbeitsblätter für Standortbefragungen und -Planung“
+- title: Registerkarte „Site survey and planning worksheet Switches“
   url: "/sample-site/reference_site_survey_and_planning_worksheet_switches_tab.html"
-- title: Registerkarte Quellspeichergeräte für Standortbefragungen und -Planung
+- title: Registerkarte „Quell-Storage-Geräte“ des Arbeitsblatts zur Standortanalyse
+    und -planung
   url: "/sample-site/reference_site_survey_and_planning_worksheet_source_storage_devices_tab.html"
-- title: Registerkarte Zielspeichergeräte für Standortbefragungen und -Planung
+- title: Registerkarte „Standortvermessung und Planungsarbeitsblatt Zielspeichergeräte“
   url: "/sample-site/reference_site_survey_and_planning_worksheet_destination_storage_devices_tab.html"
-- title: Registerkarte „Hosts für die Standortbefragung und -Planung“
+- title: Registerkarte „Standortvermessung und Planungsarbeitsblatt Hosts“
   url: "/sample-site/reference_site_survey_and_planning_worksheet_hosts_tab.html"
-- title: Registerkarte HBA- und Zoneninformationen im Arbeitsblatt für Standortbefragungen
-    und -Planung
+- title: Arbeitsblatt für Standortanalyse und Planung, Registerkarte HBA- und Zoneninformationen
   url: "/sample-site/reference_site_survey_and_planning_worksheet_hba_and_zone_information_tab.html"
-- title: Registerkarte Quell-LUNs des Arbeitsblatts für Standortbefragung und Planung
+- title: Arbeitsblatt zur Standortanalyse und Planung, Registerkarte Quell-LUNs
   url: "/sample-site/reference_site_survey_and_planning_worksheet_source_luns_tab.html"
-- title: Registerkarte Speichergruppen des Arbeitsblatts „Standortbefragung und -Planung“
+- title: Registerkarte Speichergruppen im Arbeitsblatt zur Standortvermessung und
+    -planung
   url: "/sample-site/reference_site_survey_and_planning_worksheet_storage_groups_tab.html"
-- title: Registerkarte „LUN-Details“ im Arbeitsblatt für Standortbefragungen und -Planung
+- title: Registerkarte „LUN-Details“ im Arbeitsblatt zur Standortanalyse und Planung
   url: "/sample-site/reference_site_survey_and_planning_worksheet_lun_details_tab.html"
-- title: Registerkarte „site Survey and Planning“ „NetApp LUN Layouts“
+- title: Arbeitsblatt für Standortanalyse und Planung, Registerkarte NetApp LUN-Layouts
   url: "/sample-site/reference_site_survey_and_planning_worksheet_netapp_lun_layouts_tab.html"
-- title: Registerkarte „Migrationsplan für Standortbefragungen und -Planung“
+- title: Registerkarte „Migrationszeitplan für Standortvermessungs- und Planungsarbeitsblatt“
   url: "/sample-site/reference_site_survey_and_planning_worksheet_migration_schedule_tab.html"
-- title: Registerkarte „zusammengefasste Statusanzeige und -Planung“ auf der Registerkarte
-    „Zusammenstellungsarbeitsblatt“
+- title: Registerkarte „Aggregatstatus“ des Arbeitsblatts zur Standortvermessung und
+    -planung
   url: "/sample-site/reference_site_survey_and_planning_worksheet_aggregate_status_tab.html"
-- title: Registerkarte „FAS Config“ auf dem Arbeitsblatt für die Standortbefragung
-    und -Planung
+- title: Arbeitsblatt für Standortanalyse und Planung FAS Konfigurationsregisterkarte
   url: "/sample-site/reference_site_survey_and_planning_worksheet_fas_config_tab.html"
-- title: Registerkarte SDS-CLI-Skripts für die Site-Umfrage und -Planung
+- title: Arbeitsblatt für Standortanalyse und Planung, Registerkarte SDS CLI-Skripte
   url: "/sample-site/reference_site_survey_and_planning_worksheet_sds_cli_scripts_tab.html"

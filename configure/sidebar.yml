@@ -2,7 +2,7 @@
 section: configure
 title: ONTAP FLI konfigurieren
 entries:
-- title: Überblick
+- title: Erfahren Sie mehr über die ONTAP FLI-Konfiguration
   url: "/configure/config-overview.html"
 - title: FC-Konnektivität und Verkabelung
   url: "/configure/fc-connectivity-wiring.html"

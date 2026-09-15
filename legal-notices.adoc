@@ -4,13 +4,14 @@ permalink: legal-notices.html
 keywords: copyrights, notice, trademarks, patents, privacy, open source 
 summary: Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken, Patente und mehr. 
 ---
-= Rechtliche Hinweise für ONTAP FLI
+= Rechtliche Hinweise
 :allow-uri-read: 
 :icons: font
+:linkattrs: 
 :imagesdir: ./media/
 
 
-[role="lead"]
+[role="lead lead"]
 Rechtliche Hinweise ermöglichen den Zugriff auf Copyright-Erklärungen, Marken, Patente und mehr.
 
 
@@ -44,3 +45,10 @@ link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://
 == Datenschutzrichtlinie
 
 link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
+
+
+
+[[machine-translation]]
+== Maschinelle Übersetzung
+
+Wichtige Informationen zu lokalisierten Inhalten sind verfügbar unter link:https://www.netapp.com/company/legal/machine-translation/["netapp.com"^]

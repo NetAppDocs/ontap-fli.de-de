@@ -1,10 +1,13 @@
 ---
 indexpage:
   title: ONTAP Dokumentation zum Importieren fremder LUNs
-  summary: ONTAP Import fremder LUNs
   keywords: fli, ontap, array, fli-based, configuration, lun, import, san, migration,
     foreign
-  lead: ONTAP Import fremder LUNs
+  lead: Foreign LUN Import (FLI) ist eine ONTAP-Funktion, die eine Datenmigration
+    auf Blockebene (LUN) ermöglicht, indem Benutzerdaten von einer externen Array-LUN
+    in eine ONTAP-LUN kopiert werden. ONTAP führt die Migration durch, indem es als
+    SCSI-Initiator fungiert, der von der externen LUN liest und in die Ziel-ONTAP-LUN
+    schreibt.
   tiles:
   - title: Versionshinweise
     links:
@@ -14,27 +17,15 @@ indexpage:
     links:
     - title: Erfahren Sie mehr über das ONTAP Datenmigrationsprogramm
       url: "/get-started/learn-about-data-migration.html"
-    - title: Erfahren Sie mehr über die SAN Datenmigration zu ONTAP
-      url: "/get-started/learn-about-san-data-migration.html"
     - title: Erfahren Sie mehr über ONTAP Foreign LUN Import
       url: "/get-started/learn-about-fli.html"
-  - title: FLI-Phasen
-    links:
-    - title: ONTAP Foreign LUN Import (FLI) Discovery-Phase
-      url: "/phases/discovery-phase.html"
-    - title: ONTAP Foreign LUN Import (FLI) Analysephase
-      url: "/phases/analyze-phase.html"
-    - title: ONTAP Foreign LUN Import (FLI) Planungs- und Vorbereitungsphase
-      url: "/phases/plan-prepare-phase.html"
-    - title: ONTAP Foreign LUN Import (FLI) Ausführungsphase
-      url: "/phases/execute-phase.html"
-    - title: ONTAP Foreign LUN Import (FLI) Verifizierungsphase
-      url: "/phases/verify-phase.html"
+    - title: Erfahren Sie mehr über ONTAP FLI-Phasen
+      url: "/phases/phase-overview.html"
   - title: FLI-Konfiguration
     links:
-    - title: ONTAP Foreign LUN Import (FLI) Konnektivität und Verkabelung
+    - title: ONTAP FLI Konnektivität und Verkabelung
       url: "/configure/fc-connectivity-wiring.html"
-    - title: ONTAP Foreign LUN Import (FLI) empfohlene FC-Verkabelungs- und Zonierungspraktiken
+    - title: Empfohlene FC-Verkabelungs- und Zonierungspraktiken für ONTAP FLI
       url: "/configure/iscsi-setup-backend-connectivity.html"
   - title: FLI-Migration
     links:
@@ -54,7 +45,7 @@ indexpage:
       url: "/post-migration-performance/esxi-remediation.html"
     - title: FLI-Leistung
       url: "/post-migration-performance/performance.html"
-  - title: Beispiel für ein Arbeitsblatt für die Standortumfrage und -Planung
+  - title: Beispielhafte Standortuntersuchung und Planung
     links:
-    - title: Überblick
-      url: "/san-migration/reference_sample_site_survey_and_planning_worksheet.html"
+    - title: Beispielhaftes Arbeitsblatt für Standortanalyse und Planung
+      url: "/sample-site/reference_sample_site_survey_and_planning_worksheet.html"

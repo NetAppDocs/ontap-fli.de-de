@@ -10,7 +10,7 @@ entries:
   url: "/phases/analyze-phase.html"
 - title: Planen und vorbereiten
   entries:
-  - title: Überblick
+  - title: Informationen zu Planung und Vorbereitung
     url: "/phases/plan-overview.html"
   - title: Testmigration
     url: "/phases/plan-prepare-phase.html"

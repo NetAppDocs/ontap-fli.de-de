@@ -2,19 +2,17 @@
 sidebar: sidebar 
 permalink: release-notes/whats-new.html 
 keywords: 'what"s new, release notes, san data migration' 
-summary: Erfahren Sie mehr über die neuen Funktionen in ONTAP für die SAN-Datenmigration. 
+summary: 'Informationen zu den neuen Funktionen, die in ONTAP für Foreign LUN Import (FLI) verfügbar sind.' 
 ---
-= Was ist neu in ONTAP für SAN Datenmigration
-:hardbreaks:
+= Neuerungen im ONTAP Foreign LUN Import (FLI)
 :allow-uri-read: 
-:nofooter: 
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
 
 
 [role="lead"]
-Erfahren Sie mehr über die neuen Funktionen in ONTAP für die SAN-Datenmigration.
+Informationen zu den neuen Funktionen, die in ONTAP für Foreign LUN Import (FLI) verfügbar sind.
 
 
 
@@ -34,6 +32,3 @@ Erfahren Sie mehr über die neuen Funktionen in ONTAP für die SAN-Datenmigratio
 Erfahren Sie mehr über link:https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["ASA R2-Systeme"^] .
 
 
-
-|===
-|===
